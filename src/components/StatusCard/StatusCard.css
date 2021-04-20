@@ -1,0 +1,18 @@
+.status-card h1,
+.status-card p {
+    text-align: center;
+}
+
+.big-number {
+    color: var(--primary);
+    display: block;
+    font-size: 5em;
+}
+
+.big-number.orange {
+    color: var(--orange)
+}
+
+.big-number.red {
+    color: var(--red)
+}

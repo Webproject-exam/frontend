@@ -1,0 +1,99 @@
+.navbar {
+    align-items: center;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    min-height: 55.33px;
+}
+
+.navbar span {
+    color: var(--background);
+    margin-left: auto;
+    text-transform: capitalize;
+    user-select: none;
+    
+}
+
+.navbar h1 {
+    color: var(--background);
+    font-size: large;
+    padding: 0 0.9em;
+}
+
+.navbar a {
+    color: var(--background);
+    padding: 0 0.9em;
+    text-decoration: none;
+}
+
+.navbar a button {
+    width: 5em;
+}
+
+.navbar * {
+    font-size: 0.9em;
+}
+
+.navbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: auto 0;
+    padding: auto;
+}
+
+.navbar ul li {
+    margin: 0 1em;
+}
+
+.navbar div img {
+    width: 3em;
+}
+
+.navbar div img:hover {
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.navbar.dropdown {
+    display: inline-block;
+    margin-top: 48.33px;
+    position: fixed;
+}
+
+/* Dropdown Content */
+.navbar.dropdown-content {
+    background-color: var(--gray6);
+    border-radius: 10px;
+    box-shadow: 0px 1em 2em 0px rgba(0, 0, 0, 0.3);
+    min-width: 160px;
+    position: absolute;
+    right:0;
+    z-index: 1;
+}
+
+.navbar.dropdown-content li {
+    margin: 0;
+    width: 100%;
+}
+
+.navbar.dropdown-content a {
+    border-radius: 10px;
+    color: black;
+    display: block;
+    font-size: 1.5em;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.navbar.dropdown-content a:hover {
+    background-color: var(--pDark);
+    color: white;
+    text-decoration: underline;
+}
+
+.navbar-icon img{
+    height: 100%;
+    padding: 0 0.9em;
+}

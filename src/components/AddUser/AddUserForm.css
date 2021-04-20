@@ -1,0 +1,51 @@
+.add-user-grid-container {
+    display: grid;
+    gap: 5px 1em;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+        "first-name-grid-item surname-grid-item"
+        "email-grid-item email-grid-item"
+        "role-grid-item role-grid-item"
+        "password-grid-item repeat-password-grid-item";
+}
+
+.first-name-grid-item {
+    grid-area: first-name-grid-item;
+}
+
+.surname-grid-item {
+    grid-area: surname-grid-item;
+}
+
+.email-grid-item {
+    grid-area: email-grid-item;
+}
+
+.role-grid-item {
+    grid-area: role-grid-item;
+}
+
+.password-grid-item {
+    grid-area: password-grid-item;
+}
+
+.repeat-password-grid-item {
+    grid-area: repeat-password-grid-item;
+}
+
+
+/* Portrait phone */
+@media only screen and (max-width: 375px) and (orientation: portrait) {
+    .add-user-grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-areas:
+        "first-name-grid-item" 
+        "surname-grid-item"
+        "email-grid-item"
+        "role-grid-item"
+        "password-grid-item" 
+        "repeat-password-grid-item";
+    }
+}
