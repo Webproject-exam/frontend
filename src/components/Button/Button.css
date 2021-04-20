@@ -1,0 +1,127 @@
+/*
+* BUTTONS GENERAL
+*/
+
+.button {
+    /* Typography*/
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    /* Box model */
+    box-sizing: border-box;
+    margin: 8px 0;
+    padding: .9em 0;
+
+    /* Visual */
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.button:hover:enabled {
+    box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
+}
+
+.button:disabled {
+    /* Visual */
+    opacity: 50%;
+    background-color: var(--gray4);
+    cursor: not-allowed;
+    color: #333;
+}
+
+/*
+* BUTTONS PRIMARY
+*/
+
+.primary {
+    background-color: var(--primary)
+}
+
+.primary:enabled:hover {
+    background-color: var(--pDark)
+}
+
+/*
+* BUTTONS SECONDARY
+*/
+
+.secondary:enabled {
+    background-color: var(--secondary)
+}
+
+.secondary:enabled:hover {
+    background-color: var(--sDark)
+}
+
+/*
+* BUTTONS SECONDARY OUTLINED
+*/
+
+.secondary-outlined:enabled {
+    background-color: var(--background);
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+}
+
+.secondary-outlined:enabled:hover {
+    background-color: var(--background);
+    border: 2px solid var(--sDark);
+    color: var(--sDark);
+}
+
+.secondary-outlined.active:enabled {
+    text-decoration: underline;
+    background-color: var(--secondary);
+    color: var(--background);
+}
+
+.secondary-outlined.active:enabled:hover {
+    text-decoration: underline;
+    background-color: var(--secondary);
+    color: var(--background);
+}
+
+/*
+* BUTTONS DANGER
+*/
+
+.danger {
+    background-color: var(--red)
+}
+
+.danger:enabled:hover {
+    background-color: var(--rDark);
+}
+
+/*
+* BUTTONS DANGER OUTLINED
+*/
+
+.danger-outlined {
+    background-color: var(--background);
+    border: 2px solid var(--red);
+    color: var(--red);
+}
+
+.danger-outlined:enabled:hover {
+    background-color: var(--background);
+    border: 2px solid var(--rDark);
+    color: var(--rDark);
+}
+
+/*
+* BUTTONS SIZING
+*/
+
+.full-size {
+    width: 100%;
+}
+
+.half-size {
+    width: 49%;
+    /* better for flex */
+}

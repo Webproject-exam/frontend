@@ -1,0 +1,104 @@
+@import './colors.css';
+
+*>body {
+  background-color: var(--background);
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  margin: 1em 5vw;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  margin: 2% auto 0 auto;
+  max-width: 550px;
+  min-width: 240px;
+  overflow:hidden;
+  padding: 1em;
+}
+
+.container img {
+  display: block;
+  margin: auto;
+  width: 2em;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  font-size: 2em;
+  margin: .5em auto;
+  text-align: center;
+}
+
+a {
+  color: var(--sDark);
+  text-decoration: none;
+  transition: .3s;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+select {
+  border: 1px solid var(--gray4);
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px 0 24px;
+  padding: 12px 20px;
+  width: 100%;
+}
+
+label,
+strong {
+  text-transform: capitalize;
+}
+
+.user-list-item-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.low-emphasis-text {
+  color: var(--gray2)
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* part of react tostify */
+.Toastify__toast--success {
+  background: var(--primary) !important;
+}
+
+.Toastify__toast--error {
+  background: var(--red) !important;
+}

@@ -1,0 +1,24 @@
+/* This seems to break the pupup, no idea why... */
+.popup-userlist {
+    /* positioning */
+    display: grid;
+    left: 0;
+    place-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+
+    /* size */
+    height: 100%;
+    width: 100%;
+
+    /* miscellaneous */
+    background-color: rgba(0, 0, 0, .4);
+    overflow: auto;
+}
+
+.buttons-side-by-side {
+    display: flex;
+    justify-content: space-between;
+    max-width: 430px;
+}
