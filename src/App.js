@@ -15,6 +15,7 @@ import { AuthConsumer } from './helpers/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
 import PlantListItem from './components/PlantListItem/PlantListItem'
+import AboutPage from './components/AboutPage/AboutPage'
 
 class App extends Component {
   render() {
@@ -53,6 +54,9 @@ class App extends Component {
                   <Route exact path="/">
                     <h1>Home page</h1>
                     <PlantListItem/>
+                  </Route>
+                  <Route exact path="/about">
+                    <AboutPage/>
                   </Route>
                   <Route exact path="/403">
                     <StatusCard statusCode={403} statusText="Forbidden" />

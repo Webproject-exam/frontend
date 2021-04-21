@@ -1,5 +1,9 @@
 @import './colors.css';
 
+html, body, #root, #root>main {
+  height: 100%
+}
+
 *>body {
   background-color: var(--background);
   margin: 0;
