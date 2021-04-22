@@ -4,6 +4,9 @@
     display: flex;
     justify-content: space-between;
     min-height: 55.33px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .navbar span {
@@ -11,7 +14,6 @@
     margin-left: auto;
     text-transform: capitalize;
     user-select: none;
-    
 }
 
 .navbar h1 {
