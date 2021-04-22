@@ -6,7 +6,7 @@ import './NavBar.css';
 import Button from '../Button/Button'
 import PropTypes from 'prop-types';
 import accountCircle from '../../assets/account_circle.svg';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { notifySuccess } from '../../helpers/notification';
 
 /**
@@ -35,7 +35,7 @@ function Nav(props) {
     const handleLogOut = () => {
         props.handleLogOut();
         notifySuccess("You are now logged out. Goodbye 👋");
-        
+
     }
 
     const handleClickOutside = e => {
@@ -65,6 +65,11 @@ function Nav(props) {
                 <Link to="/">Plants at Mustad</Link>
             </h1>
 
+            <div className="nav-links">
+                <NavLink exact to="/">Overview</NavLink>
+                <NavLink exact to="/about">About</NavLink>
+            </div>
+
             {!props.auth && (
                 <Link to="/login">
                     <Button label="log in" />
@@ -74,21 +79,21 @@ function Nav(props) {
                 <>
                     <span>{props.role}</span>
                     <div onClick={handleMenu} className="navbar-icon" ref={node}>
-                    
+
                         <img src={accountCircle} alt="Account Circle icon" onClick={handleMenu} />
-    
+
                         {open &&
                             <div className="navbar dropdown">
                                 <ul className="navbar dropdown-content">
                                     <li onClick={handleMenu} className="dropdown-li">
                                         <Link to="/profile">Profile</Link>
                                     </li>
-    
+
                                     {props.role === "manager" &&
                                         <li onClick={handleMenu}>
                                             <Link to="/dashboard">Dashboard</Link>
                                         </li>}
-    
+
                                     <li onClick={function () { handleLogOut(); handleMenu(); }}>
                                         <Link to="/login">Log out</Link>
                                     </li>
