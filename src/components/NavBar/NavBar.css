@@ -9,6 +9,16 @@
     z-index: 1;
 }
 
+.navbar .nav-links {
+    margin: 0 0 0 auto;
+    font-size: 1.25em;
+}
+
+.active {
+    text-decoration: underline !important;
+    font-weight: bold;
+}
+
 .navbar span {
     color: var(--background);
     margin-left: auto;
@@ -26,6 +36,7 @@
     color: var(--background);
     padding: 0 0.9em;
     text-decoration: none;
+    margin-left: auto;
 }
 
 .navbar a button {

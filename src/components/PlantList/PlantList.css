@@ -1,0 +1,9 @@
+.plant-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.plant-list li {
+    margin: 1em;
+}
