@@ -12,11 +12,13 @@
 }
 
 h1, h2 {
+  margin: 0;
   font-family: 'Roboto Slab';
 }
 
 main {
   margin: 1em 5vw;
+  min-height: calc(100vh - 5.5rem - 55.33px);
 }
 
 .container {

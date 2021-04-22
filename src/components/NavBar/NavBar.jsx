@@ -62,7 +62,7 @@ function Nav(props) {
     return (
         <nav className="navbar">
             <h1>
-                <Link to="/">Fullstack Project</Link>
+                <Link to="/">Plants at Mustad</Link>
             </h1>
 
             {!props.auth && (

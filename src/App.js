@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
 import PlantListItem from './components/PlantListItem/PlantListItem'
 import AboutPage from './components/AboutPage/AboutPage'
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render() {
@@ -66,6 +67,7 @@ class App extends Component {
                   </Route>
                 </Switch>
               </main>
+              <Footer/>
             </Router>
             <ToastContainer transition={Slide} />
           </>
