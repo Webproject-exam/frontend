@@ -6,7 +6,7 @@ function AboutPage() {
 
     return (
         <>
-            <div className="grid-container">
+            <div className="about-page-grid-container">
                 <div className="home-page">
                     <div className="title">
                         <h1 className="heading">Plants at Mustad</h1>
@@ -66,7 +66,6 @@ function AboutPage() {
                     </div>
                 </div>
             </div>
-
         </>
 
     )

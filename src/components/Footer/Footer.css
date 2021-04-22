@@ -1,0 +1,32 @@
+.footer-grid-container {
+    background-color: var(--gray6);
+    display: grid;
+    grid-template-columns: 1.5fr 6fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    grid-template-areas:
+        "logo names copyright";
+
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    height: 3.5rem;
+}
+
+.logo {
+    grid-area: logo;
+    place-self: center;
+}
+
+.names {
+    grid-area: names;
+    justify-self: start;
+    align-self: center;
+}
+
+.copyright {
+    grid-area: copyright;
+    place-self: center;
+}
