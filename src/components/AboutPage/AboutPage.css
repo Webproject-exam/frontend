@@ -1,12 +1,116 @@
-.hero-image {
-    /* The image used */
-    background-image: url('../../assets/hero_image.jpg');
-  
-    /* Full height */
-    height: 100%;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: calc(100vh - 55.33px - 1em) auto auto auto auto auto;
+  gap: 1rem 1rem;
+  grid-template-areas:
+    "home-page home-page home-page home-page home-page home-page"
+    "about-the-project about-the-project about-the-project about-the-project about-the-project about-the-project"
+    "box1 box1 box2 box2 box3 box3"
+    "the-group the-group the-group the-group the-group the-group"
+    "person1 person1 person1 person2 person2 person2"
+    "person3 person3 person3 person4 person4 person4";
+}
+
+.home-page {
+  grid-area: home-page;
+  background-color: red;
+  margin-top: -1em;
+  margin-left: -5vw;
+  margin-right: -5vw;
+
+  background-image: url('../../assets/hero_image1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+}
+
+.about-the-project{
+  grid-area: about-the-project;
+  justify-self: center;
+}
+
+.about-project-box{
+  margin: 0;
+  padding: 2rem;
+  min-width: unset;
+}
+
+.box1 {
+  grid-area: box1;
+}
+
+.box2 {
+  grid-area: box2;
+}
+
+.box3 {
+  grid-area: box3;
+}
+
+.the-group{
+  grid-area: the-group;
+  justify-self: center;
+}
+
+.the-group-box{
+  margin: 0;
+  padding: 2rem;
+  min-width: unset;
+  max-width: unset;
+  display: flex;
+}
+
+.person1 {
+  grid-area: person1;
+}
+
+.person2 {
+  grid-area: person2;
+}
+
+.person3 {
+  grid-area: person3;
+}
+
+.person4 {
+  grid-area: person4;
+}
+
+.title {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  align-self: center;
+  max-width: 758px;
+  display:flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+
+.title h1 {
+  width: 100%;
+  font-size: clamp(3rem, 11.4vw, 6rem);
+  margin: 0;
+  font-weight: lighter;
+}
+
+.grid-container h2 {
+  font-size: 3rem;
+  font-weight: lighter;
+  margin-bottom: 1rem
+}
+
+.buttons-side-by-side{
+  width: 100%;
+}
+
+.fake-image{
+  margin: auto 1em;
+  width: 100%;
+}
+
+.biography{
+  max-width: 60%;
+}
