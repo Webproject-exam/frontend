@@ -53,7 +53,7 @@ class App extends Component {
                     <LogInForm />
                   </Route>
                   <Route exact path="/">
-                    <h1>Home page</h1>
+                    <h1>Overview</h1>
                     <PlantList/>
                   </Route>
                   <Route exact path="/about">

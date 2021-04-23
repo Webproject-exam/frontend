@@ -34,7 +34,7 @@ function PlantListItem({ plant }) {
             <p>Next watering: <b>{plant.next_watering}</b>.</p>
             <p>Lighting requirements: <b>{plant.lighting_requirements}</b>.</p>
             <p>Fertilizer: <b>{plant.fertilizer}</b></p>
-            <Button variant="secondary-outlined" label="water this plant" />
+            <Button variant="text-only" label="water this plant" size="auto"/>
         </div>
     </li>)
 }

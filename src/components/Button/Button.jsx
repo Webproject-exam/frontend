@@ -56,14 +56,16 @@ Button.propTypes = {
      * 'full' takes 100% of the parent's container's width. 
      * 
      * 'half' takes 49% of the parent's container's width (Great for button side-by-side).
+     * 
+     * 'auto' removes the width from the CSS
     */
-    size: PropTypes.oneOf(['full', 'half']),
+    size: PropTypes.oneOf(['full', 'half', 'auto']),
 
     /** The type of the button (HTML type attribute). */
     type: PropTypes.oneOf(['button', 'submit', 'reset']),
 
     /** The variant of the button changes the color. */
-    variant: PropTypes.oneOf(['primary', 'secondary', 'secondary-outlined', 'danger', 'danger-outlined']).isRequired,
+    variant: PropTypes.oneOf(['primary', 'secondary', 'secondary-outlined', 'danger', 'danger-outlined', 'text-only']).isRequired,
 }
 
 export default Button;
