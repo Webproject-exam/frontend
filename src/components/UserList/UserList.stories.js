@@ -28,12 +28,9 @@ const Template = args => <UserList {...args} />
 //👇 Each story then reuses that template
 export const Primary = Template.bind({})
 
-
 Primary.args = {
     users: [
         { ...UserListItemStories.PopulatedGardener.args.user },
         { ...UserListItemStories.PopulatedManager.args.user  },
         { ...UserListItemStories.Default.args.user }],
-
 }
-

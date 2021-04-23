@@ -16,7 +16,7 @@ export default {
 
   //👇 We can specify which controls get used by declaring a custom argType
   argTypes: {
-      
+    OnClick: { action: 'clicked' }
   }
 }
 

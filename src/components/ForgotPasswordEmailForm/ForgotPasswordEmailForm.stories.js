@@ -12,11 +12,6 @@ export default {
         controls: {
             sort: 'alpha'
         }
-    },
-
-    //👇 We can specify which controls get used by declaring a custom argType
-    argTypes: {
-        
     }
 }
 
