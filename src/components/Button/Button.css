@@ -10,8 +10,8 @@
     text-transform: uppercase;
 
     /* Box model */
-    box-sizing: border-box;
-    margin: 8px 0;
+    /* box-sizing: border-box; */
+    margin: .5rem 0;
     padding: .9em 0;
 
     /* Visual */
@@ -114,6 +114,30 @@
 }
 
 /*
+* BUTTONS TEXT-ONLY
+*/
+
+.text-only {
+    background-color: transparent;
+    color: var(--sDark);
+    padding: .5rem;
+    margin: 0 0 0 auto;
+    display: block;
+    min-height: 44px;
+    transition: .05s;
+}
+
+.text-only:enabled:hover {
+    text-decoration: underline;
+    box-shadow: unset;
+}
+
+.text-only:active {
+    transform: translateY(2px);
+    filter: saturate(175%);
+}
+
+/*
 * BUTTONS SIZING
 */
 
@@ -124,4 +148,8 @@
 .half-size {
     width: 49%;
     /* better for flex */
+}
+
+.no-size {
+    width: unset;
 }
