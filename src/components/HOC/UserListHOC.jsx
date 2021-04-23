@@ -84,13 +84,13 @@ function withUsersFetch(WrappedComponent) {
                 })
                 notifyError("Something went wrong... please try again.")
             } else {
+                notifySuccess(`The user ${this.state.selectedUser.name} ${this.state.selectedUser.surname} has been deleted. 🗑️`);
                 this.setState({
                     delete: false,
                     selectedUser: {},
                     error: null
                 });
                 await this.fetchData();
-                notifySuccess("The user has been deleted. 🗑️");
             }
         }
 

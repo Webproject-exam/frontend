@@ -13,11 +13,6 @@ export default {
             sort: 'alpha'
         }
     },
-
-    //👇 We can specify which controls get used by declaring a custom argType
-    argTypes: {
-        
-    }
 }
 
 //👇 We create a “template” of how args map to rendering

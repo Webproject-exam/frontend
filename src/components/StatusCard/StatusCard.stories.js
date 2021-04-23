@@ -16,12 +16,7 @@ export default {
     }, decorators: [story =>
         <Router>
             {story()}
-        </Router>],
-
-    //👇 We can specify which controls get used by declaring a custom argType
-    argTypes: {
-
-    }
+        </Router>]
 }
 
 //👇 We create a “template” of how args map to rendering
@@ -32,9 +27,7 @@ export const Default = Template.bind({})
 export const NotFound = Template.bind({})
 export const Forbidden = Template.bind({})
 
-Default.args = {
-    
-}
+Default.args = {}
 
 NotFound.args = {
     statusCode: 404,

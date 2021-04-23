@@ -14,6 +14,7 @@ function updateUserBackend(WrappedComponent) {
         }
 
         updateDashboard = async (userObject) => {
+            this.setState({error: null});
             try {
                 await updateUser(userObject);
             }  catch (error) {
@@ -27,6 +28,7 @@ function updateUserBackend(WrappedComponent) {
         }
 
         updateProfile = async (userObject) => {
+            this.setState({error: null});
             try {
                 await updateMyProfile(userObject);
 

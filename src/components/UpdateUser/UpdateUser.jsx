@@ -179,7 +179,7 @@ class UpdateUserForm extends Component {
     }
 
     passwordValidation() {
-        if(this.state.password && this.state.repeatpassword && this.state.oldPassword) {
+        if (this.state.password && this.state.repeatpassword && this.state.oldPassword) {
             if (this.state.password === this.state.repeatpassword) {
                 this.setState({
                     passwordError: false
@@ -192,11 +192,13 @@ class UpdateUserForm extends Component {
                 notifyError('The passwords entered do not match.')
                 return false;
             }
-        } else {
+        } else if (this.state.password || this.state.repeatpassword || this.state.oldPassword) {
             notifyError("You need to enter all password fields");
             return false;
+        } else {
+            return true;
         }
-        
+
     }
 
     //Close the red error message that pops up when the two passwords do not match

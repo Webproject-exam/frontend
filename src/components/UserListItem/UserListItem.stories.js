@@ -4,8 +4,6 @@ import '../../colors.css'
 import '../../index.css'
 import UserListItem from './UserListItem';
 
-
-
 //The default export metadata controls how Storybook lists your stories and provides information used by addons.
 export default {
     title: 'Components/UserListItem',
@@ -14,11 +12,6 @@ export default {
         controls: {
             sort: 'alpha'
         }
-    },
-
-    //👇 We can specify which controls get used by declaring a custom argType
-    argTypes: {
-        
     }
 }
 
@@ -29,7 +22,6 @@ const Template = args => <UserListItem {...args} />
 export const Default = Template.bind({})
 export const PopulatedGardener = Template.bind({})
 export const PopulatedManager = Template.bind({})
-
 
 Default.args = {
     user: {
