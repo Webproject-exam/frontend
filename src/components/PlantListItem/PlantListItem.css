@@ -11,7 +11,7 @@
 .plant-header {
     display: grid;
     grid-template-columns: 2rem auto;
-    gap: .33rem .75rem;
+    gap: .1rem .75rem;
     grid-template-areas:
         "status h2"
         "status h3";
