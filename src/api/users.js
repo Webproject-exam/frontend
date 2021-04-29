@@ -8,7 +8,7 @@ const tokenRefresh = () => {
 };
 
 const tokenRevoke = () => {
-    return axios.post('revoke-token');
+    return axios.post('/revoke-token');
 }
 
 // Anonymous
@@ -25,7 +25,7 @@ const fetchUser = () => {
     return axios.get('/profile');
 }
 
-const updateMyProfile = ({ name, surname, password, oldPassword}) => {
+const updateMyProfile = ({ name, surname, password, oldPassword }) => {
     return axios.patch('/profile', { name, surname, password, oldPassword });
 }
 

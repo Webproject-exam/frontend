@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 
 /**
- * ### Positive toast message
+ * Positive toast message
  * @param {string} message 
  */
 function notifySuccess(message) {
@@ -11,10 +11,10 @@ function notifySuccess(message) {
 };
 
 /**
- * ### Negative toast message
+ * Negative toast message
  * @param {string} message 
  */
-function notifyError(message){
+function notifyError(message) {
     toast.error(message, {
         position: toast.POSITION.BOTTOM_RIGHT
     });

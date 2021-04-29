@@ -63,6 +63,7 @@ class UpdateUserForm extends Component {
             surname: '',
             role: '',
             email: '',
+            userEmail: '',
             oldPassword: '',
             password: '',
             repeatpassword: '',
@@ -87,7 +88,7 @@ class UpdateUserForm extends Component {
                 firstname: this.props.selectedUser.name,
                 surname: this.props.selectedUser.surname,
                 role: this.props.selectedUser.role,
-                email: this.props.selectedUser.email
+                userEmail: this.props.selectedUser.email
             })
         } else {
             this.pronoun = 'your'
@@ -245,7 +246,7 @@ class UpdateUserForm extends Component {
                                         id="email"
                                         name="email"
                                         onChange={this.handleInputChange}
-                                        placeholder="Enter Your New Email"
+                                        placeholder={this.state.userEmail}
                                         type="email"
                                         value={this.state.email}
                                     />
@@ -342,6 +343,8 @@ class UpdateUserForm extends Component {
     }
 }
 
+//#region JSDoc for Storybook & default props
+
 UpdateUserForm.defaultProps = {
     place: 'none'
 }
@@ -373,5 +376,7 @@ UpdateUserForm.propTypes = {
     /** eventHandler to reset the users password */
     onResetClick: PropTypes.func
 }
+
+//#endregion
 
 export default UpdateUserForm;

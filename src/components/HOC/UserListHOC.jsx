@@ -28,10 +28,10 @@ function withUsersFetch(WrappedComponent) {
 
         resetPassword = async () => {
             const email = this.state.selectedUser.email;
-            this.setState({isLoading: true});
-            const res = await forgot({userEmail: email});
+            this.setState({ isLoading: true });
+            const res = await forgot({ userEmail: email });
 
-            if(res.error){
+            if (res.error) {
                 this.setState({ error: res.error, isLoading: false });
                 notifyError("Something went wrong... please try again.")
             } else {
@@ -120,7 +120,7 @@ function withUsersFetch(WrappedComponent) {
                 <>
                     <WrappedComponent handleEditClick={this.selectEdit} handleDeleteClick={this.selectDelete} users={this.state.users} {...this.props} />
                     {this.state.edit &&
-                        
+
                         //Update user form
                         <Popup
                             onAbortClick={this.cancelAction}

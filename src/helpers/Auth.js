@@ -41,8 +41,13 @@ class AuthProvider extends React.Component {
 
     logout = async () => {
         this.setState({ ...INITIAL_STATE });
-        clear();
-        await tokenRevoke();
+        try {
+            await tokenRevoke();
+            clear();
+        } catch (error) {
+            clear();
+            return error.response.data;
+        }
     };
 
     isAuthFunc = () => {
@@ -50,7 +55,7 @@ class AuthProvider extends React.Component {
     };
 
     isRoleSet = () => {
-        if(this.state.role === "manager" || read("role") === "manager"){
+        if (this.state.role === "manager" || read("role") === "manager") {
             return true;
         } else {
             return false;

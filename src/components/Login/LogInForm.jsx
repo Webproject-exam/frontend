@@ -73,9 +73,9 @@ class LogInForm extends Component {
             const res = await this.context.login({ email, password });
 
             if (res.error) {
-
                 //The user is most probably not found in the database
                 this.setState({ error: true });
+                this.emailInput.current.focus();
                 notifyError("Wrong email and/or password. Please try again.")
             } else {
                 notifySuccess("You are now logged in.")

@@ -3,11 +3,11 @@ const expiryDuration = 240000;
 const LOCAL_STORAGE_PREFIX = 'plants-';
 
 const store = (key, value) => {
-    return localStorage.setItem(LOCAL_STORAGE_PREFIX+key, value);
+    return localStorage.setItem(LOCAL_STORAGE_PREFIX + key, value);
 };
 
 const read = (key) => {
-    return localStorage.getItem(LOCAL_STORAGE_PREFIX+key);
+    return localStorage.getItem(LOCAL_STORAGE_PREFIX + key);
 };
 
 const getExpiry = () => {
@@ -19,7 +19,7 @@ const isExpired = (expiry) => {
 };
 
 const storeExpiry = (key, value, expiry = false) => {
-    if(expiry === true) {
+    if (expiry === true) {
         store(`${key}.e`, getExpiry());
     }
     return store(key, value);
@@ -28,11 +28,11 @@ const storeExpiry = (key, value, expiry = false) => {
 const readExpiry = (key) => {
     const expiryData = read(`${key}.e`);
     const data = read(key);
-    if(data != null) {
-        if(data && isExpired(expiryData)) {
+    if (data != null) {
+        if (data && isExpired(expiryData)) {
             return { response: data, expired: true };
         }
-        if(data && !isExpired(expiryData)) {
+        if (data && !isExpired(expiryData)) {
             return { response: data, expired: false };
         }
     }
@@ -40,7 +40,7 @@ const readExpiry = (key) => {
 };
 
 const clear = () => {
-    localStorage.clear();
+    window.localStorage.clear();
     return null;
 }
 
