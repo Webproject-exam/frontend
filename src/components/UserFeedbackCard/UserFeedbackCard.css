@@ -6,7 +6,7 @@
     padding: 12px 20px;
 }
 
-.user-feedback.error{
+.user-feedback.error {
     background-color: var(--red);
 }
 

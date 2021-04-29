@@ -7,29 +7,36 @@ function addUserBackend(WrappedComponent) {
         static contextType = AuthContext;
         constructor(props) {
             super(props);
-            this.state = { 
+            this.state = {
                 error: null
             };
         }
 
         onSubmit = async (userObject) => {
+
             //Send the information stored in the state to the back-end
             try {
                 await createUser(userObject);
             } catch (error) {
                 this.setState({
-                    error: error.response.data.message
+                    error: error.response.data.error
                 })
             }
         }
 
-        render() { 
+        removeError = () => {
+            this.setState({
+                error: null
+            });
+        }
+
+        render() {
             return (
-                <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error}/>
+                <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error} removeErrorHandler={this.removeError} />
             );
         }
     }
-    
+
     return AddUserHOC;
 }
 

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard';
 import passwordIcon from '../../assets/password_black_24dp.svg';
 import { notifySuccess, notifyError } from '../../helpers/notification';
+import { emailIsValid } from '../../helpers/validation';
 
 /**
  * ## How it works
@@ -35,7 +36,7 @@ class ForgotPasswordEmailForm extends Component {
         super(props);
         this.state = {
             email: '',
-            error: '',
+            error: null,
             formSubmitted: false
         }
 
@@ -46,21 +47,20 @@ class ForgotPasswordEmailForm extends Component {
     }
 
     handleSubmit = async (event) => {
+        const email = this.state.email;
         event.preventDefault();
 
-        if (this.validation()) {
+        if (emailIsValid(email)) {
             this.setState({ formSubmitted: true });
-            
-            const email = this.state.email;
 
             notifySuccess(`An email with further instructions is sent to '${email}'.`)
 
             await this.props.onSubmitHandler(email);
 
-
         } else {
-            this.setState({ error: "The form is not valid!" });
-            notifyError("The form did not pass validation.")
+            this.setState({ error: true });
+            this.emailInput.current.focus();
+            notifyError("The email entered did not pass validation.")
         }
     }
 
@@ -74,9 +74,10 @@ class ForgotPasswordEmailForm extends Component {
         });
     }
 
+    //closing a UserFeedbackcard
     handleClose() {
         this.setState({
-            error: '',
+            error: null,
             formSubmitted: false
         });
         this.emailInput.current.focus();
@@ -84,10 +85,6 @@ class ForgotPasswordEmailForm extends Component {
 
     componentDidMount() {
         this.emailInput.current.focus();
-    }
-
-    validation() {
-        return this.form.current.reportValidity();
     }
 
     render() {
@@ -110,7 +107,7 @@ class ForgotPasswordEmailForm extends Component {
                             value={this.state.email}
                         />
                         <p className="low-emphasis-text form-explain">The email address you are registered with is required to reset your password.</p>
-                        {this.state.formSubmitted && <UserFeedbackCard variant="success" feedbackText={`an email with further instructions is sent to ${this.state.email}.`} onClick={this.handleClose} />}
+                        {this.state.formSubmitted && <UserFeedbackCard variant="success" feedbackText={'an email with further instructions has been sent.'} onClick={this.handleClose} />}
 
                         <Button type="submit" label="reset password" size="full" />
                     </fieldset>

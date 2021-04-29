@@ -34,7 +34,7 @@ function UserList({ users, handleDeleteClick, handleEditClick }) {
 UserList.propTypes = {
     /** The user object should include name, surname, role, and email. 
      * These values should be strings. */
-     users: PropTypes.array.isRequired,
+    users: PropTypes.array.isRequired,
 
     /** handleDeleteClick is an eventHandler that is connected to the delete button on a UserItemCard component */
     handleDeleteClick: PropTypes.func.isRequired,

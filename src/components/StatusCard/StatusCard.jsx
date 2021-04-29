@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 
 function StatusCard(props) {
     const { statusCode, statusText } = props;
-    
+
     let color;
     let icon;
 
@@ -48,6 +48,8 @@ function StatusCard(props) {
     )
 }
 
+//#region JSDoc for Storybook & default props
+
 StatusCard.defaultProps = {
     statusCode: 200
 }
@@ -61,5 +63,7 @@ StatusCard.propTypes = {
     /** Checks if the button should be disabled (HTML disabled attribute). */
     statusText: PropTypes.string.isRequired,
 }
+
+//#endregion
 
 export default StatusCard;
