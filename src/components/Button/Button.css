@@ -27,7 +27,7 @@
 
 .button:disabled {
     /* Visual */
-    opacity: 50%;
+    opacity: .5;
     background-color: var(--gray4);
     cursor: not-allowed;
     color: #333;
