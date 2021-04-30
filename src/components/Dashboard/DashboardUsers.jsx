@@ -3,7 +3,7 @@ import AddUserForm from '../AddUser/AddUserForm';
 import Button from '../Button/Button'
 import UserList from '../UserList/UserList';
 import './Dashboard.css';
-import addUserBackend from '../HOC/AddUserFormHOC';
+import addUserBackend from '../HOC/AddItemFormHOC';
 import withUsersFetch from '../HOC/UserListHOC';
 
 /**
