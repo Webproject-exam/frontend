@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Button from '../Button/Button';
+import AddUserForm from '../AddUser/AddUserForm';
+import Button from '../Button/Button'
+import UserList from '../UserList/UserList';
 import './Dashboard.css';
-import DashboardPlants from './DashboardPlants';
-import DashboardUsers from './DashboardUsers';
+import addUserBackend from '../HOC/AddUserFormHOC';
+import withUsersFetch from '../HOC/UserListHOC';
 
 /**
  * ## How it works
@@ -20,45 +22,47 @@ import DashboardUsers from './DashboardUsers';
  * (Note: ensure to protect `<Dashboard />` with authentication. Protecting with authentication 
  * is done by rendering `<Dashboard />` wrapped by `<AdminRoute></AdminRoute>` )
  */
-class Dashboard extends Component {
+class DashboardUsers extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            plants: false,
-            users: false
+            addUser: false,
+            seeUsers: false
         }
     }
 
     //open the form for adding a user. If the user list is shown, close it.
-    togglePlants = () => {
+    toggleAddUser = () => {
         this.setState({
-            plants: !this.state.plants,
-            users: false
+            addUser: !this.state.addUser,
+            seeUsers: false
         });
     }
 
     //show a list of all users stored in the database. If the form for adding a user is open, close it.
-    toggleUsers = () => {
+    toggleAllUsers = () => {
         this.setState({
-            users: !this.state.users,
-            plants: false
+            seeUsers: !this.state.seeUsers,
+            addUser: false
         });
     }
 
 
     render() {
+        const UserListWithHOC = withUsersFetch(UserList);
+        const AddUserWithHOC = addUserBackend(AddUserForm);
 
         return (
             <>
                 <div className="user-list-item-buttons">
-                    <Button onClick={this.togglePlants} variant="secondary-outlined" label="Plants" size="half" active={this.state.plants} />
-                    <Button onClick={this.toggleUsers} variant="secondary-outlined" label="Users" size="half" active={this.state.users} />
+                    <Button onClick={this.toggleAddUser} variant="secondary-outlined" label="Add a user" size="half" active={this.state.addUser} />
+                    <Button onClick={this.toggleAllUsers} variant="secondary-outlined" label="See all users" size="half" active={this.state.seeUsers} />
                 </div>
-                {this.state.plants && <DashboardPlants />}
-                {this.state.users && <DashboardUsers />}
+                {this.state.addUser && <AddUserWithHOC />}
+                {this.state.seeUsers && <UserListWithHOC />}
             </>
         );
     }
 }
 
-export default Dashboard;
+export default DashboardUsers;
