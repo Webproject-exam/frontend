@@ -12,7 +12,7 @@
     /* Box model */
     /* box-sizing: border-box; */
     margin: .5rem 0;
-    padding: .9em 0;
+    padding: .9em 0.4em;
 
     /* Visual */
     border-radius: 10px;
