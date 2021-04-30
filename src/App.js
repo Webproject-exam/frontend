@@ -14,10 +14,11 @@ import withUserBackEnd from './components/HOC/MyProfileHOC';
 import { AuthConsumer } from './helpers/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
-import AboutPage from './components/AboutPage/AboutPage'
+import AboutPage from './components/AboutPage/AboutPage';
 import Footer from './components/Footer/Footer';
 import PlantList from './components/PlantList/PlantList';
-import PlantStatusCard from './components/PlantStatusCard/PlantStatusCard'
+import PlantStatusCard from './components/PlantStatusCard/PlantStatusCard';
+import withPlantFetch from './components/HOC/PlantListHOC';
 
 
 let plant = {
@@ -50,6 +51,7 @@ class App extends Component {
     const MyProfileWithHOC = withUserBackEnd(MyProfile);
     const ForgotPassHOC = forgotBackend(ForgotPasswordEmailForm);
     const NavBarHOC = navBarBackend(NavBar);
+    const PlantListHOC = withPlantFetch(PlantList);
 
     return (
       <AuthConsumer>
@@ -83,7 +85,7 @@ class App extends Component {
                   </Route>
                   <Route exact path="/">
                     <h1>Overview</h1>
-                    <PlantList />
+                    <PlantListHOC />
                   </Route>
                   <Route exact path="/about">
                     <AboutPage />

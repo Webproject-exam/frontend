@@ -4,6 +4,38 @@ import { AuthContext } from '../../helpers/Auth';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 import { fetchAllPlants } from '../../api/plants';
 
+// Testing purposes
+const plants = [
+    {
+        name: "Arekapalme",
+        location: "Bygg 118 - 3. etg",
+        next_watering: "Today",
+        lighting_requirements: "Average",
+        fertilizer: "Masse!"
+    },
+    {
+        name: "Monstera",
+        location: "Bygg 118 - 2. etg: Rom 206",
+        next_watering: "Tomorrow",
+        lighting_requirements: "Average",
+        fertilizer: "Lite"
+    },
+    {
+        name: "Gullranke ampel",
+        location: "Fabrikken (Bygg 115/159) - 3. etg",
+        next_watering: "6 days",
+        lighting_requirements: "Average",
+        fertilizer: "Lite"
+    },
+    {
+        name: "Strelitzia nicolai",
+        location: "Fabrikken (Bygg 115/159) - 3. etg",
+        next_watering: "6 days",
+        lighting_requirements: "Average",
+        fertilizer: "Lite"
+    }
+];
+
 function withPlantsFetch(WrappedComponent){
     class PlantListHOC extends Component {
         static contextType = AuthContext;
@@ -20,7 +52,12 @@ function withPlantsFetch(WrappedComponent){
 
         async componentDidMount(){
             this._isMounted = true;
-            await this.fetchData();
+            this.setState({
+                plants: plants,
+                isLoading: false,
+                error: null
+            });
+            //await this.fetchData();
         }
 
         fetchData = async () => {
@@ -34,8 +71,7 @@ function withPlantsFetch(WrappedComponent){
                 this._isMounted && this.setState({
                     plants: res.data,
                     isLoading: false,
-                    error: null,
-                    edit: false
+                    error: null
                 })
             }
         }
@@ -50,7 +86,7 @@ function withPlantsFetch(WrappedComponent){
             }
 
             return (
-                <WrappedComponent {...this.props} />
+                <WrappedComponent plants={this.state.plants} {...this.props} />
             );
         }
     }
