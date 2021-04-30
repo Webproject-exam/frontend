@@ -17,6 +17,32 @@ import { ToastContainer, Slide } from 'react-toastify';
 import AboutPage from './components/AboutPage/AboutPage'
 import Footer from './components/Footer/Footer';
 import PlantList from './components/PlantList/PlantList';
+import PlantStatusCard from './components/PlantStatusCard/PlantStatusCard'
+
+
+let plant = {
+  name: "Arkapalme",
+  placement: {
+    building: "Fabrikken (Bygg 115/159)",
+    floor: "2. etg",
+    room: "Rom 206"
+  },
+  watering: {
+    frequency: "every 14 days",
+    next: "3 days",
+    responsible: "Ola Nordmann",
+    last_watered_by: "Kari Nordmann",
+    last_watered_date: "5. april 2021",
+    last_postponed: "2. april 2021",
+    postponed_reason: "still moist"
+  },
+  fertilization: {
+    frequency: "every 60 days",
+    next: "27 days"
+  },
+  ligtning: "Average",
+  added: "1. jan 2020"
+}
 
 class App extends Component {
   render() {
@@ -52,12 +78,15 @@ class App extends Component {
                   <Route exact path="/login">
                     <LogInForm />
                   </Route>
+                  <Route exact path="/ja">
+                    <PlantStatusCard plant={plant}/>
+                  </Route>
                   <Route exact path="/">
                     <h1>Overview</h1>
-                    <PlantList/>
+                    <PlantList />
                   </Route>
                   <Route exact path="/about">
-                    <AboutPage/>
+                    <AboutPage />
                   </Route>
                   <Route exact path="/403">
                     <StatusCard statusCode={403} statusText="Forbidden" />
@@ -67,7 +96,7 @@ class App extends Component {
                   </Route>
                 </Switch>
               </main>
-              <Footer/>
+              <Footer />
             </Router>
             <ToastContainer transition={Slide} />
           </>

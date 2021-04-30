@@ -1,0 +1,18 @@
+.status-circle {
+    grid-area: status-circle;
+    place-self: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.status-circle.orange {
+    background-color: var(--orange);
+}
+
+.status-circle.red {
+    background-color: var(--red);
+}

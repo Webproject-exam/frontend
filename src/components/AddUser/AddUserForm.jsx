@@ -134,7 +134,7 @@ class AddUserForm extends Component {
         return (
             <>
                 <div className="container">
-                    <img src={addUserIcon} alt="" />
+                    <img className="icon" src={addUserIcon} alt="" />
                     <form ref={this.form} onSubmit={this.handleSubmit} className="add-user-form">
                         <fieldset>
                             <legend>Add a new user</legend>

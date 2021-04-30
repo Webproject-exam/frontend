@@ -90,7 +90,7 @@ class ForgotPasswordEmailForm extends Component {
     render() {
         return (
             <div className="container forgot-password-email-form">
-                <img src={passwordIcon} alt="" />
+                <img className="icon" src={passwordIcon} alt="" />
                 <form ref={this.form} onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Forgot password</legend>

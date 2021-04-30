@@ -25,7 +25,7 @@ import accountCircle from '../../assets/person_black_24dp.svg';
 function MyProfile({ selectedUser, handleEditClick }) {
     return (
         <div className="container">
-            <img src={accountCircle} alt="Account Circle icon" />
+            <img classname="icon" src={accountCircle} alt="Account Circle icon" />
             <h2>{selectedUser.name} {selectedUser.surname}</h2>
             <h3>Role: {selectedUser.role}</h3>
             <p><b>Email:</b> {selectedUser.email}</p>

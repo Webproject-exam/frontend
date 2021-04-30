@@ -17,9 +17,6 @@
     overflow: auto;
 }
 
-.buttons-side-by-side {
-    display: flex;
-    justify-content: space-between;
-    max-width: 430px;
+.popup-userlist > .buttons-side-by-side {
     margin: 0 auto;
 }

@@ -100,7 +100,7 @@ class LogInForm extends Component {
             <>
                 {!this.context.isAuth && <>
                     <div className="container">
-                        <img src={lockClosedIcon} alt="" />
+                        <img className="icon" src={lockClosedIcon} alt="" />
                         <form ref={this.form} onSubmit={this.handleSubmit}>
                             <fieldset>
                                 <legend>Log In</legend>

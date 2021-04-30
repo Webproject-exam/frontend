@@ -1,32 +1,13 @@
 import './PlantListItem.css';
 import Button from '../Button/Button'
 import Image from '../../assets/plant.jpg';
-import AlertIcon from '../../assets/water_alert_icon.svg';
-import WarningIcon from '../../assets/invert_colors_white_24dp.svg';
+import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 
 function PlantListItem({ plant }) {
-    let Icon;
-    let Color;
-
-    if(plant.next_watering === "Today"){
-        Icon = AlertIcon;
-        Color = "red";
-    } else if (plant.next_watering === "Tomorrow") {
-        Icon = WarningIcon;
-        Color = "orange"
-    } else {
-        Icon = false;
-        Color = false
-    }
-
-
-
     return (<li>
-        <div className="plant-container ">
+        <div className="plant-container">
             <div className="plant-header">
-                <div className={`status-circle ${Color}`}>
-                    {Color && <img src={Icon} alt="" />}
-                    </div>
+                <PlantStatusCircle next_watering={plant.next_watering}/>
                 <h2 className="h2">{plant.name}</h2>
                 <h3 className="h3">{plant.location}</h3>
             </div>
@@ -34,7 +15,7 @@ function PlantListItem({ plant }) {
             <p>Next watering: <b>{plant.next_watering}</b>.</p>
             <p>Lighting requirements: <b>{plant.lighting_requirements}</b>.</p>
             <p>Fertilizer: <b>{plant.fertilizer}</b></p>
-            <Button variant="text-only" label="water this plant" size="auto"/>
+            <Button variant="text-only" label="water this plant" size="auto" />
         </div>
     </li>)
 }

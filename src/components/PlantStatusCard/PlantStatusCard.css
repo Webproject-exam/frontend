@@ -1,0 +1,20 @@
+.plant-status-card{
+    margin: unset;
+}
+
+.plant-status-card ul{
+    line-height: 1.8rem;
+}
+
+.plant-status-card-header {
+    display: grid;
+    grid-template-columns: auto 2rem;
+    grid-template-areas:
+        "h2 status-circle";
+    margin-bottom: 1rem;
+}
+
+.h2 {
+    grid-area: h2;
+    font-size: 200%;
+}
