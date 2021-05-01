@@ -8,6 +8,7 @@
     font-size: 1em;
     font-weight: bold;
     text-transform: uppercase;
+    font-family: 'Roboto';
 
     /* Box model */
     /* box-sizing: border-box; */
@@ -130,6 +131,7 @@
     display: block;
     min-height: 44px;
     transition: .05s;
+    font-weight:normal
 }
 
 .text-only:enabled:hover {
@@ -138,8 +140,8 @@
 }
 
 .text-only:active {
-    transform: translateY(2px);
-    filter: saturate(175%);
+    transform: translateY(1px);
+    filter: saturate(150%);
 }
 
 /*
