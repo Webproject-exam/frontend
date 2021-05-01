@@ -65,7 +65,7 @@ Button.propTypes = {
     type: PropTypes.oneOf(['button', 'submit', 'reset']),
 
     /** The variant of the button changes the color. */
-    variant: PropTypes.oneOf(['primary', 'secondary', 'secondary-outlined', 'danger', 'danger-outlined', 'text-only']).isRequired,
+    variant: PropTypes.oneOf(['primary', 'secondary', 'secondary-outlined', 'danger', 'danger-outlined', 'text-only', 'tertiary']).isRequired,
 }
 
 export default Button;

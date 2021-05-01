@@ -1,6 +1,6 @@
 import './IndividualPlantPage.css';
 import PlantStatusCard from '../PlantStatusCard/PlantStatusCard'
-import Bilde from '../../assets/bilde.jpg'
+import Bilde from '../../assets/plant.jpg'
 import Button from '../Button/Button'
 
 let plant = {
@@ -43,17 +43,17 @@ function IndividualPlantPage(props) {
                 <div className="individual-plant-buttons">
                     <div className="buttons-side-by-side">
                         <Button label="request watering" variant="secondary" size="half"/>
-                        <Button label="request fetilizer" variant="secondary" size="half"/>
+                        <Button label="request fetilizer" variant="tertiary" size="half"/>
                     </div>
     
                     <div className="buttons-side-by-side">
                         <Button label="water this plant" variant="secondary" size="half"/>
-                        <Button label="fertilize this plant" variant="secondary" size="half"/>
+                        <Button label="fertilize this plant" variant="tertiary" size="half"/>
                     </div>
     
                     <div className="buttons-side-by-side">
                         <Button label="postpone watering" variant="secondary" size="half"/>
-                        <Button label="postpone fetilizer" variant="secondary" size="half"/>
+                        <Button label="postpone fetilizer" variant="tertiary" size="half"/>
                     </div>
                 </div>
 
