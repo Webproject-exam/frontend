@@ -1,17 +1,19 @@
-/* Add a hover effect for submit button */
-button:hover:enabled {
-    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
-}
-
 .loggedIn {
     text-align: center;
 }
 
 .loggedIn p {
     font-size: 2em;
-    margin-top: 0.5em;
+    margin-top: .5em;
 }
 
 .loggedIn img {
     width: 2em;
+}
+
+.log-in-form .buttons-side-by-side {
+    margin-right: 0;
+    margin-left: auto;
+    justify-content: unset;
+    flex-direction: row-reverse;
 }
