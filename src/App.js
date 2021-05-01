@@ -43,12 +43,10 @@ class App extends Component {
                     <ForgotPassHOC />
                   </Route>
                   <PrivateRoute exact path="/profile">
-                    <h1>Your Profile</h1>
                     <MyProfileWithHOC />
                   </PrivateRoute>
                   <PrivateRoute exact path="/dashboard">
                     <AdminRoute >
-                      <h1>Manager page</h1>
                       <Dashboard />
                     </AdminRoute>
                   </PrivateRoute>
@@ -62,8 +60,6 @@ class App extends Component {
                     <IndividualPlantHOC />
                   </Route>
                   <Route exact path="/">
-                    <h1>Overview</h1>
-                    <hr/>
                     <PlantListHOC />
                   </Route>
                   <Route exact path="/about">
