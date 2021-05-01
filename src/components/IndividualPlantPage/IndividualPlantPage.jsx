@@ -3,40 +3,19 @@ import PlantStatusCard from '../PlantStatusCard/PlantStatusCard'
 import Bilde from '../../assets/plant.jpg'
 import Button from '../Button/Button'
 
-let plant = {
-    name: "Arkapalme",
-    placement: {
-        building: "Fabrikken (Bygg 115/159)",
-        floor: "2. etg",
-        room: "Rom 206"
-    },
-    watering: {
-        frequency: "every 14 days",
-        next: "3 days",
-        responsible: "Ola Nordmann",
-        last_watered_by: "Kari Nordmann",
-        last_watered_date: "5. april 2021",
-        last_postponed: "2. april 2021",
-        postponed_reason: "still moist"
-    },
-    fertilization: {
-        frequency: "every 60 days",
-        next: "27 days"
-    },
-    ligtning: "Average",
-    added: "1. jan 2020"
-}
+function IndividualPlantPage({plant, isAuth}) {
 
-function IndividualPlantPage(props) {
+    console.log(plant)
 
     return (
         <>
-            <header className="individual-plant-header">
-                <h1>Palmefitte</h1>
-            </header>
+            {/* <header className="individual-plant-header">
+                <h1>{plant.name}</h1>
+            </header> */}
             <div className="individual-plant-grid-container">
                 
-                <img className="individual-plant-image" src={Bilde} alt="plant" />
+                {/* finn ut av bildet */}
+                <img className="individual-plant-image" src={Bilde} alt={plant.name} />
                 
                 <PlantStatusCard plant={plant} />
 
@@ -46,15 +25,18 @@ function IndividualPlantPage(props) {
                         <Button label="request fetilizer" variant="tertiary" size="half"/>
                     </div>
     
-                    <div className="buttons-side-by-side">
-                        <Button label="water this plant" variant="secondary" size="half"/>
-                        <Button label="fertilize this plant" variant="tertiary" size="half"/>
-                    </div>
-    
-                    <div className="buttons-side-by-side">
-                        <Button label="postpone watering" variant="secondary" size="half"/>
-                        <Button label="postpone fetilizer" variant="tertiary" size="half"/>
-                    </div>
+                    {isAuth &&
+                    <>
+                        <div className="buttons-side-by-side">
+                            <Button label="water this plant" variant="secondary" size="half"/>
+                            <Button label="fertilize this plant" variant="tertiary" size="half"/>
+                        </div> 
+        
+                        <div className="buttons-side-by-side">
+                            <Button label="postpone watering" variant="secondary" size="half"/>
+                            <Button label="postpone fetilizer" variant="tertiary" size="half"/>
+                        </div>
+                    </>}
                 </div>
 
                 <div className="individual-plant-description">
