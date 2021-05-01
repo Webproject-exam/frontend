@@ -2,6 +2,7 @@ import './IndividualPlantPage.css';
 import PlantStatusCard from '../PlantStatusCard/PlantStatusCard'
 import Bilde from '../../assets/plant.jpg'
 import Button from '../Button/Button'
+import Header from '../Header/Header'
 
 function IndividualPlantPage(props) {
     const { plant, isAuth } = props;
@@ -10,9 +11,7 @@ function IndividualPlantPage(props) {
 
     return (
         <>
-            {/* <header className="individual-plant-header">
-                <h1>{plant.name}</h1>
-            </header> */}
+            <Header heading={plant.name}/>
             <div className="individual-plant-grid-container">
                 
                 {/* finn ut av bildet */}
