@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
-import { notifySuccess, notifyError } from '../../helpers/notification';
+//import { notifySuccess, notifyError } from '../../helpers/notification';
 import { fetchAllPlants } from '../../api/plants';
 
 // Testing purposes
