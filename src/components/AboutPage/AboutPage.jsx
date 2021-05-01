@@ -1,6 +1,7 @@
 import './AboutPage.css';
 import Button from '../Button/Button'
 import Bilde from '../../assets/bilde.jpg'
+import { Link } from "react-router-dom";
 
 function AboutPage() {
 
@@ -12,13 +13,17 @@ function AboutPage() {
                         <h1 className="heading">Plants at Mustad</h1>
                         <p className="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eleifend suscipit tempor. Ut odio ipsum, cursus vel erat quis, cursus ultricies orci. Sed volutpat velit quis ante laoreet, a varius dui fermentum. </p>
                         <div className="buttons-side-by-side">
-                            <Button label="learn more" size="half" variant="secondary-outlined" />
-                            <Button label="see all plants" size="half" variant="secondary" />
+
+                            <Link to="/"><Button label="see all plants" size="full" variant="secondary" /></Link>
+                            <a href="#about-the-project"><Button label="learn more" size="full" variant="secondary-outlined" /></a>
+
                         </div>
                     </div>
                 </div>
 
-                <h2 className="about-the-project">About the project</h2>
+
+                <h2 className="about-the-project" id="about-the-project">About the project</h2>
+
                 <div className="container about-project-box box1">
                     <h3>The Task</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>

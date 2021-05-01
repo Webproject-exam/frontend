@@ -2,7 +2,7 @@
 * BUTTONS GENERAL
 */
 
-.button {
+.button, .LinkTest {
     /* Typography*/
     color: white;
     font-size: 1em;
@@ -12,7 +12,7 @@
     /* Box model */
     /* box-sizing: border-box; */
     margin: .5rem 0;
-    padding: .9em 0;
+    padding: .9em 0.4em;
 
     /* Visual */
     border-radius: 10px;
@@ -23,6 +23,11 @@
 
 .button:hover:enabled {
     box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
+}
+
+.button:active:enabled {
+    transform: translateY(2px);
+    box-shadow: unset;
 }
 
 .button:disabled {
@@ -37,7 +42,7 @@
 * BUTTONS PRIMARY
 */
 
-.primary {
+.primary, .LinkTest {
     background-color: var(--primary)
 }
 
@@ -135,6 +140,18 @@
 .text-only:active {
     transform: translateY(2px);
     filter: saturate(175%);
+}
+
+/*
+* BUTTONS FERTILIZATION
+*/
+
+.tertiary {
+    background-color: var(--tertiary)
+}
+
+.tertiary:enabled:hover {
+    background-color: var(--tDark)
 }
 
 /*
