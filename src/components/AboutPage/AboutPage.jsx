@@ -14,7 +14,7 @@ function AboutPage() {
                         <p className="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eleifend suscipit tempor. Ut odio ipsum, cursus vel erat quis, cursus ultricies orci. Sed volutpat velit quis ante laoreet, a varius dui fermentum. </p>
                         <div className="buttons-side-by-side">
 
-                            <Link to="/"><Button label="see all plants" size="full" variant="secondary" /></Link>
+                            <Link to="/plants"><Button label="see all plants" size="full" variant="secondary" /></Link>
                             <a href="#about-the-project"><Button label="learn more" size="full" variant="secondary-outlined" /></a>
 
                         </div>
