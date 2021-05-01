@@ -25,6 +25,11 @@
     box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
 }
 
+.button:active:enabled {
+    transform: translateY(2px);
+    box-shadow: unset;
+}
+
 .button:disabled {
     /* Visual */
     opacity: .5;
@@ -135,6 +140,18 @@
 .text-only:active {
     transform: translateY(2px);
     filter: saturate(175%);
+}
+
+/*
+* BUTTONS FERTILIZATION
+*/
+
+.tertiary {
+    background-color: var(--tertiary)
+}
+
+.tertiary:enabled:hover {
+    background-color: var(--tDark)
 }
 
 /*

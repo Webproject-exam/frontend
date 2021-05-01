@@ -1,8 +1,9 @@
 .individual-plant-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 2fr;
     grid-template-rows: min-content auto;
-    gap: 3rem 2rem;
+    grid-template-rows: minmax(400px, min-content);
+    gap: 1rem 2rem;
     grid-template-areas:
         "individual-plant-image plant-status-card"
         "individual-plant-description individual-plant-buttons";
@@ -15,6 +16,7 @@
 .plant-status-card {
     grid-area: plant-status-card;
     margin: 0 auto;
+    /* height: min-content; */
 }
 
 .individual-plant-image {
@@ -40,6 +42,11 @@
     grid-area: individual-plant-buttons;
 }
 
-.individual-plant-buttons > *{
+.individual-plant-buttons>* {
     margin: 0 auto;
+}
+
+.individual-plant-image {
+    border-radius: .25rem;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
