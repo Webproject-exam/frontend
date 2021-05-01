@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import './Dashboard.css';
 import DashboardPlants from './DashboardPlants';
 import DashboardUsers from './DashboardUsers';
+import Header from '../Header/Header'
 
 /**
  * ## How it works
@@ -50,6 +51,7 @@ class Dashboard extends Component {
 
         return (
             <>
+            <Header heading="Manager Page"/>
                 <div className="user-list-item-buttons">
                     <Button onClick={this.togglePlants} variant="secondary-outlined" label="Plants" size="half" active={this.state.plants} />
                     <Button onClick={this.toggleUsers} variant="secondary-outlined" label="Users" size="half" active={this.state.users} />
