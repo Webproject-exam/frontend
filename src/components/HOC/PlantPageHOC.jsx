@@ -43,7 +43,7 @@ function fetchPlantBackend (WrappedComponent) {
         async componentDidMount(){
             this._isMounted = true;
             this.setState({
-                plants: plant,
+                plant: plant,
                 isLoading: false,
                 error: null
             });
