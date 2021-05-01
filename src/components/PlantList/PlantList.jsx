@@ -2,7 +2,8 @@ import './PlantList.css';
 import PlantListItem from '../PlantListItem/PlantListItem';
 import Header from '../Header/Header'
 
-function PlantList({plants}) {
+function PlantList(props) {
+    const { plants, selectPlant } = props;
     return (
         <>
             <Header heading="Overview"/>

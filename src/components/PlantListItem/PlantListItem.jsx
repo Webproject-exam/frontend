@@ -4,12 +4,12 @@ import Image from '../../assets/plant.jpg';
 import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { Link } from "react-router-dom";
 
-function PlantListItem({ plant }) {
+function PlantListItem(props) {
+    const { plant, selectPlant } = props;
     return (
     <li>
-        
         <div className="plant-container">
-        <Link to="/ja">
+        <Link to={'plants/' + plant.id} onClick={() => selectPlant(plant.id)}>
                 <div className="clickable">
                     <div className="plant-header">
                         <PlantStatusCircle next_watering={plant.next_watering}/>
