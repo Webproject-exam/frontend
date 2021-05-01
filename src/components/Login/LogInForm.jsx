@@ -125,7 +125,7 @@ class LogInForm extends Component {
                                     value={this.state.password}
                                 />
                                 <div className="buttons-side-by-side">
-                                    <Button label="log in" size="half" variant="secondary" />
+                                    <Button type="submit" label="log in" size="half" variant="secondary" />
                                     <Link to="/reset_password"><Button label="forgot password" size="full" variant="secondary-outlined" /></Link>
                                 </div>
                             </fieldset>
