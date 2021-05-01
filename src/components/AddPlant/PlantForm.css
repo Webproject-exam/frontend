@@ -1,0 +1,31 @@
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 75vh;
+}
+
+.button {
+    margin: 0 10vw;
+}
+
+.delete {
+    position: relative;
+    top: 16px;
+    right: 15px;
+}
+
+.fadein {
+    animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
