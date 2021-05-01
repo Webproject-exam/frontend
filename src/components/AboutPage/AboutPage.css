@@ -109,3 +109,14 @@
 .biography{
   max-width: 60%;
 }
+
+.home-page .buttons-side-by-side {
+  margin-right: 0;
+  margin-left: auto;
+  justify-content: unset;
+  flex-direction: row-reverse;
+}
+
+.home-page .buttons-side-by-side a {
+ min-width: 7rem;
+}

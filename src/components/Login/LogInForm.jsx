@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './LogInForm.css';
 import Button from '../Button/Button'
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard'
-import lockClosedIcon from '../../assets/lock_black_24dp.svg';
 import lockOpenIcon from '../../assets/lock_open_black_24dp.svg';
 import { AuthContext } from '../../helpers/Auth';
 import { Link, Redirect } from "react-router-dom";
@@ -99,8 +98,7 @@ class LogInForm extends Component {
         return (
             <>
                 {!this.context.isAuth && <>
-                    <div className="container">
-                        <img className="icon" src={lockClosedIcon} alt="" />
+                    <div className="log-in-form container">
                         <form ref={this.form} onSubmit={this.handleSubmit}>
                             <fieldset>
                                 <legend>Log In</legend>
@@ -126,13 +124,14 @@ class LogInForm extends Component {
                                     type="password"
                                     value={this.state.password}
                                 />
-
-                                <Button type="submit" label="log in" variant="primary" size="full" />
+                                <div className="buttons-side-by-side">
+                                    <Button label="log in" size="half" variant="secondary" />
+                                    <Link to="/reset_password"><Button label="forgot password" size="full" variant="secondary-outlined" /></Link>
+                                </div>
                             </fieldset>
                         </form>
 
                         {this.state.error && <UserFeedbackCard onClick={this.handleClose} variant="error" feedbackText="Wrong email and/or password. Please try again." />}
-                        <Link to="/reset_password">Forgot password?</Link>
                     </div>
                 </>}
                 {this.context.isAuth && <div className="container loggedIn">

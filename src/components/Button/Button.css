@@ -2,7 +2,7 @@
 * BUTTONS GENERAL
 */
 
-.button {
+.button, .LinkTest {
     /* Typography*/
     color: white;
     font-size: 1em;
@@ -42,7 +42,7 @@
 * BUTTONS PRIMARY
 */
 
-.primary {
+.primary, .LinkTest {
     background-color: var(--primary)
 }
 
