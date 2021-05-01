@@ -19,6 +19,7 @@ import Footer from './components/Footer/Footer';
 import PlantList from './components/PlantList/PlantList';
 import IndividualPlantPage from './components/IndividualPlantPage/IndividualPlantPage'
 import withPlantFetch from './components/HOC/PlantListHOC';
+import fetchPlantBackend from './components/HOC/PlantPageHOC';
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
     const ForgotPassHOC = forgotBackend(ForgotPasswordEmailForm);
     const NavBarHOC = navBarBackend(NavBar);
     const PlantListHOC = withPlantFetch(PlantList);
+    const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage);
 
     return (
       <AuthConsumer>
@@ -57,7 +59,7 @@ class App extends Component {
                     <LogInForm />
                   </Route>
                   <Route exact path="/ja">
-                    <IndividualPlantPage/>
+                    <IndividualPlantHOC />
                   </Route>
                   <Route exact path="/">
                     <h1>Overview</h1>
