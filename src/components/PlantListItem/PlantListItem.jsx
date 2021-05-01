@@ -2,13 +2,15 @@ import './PlantListItem.css';
 import Button from '../Button/Button'
 import Image from '../../assets/plant.jpg';
 import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
+import { Link } from "react-router-dom";
 
 function PlantListItem(props) {
     const { plant, selectPlant } = props;
     return (
     <li>
         <div className="plant-container">
-                <div className="clickable" onClick={() => selectPlant(plant.id)}>
+        <Link to={'plants/' + plant.id} onClick={() => selectPlant(plant.id)}>
+                <div className="clickable">
                     <div className="plant-header">
                         <PlantStatusCircle next_watering={plant.next_watering}/>
                         <h2 className="h2">{plant.name}</h2>
@@ -17,6 +19,7 @@ function PlantListItem(props) {
                     
                     <img className="hero-image" src={Image} alt="plant" />
                 </div>
+                </Link>
                 
                 <p>Next watering: <b>{plant.next_watering}</b>.</p>
                 <p>Lighting requirements: <b>{plant.lighting_requirements}</b>.</p>

@@ -3,9 +3,10 @@ import PlantStatusCard from '../PlantStatusCard/PlantStatusCard'
 import Bilde from '../../assets/plant.jpg'
 import Button from '../Button/Button'
 
-function IndividualPlantPage({plant, isAuth}) {
-
-    console.log(plant)
+function IndividualPlantPage(props) {
+    const { plant, isAuth } = props;
+    console.log(plant);
+    console.log(plant.id)
 
     return (
         <>
