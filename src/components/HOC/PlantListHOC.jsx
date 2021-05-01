@@ -3,10 +3,14 @@ import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
 //import { notifySuccess, notifyError } from '../../helpers/notification';
 import { fetchAllPlants } from '../../api/plants';
+import { Route } from 'react-router-dom';
+import IndividualPlantPage from '../IndividualPlantPage/IndividualPlantPage';
+import fetchPlantBackend from './PlantPageHOC';
 
 // Testing purposes
 const plants = [
     {
+        id: 1,
         name: "Arekapalme",
         location: "Bygg 118 - 3. etg",
         next_watering: "Today",
@@ -14,6 +18,7 @@ const plants = [
         fertilizer: "Masse!"
     },
     {
+        id: 2,
         name: "Monstera",
         location: "Bygg 118 - 2. etg: Rom 206",
         next_watering: "Tomorrow",
@@ -21,6 +26,7 @@ const plants = [
         fertilizer: "Lite"
     },
     {
+        id: 3,
         name: "Gullranke ampel",
         location: "Fabrikken (Bygg 115/159) - 3. etg",
         next_watering: "6 days",
@@ -28,6 +34,7 @@ const plants = [
         fertilizer: "Lite"
     },
     {
+        id: 4,
         name: "Strelitzia nicolai",
         location: "Fabrikken (Bygg 115/159) - 3. etg",
         next_watering: "6 days",
@@ -36,7 +43,7 @@ const plants = [
     }
 ];
 
-function withPlantsFetch(WrappedComponent){
+function withPlantsFetch(WrappedComponent) {
     class PlantListHOC extends Component {
         static contextType = AuthContext;
         _isMounted = false;
@@ -50,12 +57,13 @@ function withPlantsFetch(WrappedComponent){
             }
         }
 
-        async componentDidMount(){
+        async componentDidMount() {
             this._isMounted = true;
             this.setState({
                 plants: plants,
                 isLoading: false,
-                error: null
+                error: null,
+                selectedPlant: {}
             });
             //await this.fetchData();
         }
@@ -76,17 +84,33 @@ function withPlantsFetch(WrappedComponent){
             }
         }
 
-        componentWillUnmount(){
+        setPlant = (plant) => {
+            this.setState({
+                selectedPlant: plant
+            });
+        }
+
+        plantPage = () => {
+            const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage);
+            return (<IndividualPlantHOC selectedPlant={this.state.selectedPlant} />);
+        }
+
+        componentWillUnmount() {
             this._isMounted = false;
         }
 
-        render() { 
+        render() {
             if (this.state.isLoading) {
                 return (<Loading />);
             }
 
             return (
-                <WrappedComponent plants={this.state.plants} {...this.props} />
+                <>
+                    <Route exact path="/plants">
+                        <WrappedComponent selectPlant={this.setPlant} plants={this.state.plants} {...this.props} />
+                    </Route>
+                    <Route exact path="/plants/:id" render={this.plantPage} />
+                </>
             );
         }
     }

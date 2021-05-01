@@ -62,12 +62,12 @@ function Nav(props) {
     return (
         <nav className="navbar">
             <h1>
-                <Link to="/">Plants at Mustad</Link>
+                <Link to="/plants">Plants at Mustad</Link>
             </h1>
 
             <div className="nav-links">
-                <NavLink exact to="/">Overview</NavLink>
-                <NavLink exact to="/about">About</NavLink>
+                <NavLink exact to="/plants">Overview</NavLink>
+                <NavLink exact to="/">About</NavLink>
             </div>
 
             {!props.auth && (
