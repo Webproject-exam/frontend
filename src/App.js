@@ -20,6 +20,7 @@ import PlantList from './components/PlantList/PlantList';
 import IndividualPlantPage from './components/IndividualPlantPage/IndividualPlantPage'
 import withPlantFetch from './components/HOC/PlantListHOC';
 import fetchPlantBackend from './components/HOC/PlantPageHOC';
+import Postpone from './components/Postpone/Postpone';
 
 
 class App extends Component {
@@ -58,6 +59,9 @@ class App extends Component {
                   </Route>
                   <Route exact path="/ja">
                     <IndividualPlantHOC />
+                  </Route>
+                  <Route exact path="/nei">
+                    <Postpone type="watering" name="Ligma"/>
                   </Route>
                   <Route exact path="/">
                     <PlantListHOC />
