@@ -1,4 +1,5 @@
 .individual-plant-grid-container {
+    margin-top: 1em;
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-template-rows: min-content minmax(auto, 190px) auto;
