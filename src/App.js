@@ -51,9 +51,6 @@ class App extends Component {
                       <Dashboard />
                     </AdminRoute>
                   </PrivateRoute>
-                  <Route exact path="/logout">
-                    <h1>You are now logged out!</h1>
-                  </Route>
                   <Route exact path="/login">
                     <LogInForm />
                   </Route>
@@ -63,7 +60,7 @@ class App extends Component {
                   <Route exact path="/nei">
                     <Postpone type="watering" name="Ligma"/>
                   </Route>
-                  <Route exact path="/">
+                  <Route exact path="/plants">
                     <PlantListHOC />
                   </Route>
                   <Route exact path="/">
