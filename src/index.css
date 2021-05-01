@@ -1,5 +1,9 @@
 @import './colors.css';
 
+html {
+  scroll-behavior: smooth;
+}
+
 *>body {
   background-color: var(--background);
   margin: 0;
@@ -13,6 +17,22 @@
 
 h1, h2 {
   font-family: 'Roboto Slab';
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+hr {
+  opacity: 33%;
+  color: var(--gray6);
+  border-radius: 1px;
+  margin: 0;
+  padding: 0;
 }
 
 main {
@@ -44,6 +64,7 @@ main {
   justify-content: space-between;
   max-width: 430px;
   width: 100%;
+  gap:2%
 }
 
 fieldset {
@@ -53,14 +74,16 @@ fieldset {
 
 legend {
   font-size: 2em;
-  margin: .5em auto;
-  text-align: center;
+  margin: .5em 0 1.3rem;
+  /* text-align: center; */
 }
 
 a {
   color: var(--sDark);
   text-decoration: none;
   transition: .3s;
+  margin:0;
+  padding:0;
 }
 
 a:hover {
@@ -78,6 +101,7 @@ select {
   margin: 8px 0 24px;
   padding: 12px 20px;
   width: 100%;
+  background-color: var(--gray5);
 }
 
 label,

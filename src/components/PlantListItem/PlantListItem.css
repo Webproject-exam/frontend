@@ -26,20 +26,24 @@
     max-height: 16rem;
 }
 
-.h2 {
+.plant-container .h2 {
     grid-area: h2;
     margin: 0;
     word-break: break-all;
-    font-size: 1.33em;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #111;
     font-family: unset;
 }
 
-.h3 {
+.plant-container .h3 {
     grid-area: h3;
     margin: 0;
     color: #666;
-    font-size: smaller;
+    font-size: .8rem;
     font-weight: 500;
+}
+
+.plant-container a:hover {
+    text-decoration: none;
 }

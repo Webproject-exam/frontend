@@ -10,7 +10,8 @@
     margin-bottom: 1rem;
 }
 
-.h2 {
+.plant-status-card .h2 {
     grid-area: h2;
-    font-size: 200%;
+    font-family: unset;
+    margin: 0
 }

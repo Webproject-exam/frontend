@@ -1,11 +1,11 @@
 .individual-plant-grid-container {
     display: grid;
     grid-template-columns: 3fr 2fr;
-    grid-template-rows: min-content auto;
-    grid-template-rows: minmax(400px, min-content);
+    grid-template-rows: min-content minmax(auto, 190px) auto;
     gap: 1rem 2rem;
     grid-template-areas:
         "individual-plant-image plant-status-card"
+        "individual-plant-image individual-plant-buttons"
         "individual-plant-description individual-plant-buttons";
 }
 
@@ -15,8 +15,8 @@
 
 .plant-status-card {
     grid-area: plant-status-card;
-    margin: 0 auto;
-    /* height: min-content; */
+    margin: unset;
+    justify-self: start;
 }
 
 .individual-plant-image {
@@ -29,21 +29,27 @@
 .individual-plant-header {
     background: #fff;
     margin: -1em -5vw 1em;
-    height: 3rem;
+    min-height: min-content;
     padding: .5rem 5vw;
     box-shadow: 0 6px 10px -10px var(--gray2)
 }
 
 .individual-plant-header h1 {
-    font-size: larger;
+    margin: 1% 0
 }
+
 
 .individual-plant-buttons {
     grid-area: individual-plant-buttons;
+    justify-self: start;
+    width: 100%;
+    max-width: 441px;
+    margin: unset;
+    position: sticky;
 }
 
-.individual-plant-buttons>* {
-    margin: 0 auto;
+.individual-plant-buttons .buttons-side-by-side {
+    max-width: unset;
 }
 
 .individual-plant-image {
