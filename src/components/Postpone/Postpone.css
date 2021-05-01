@@ -1,0 +1,6 @@
+.postpone-form .buttons-side-by-side {
+    margin-right: 0;
+    margin-left: auto;
+    justify-content: unset;
+    flex-direction: row-reverse;
+}

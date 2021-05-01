@@ -10,12 +10,13 @@ html {
   padding: 0;
   overflow: auto;
   box-sizing: border-box;
-  font-family: 'Roboto', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: 'Roboto Slab';
 }
 
@@ -64,7 +65,7 @@ main {
   justify-content: space-between;
   max-width: 430px;
   width: 100%;
-  gap:2%
+  gap: 2%
 }
 
 fieldset {
@@ -82,8 +83,8 @@ a {
   color: var(--sDark);
   text-decoration: none;
   transition: .3s;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 a:hover {
@@ -93,6 +94,8 @@ a:hover {
 input[type=text],
 input[type=password],
 input[type=email],
+input[type=number],
+textarea,
 select {
   border: 1px solid var(--gray4);
   box-sizing: border-box;
@@ -102,11 +105,29 @@ select {
   padding: 12px 20px;
   width: 100%;
   background-color: var(--gray5);
+  resize: none;
+  font-family: 'Roboto',  sans-serif;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 label,
 strong {
   text-transform: capitalize;
+}
+
+label {
+font-size: 1.3rem;
 }
 
 .user-list-item-buttons {
