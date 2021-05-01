@@ -4,9 +4,10 @@ import Bilde from '../../assets/plant.jpg'
 import Button from '../Button/Button'
 import Header from '../Header/Header'
 
-function IndividualPlantPage({plant, isAuth}) {
-
-    console.log(plant)
+function IndividualPlantPage(props) {
+    const { plant, isAuth } = props;
+    console.log(plant);
+    console.log(plant.id)
 
     return (
         <>

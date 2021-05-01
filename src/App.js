@@ -66,7 +66,7 @@ class App extends Component {
                   <Route exact path="/">
                     <PlantListHOC />
                   </Route>
-                  <Route exact path="/about">
+                  <Route exact path="/">
                     <AboutPage />
                   </Route>
                   <Route exact path="/403">
