@@ -4,6 +4,7 @@ import { AuthContext } from '../../helpers/Auth';
 import Loading from '../Loading/Loading';
 
 const plant = {
+    id: 1,
     name: "Arkapalme",
     placement: {
         building: "Fabrikken (Bygg 115/159)",
@@ -41,17 +42,19 @@ function fetchPlantBackend (WrappedComponent) {
         }
 
         async componentDidMount(){
+            const plantId = this.props.selectedPlant;
+            console.log(plantId);
             this._isMounted = true;
             this.setState({
                 plant: plant,
                 isLoading: false,
                 error: null
             });
-            //await this.fetchData();
+            //await this.fetchData(plantId);
         }
 
-        fetchData = async () => {
-            const res = await fetchPlant;
+        fetchData = async (id) => {
+            const res = await fetchPlant(id);
 
             if (res.error) {
                 this._isMounted && this.setState({
