@@ -47,7 +47,7 @@ function PlantStatusCard(props) {
                     </li>}
                 {props.plant.placement &&
                     <li>
-                        <span className="bold">Has been a part of Mustad since:</span> {format(props.plant.added, 'PPP')}
+                        <span className="bold">Has been a part of Mustad since:</span> {format(props.plant.createdAt, 'PPP')}
                     </li>}
                 {props.plant.placement &&
                     <li>

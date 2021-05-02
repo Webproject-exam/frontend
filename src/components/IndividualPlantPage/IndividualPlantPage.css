@@ -46,7 +46,6 @@
     width: 100%;
     max-width: 441px;
     margin: unset;
-    position: sticky;
 }
 
 .individual-plant-buttons .buttons-side-by-side {
@@ -57,3 +56,28 @@
     border-radius: .25rem;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 650px) {
+    .individual-plant-grid-container {
+        margin-top: 1em;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(auto, 12rem) auto auto auto;
+        gap: 1rem;
+        grid-template-areas:
+            "individual-plant-image"
+            "plant-status-card"
+            "individual-plant-buttons"
+            "individual-plant-description";
+    }
+
+    .plant-status-card {
+        justify-self: unset;
+    }
+
+    .individual-plant-buttons {
+        justify-self: unset;
+        max-width: unset;
+    }
+} 
