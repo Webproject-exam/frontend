@@ -58,13 +58,11 @@
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 700px) {
     .individual-plant-grid-container {
-        margin-top: 1em;
-        display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: minmax(auto, 12rem) auto auto auto;
-        gap: 1rem;
+        gap: 2rem;
         grid-template-areas:
             "individual-plant-image"
             "plant-status-card"
@@ -74,6 +72,7 @@
 
     .plant-status-card {
         justify-self: unset;
+        max-width: unset;
     }
 
     .individual-plant-buttons {
