@@ -43,11 +43,11 @@ class ImageUpload extends Component {
         });
     };
 
-    render() { 
+    render() {
         const { uploading, images } = this.state;
 
         const content = () => {
-            switch(true) {
+            switch (true) {
                 case uploading:
                     return <Loading />
                 case images.length > 0:

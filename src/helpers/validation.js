@@ -8,4 +8,18 @@ function emailIsValid(emailToValidate) {
     return pattern.test(emailToValidate);
 }
 
-export { emailIsValid };
+/**
+ * 
+ * @param { String } valueToCheck string to validate
+ * @returns {Boolean} true / false
+ */
+function isEmpty(valueToCheck) {
+    if (valueToCheck === '') {
+        console.log('can not be empty')
+        return false
+    } else {
+        return true
+    }
+}
+
+export { emailIsValid, isEmpty };

@@ -22,10 +22,15 @@ const plant = {
     },
     fertilization: {
         frequency: 5184000000,
-        next: Date.now()+5144000000
+        next: Date.now()+5144000000,
+        responsible: "Ola Nordmann",
+        last_fertilized_by: "Kari Nordmann",
+        last_fertilized_date: "5. april 2021", //ikke lagt til i card-et enna
+        last_postponed: 1619275200000,
+        postponed_reason: "still moist"
     },
     ligtning: "Average",
-    added: 1604275200000
+    createdAt: 1604275200000
 }
 
 function fetchPlantBackend (WrappedComponent) {
