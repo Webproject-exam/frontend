@@ -11,6 +11,23 @@ class Postpone extends Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+            const postponeObject = {
+                days_postponement: this.state.days_postponement,
+                reason_postponement: this.state.reason_postponement,
+            }
+
+            this.setState({
+                days_postponement: '',
+                reason_postponement: ''
+            });
+
+            console.log(postponeObject.days_postponement)
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
@@ -26,7 +43,7 @@ class Postpone extends Component {
     render() {
         return (
             <div className="container postpone-form">
-                <form method="POST">
+                <form method="POST" onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Postpone {this.props.type}</legend>
                         <p>Enter the number of days you want to postpone the {this.props.type} of the plant '{this.props.name}'.</p>
@@ -34,38 +51,32 @@ class Postpone extends Component {
                         <label htmlFor="days_postponement">Number of days postponement</label>
                         <input
                             id="days_postponement"
+                            max="365"
                             name="days_postponement"
                             onChange={this.handleInputChange}
                             placeholder="Enter the number of days postponement"
                             ref={this.firstnameInput}
+                            required
                             type="number"
                             value={this.state.days_postponement}
-                            required
-                            max="365"
                         />
 
                         <label htmlFor="reason_postponement">Reason for postponement</label>
                         <textarea
                             id="reason_postponement"
-                            name="reason_postponement"
-
-                            onChange={this.handleInputChange}
-                            value={this.state.reason_postponement}
-                            placeholder="Enter a description of the reasoning behind the postponement. The reasoning can help others wanting to water the plant"
                             maxLength="200"
+                            name="reason_postponement"
+                            onChange={this.handleInputChange}
+                            placeholder="Enter a description of the reasoning behind the postponement. The reasoning can help others wanting to water the plant"
+                            value={this.state.reason_postponement}
                         />
 
                         <div className="buttons-side-by-side">
-                            <Button type="button" label="postpone" variant="secondary" onClick={console.log("postpone")} />
-                            <Button type="button" label="cancel" variant="danger-outlined" onClick={console.log("cancel")} />
+                            <Button type="submit" label="postpone" variant="secondary"/>
+                            <Button type="reset" label="cancel" variant="danger-outlined"/>
                         </div>
-
-
                     </fieldset>
-
-
                 </form>
-
             </div>
         );
     }
