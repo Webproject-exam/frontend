@@ -12,20 +12,20 @@ const plant = {
         room: "Rom 206"
     },
     watering: {
-        frequency: "every 14 days",
-        next: "3 days",
+        frequency: 1209600000,
+        next: Date.now(),
         responsible: "Ola Nordmann",
         last_watered_by: "Kari Nordmann",
-        last_watered_date: "5. april 2021",
-        last_postponed: "2. april 2021",
+        last_watered_date: "5. april 2021", //ikke lagt til i card-et enna
+        last_postponed: 1619275200000,
         postponed_reason: "still moist"
     },
     fertilization: {
-        frequency: "every 60 days",
-        next: "27 days"
+        frequency: 5184000000,
+        next: Date.now()+5144000000
     },
     ligtning: "Average",
-    added: "1. jan 2020"
+    added: 1604275200000
 }
 
 function fetchPlantBackend (WrappedComponent) {

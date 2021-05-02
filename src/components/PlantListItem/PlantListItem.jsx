@@ -3,6 +3,7 @@ import Button from '../Button/Button'
 import Image from '../../assets/plant.jpg';
 import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { Link } from "react-router-dom";
+import { myTimeConverter } from '../../helpers/timeConverter'
 
 function PlantListItem(props) {
     const { plant, selectPlant } = props;
@@ -21,7 +22,7 @@ function PlantListItem(props) {
                 </div>
                 </Link>
                 
-                <p>Next watering: <b>{plant.next_watering}</b>.</p>
+                <p>Next watering: <b>{myTimeConverter(plant.next_watering)}</b>.</p>
                 <p>Lighting requirements: <b>{plant.lighting_requirements}</b>.</p>
                 <p>Fertilizer: <b>{plant.fertilizer}</b></p>
             
