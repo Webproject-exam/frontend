@@ -39,13 +39,13 @@ function IndividualPlantPage(props) {
 
                 <div className="individual-plant-description">
                     <h3>Description</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis ultrices posuere. Pellentesque vehicula felis eu risus porta porttitor. Aenean nec consequat dolor. Ut maximus, sapien id porttitor vestibulum, massa. </p>
+                    <p>{plant.information.description}</p>
                     <h3>Placement</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis ultrices posuere. Pellentesque vehicula felis eu risus porta porttitor. Aenean nec consequat dolor. Ut maximus, sapien id porttitor vestibulum, massa. </p>
+                    <p>{plant.information.placement}</p>
                     <h3>Water</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis ultrices posuere. Pellentesque vehicula felis eu risus porta porttitor. Aenean nec consequat dolor. Ut maximus, sapien id porttitor vestibulum, massa. </p>
+                    <p>{plant.information.watering}</p>
                     <h3>Nutrition</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis ultrices posuere. Pellentesque vehicula felis eu risus porta porttitor. Aenean nec consequat dolor. Ut maximus, sapien id porttitor vestibulum, massa. </p>
+                    <p>{plant.information.nutrition}</p>
                 </div>
 
             </div>
