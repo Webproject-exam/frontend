@@ -24,21 +24,21 @@ function AboutPage() {
 
                 <h2 className="about-the-project" id="about-the-project">About the project</h2>
 
-                <div className="container about-project-box box1">
+                <div className=" about-project-box box1">
                     <h3>The Task</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
                 </div>
-                <div className="container about-project-box box2">
+                <div className=" about-project-box box2">
                     <h3>The Design</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
                 </div>
-                <div className="container about-project-box box3">
+                <div className=" about-project-box box3">
                     <h3>The Development</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
                 </div>
 
                 <h2 className="the-group">The Group</h2>
-                <div className="container the-group-box person1">
+                <div className=" the-group-box person1">
                     <img className="fake-image" src={Bilde} alt="sand" />
                     <div className="biography">
                         <h3>Cornelius</h3>
@@ -46,7 +46,7 @@ function AboutPage() {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
                     </div>
                 </div>
-                <div className="container the-group-box person2">
+                <div className=" the-group-box person2">
                     <img className="fake-image" src={Bilde} alt="sand" />
                     <div className="biography">
                         <h3>Glenn</h3>
@@ -54,7 +54,7 @@ function AboutPage() {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
                     </div>
                 </div>
-                <div className="container the-group-box person3">
+                <div className=" the-group-box person3">
                     <img className="fake-image" src={Bilde} alt="sand" />
                     <div className="biography">
                         <h3>Tom</h3>
@@ -62,7 +62,7 @@ function AboutPage() {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
                     </div>
                 </div>
-                <div className="container the-group-box person4">
+                <div className=" the-group-box person4">
                     <img className="fake-image" src={Bilde} alt="sand" />
                     <div className="biography">
                         <h3>Anna</h3>

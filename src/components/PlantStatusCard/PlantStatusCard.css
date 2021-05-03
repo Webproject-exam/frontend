@@ -15,3 +15,17 @@
     font-family: unset;
     margin: 0
 }
+
+section{
+    margin-bottom: 1rem;
+}
+
+section > *{
+    transform: translate(1rem, 1rem);
+    font-size: 1rem;
+}
+
+section li{
+    margin-left: 1rem;
+    color: var(--gray1);
+}

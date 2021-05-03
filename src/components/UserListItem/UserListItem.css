@@ -5,3 +5,8 @@
 .container.userlist {
     width: 290px;
 }
+
+.container.userlist h2 {
+    font-family: unset;
+    font-size: 2rem;
+}
