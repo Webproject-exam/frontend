@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { fetchPlant } from '../../api/plants';
 import { AuthContext } from '../../helpers/Auth';
 import Loading from '../Loading/Loading';
+import { withRouter } from 'react-router-dom';
 
-const plant = {
-    id: 1,
+/* const plant = {
+    _id: 1,
     name: "Arkapalme",
     placement: {
         building: "Fabrikken (Bygg 115/159)",
@@ -32,7 +33,7 @@ const plant = {
     ligtning: "Average",
     createdAt: 1604275200000
 }
-
+ */
 function fetchPlantBackend (WrappedComponent) {
     class IndividualPlantHOC extends Component {
         static contextType = AuthContext;
@@ -40,6 +41,7 @@ function fetchPlantBackend (WrappedComponent) {
         constructor(props) {
             super(props);
             this.state = {
+                plantId: '',
                 plant: [],
                 isLoading: true,
                 error: null
@@ -47,19 +49,15 @@ function fetchPlantBackend (WrappedComponent) {
         }
 
         async componentDidMount(){
-            const plantId = this.props.selectedPlant;
-            console.log(plantId);
             this._isMounted = true;
-            this.setState({
-                plant: plant,
-                isLoading: false,
-                error: null
-            });
-            //await this.fetchData(plantId);
+            const id = this.props.match.params.id;
+            console.log(id);
+            await this.fetchData(id);
         }
 
         fetchData = async (id) => {
             const res = await fetchPlant(id);
+            console.log(res.data.plant);
 
             if (res.error) {
                 this._isMounted && this.setState({
@@ -67,7 +65,7 @@ function fetchPlantBackend (WrappedComponent) {
                 })
             } else {
                 this._isMounted && this.setState({
-                    plant: res.data,
+                    plant: res.data.plant,
                     isLoading: false,
                     error: null
                 })
@@ -91,7 +89,7 @@ function fetchPlantBackend (WrappedComponent) {
         }
     }
     
-    return IndividualPlantHOC;
+    return withRouter(IndividualPlantHOC);
 }
 
 export default fetchPlantBackend;

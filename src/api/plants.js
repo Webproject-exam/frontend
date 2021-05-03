@@ -8,8 +8,8 @@ const fetchPlant = (id) => {
     return axios.get(`/plants/${id}`);
 }
 
-const createPlant = () => {
-    return axios.post('/manage/plants');
+const createPlant = (plantObject) => {
+    return axios.post('/manage/plants', plantObject);
 }
 
 export {

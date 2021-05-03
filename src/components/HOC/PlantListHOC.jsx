@@ -7,42 +7,6 @@ import { AuthContext } from '../../helpers/Auth';
 import { Route } from 'react-router-dom';
 import { fetchAllPlants } from '../../api/plants';
 
-// Testing purposes
-const plants = [
-    {
-        id: 1,
-        name: "Arekapalme",
-        location: "Bygg 118 - 3. etg",
-        next_watering: Date.now()-222000000,
-        lighting_requirements: "Average",
-        fertilizer: "Masse!"
-    },
-    {
-        id: 2,
-        name: "Monstera",
-        location: "Bygg 118 - 2. etg: Rom 206",
-        next_watering: Date.now(),
-        lighting_requirements: "Average",
-        fertilizer: "Lite"
-    },
-    {
-        id: 3,
-        name: "Gullranke ampel",
-        location: "Fabrikken (Bygg 115/159) - 3. etg",
-        next_watering: 1620345605000,
-        lighting_requirements: "Average",
-        fertilizer: "Lite"
-    },
-    {
-        id: 4,
-        name: "Strelitzia nicolai",
-        location: "Fabrikken (Bygg 115/159) - 3. etg",
-        next_watering: Date.now()+182800000,
-        lighting_requirements: "Average",
-        fertilizer: "Lite"
-    }
-];
-
 function withPlantsFetch(WrappedComponent) {
     class PlantListHOC extends Component {
         static contextType = AuthContext;
@@ -59,17 +23,11 @@ function withPlantsFetch(WrappedComponent) {
 
         async componentDidMount() {
             this._isMounted = true;
-            this.setState({
-                plants: plants,
-                isLoading: false,
-                error: null,
-                selectedPlant: {}
-            });
-            //await this.fetchData();
+            await this.fetchAllData();
         }
 
-        fetchData = async () => {
-            const res = await fetchAllPlants()
+        fetchAllData = async () => {
+            const res = await fetchAllPlants();
 
             if (res.error) {
                 this._isMounted && this.setState({
@@ -109,7 +67,6 @@ function withPlantsFetch(WrappedComponent) {
                     <Route exact path="/plants">
                         <WrappedComponent selectPlant={this.setPlant} plants={this.state.plants} {...this.props} />
                     </Route>
-                    <Route exact path="/plants/:id" render={this.plantPage} />
                 </>
             );
         }
