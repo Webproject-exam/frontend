@@ -1,7 +1,7 @@
 import './PlantStatusCard.css';
 import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { myTimeConverter } from '../../helpers/timeConverter'
-import { formatDistanceStrict, format } from 'date-fns'
+import { format } from 'date-fns'
 import { parseISO } from 'date-fns/esm';
 
 function PlantStatusCard(props) {
@@ -21,7 +21,7 @@ function PlantStatusCard(props) {
                     </li>}
                 {props.plant.watering.waterFrequency &&
                     <li>
-                        <span className="bold">Watering frequency:</span> every {formatDistanceStrict(props.plant.watering.waterFrequency, 0, {unit: 'day'})}
+                        <span className="bold">Watering frequency:</span> every {props.plant.watering.waterFrequency} days
                     </li>}
                 {props.plant.watering.waterNext &&
                     <li>
@@ -29,7 +29,7 @@ function PlantStatusCard(props) {
                     </li>}
                 {props.plant.fertilization &&
                     <li>
-                        <span className="bold">Fertilized frequency:</span> every {formatDistanceStrict(props.plant.fertilization.fertFrequency, 0 , {unit: 'day'})}
+                        <span className="bold">Fertilized frequency:</span> every {props.plant.fertilization.fertFrequency} days
                     </li>}
                 {props.plant.fertilization &&
                     <li>
