@@ -14,7 +14,7 @@ function IndividualPlantPage(props) {
 
                 {/* finn ut av bildet */}
                 <div className="individual-plant-image-and-description">
-                    <img classname="image" src={Bilde} alt={plant.name} />
+                    <img className="image" src={Bilde} alt={plant.name} />
                     <div className="description">
                         <h3>Description</h3>
                         <p>{plant.information.description}</p>
