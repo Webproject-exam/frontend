@@ -1,38 +1,62 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .individual-plant-grid-container {
     margin-top: 1em;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 3fr 2rem 2fr;
     grid-template-columns: 3fr 2fr;
+    -ms-grid-rows: -webkit-min-content 1rem minmax(auto, 190px) 1rem auto;
+    -ms-grid-rows: min-content 1rem minmax(auto, 190px) 1rem auto;
+    grid-template-rows: -webkit-min-content minmax(auto, 190px) auto;
     grid-template-rows: min-content minmax(auto, 190px) auto;
     gap: 1rem 2rem;
-    grid-template-areas:
+        grid-template-areas:
         "individual-plant-image plant-status-card"
         "individual-plant-image individual-plant-buttons"
         "individual-plant-description individual-plant-buttons";
 }
 
 .individual-plant-description {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
     grid-area: individual-plant-description;
 }
 
 .plant-status-card {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
     grid-area: plant-status-card;
     margin: unset;
-    justify-self: start;
+    -ms-grid-column-align: start;
+        justify-self: start;
 }
 
 .individual-plant-image {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 1;
     grid-area: individual-plant-image;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 
 .individual-plant-header {
     background: #fff;
     margin: -1em -5vw 1em;
+    min-height: -webkit-min-content;
+    min-height: -moz-min-content;
     min-height: min-content;
     padding: .5rem 5vw;
-    box-shadow: 0 6px 10px -10px var(--gray2)
+    -webkit-box-shadow: 0 6px 10px -10px var(--gray2);
+            box-shadow: 0 6px 10px -10px var(--gray2)
 }
 
 .individual-plant-header h1 {
@@ -41,8 +65,12 @@
 
 
 .individual-plant-buttons {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 3;
     grid-area: individual-plant-buttons;
-    justify-self: start;
+    -ms-grid-column-align: start;
+        justify-self: start;
     width: 100%;
     max-width: 441px;
     margin: unset;
@@ -54,16 +82,19 @@
 
 .individual-plant-image {
     border-radius: .25rem;
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 700px) {
     .individual-plant-grid-container {
+        -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+        -ms-grid-rows: minmax(auto, 12rem) 2rem auto 2rem auto 2rem auto;
         grid-template-rows: minmax(auto, 12rem) auto auto auto;
         gap: 2rem;
-        grid-template-areas:
+            grid-template-areas:
             "individual-plant-image"
             "plant-status-card"
             "individual-plant-buttons"
@@ -71,12 +102,32 @@
     }
 
     .plant-status-card {
-        justify-self: unset;
+        -ms-grid-column-align: unset;
+            justify-self: unset;
         max-width: unset;
     }
 
     .individual-plant-buttons {
-        justify-self: unset;
+        -ms-grid-column-align: unset;
+            justify-self: unset;
         max-width: unset;
+    }
+    .individual-plant-description {
+        -ms-grid-row: 7;
+        -ms-grid-column: 1;
+    }
+    .plant-status-card {
+        -ms-grid-row: 3;
+        -ms-grid-column: 1;
+    }
+    .individual-plant-image {
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 1;
+        -ms-grid-column: 1;
+    }
+    .individual-plant-buttons {
+        -ms-grid-row: 5;
+        -ms-grid-row-span: 1;
+        -ms-grid-column: 1;
     }
 } 
