@@ -1,3 +1,7 @@
+.plant-status-card.container{
+    margin: 0 0 1rem 0
+}
+
 .plant-status-card ul{
     line-height: 1.8rem;
 }
@@ -16,13 +20,9 @@
     margin: 0
 }
 
-section{
+section {
     margin-bottom: 1rem;
-}
-
-section > *{
-    transform: translate(1rem, 1rem);
-    font-size: 1rem;
+    line-height: 2rem;
 }
 
 section li{

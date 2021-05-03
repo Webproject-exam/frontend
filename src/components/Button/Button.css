@@ -2,53 +2,54 @@
 * BUTTONS GENERAL
 */
 
-.button, .LinkTest {
-    /* Typography*/
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Roboto';
-
-    /* Box model */
-    /* box-sizing: border-box; */
-    margin: .5rem 0;
-    padding: .9em 0.4em;
-
-    /* Visual */
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
+.button,
+.LinkTest {
+  font: bold 1em 'Roboto';
+  
+  /* Typography*/
+  color: white;
+  text-transform: uppercase;
+  
+  /* Box model */
+  /* box-sizing: border-box; */
+  margin: .5rem 0;
+  padding: .9em 0.4em;
+  
+  /* Visual */
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
 }
 
 .button:hover:enabled {
-    box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
+  box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
 }
 
 .button:active:enabled {
-    transform: translateY(2px);
-    box-shadow: unset;
+  transform: translateY(2px);
+  box-shadow: unset;
 }
 
 .button:disabled {
-    /* Visual */
-    opacity: .5;
-    background-color: var(--gray4);
-    cursor: not-allowed;
-    color: #333;
+  background: var(--gray4);
+  /* Visual */
+  opacity: .5;
+  cursor: not-allowed;
+  color: #333;
 }
 
 /*
 * BUTTONS PRIMARY
 */
 
-.primary, .LinkTest {
-    background-color: var(--primary)
+.primary,
+.LinkTest {
+  background: var(--primary);
 }
 
 .primary:enabled:hover {
-    background-color: var(--pDark)
+  background: var(--pDark);
 }
 
 /*
@@ -56,11 +57,11 @@
 */
 
 .secondary:enabled {
-    background-color: var(--secondary)
+  background: var(--secondary);
 }
 
 .secondary:enabled:hover {
-    background-color: var(--sDark)
+  background: var(--sDark);
 }
 
 /*
@@ -68,27 +69,27 @@
 */
 
 .secondary-outlined:enabled {
-    background-color: var(--background);
-    border: 2px solid var(--secondary);
-    color: var(--secondary);
+  background: var(--background);
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
 }
 
 .secondary-outlined:enabled:hover {
-    background-color: var(--background);
-    border: 2px solid var(--sDark);
-    color: var(--sDark);
+  background: var(--background);
+  border: 2px solid var(--sDark);
+  color: var(--sDark);
 }
 
 .secondary-outlined.active:enabled {
-    text-decoration: underline;
-    background-color: var(--secondary);
-    color: var(--background);
+  background: var(--secondary);
+  text-decoration: underline;
+  color: var(--background);
 }
 
 .secondary-outlined.active:enabled:hover {
-    text-decoration: underline;
-    background-color: var(--secondary);
-    color: var(--background);
+  background: var(--secondary);
+  text-decoration: underline;
+  color: var(--background);
 }
 
 /*
@@ -96,11 +97,11 @@
 */
 
 .danger {
-    background-color: var(--red)
+  background: var(--red);
 }
 
 .danger:enabled:hover {
-    background-color: var(--rDark);
+  background: var(--rDark);
 }
 
 /*
@@ -108,15 +109,15 @@
 */
 
 .danger-outlined {
-    background-color: var(--background);
-    border: 2px solid var(--red);
-    color: var(--red);
+  background: var(--background);
+  border: 2px solid var(--red);
+  color: var(--red);
 }
 
 .danger-outlined:enabled:hover {
-    background-color: var(--background);
-    border: 2px solid var(--rDark);
-    color: var(--rDark);
+  background: var(--background);
+  border: 2px solid var(--rDark);
+  color: var(--rDark);
 }
 
 /*
@@ -124,24 +125,24 @@
 */
 
 .text-only {
-    background-color: transparent;
-    color: var(--sDark);
-    padding: .5rem;
-    margin: 0 0 0 auto;
-    display: block;
-    min-height: 44px;
-    transition: .05s;
-    font-weight:normal
+  background: transparent;
+  color: var(--sDark);
+  padding: .5rem;
+  margin: 0 0 0 auto;
+  display: block;
+  min-height: 44px;
+  transition: .05s;
+  font-weight: normal;
 }
 
 .text-only:enabled:hover {
-    text-decoration: underline;
-    box-shadow: unset;
+  text-decoration: underline;
+  box-shadow: unset;
 }
 
 .text-only:active {
-    transform: translateY(1px);
-    filter: saturate(150%);
+  transform: translateY(1px);
+  filter: saturate(150%);
 }
 
 /*
@@ -149,11 +150,11 @@
 */
 
 .tertiary {
-    background-color: var(--tertiary)
+  background: var(--tertiary);
 }
 
 .tertiary:enabled:hover {
-    background-color: var(--tDark)
+  background: var(--tDark);
 }
 
 /*
@@ -161,14 +162,14 @@
 */
 
 .full-size {
-    width: 100%;
+  width: 100%;
 }
 
 .half-size {
-    width: 49%;
-    /* better for flex */
+  width: 49%;
+  /* better for flex */
 }
 
 .no-size {
-    width: unset;
+  width: unset;
 }

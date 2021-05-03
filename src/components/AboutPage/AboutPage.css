@@ -3,8 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: calc(100vh - 55.33px - 1em) auto auto auto auto auto;
   gap: 1em 3%;
-  grid-template-areas:
-    "home-page home-page home-page home-page home-page home-page"
+  grid-template-areas: "home-page home-page home-page home-page home-page home-page"
     "about-the-project about-the-project about-the-project about-the-project about-the-project about-the-project"
     "box1 box1 box2 box2 box3 box3"
     "the-group the-group the-group the-group the-group the-group"
@@ -13,25 +12,20 @@
 }
 
 .home-page {
+  background: url('../../assets/hero_image1.jpg') no-repeat center/cover;
   grid-area: home-page;
   margin-top: -1em;
   margin-left: -5vw;
   margin-right: -5vw;
-
-  background-image: url('../../assets/hero_image1.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
   display: flex;
 }
 
-.about-the-project{
+.about-the-project {
   grid-area: about-the-project;
   justify-self: center;
 }
 
-.about-project-box{
+.about-project-box {
   margin: 0;
   padding: 2rem;
   min-width: unset;
@@ -49,12 +43,12 @@
   grid-area: box3;
 }
 
-.the-group{
+.the-group {
   grid-area: the-group;
   justify-self: center;
 }
 
-.the-group-box{
+.the-group-box {
   margin: 0;
   padding: 2rem;
   min-width: unset;
@@ -83,7 +77,7 @@
   margin-right: 5vw;
   align-self: center;
   max-width: 758px;
-  display:flex;
+  display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
 }
@@ -98,15 +92,15 @@
 .grid-container h2 {
   font-size: 3rem;
   font-weight: lighter;
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
 }
 
-.fake-image{
+.fake-image {
   margin: auto 1em;
   max-width: 50%;
 }
 
-.biography{
+.biography {
   max-width: 60%;
 }
 
@@ -118,5 +112,5 @@
 }
 
 .home-page .buttons-side-by-side a {
- min-width: 7rem;
+  min-width: 7rem;
 }

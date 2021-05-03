@@ -1,0 +1,8 @@
+.container.your-profile {
+    max-width: 25rem;
+    margin: 0 auto;
+}
+
+.container.your-profile h2{
+    font-family: unset;
+}

@@ -12,8 +12,7 @@ function IndividualPlantPage(props) {
             <Header heading={plant.name} />
             <div className="individual-plant-grid-container">
 
-                {/* finn ut av bildet */}
-                <div className="individual-plant-image-and-description">
+                <div className="image-and-description">
                     <img className="image" src={Bilde} alt={plant.name} />
                     <div className="description">
                         <h3>Description</h3>
@@ -27,10 +26,10 @@ function IndividualPlantPage(props) {
                     </div>
                 </div>
 
-                <div className="individual-plant-buttons-and-status-card">
+                <div className="buttons-and-status-card">
                     <PlantStatusCard plant={plant} />
 
-                    <div className="individual-plant-buttons">
+                    <div className="buttons-group">
                         <div className="buttons-side-by-side">
                             <Button label="request watering" variant="secondary" size="half" />
                             <Button label="request fetilizer" variant="tertiary" size="half" />

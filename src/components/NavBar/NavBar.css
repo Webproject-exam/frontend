@@ -1,6 +1,6 @@
 .navbar {
+    background: var(--primary);
     align-items: center;
-    background-color: var(--primary);
     display: flex;
     justify-content: space-between;
     min-height: 55.33px;
@@ -48,10 +48,10 @@
 }
 
 .navbar ul {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    list-style-type: none;
     margin: auto 0;
     padding: auto;
 }
@@ -69,6 +69,7 @@
 }
 
 /* The container <div> - needed to position the dropdown content */
+
 .navbar.dropdown {
     display: inline-block;
     margin-top: 48.33px;
@@ -76,13 +77,14 @@
 }
 
 /* Dropdown Content */
+
 .navbar.dropdown-content {
-    background-color: var(--gray6);
+    background: var(--gray6);
     border-radius: 10px;
     box-shadow: 0px 1em 2em 0px rgba(0, 0, 0, 0.3);
     min-width: 160px;
     position: absolute;
-    right:0;
+    right: 0;
     z-index: 1;
 }
 
@@ -101,12 +103,12 @@
 }
 
 .navbar.dropdown-content a:hover {
-    background-color: var(--pDark);
+    background: var(--pDark);
     color: white;
     text-decoration: underline;
 }
 
-.navbar-icon img{
+.navbar-icon img {
     height: 100%;
     padding: 0 0.9em;
 }
