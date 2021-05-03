@@ -2,7 +2,7 @@
 // and https://codesandbox.io/s/q9m26noky6?file=/src/helpers/AuthContext.js:0-638
 import React from 'react';
 import { login, tokenRevoke } from '../api/users';
-import { clear, read, store } from './refresh-token';
+import { clear, read, store, storeExpiry } from './refresh-token';
 
 const INITIAL_STATE = { auth: false, token: null, role: null };
 
@@ -27,6 +27,7 @@ class AuthProvider extends React.Component {
             const response = await login(email, password);
             const userRole = response.data.role;
             const token = response.data.jwtToken;
+            storeExpiry("token", token, true)
 
             this.setState({ auth: true, token, role: userRole }, () => {
                 store("token", token)
