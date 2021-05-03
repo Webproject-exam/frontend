@@ -26,7 +26,7 @@ class DashboardPlants extends Component {
         });
     }
 
-    render() { 
+    render() {
         const AddPlantWithHOC = addUserBackend(AddPlantForm);
 
         return (
@@ -35,7 +35,7 @@ class DashboardPlants extends Component {
                     <Button onClick={this.toggleAddPlant} variant="secondary-outlined" label="Add a plant" size="half" active={this.state.addPlant} />
                     <Button onClick={this.toggleAllPlants} variant="secondary-outlined" label="See all plants" size="half" active={this.state.seePlants} />
                 </div>
-                {this.state.addPlant && <AddPlantWithHOC />}
+                {this.state.addPlant && <AddPlantWithHOC place="plants" />}
             </>
         );
     }

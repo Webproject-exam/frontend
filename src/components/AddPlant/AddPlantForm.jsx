@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Button from '../Button/Button';
-import './AddPlantForm.css'
-import { isEmpty } from '../../helpers/validation'
+import './AddPlantForm.css';
+import { isEmpty } from '../../helpers/validation';
+import UploadFile from './UploadFile';
 
 class AddPlantForm extends Component {
     constructor(props) {
@@ -29,6 +30,21 @@ class AddPlantForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+
+        const plantObject = {
+            name: this.state.plantname,
+            information: {
+                description: this.state.information_description,
+                placement: this.state.information_placement,
+                watering: this.state.information_watering
+            },
+            waterFreq: this.state.watering_frequency,
+            fertFreq: this.state.fertilizing_frequency,
+            fertAmount: this.state.fertilizer_amount,
+            lightAmount: this.state.lighting_requirements
+        };
+
+        console.log(plantObject);
 
         alert('submitting')
     }
@@ -115,7 +131,7 @@ class AddPlantForm extends Component {
                                     />
 
                                     <label htmlFor="plant_image">Select a file:</label>
-                                    <input type="file" id="plant_image" name="plant_image" />
+                                    <UploadFile />
 
                                     <div className="add-plant-form page-indicators">
                                         <div className={"page-indicator-dot active"}></div>
