@@ -38,8 +38,9 @@ class AddPlantForm extends Component {
         const waterFreq = parseInt(this.state.watering_frequency);
         const fertFreq = parseInt(this.state.fertilizing_frequency);
         const waterNextDate = new Date(addDays(Date.now(), waterFreq));
+        const fertNextDate = new Date(addDays(Date.now(), fertFreq));
         const waterNext = waterNextDate.getTime();
-        console.log(waterNext);
+        const fertNext = fertNextDate.getTime();
 
         const plantObject = {
             name: this.state.plantname,
@@ -60,6 +61,7 @@ class AddPlantForm extends Component {
             },
             fertilization: {
                 fertFrequency: fertFreq,
+                fertNext: fertNext,
                 fertAmount: this.state.fertilizer_amount,
             },
             lighting: this.state.lighting_requirements

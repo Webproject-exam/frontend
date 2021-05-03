@@ -7,58 +7,6 @@ import { AuthContext } from '../../helpers/Auth';
 import { Route } from 'react-router-dom';
 import { fetchAllPlants } from '../../api/plants';
 
-// Testing purposes
-const plants = [
-    {
-        _id: 1,
-        name: "Arekapalme",
-        location: "Bygg 118 - 3. etg",
-        watering: {
-            waterNext: Date.now()-222000000
-        },
-        lighting: "Average",
-        fertilization: {
-            fertAmount: "Lite"
-        }
-    },
-    {
-        _id: 2,
-        name: "Monstera",
-        location: "Bygg 118 - 2. etg: Rom 206",
-        watering: {
-            waterNext: Date.now(),
-        },
-        lighting: "Average",
-        fertilization: {
-            fertAmount: "Lite"
-        }
-    },
-    {
-        _id: 3,
-        name: "Gullranke ampel",
-        location: "Fabrikken (Bygg 115/159) - 3. etg",
-        watering: {
-            waterNext: 1621257159025
-        },
-        lighting: "Average",
-        fertilization: {
-            fertAmount: "Lite"
-        } 
-    },
-    {
-        _id: 4,
-        name: "Strelitzia nicolai",
-        location: "Fabrikken (Bygg 115/159) - 3. etg",
-        watering: {
-            waterNext: Date.now()+182800000
-        },
-        lighting: "Average",
-        fertilization: {
-            fertAmount: "Lite"
-        }
-    }
-];
-
 function withPlantsFetch(WrappedComponent) {
     class PlantListHOC extends Component {
         static contextType = AuthContext;
@@ -75,12 +23,11 @@ function withPlantsFetch(WrappedComponent) {
 
         async componentDidMount() {
             this._isMounted = true;
-            await this.fetchData();
+            await this.fetchAllData();
         }
 
-        fetchData = async () => {
-            const res = await fetchAllPlants()
-            console.log(res.data);
+        fetchAllData = async () => {
+            const res = await fetchAllPlants();
 
             if (res.error) {
                 this._isMounted && this.setState({
@@ -103,7 +50,6 @@ function withPlantsFetch(WrappedComponent) {
 
         plantPage = () => {
             const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage);
-            console.log(this.state.selectedPlant);
             return (<IndividualPlantHOC selectedPlant={this.state.selectedPlant} />);
         }
 
@@ -121,7 +67,6 @@ function withPlantsFetch(WrappedComponent) {
                     <Route exact path="/plants">
                         <WrappedComponent selectPlant={this.setPlant} plants={this.state.plants} {...this.props} />
                     </Route>
-                    <Route exact path="/plants/:_id" render={this.plantPage} />
                 </>
             );
         }

@@ -5,13 +5,12 @@ import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { Link } from "react-router-dom";
 import { myTimeConverter } from '../../helpers/timeConverter'
 
-function PlantListItem(props) {
-    const { plant, selectPlant } = props;
+function PlantListItem({plant}) {
     //const location = `${plant.placement.building} ${plant.placement.floor} ${plant.placement.room}`;
     return (
     <li>
         <div className="plant-container">
-        <Link to={'/plants/' + plant._id} onClick={() => selectPlant(plant._id)}>
+        <Link to={'/plants/' + plant._id} /* onClick={() => selectPlant(plant._id)} */>
                 <div className="clickable">
                     <div className="plant-header">
                         <PlantStatusCircle next_watering={plant.watering.waterNext}/>
