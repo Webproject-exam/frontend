@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 //import { notifySuccess, notifyError } from '../../helpers/notification';
-import IndividualPlantPage from '../IndividualPlantPage/IndividualPlantPage';
 import Loading from '../Loading/Loading';
-import fetchPlantBackend from './PlantPageHOC';
 import { AuthContext } from '../../helpers/Auth';
 import { Route } from 'react-router-dom';
 import { fetchAllPlants } from '../../api/plants';
@@ -42,17 +40,6 @@ function withPlantsFetch(WrappedComponent) {
             }
         }
 
-        setPlant = (plant) => {
-            this.setState({
-                selectedPlant: plant
-            });
-        }
-
-        plantPage = () => {
-            const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage);
-            return (<IndividualPlantHOC selectedPlant={this.state.selectedPlant} />);
-        }
-
         componentWillUnmount() {
             this._isMounted = false;
         }
@@ -65,7 +52,7 @@ function withPlantsFetch(WrappedComponent) {
             return (
                 <>
                     <Route exact path="/plants">
-                        <WrappedComponent selectPlant={this.setPlant} plants={this.state.plants} {...this.props} />
+                        <WrappedComponent plants={this.state.plants} {...this.props} />
                     </Route>
                 </>
             );
