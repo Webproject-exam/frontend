@@ -5,7 +5,7 @@ html {
 }
 
 *>body {
-  background-color: var(--background);
+  background: var(--background);
   margin: 0;
   padding: 0;
   overflow: auto;
@@ -30,7 +30,6 @@ h2 {
 
 h3 {
   font-size: 1.33rem;
-    margin-bottom: .10rem;
 }
 
 header {
@@ -51,29 +50,28 @@ main {
 }
 
 /* "cards" used on the application */
+
 .container {
-  background-color: #fff;
+  background: #fff;
   border-radius: .25rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   margin: 2% auto 0 auto;
-  min-width: 240px;
+  min-width: 15rem;
   overflow: hidden;
   padding: 1em;
 }
 
-/* icons placed on cards */
-.container .icon {
-  display: block;
-  margin: auto;
-  width: 2em;
+.container.max-width {
+  max-width: 40rem;
+  margin: 0 auto;
+  margin-top: 1rem;
 }
 
 .buttons-side-by-side {
   display: flex;
   justify-content: space-between;
-  max-width: 430px;
   width: 100%;
-  gap: 2%
+  gap: 2%;
 }
 
 fieldset {
@@ -105,19 +103,19 @@ input[type=email],
 input[type=number],
 textarea,
 select {
+  font: 16px 'Roboto', sans-serif;
+  background: var(--gray5);
   border: 1px solid var(--gray4);
   box-sizing: border-box;
   display: inline-block;
-  font-size: 16px;
   margin: 8px 0 24px;
   padding: 12px 20px;
   width: 100%;
-  background-color: var(--gray5);
   resize: none;
-  font-family: 'Roboto',  sans-serif;
 }
 
 /* Chrome, Safari, Edge, Opera */
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -125,6 +123,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
+
 input[type=number] {
   -moz-appearance: textfield;
 }
@@ -135,7 +134,7 @@ strong {
 }
 
 label {
-font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
 .user-list-item-buttons {
@@ -144,17 +143,17 @@ font-size: 1.3rem;
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 li {
-  list-style-type: none;
+  list-style: none;
 }
 
 .low-emphasis-text {
-  color: var(--gray2)
+  color: var(--gray2);
 }
 
 .bold {
@@ -162,6 +161,7 @@ li {
 }
 
 /* part of react toastify */
+
 .Toastify__toast--success {
   background: var(--primary) !important;
 }

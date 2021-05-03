@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import UploadFile from './UploadFile';
 import { addDays } from 'date-fns';
 import { isEmpty } from '../../helpers/validation';
+import { notifySuccess, notifyError } from '../../helpers/notification';
 
 class AddPlantForm extends Component {
     constructor(props) {
@@ -68,6 +69,35 @@ class AddPlantForm extends Component {
         };
 
         await this.props.onSubmitHandler(plantObject);
+
+        if (this.props.error) {
+            notifyError(this.props.error);
+            return
+        } else {
+            notifySuccess(`The plant ${this.state.plantname} has been added.`);
+            this.setState({
+
+                /* endre dette til sånn initual sate ? (som carlos)*/
+
+                form_page: 1,
+
+                fertilizer_amount: 'plentiful',
+                fertilizing_frequency: '',
+
+                information_description: '',
+                information_placement: '',
+                information_watering: '',
+                information_nutrition: '',
+
+                plantname: '',
+                watering_frequency: '',
+                lighting_requirements: 'sunlight',
+
+                placement_building: '',
+                placement_floor: '',
+                placement_room: '',
+            })
+        }
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
@@ -91,8 +121,8 @@ class AddPlantForm extends Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <form ref={this.form} className="add-plant-form" onSubmit={this.handleSubmit}>
+                <div className="container max-width add-plant-form">
+                    <form ref={this.form} onSubmit={this.handleSubmit}>
                         <fieldset>
                             <legend>Add a new plant</legend>
 
@@ -186,7 +216,7 @@ class AddPlantForm extends Component {
                                         value={this.state.information_nutrition}
                                     />
 
-                                    <label htmlFor="plant_image">Select a file:</label>
+                                    <label htmlFor="plant_image">Upload a photo:</label>
                                     <UploadFile />
 
                                     <div className="add-plant-form page-indicators">

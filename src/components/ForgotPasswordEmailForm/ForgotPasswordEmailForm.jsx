@@ -3,7 +3,6 @@ import './ForgotPasswordEmailForm.css';
 import Button from '../Button/Button'
 import PropTypes from 'prop-types';
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard';
-import passwordIcon from '../../assets/password_black_24dp.svg';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 import { emailIsValid } from '../../helpers/validation';
 
@@ -90,7 +89,6 @@ class ForgotPasswordEmailForm extends Component {
     render() {
         return (
             <div className="container forgot-password-email-form">
-                <img className="icon" src={passwordIcon} alt="" />
                 <form ref={this.form} onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Forgot password</legend>

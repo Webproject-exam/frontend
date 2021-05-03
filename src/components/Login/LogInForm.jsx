@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './LogInForm.css';
 import Button from '../Button/Button'
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard'
-import lockOpenIcon from '../../assets/lock_open_black_24dp.svg';
 import { AuthContext } from '../../helpers/Auth';
 import { Link, Redirect } from "react-router-dom";
 import { notifySuccess, notifyError } from '../../helpers/notification';
@@ -98,7 +97,7 @@ class LogInForm extends Component {
         return (
             <>
                 {!this.context.isAuth && <>
-                    <div className="log-in-form container">
+                    <div className="log-in-form container max-width">
                         <form ref={this.form} onSubmit={this.handleSubmit}>
                             <fieldset>
                                 <legend>Log In</legend>
@@ -135,7 +134,6 @@ class LogInForm extends Component {
                     </div>
                 </>}
                 {this.context.isAuth && <div className="container loggedIn">
-                    <img src={lockOpenIcon} alt="" />
                     <p>You're already logged in.</p>
                     <Link to="/profile">Visit your user page here.</Link>
                 </div>}

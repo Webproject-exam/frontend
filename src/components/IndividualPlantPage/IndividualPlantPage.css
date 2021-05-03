@@ -1,67 +1,36 @@
 .individual-plant-grid-container {
+    margin: 0 auto;
+    max-width: 100rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 1rem;
-    grid-template-areas:
-        "individual-plant-image-and-description individual-plant-buttons-and-status-card";
+    gap: 2rem;
+    grid-template-areas: "image-and-description buttons-and-status-card";
 }
 
-.individual-plant-image-and-description {
-    grid-area: individual-plant-image-and-description;
+.image-and-description {
+    grid-area: image-and-description;
 }
 
-.individual-plant-image-and-description img {
+.buttons-and-status-card {
+    grid-area: buttons-and-status-card;
+}
+
+.image-and-description img {
     width: 100%;
-    max-height: 50vh;
+    max-height: 40rem;
     object-fit: cover;
     border-radius: .25rem;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-.container{
-    margin:unset;
-    margin-bottom: 1rem;
+.buttons-and-status-card h3 {
+    margin: 0;
 }
 
-.individual-plant-buttons-and-status-card {
-    grid-area: individual-plant-buttons-and-status-card;
-}
-
-.individual-plant-header {
-    background: #fff;
-    margin: -1em -5vw 1em;
-    min-height: min-content;
-    padding: .5rem 5vw;
-    box-shadow: 0 6px 10px -10px var(--gray2)
-}
-
-.individual-plant-header h1 {
-    margin: 1% 0
-}
-
-
-.individual-plant-buttons {
-    grid-area: individual-plant-buttons;
-    justify-self: start;
-    width: 100%;
-    margin: unset;
-}
-
-.individual-plant-buttons .buttons-side-by-side {
+.buttons-group .buttons-side-by-side {
     max-width: unset;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 700px) {
-    .individual-plant-grid-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: minmax(auto, 12rem) auto auto auto;
-        gap: 2rem;
-        grid-template-areas:
-            "individual-plant-image"
-            "plant-status-card"
-            "individual-plant-buttons"
-            "individual-plant-description";
-    }
-}
+
+@media only screen and (max-width: 700px) {}

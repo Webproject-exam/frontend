@@ -17,7 +17,6 @@ function StatusCard(props) {
     const { statusCode, statusText } = props;
 
     let color;
-    let icon;
 
     switch (statusCode.toString()) {
         case "403":

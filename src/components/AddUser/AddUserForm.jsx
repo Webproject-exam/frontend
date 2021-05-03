@@ -3,7 +3,6 @@ import './AddUserForm.css';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard';
-import addUserIcon from '../../assets/person_add_black_24dp.svg';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 import { emailIsValid } from '../../helpers/validation';
 
@@ -134,7 +133,6 @@ class AddUserForm extends Component {
         return (
             <>
                 <div className="container">
-                    <img className="icon" src={addUserIcon} alt="" />
                     <form ref={this.form} onSubmit={this.handleSubmit} className="add-user-form">
                         <fieldset>
                             <legend>Add a new user</legend>
