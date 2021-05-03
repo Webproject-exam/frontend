@@ -75,13 +75,7 @@ function withPlantsFetch(WrappedComponent) {
 
         async componentDidMount() {
             this._isMounted = true;
-            this.setState({
-                plants: plants,
-                isLoading: false,
-                error: null,
-                selectedPlant: {}
-            });
-            //await this.fetchData();
+            await this.fetchData();
         }
 
         fetchData = async () => {
