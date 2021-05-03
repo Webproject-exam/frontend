@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AddPlantForm.css';
 import Button from '../Button/Button';
 import UploadFile from './UploadFile';
+import { addDays } from 'date-fns';
 import { isEmpty } from '../../helpers/validation';
 
 class AddPlantForm extends Component {
@@ -16,6 +17,7 @@ class AddPlantForm extends Component {
             information_description: '',
             information_placement: '',
             information_watering: '',
+            information_nutrition: '',
 
             plantname: '',
             watering_frequency: '',
@@ -33,22 +35,36 @@ class AddPlantForm extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
+        const waterFreq = parseInt(this.state.watering_frequency);
+        const fertFreq = parseInt(this.state.fertilizing_frequency);
+        const waterNextDate = new Date(addDays(Date.now(), waterFreq));
+        const fertNextDate = new Date(addDays(Date.now(), fertFreq));
+        const waterNext = waterNextDate.getTime();
+        const fertNext = fertNextDate.getTime();
+
         const plantObject = {
             name: this.state.plantname,
             information: {
                 description: this.state.information_description,
                 placement: this.state.information_placement,
-                watering: this.state.information_watering
+                watering: this.state.information_watering,
+                nutrition: this.state.information_nutrition
             },
             placement: {
                 building: this.state.placement_building,
                 floor: this.state.placement_floor,
                 room: this.state.placement_room
             },
-            waterFreq: this.state.watering_frequency,
-            fertFreq: this.state.fertilizing_frequency,
-            fertAmount: this.state.fertilizer_amount,
-            lightAmount: this.state.lighting_requirements
+            watering: {
+                waterFrequency: waterFreq,
+                waterNext: waterNext
+            },
+            fertilization: {
+                fertFrequency: fertFreq,
+                fertNext: fertNext,
+                fertAmount: this.state.fertilizer_amount,
+            },
+            lighting: this.state.lighting_requirements
         };
 
         await this.props.onSubmitHandler(plantObject);

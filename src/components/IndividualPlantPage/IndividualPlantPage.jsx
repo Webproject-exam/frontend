@@ -1,13 +1,11 @@
 import './IndividualPlantPage.css';
-import PlantStatusCard from '../PlantStatusCard/PlantStatusCard'
-import Bilde from '../../assets/plant.jpg'
-import Button from '../Button/Button'
-import Header from '../Header/Header'
+import PlantStatusCard from '../PlantStatusCard/PlantStatusCard';
+import Bilde from '../../assets/plant.jpg';
+import Button from '../Button/Button';
+import Header from '../Header/Header';
 
 function IndividualPlantPage(props) {
     const { plant, isAuth } = props;
-    console.log(plant);
-    console.log(plant.id)
 
     return (
         <>
@@ -53,7 +51,16 @@ function IndividualPlantPage(props) {
                     </div>
                 </div>
 
-                
+                <div className="individual-plant-description">
+                    <h3>Description</h3>
+                    <p>{plant.information.description}</p>
+                    <h3>Placement</h3>
+                    <p>{plant.information.placement}</p>
+                    <h3>Water</h3>
+                    <p>{plant.information.watering}</p>
+                    <h3>Nutrition</h3>
+                    <p>{plant.information.nutrition}</p>
+                </div>
 
             </div>
         </>

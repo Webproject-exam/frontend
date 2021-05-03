@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AuthContext } from '../../helpers/Auth';
 import { createUser } from '../../api/users';
+import { createPlant } from '../../api/plants';
 
 function addUserBackend(WrappedComponent) {
     class AddUserHOC extends Component {
@@ -26,6 +27,10 @@ function addUserBackend(WrappedComponent) {
             } else if (this.props.place === "plants"){
                 console.log("In plants");
                 console.log(itemObject);
+                const res = await createPlant(itemObject);
+                if (res.error) {
+                    console.log(res.error);
+                }
             } else {
                 console.log("Anything else");
             }
