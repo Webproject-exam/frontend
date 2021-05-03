@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 import { myTimeConverter } from '../../helpers/timeConverter'
 
 function PlantListItem({plant}) {
-    //const location = `${plant.placement.building} ${plant.placement.floor} ${plant.placement.room}`;
+    const location = `${plant.placement.building} ${plant.placement.floor} ${plant.placement.room}`;
     return (
     <li>
         <div className="plant-container">
-        <Link to={'/plants/' + plant._id} /* onClick={() => selectPlant(plant._id)} */>
+        <Link to={'/plants/' + plant._id}>
                 <div className="clickable">
                     <div className="plant-header">
                         <PlantStatusCircle next_watering={plant.watering.waterNext}/>
                         <h2 className="h2">{plant.name}</h2>
-                        <h3 className="h3">{plant.location}</h3>
+                        <h3 className="h3">{location}</h3>
                     </div>
                     
                     <img className="hero-image" src={Image} alt="plant" />
