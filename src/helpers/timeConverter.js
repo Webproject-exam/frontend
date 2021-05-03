@@ -1,4 +1,4 @@
-import { startOfDay, isToday, isTomorrow, isYesterday, formatDistanceToNow, subDays } from 'date-fns'
+import { startOfDay, isToday, isTomorrow, isYesterday, formatDistanceToNow, subDays, milliseconds  } from 'date-fns'
 
 /**
  * Converts a date into natural langage.
@@ -20,4 +20,13 @@ function myTimeConverter(date) {
     else { return formatDistanceToNow(dateAsDay, { addSuffix: true }) }
 }
 
-export { myTimeConverter };
+/**
+ * convert a days into milliseconds
+ * @param {Number} daysToConvert the amount of days to convert to milliseconds
+ * @returns miliseconds
+ */
+function convertDaysToMilliseconds(daysToConvert){
+    return milliseconds({ days: parseInt(daysToConvert) })
+}
+
+export { myTimeConverter, convertDaysToMilliseconds };

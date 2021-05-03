@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import Button from '../Button/Button';
+<<<<<<< Updated upstream
 import './AddPlantForm.css';
 import { isEmpty } from '../../helpers/validation';
 import UploadFile from './UploadFile';
+=======
+import './AddPlantForm.css'
+import { isEmpty } from '../../helpers/validation'
+import { convertDaysToMilliseconds } from '../../helpers/timeConverter'
+>>>>>>> Stashed changes
 
 class AddPlantForm extends Component {
     constructor(props) {
@@ -114,6 +120,8 @@ class AddPlantForm extends Component {
                                         placeholder="what floor is the plant on?"
                                         required
                                         type="number"
+                                        min="0"
+                                        max="10"
                                         value={this.state.placement_floor}
                                     />
 
@@ -220,7 +228,7 @@ class AddPlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         value={this.state.fertilizer_amount}
                                     >
-                                        <option value="plentiful">Plentiful</option>
+                                        <option selected value="plentiful">Plentiful</option>
                                         <option value="average">Average</option>
                                         <option value="sparse">Sparse</option>
                                     </select>
@@ -232,7 +240,7 @@ class AddPlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         value={this.state.lighting_requirements}
                                     >
-                                        <option value="sunlight">Sunlight</option>
+                                        <option selected value="sunlight">Sunlight</option>
                                         <option value="sunlight-half-sade">Sunlight / Half shade</option>
                                         <option value="half-shade">Half shade</option>
                                         <option value="half-shade-shade">Half shade / Shade</option>
