@@ -12,15 +12,22 @@ function addUserBackend(WrappedComponent) {
             };
         }
 
-        onSubmit = async (userObject) => {
-
+        onSubmit = async (itemObject) => {
+            console.log(itemObject);
             //Send the information stored in the state to the back-end
-            try {
-                await createUser(userObject);
-            } catch (error) {
-                this.setState({
-                    error: error.response.data.error
-                })
+            if (this.props.place === "users") {
+                try {
+                    await createUser(itemObject);
+                } catch (error) {
+                    this.setState({
+                        error: error
+                    })
+                }
+            } else if (this.props.place === "plants"){
+                console.log("In plants");
+                console.log(itemObject);
+            } else {
+                console.log("Anything else");
             }
         }
 
@@ -31,6 +38,7 @@ function addUserBackend(WrappedComponent) {
         }
 
         render() {
+            console.log(this.props);
             return (
                 <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error} removeErrorHandler={this.removeError} />
             );

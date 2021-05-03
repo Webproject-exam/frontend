@@ -58,7 +58,7 @@ class DashboardUsers extends Component {
                     <Button onClick={this.toggleAddUser} variant="secondary-outlined" label="Add a user" size="half" active={this.state.addUser} />
                     <Button onClick={this.toggleAllUsers} variant="secondary-outlined" label="See all users" size="half" active={this.state.seeUsers} />
                 </div>
-                {this.state.addUser && <AddUserWithHOC />}
+                {this.state.addUser && <AddUserWithHOC place="users" />}
                 {this.state.seeUsers && <UserListWithHOC />}
             </>
         );
