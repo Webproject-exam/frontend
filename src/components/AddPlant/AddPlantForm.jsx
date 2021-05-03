@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AddPlantForm.css';
 import Button from '../Button/Button';
 import UploadFile from './UploadFile';
-import { convertDaysToMilliseconds } from '../../helpers/timeConverter'
+import { addDays } from 'date-fns';
 import { isEmpty } from '../../helpers/validation';
 
 class AddPlantForm extends Component {
@@ -37,6 +37,9 @@ class AddPlantForm extends Component {
 
         const waterFreq = parseInt(this.state.watering_frequency);
         const fertFreq = parseInt(this.state.fertilizing_frequency);
+        const waterNextDate = new Date(addDays(Date.now(), waterFreq));
+        const waterNext = waterNextDate.getTime();
+        console.log(waterNext);
 
         const plantObject = {
             name: this.state.plantname,
@@ -52,7 +55,8 @@ class AddPlantForm extends Component {
                 room: this.state.placement_room
             },
             watering: {
-                waterFrequency: waterFreq
+                waterFrequency: waterFreq,
+                waterNext: waterNext
             },
             fertilization: {
                 fertFrequency: fertFreq,

@@ -7,13 +7,14 @@ import { myTimeConverter } from '../../helpers/timeConverter'
 
 function PlantListItem(props) {
     const { plant, selectPlant } = props;
+    //const location = `${plant.placement.building} ${plant.placement.floor} ${plant.placement.room}`;
     return (
     <li>
         <div className="plant-container">
-        <Link to={'plants/' + plant.id} onClick={() => selectPlant(plant.id)}>
+        <Link to={'/plants/' + plant._id} onClick={() => selectPlant(plant._id)}>
                 <div className="clickable">
                     <div className="plant-header">
-                        <PlantStatusCircle next_watering={plant.next_watering}/>
+                        <PlantStatusCircle next_watering={plant.watering.waterNext}/>
                         <h2 className="h2">{plant.name}</h2>
                         <h3 className="h3">{plant.location}</h3>
                     </div>
@@ -22,9 +23,9 @@ function PlantListItem(props) {
                 </div>
                 </Link>
                 
-                <p>Next watering: <b>{myTimeConverter(plant.next_watering)}</b>.</p>
-                <p>Lighting requirements: <b>{plant.lighting_requirements}</b>.</p>
-                <p>Fertilizer: <b>{plant.fertilizer}</b></p>
+                <p>Next watering: <b>{myTimeConverter(plant.watering.waterNext)}</b>.</p>
+                <p>Lighting requirements: <b>{plant.lighting}</b>.</p>
+                <p>Fertilizer: <b>{plant.fertilization.fertAmount}</b></p>
             
             <Button className="on-top" variant="text-only" label="water this plant" size="auto" />
         </div>
