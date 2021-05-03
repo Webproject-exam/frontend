@@ -223,7 +223,7 @@ class AddPlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         value={this.state.fertilizer_amount}
                                     >
-                                        <option selected value="plentiful">Plentiful</option>
+                                        <option defaultValue="plentiful">Plentiful</option>
                                         <option value="average">Average</option>
                                         <option value="sparse">Sparse</option>
                                     </select>
@@ -235,10 +235,10 @@ class AddPlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         value={this.state.lighting_requirements}
                                     >
-                                        <option selected value="sunlight">Sunlight</option>
-                                        <option value="sunlight-half-sade">Sunlight / Half shade</option>
-                                        <option value="half-shade">Half shade</option>
-                                        <option value="half-shade-shade">Half shade / Shade</option>
+                                        <option defaultValue="sunlight">Sunlight</option>
+                                        <option value="sunlight / half shade">Sunlight / Half shade</option>
+                                        <option value="half shade">Half shade</option>
+                                        <option value="half shade / shade">Half shade / Shade</option>
                                         <option value="shade">Shade</option>
                                     </select>
 
