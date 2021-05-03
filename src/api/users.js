@@ -31,19 +31,19 @@ const updateMyProfile = ({ name, surname, password, oldPassword }) => {
 
 //Admins
 const createUser = ({ name, surname, email, role, password }) => {
-    return axios.post('/manage', { name, surname, email, role, password });
+    return axios.post('/manage/users', { name, surname, email, role, password });
 }
 
 const fetchAllUsers = () => {
-    return axios.get('/manage');
+    return axios.get('/manage/users');
 }
 
 const updateUser = ({ place, selectedUser, name, surname, role, email }) => {
-    return axios.patch('/manage', { place, selectedUser, name, surname, role, email });
+    return axios.patch('/manage/users', { place, selectedUser, name, surname, role, email });
 }
 
 const deleteUser = ({ email }) => {
-    return axios.delete('/manage', { data: { email } });
+    return axios.delete('/manage/users', { data: { email } });
 }
 
 export {
