@@ -10,9 +10,7 @@ class AddPlantForm extends Component {
         this.state = {
             form_page: 1,
 
-            daylight_amount: '',
-
-            fertilizer_amount: '',
+            fertilizer_amount: 'plentiful',
             fertilizing_frequency: '',
 
             information_description: '',
@@ -21,7 +19,7 @@ class AddPlantForm extends Component {
 
             plantname: '',
             watering_frequency: '',
-            lighting_requirements: '',
+            lighting_requirements: 'sunlight',
 
             placement_building: '',
             placement_floor: '',
@@ -32,7 +30,7 @@ class AddPlantForm extends Component {
         this.plantnameInput = React.createRef();
     }
 
-    handleSubmit(event) {
+    handleSubmit = async (event) => {
         event.preventDefault();
 
         const plantObject = {
@@ -42,15 +40,18 @@ class AddPlantForm extends Component {
                 placement: this.state.information_placement,
                 watering: this.state.information_watering
             },
+            placement: {
+                building: this.state.placement_building,
+                floor: this.state.placement_floor,
+                room: this.state.placement_room
+            },
             waterFreq: this.state.watering_frequency,
             fertFreq: this.state.fertilizing_frequency,
             fertAmount: this.state.fertilizer_amount,
             lightAmount: this.state.lighting_requirements
         };
 
-        console.log(plantObject);
-
-        alert('submitting')
+        await this.props.onSubmitHandler(plantObject);
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
