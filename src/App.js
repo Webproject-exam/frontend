@@ -24,8 +24,12 @@ import Postpone from './components/Postpone/Postpone';
 
 
 class App extends Component {
-  render() {
+  plantPage = () => {
+    const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage);
+    return (<IndividualPlantHOC />);
+}
 
+  render() {
     const MyProfileWithHOC = withUserBackEnd(MyProfile);
     const ForgotPassHOC = forgotBackend(ForgotPasswordEmailForm);
     const NavBarHOC = navBarBackend(NavBar);
@@ -63,6 +67,7 @@ class App extends Component {
                   <Route exact path="/plants">
                     <PlantListHOC />
                   </Route>
+                  <Route exact path="/plants/:id" render={this.plantPage} />
                   <Route exact path="/">
                     <AboutPage />
                   </Route>
