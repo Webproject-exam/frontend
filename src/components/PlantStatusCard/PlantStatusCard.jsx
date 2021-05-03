@@ -19,11 +19,11 @@ function PlantStatusCard(props) {
                     <li>
                         <span className="bold">Placement:</span> {props.plant.placement.building} – {props.plant.placement.floor} – {props.plant.placement.room}
                     </li>}
-                {props.plant.watering.frequency &&
+                {props.plant.watering.waterFrequency &&
                     <li>
                         <span className="bold">Watering frequency:</span> every {formatDistanceStrict(props.plant.watering.waterFrequency, 0, {unit: 'day'})}
                     </li>}
-                {props.plant.watering.next &&
+                {props.plant.watering.waterNext &&
                     <li>
                         <span className="bold">Next watering:</span> {myTimeConverter(props.plant.watering.waterNext)}
                     </li>}
