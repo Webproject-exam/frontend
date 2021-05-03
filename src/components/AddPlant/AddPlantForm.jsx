@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import Button from '../Button/Button';
-<<<<<<< Updated upstream
 import './AddPlantForm.css';
-import { isEmpty } from '../../helpers/validation';
+import Button from '../Button/Button';
 import UploadFile from './UploadFile';
-=======
-import './AddPlantForm.css'
-import { isEmpty } from '../../helpers/validation'
 import { convertDaysToMilliseconds } from '../../helpers/timeConverter'
->>>>>>> Stashed changes
+import { isEmpty } from '../../helpers/validation';
 
 class AddPlantForm extends Component {
     constructor(props) {
