@@ -21,7 +21,11 @@ class AddPlantForm extends Component {
 
             plantname: '',
             watering_frequency: '',
-            lighting_requirements: ''
+            lighting_requirements: '',
+
+            placement_building: '',
+            placement_floor: '',
+            placement_room: '',
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handlePageChange = this.handlePageChange.bind(this);
@@ -60,7 +64,7 @@ class AddPlantForm extends Component {
     }
 
     handlePageChange() {
-        if (isEmpty(this.state.plantname)) {
+        if (isEmpty(this.state.plantname) && isEmpty(this.state.placement_building) && isEmpty(this.state.placement_floor) && isEmpty(this.state.placement_room)) {
             (this.state.form_page === 1) ? this.setState({ form_page: 2 }) : this.setState({ form_page: 1 })
         } else {
             this.plantnameInput.current.focus();
@@ -88,6 +92,39 @@ class AddPlantForm extends Component {
                                         autoFocus
                                         type="text"
                                         value={this.state.plantname}
+                                    />
+
+                                    <label htmlFor="placement_building">Building</label>
+                                    <input
+                                        id="placement_building"
+                                        name="placement_building"
+                                        onChange={this.handleInputChange}
+                                        placeholder="The builing where the plant is"
+                                        required
+                                        type="text"
+                                        value={this.state.placement_building}
+                                    />
+
+                                    <label htmlFor="placement_floor">Floor</label>
+                                    <input
+                                        id="placement_floor"
+                                        name="placement_floor"
+                                        onChange={this.handleInputChange}
+                                        placeholder="what floor is the plant on?"
+                                        required
+                                        type="number"
+                                        value={this.state.placement_floor}
+                                    />
+
+                                    <label htmlFor="placement_room">Room</label>
+                                    <input
+                                        id="placement_room"
+                                        name="placement_room"
+                                        onChange={this.handleInputChange}
+                                        placeholder="What room is the plant in?"
+                                        required
+                                        type="text"
+                                        value={this.state.placement_room}
                                     />
 
                                     <label htmlFor="information_description">General Description</label>

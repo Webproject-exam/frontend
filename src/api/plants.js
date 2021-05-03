@@ -14,5 +14,6 @@ const createPlant = () => {
 
 export {
     fetchAllPlants,
-    fetchPlant
+    fetchPlant,
+    createPlant
 };
