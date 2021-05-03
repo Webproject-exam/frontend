@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './AddPlantForm.css';
 import Button from '../Button/Button';
 import UploadFile from './UploadFile';
-import { convertDaysToMilliseconds } from '../../helpers/timeConverter'
 import { isEmpty } from '../../helpers/validation';
 
 class AddPlantForm extends Component {

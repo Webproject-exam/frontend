@@ -6,7 +6,7 @@
 .big-number {
     color: var(--primary);
     display: block;
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .big-number.orange {
