@@ -1,8 +1,8 @@
 // Code from https://github.com/carlosvicient/on-campus-tracker/blob/feature/fullstackv1/src/helpers/Auth.js
 // and https://codesandbox.io/s/q9m26noky6?file=/src/helpers/AuthContext.js:0-638
 import React from 'react';
-import { login, tokenRevoke } from '../api/users';
-import { clear, read, store, storeExpiry } from './refresh-token';
+import { login, tokenRefresh, tokenRevoke } from '../api/users';
+import { clear, read, store, storeExpiry, timeToUpdate } from './refresh-token';
 
 const INITIAL_STATE = { auth: false, token: null, role: null };
 
@@ -51,6 +51,25 @@ class AuthProvider extends React.Component {
         }
     };
 
+    refreshToken = async () => {
+        const auth = read("auth");
+        if (auth === "true") {
+            if (timeToUpdate() === true) {
+                const res = await tokenRefresh();
+                const token = res.data.jwtToken;
+                storeExpiry("token", token, true);
+                this.setState({ token }, () => {
+                    store("token", token)
+                    store("auth", true)
+                });
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
     isAuthFunc = () => {
         return this.state.auth || read("token") != null;
     };
@@ -73,7 +92,8 @@ class AuthProvider extends React.Component {
                     role: this.state.role,
                     isRoleSet: this.isRoleSet,
                     login: this.login,
-                    logout: this.logout
+                    logout: this.logout,
+                    refreshToken: this.refreshToken
                 }}
             >
                 {this.props.children}
