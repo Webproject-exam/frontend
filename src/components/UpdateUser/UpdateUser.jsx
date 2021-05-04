@@ -233,7 +233,7 @@ class UpdateUserForm extends Component {
     render() {
         return (
             <>
-                <div className="container">
+                <div className="container max-width">
                     <form ref={this.form} onSubmit={this.handleSubmit} method="POST">
                         <fieldset>
                             <legend>Update {this.pronoun} user information</legend>

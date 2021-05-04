@@ -42,7 +42,7 @@ function Popup(props) {
                 }
 
                 {popupVariant === 'delete' &&
-                    <div className="container">
+                    <div className="container max-width">
                         <p>Are you sure you want to delete the user <span className="bold">{user.name} {user.surname}</span>?</p>
                         <p className="low-emphasis-text">This action can not be undone!</p>
 
