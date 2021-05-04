@@ -62,7 +62,7 @@ function Nav(props) {
     return (
         <nav className="navbar">
             <h1>
-                <Link to="/plants">Plants at Mustad</Link>
+                <Link to="/plants">Plantrol</Link>
             </h1>
 
             <div className="nav-links">
