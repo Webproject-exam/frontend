@@ -8,7 +8,7 @@ function PlantList(props) {
         <>
             <Header heading="Overview"/>
             <ul className="plant-list">
-                {plants.map((plants) => (<PlantListItem key={plants.name} plant={plants}/>))}
+                {plants.map((plants) => (<PlantListItem key={plants._id} plant={plants}/>))}
             </ul>
         </>
     );
