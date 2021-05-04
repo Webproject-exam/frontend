@@ -25,9 +25,11 @@ import UserListItem from '../UserListItem/UserListItem';
 
 function UserList({ users, handleDeleteClick, handleEditClick }) {
     return (
-        <ul className="user-list">
+        <table className="user-list">
+            <tbody>
             {users.map((users) => (<UserListItem handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} key={users.email} user={users} />))}
-        </ul>
+            </tbody>
+        </table>
     );
 }
 
