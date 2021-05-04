@@ -38,9 +38,9 @@ function PlantStatusCard(props) {
                         <span className="bold">Next watering:</span> {myTimeConverter(props.plant.watering.waterNext)}
                     </li>
 
-                    {props.plant.watering.responsible &&
+                    {props.plant.watering.waterAmount &&
                         <li>
-                            <span className="bold">To be watered by:</span> {props.plant.watering.responsible}
+                            <span className="bold">Watering amount:</span> {props.plant.watering.waterAmount}
                         </li>}
 
                     {props.plant.watering.lastWateredBy &&
@@ -71,20 +71,24 @@ function PlantStatusCard(props) {
                     </li>
 
                     {props.plant.fertilization.lastPostponed &&
-                    <li>
-                        <span className="bold">Fertilization was last postponed:</span> {format(parseISO(props.plant.fertilization.lastPostponed), 'PPP')}
-                    </li>}
+                        <li>
+                            <span className="bold">Fertilization was last postponed:</span> {format(parseISO(props.plant.fertilization.lastPostponed), 'PPP')}
+                        </li>}
 
                     {props.plant.fertilization.lastPostponedReason &&
-                    <li>
-                        <span className="bold">Reasoning for the last postponement:</span> "{props.plant.fertilization.lastPostponedReason}"
-                    </li>}
+                        <li>
+                            <span className="bold">Reasoning for the last postponement:</span> "{props.plant.fertilization.lastPostponedReason}"
+                        </li>}
                 </ul>
             </section>
 
             <section>
                 <h3>Other</h3>
                 <ul>
+                    {props.plant.responsible &&
+                        <li>
+                            <span className="bold">Responsible:</span> {props.plant.watering.responsible}
+                        </li>}
                     <li>
                         <span className="bold">Recommended lighting: </span> {props.plant.lighting}
                     </li>
