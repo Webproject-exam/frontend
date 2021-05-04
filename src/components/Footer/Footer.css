@@ -18,6 +18,7 @@
 .logo {
     grid-area: logo;
     place-self: center;
+    max-width: 8rem;
 }
 
 .names {
