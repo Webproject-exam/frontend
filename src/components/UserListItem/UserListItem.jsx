@@ -36,14 +36,12 @@ function UserListItem({ user, handleDeleteClick, handleEditClick }) {
         <>
             <tr>
                 <td>{user.name} {user.surname}</td>
-                <td>Role: {user.role}</td>
-                <td>Email: {user.email}</td>
-                <td>
-                    <div className="user-list-item-buttons">
-                        <Button onClick={() => handleEditClick(user)} variant="secondary" label="edit" size="half" /> 
-                        <Button onClick={() => handleDeleteClick(user)} variant="danger" label="delete" size="half" />
-                    </div>
-                </td>
+                <td>{user.role}</td>
+                <td>{user.email}</td>
+                <td><Button onClick={() => handleEditClick(user)} variant="secondary" label="edit" size="half" /></td>
+                <td><Button onClick={() => handleDeleteClick(user)} variant="danger" label="delete" size="half" /></td>
+
+
             </tr>
         </>
     )
