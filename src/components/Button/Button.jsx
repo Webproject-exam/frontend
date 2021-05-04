@@ -14,14 +14,15 @@ import PropTypes from 'prop-types';
  */
 
 function Button(props) {
-    const { variant, type, onClick, disabled, label, size, active } = props;
+    const { variant, type, onClick, disabled, label, size, active, ariaLabel } = props;
 
     return (
         <button
             className={`button ${variant} ${size}-size ${active === true ? 'active' : ''}`}
             disabled={disabled}
             type={type}
-            onClick={onClick}>
+            onClick={onClick}
+            aria-label={ariaLabel}>
             {label.trim()}
         </button>
     )
@@ -47,6 +48,9 @@ Button.propTypes = {
 
     /** The text to display on the button. */
     label: PropTypes.string.isRequired,
+
+    /** aria label */
+    ariaLabel: PropTypes.string,
 
     /** The OnClick eventHandler. */
     onClick: PropTypes.func,

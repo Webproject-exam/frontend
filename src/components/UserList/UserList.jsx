@@ -1,6 +1,7 @@
-import './UserList.css';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import PropTypes from 'prop-types';
-import UserListItem from '../UserListItem/UserListItem';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import Button from '../Button/Button'
 
 /**
  * ## How it works
@@ -25,18 +26,31 @@ import UserListItem from '../UserListItem/UserListItem';
 
 function UserList({ users, handleDeleteClick, handleEditClick }) {
     return (
-        <table className="user-list">
-            <tbody>
-                <tr>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Email</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-                {users.map((users) => (<UserListItem handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} key={users.email} user={users} />))}
-            </tbody>
-        </table>
+        <Table>
+            <Thead>
+                <Tr>
+                    <Th>Name</Th>
+                    <Th>Role</Th>
+                    <Th>Email</Th>
+                    <Th>Operations</Th>
+                </Tr>
+            </Thead>
+            <Tbody>
+                {users.map((user) => (
+                    <Tr>
+                        <Td>{user.name} {user.surname}</Td>
+                        <Td>{user.role}</Td>
+                        <Td>{user.email}</Td>
+                        <Td>
+                            <div className="buttons-side-by-side">
+                                {user.role === "gardener" ? <Button onClick={() => handleEditClick(user)} variant="secondary" label="🖊️" size="half" aria-label="Edit"/> : <Button variant="secondary" label="🖊️" disabled={true} size="half" aria-label="Edit"/>}
+                                {user.role === "gardener" ? <Button onClick={() => handleDeleteClick(user)} variant="danger" label="🗑️" size="half" aria-label="Delete"/> : <Button variant="danger" label="🗑️" disabled={true} size="half" aria-label="Delete"/>}
+                            </div>
+                        </Td>
+                    </Tr>
+                ))}
+            </Tbody>
+        </Table>
     );
 }
 

@@ -152,18 +152,61 @@ li {
   list-style: none;
 }
 
-th, td {
-  border: 1px solid black;
-}
-
-tr:nth-child(even) {background-color: var(--gray5);}
-
 .low-emphasis-text {
   color: var(--gray2);
 }
 
 .bold {
   font-weight: bold;
+}
+
+/* responsive table */
+table {
+  background: #fff;
+  border-radius: .25rem;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  padding: 0 2%;
+}
+
+table button {
+  max-width: 50px;
+}
+
+table .buttons-side-by-side {
+  justify-content: flex-end;
+}
+
+td {
+  text-align: center;
+}
+
+thead th{
+  height: 2rem;
+  border-bottom: 1px solid var(--gray4);
+}
+
+tbody tr {
+  margin-bottom: 2%;
+}
+
+@media only screen and (max-width: 40em) {
+  table {
+    background: unset;
+    border-radius: unset;
+    box-shadow:unset;
+  }
+  
+  tbody td {
+    margin-bottom: .5rem;
+  }
+
+  tbody tr {
+    background: #fff;
+  border-radius: .25rem;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border: unset !important;
+  padding: .75em !important;
+  }
 }
 
 /* part of react toastify */
