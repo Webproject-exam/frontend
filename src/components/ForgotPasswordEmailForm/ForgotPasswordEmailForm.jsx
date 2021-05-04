@@ -88,7 +88,7 @@ class ForgotPasswordEmailForm extends Component {
 
     render() {
         return (
-            <div className="container forgot-password-email-form">
+            <div className="container forgot-password-email-form max-width">
                 <form ref={this.form} onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Forgot password</legend>

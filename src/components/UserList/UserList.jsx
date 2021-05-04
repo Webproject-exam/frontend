@@ -39,7 +39,7 @@ function UserList({ users, handleDeleteClick, handleEditClick }) {
                 {users.map((user) => (
                     <Tr key={user.email}>
                         <Td>{user.name} {user.surname}</Td>
-                        <Td>{user.role}</Td>
+                        <Td><span>{user.role}</span></Td>
                         <Td>{user.email}</Td>
                         <Td>
                             <div className="buttons-side-by-side">

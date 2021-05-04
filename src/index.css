@@ -194,6 +194,11 @@ tbody tr {
   margin-bottom: 2%;
 }
 
+td span {
+  text-transform: capitalize;
+}
+
+
 @media only screen and (max-width: 40em) {
   table {
     background: unset;
