@@ -11,7 +11,7 @@ import StatusCard from './components/StatusCard/StatusCard';
 import forgotBackend from './components/HOC/ForgotPassHOC';
 import navBarBackend from './components/HOC/NavBarHOC';
 import withUserBackEnd from './components/HOC/MyProfileHOC';
-import { AuthConsumer } from './helpers/Auth';
+import { AuthConsumer, AuthContext } from './helpers/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
 import AboutPage from './components/AboutPage/AboutPage';
@@ -24,6 +24,20 @@ import Postpone from './components/Postpone/Postpone';
 
 
 class App extends Component {
+  static contextType = AuthContext;
+  componentDidMount(){
+    this.refreshToken();
+    this.tokenRefresh = setInterval(() => this.refreshToken(), 300000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.tokenRefresh);
+  }
+
+  refreshToken = () => {
+    this.context.refreshToken();
+  }
+
   plantPage = () => {
     const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage);
     return (<IndividualPlantHOC />);
