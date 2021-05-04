@@ -9,6 +9,7 @@ import { fetchUser } from '../../api/users';
 function withUserBackEnd(WrappedComponent) {
     class MyProfileHOC extends Component {
         static contextType = AuthContext;
+        _isMounted = false;
         constructor(props) {
             super(props);
             this.state = {
@@ -21,7 +22,12 @@ function withUserBackEnd(WrappedComponent) {
         }
 
         async componentDidMount() {
+            this._isMounted = true;
             await this.fetchData();
+        }
+
+        componentWillUnmount() {
+            this._isMounted = false;
         }
 
         //The fetchData method gets the data from the back-end and saves the current user in the sate
@@ -29,11 +35,11 @@ function withUserBackEnd(WrappedComponent) {
             const res = await fetchUser();
 
             if (res.error) {
-                this.setState({
+                this._isMounted && this.setState({
                     error: res.error
                 })
             } else {
-                this.setState({
+                this._isMounted && this.setState({
                     myUser: res.data,
                     isLoading: false,
                     error: null
