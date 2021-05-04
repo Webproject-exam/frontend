@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { myTimeConverter } from '../../helpers/timeConverter'
 
 function PlantListItem({plant}) {
-    const location = `${plant.placement.building} ${plant.placement.floor} ${plant.placement.room}`;
+    const location = `${plant.placement.building} – #${plant.placement.floor} – ${plant.placement.room}`;
     return (
     <li>
         <div className="plant-container">
