@@ -37,7 +37,7 @@ function UserList({ users, handleDeleteClick, handleEditClick }) {
             </Thead>
             <Tbody>
                 {users.map((user) => (
-                    <Tr>
+                    <Tr key={user.email}>
                         <Td>{user.name} {user.surname}</Td>
                         <Td>{user.role}</Td>
                         <Td>{user.email}</Td>
