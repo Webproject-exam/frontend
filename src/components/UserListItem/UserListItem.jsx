@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
  */
 
 function UserListItem({ user, handleDeleteClick, handleEditClick }) {
-    return (<li>
+    /* return (<li>
         <div className="container userlist">
             <h2>{user.name} {user.surname}</h2>
             <h3>Role: {user.role}</h3>
@@ -30,7 +30,23 @@ function UserListItem({ user, handleDeleteClick, handleEditClick }) {
                 {user.role === "gardener" ? <Button onClick={() => handleDeleteClick(user)} variant="danger" label="delete" size="half" /> : <Button variant="danger" label="delete" disabled={true} size="half" />}
             </div>
         </div>
-    </li>)
+    </li>) */
+
+    return (
+        <>
+            <tr>
+                <td>{user.name} {user.surname}</td>
+                <td>Role: {user.role}</td>
+                <td>Email: {user.email}</td>
+                <td>
+                    <div className="user-list-item-buttons">
+                        <Button onClick={() => handleEditClick(user)} variant="secondary" label="edit" size="half" /> 
+                        <Button onClick={() => handleDeleteClick(user)} variant="danger" label="delete" size="half" />
+                    </div>
+                </td>
+            </tr>
+        </>
+    )
 }
 
 //#region JSDoc for Storybook & default props
