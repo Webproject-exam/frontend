@@ -132,7 +132,7 @@ class AddUserForm extends Component {
     render() {
         return (
             <>
-                <div className="container">
+                <div className="container max-width">
                     <form ref={this.form} onSubmit={this.handleSubmit} className="add-user-form">
                         <fieldset>
                             <legend>Add a new user</legend>

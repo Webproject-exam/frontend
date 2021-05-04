@@ -3,7 +3,7 @@ import './AddPlantForm.css';
 import Button from '../Button/Button';
 import UploadFile from './UploadFile';
 import { addDays } from 'date-fns';
-import { isEmpty } from '../../helpers/validation';
+/* import { isEmpty } from '../../helpers/validation'; */
 import { notifySuccess, notifyError } from '../../helpers/notification';
 
 class AddPlantForm extends Component {
@@ -14,19 +14,17 @@ class AddPlantForm extends Component {
 
             fertilizer_amount: 'plentiful',
             fertilizing_frequency: '',
-
             information_description: '',
+            information_nutrition: '',
             information_placement: '',
             information_watering: '',
-            information_nutrition: '',
-
-            plantname: '',
-            watering_frequency: '',
             lighting_requirements: 'sunlight',
-
             placement_building: '',
             placement_floor: '',
             placement_room: '',
+            plantname: '',
+            water_amount: '',
+            watering_frequency: '',
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handlePageChange = this.handlePageChange.bind(this);
@@ -58,7 +56,8 @@ class AddPlantForm extends Component {
             },
             watering: {
                 waterFrequency: waterFreq,
-                waterNext: waterNext
+                waterNext: waterNext,
+                waterAmount: this.state.water_amount
             },
             fertilization: {
                 fertFrequency: fertFreq,
@@ -83,19 +82,17 @@ class AddPlantForm extends Component {
 
                 fertilizer_amount: 'plentiful',
                 fertilizing_frequency: '',
-
                 information_description: '',
+                information_nutrition: '',
                 information_placement: '',
                 information_watering: '',
-                information_nutrition: '',
-
-                plantname: '',
-                watering_frequency: '',
                 lighting_requirements: 'sunlight',
-
                 placement_building: '',
                 placement_floor: '',
                 placement_room: '',
+                plantname: '',
+                water_amount: '',
+                watering_frequency: '',
             })
         }
     }
@@ -110,12 +107,8 @@ class AddPlantForm extends Component {
         });
     }
 
-    handlePageChange() {
-        if (isEmpty(this.state.plantname) && isEmpty(this.state.placement_building) && isEmpty(this.state.placement_floor) && isEmpty(this.state.placement_room)) {
-            (this.state.form_page === 1) ? this.setState({ form_page: 2 }) : this.setState({ form_page: 1 })
-        } else {
-            this.plantnameInput.current.focus();
-        }
+    handlePageChange = (page) => {
+        this.setState({ form_page: page });
     }
 
     render() {
@@ -157,7 +150,7 @@ class AddPlantForm extends Component {
                                         id="placement_floor"
                                         name="placement_floor"
                                         onChange={this.handleInputChange}
-                                        placeholder="what floor is the plant on?"
+                                        placeholder="What floor is the plant on?"
                                         required
                                         type="number"
                                         min="0"
@@ -176,57 +169,18 @@ class AddPlantForm extends Component {
                                         value={this.state.placement_room}
                                     />
 
-                                    <label htmlFor="information_description">General Description</label>
-                                    <textarea
-                                        id="information_description"
-                                        maxLength="200"
-                                        name="information_description"
-                                        onChange={this.handleInputChange}
-                                        placeholder="Enter a general description of the plant"
-                                        value={this.state.information_description}
-                                    />
-
-                                    <label htmlFor="information_placement">Placement Description</label>
-                                    <textarea
-                                        id="information_placement"
-                                        maxLength="200"
-                                        name="information_placement"
-                                        onChange={this.handleInputChange}
-                                        placeholder="Enter a placement description of the plant"
-                                        value={this.state.information_placement}
-                                    />
-
-                                    <label htmlFor="information_watering">Watering Description</label>
-                                    <textarea
-                                        id="information_watering"
-                                        maxLength="200"
-                                        name="information_watering"
-                                        onChange={this.handleInputChange}
-                                        placeholder="Enter a watering description of the plant"
-                                        value={this.state.information_watering}
-                                    />
-
-                                    <label htmlFor="information_nutrition">Nutrition Description</label>
-                                    <textarea
-                                        id="information_nutrition"
-                                        maxLength="200"
-                                        name="information_nutrition"
-                                        onChange={this.handleInputChange}
-                                        placeholder="Enter a nutrition description of the plant"
-                                        value={this.state.information_nutrition}
-                                    />
-
                                     <label htmlFor="plant_image">Upload a photo:</label>
                                     <UploadFile />
 
                                     <div className="add-plant-form page-indicators">
                                         <div className={"page-indicator-dot active"}></div>
-                                        <div className={"page-indicator-dot"} onClick={this.handlePageChange}></div>
+                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(2)}></div>
+                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(3)}></div>
                                     </div>
 
                                     <div className="buttons-side-by-side">
                                         <Button label="cancel" size="half" variant="secondary-outlined" />
-                                        <Button label="next" size="half" variant="secondary" onClick={this.handlePageChange} />
+                                        <Button label="next" size="half" variant="secondary" onClick={() => this.handlePageChange(2)} />
                                     </div>
                                 </>
                             }
@@ -247,6 +201,18 @@ class AddPlantForm extends Component {
                                         autoFocus
                                         value={this.state.watering_frequency}
                                     />
+
+                                    <label htmlFor="watering_amount">watering amount</label>
+                                    <select
+                                        id="watering_amount"
+                                        name="watering_amount"
+                                        onChange={this.handleInputChange}
+                                        value={this.state.watering_amount}
+                                    >
+                                        <option defaultValue="plentiful">Plentiful</option>
+                                        <option value="average">Average</option>
+                                        <option value="sparse">Sparse</option>
+                                    </select>
 
                                     <label htmlFor="fertilizing_frequency">fertilizing frequency</label>
                                     <input
@@ -288,15 +254,72 @@ class AddPlantForm extends Component {
                                     </select>
 
                                     <div className="add-plant-form page-indicators">
-                                        <div className={"page-indicator-dot"} onClick={this.handlePageChange}></div>
+                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(1)}></div>
+                                        <div className={"page-indicator-dot active"}></div>
+                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(3)}></div>
+                                    </div>
+
+                                    <div className="buttons-side-by-side">
+                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={() => this.handlePageChange(1)} />
+                                        <Button label="next" size="half" variant="secondary" type="button" onClick={() => this.handlePageChange(3)} />
+                                    </div>
+                                </>
+                            }
+
+                            {this.state.form_page === 3 &&
+                                <>
+                                    <label htmlFor="information_description">General Description</label>
+                                    <textarea
+                                        id="information_description"
+                                        maxLength="200"
+                                        name="information_description"
+                                        onChange={this.handleInputChange}
+                                        placeholder="Enter a general description of the plant"
+                                        value={this.state.information_description}
+                                    />
+
+                                    <label htmlFor="information_placement">Placement Description</label>
+                                    <textarea
+                                        id="information_placement"
+                                        maxLength="200"
+                                        name="information_placement"
+                                        onChange={this.handleInputChange}
+                                        placeholder="Enter a placement description of the plant"
+                                        value={this.state.information_placement}
+                                    />
+
+                                    <label htmlFor="information_watering">Watering Description</label>
+                                    <textarea
+                                        id="information_watering"
+                                        maxLength="200"
+                                        name="information_watering"
+                                        onChange={this.handleInputChange}
+                                        placeholder="Enter a watering description of the plant"
+                                        value={this.state.information_watering}
+                                    />
+
+                                    <label htmlFor="information_nutrition">Nutrition Description</label>
+                                    <textarea
+                                        id="information_nutrition"
+                                        maxLength="200"
+                                        name="information_nutrition"
+                                        onChange={this.handleInputChange}
+                                        placeholder="Enter a nutrition description of the plant"
+                                        value={this.state.information_nutrition}
+                                    />
+
+                                    <div className="add-plant-form page-indicators">
+                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(1)}></div>
+                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(2)}></div>
                                         <div className={"page-indicator-dot active"}></div>
                                     </div>
 
                                     <div className="buttons-side-by-side">
-                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={this.handlePageChange} />
-                                        <Button label="add new plant" size="half" variant="secondary" type="submit" />
+                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={() => this.handlePageChange(2)} />
+                                        <Button label="next" size="half" variant="secondary" type="submit"/>
                                     </div>
                                 </>
+
                             }
                         </fieldset>
                     </form>
