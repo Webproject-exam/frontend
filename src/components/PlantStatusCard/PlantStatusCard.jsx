@@ -6,6 +6,8 @@ import { parseISO } from 'date-fns/esm';
 
 function PlantStatusCard(props) {
     console.log(props.plant);
+    const fertDate = new Date(props.plant.fertilization.lastFertDate);
+    const waterDate = new Date(props.plant.watering.lastWateredDate);
 
     return (
         <div className="plant-status-card container">
@@ -42,6 +44,11 @@ function PlantStatusCard(props) {
                         <li>
                             <span className="bold">Watering amount:</span> {props.plant.watering.waterAmount}
                         </li>}
+                        
+                        {props.plant.watering.lastWateredDate &&
+                        <li>
+                            <span className="bold">Last watered:</span> {format(waterDate, 'PPP')}
+                        </li>}
 
                     {props.plant.watering.lastWateredBy &&
                         <li>
@@ -70,6 +77,21 @@ function PlantStatusCard(props) {
                         <span className="bold">Next fertilization: </span> {myTimeConverter(props.plant.fertilization.fertNext)}
                     </li>
 
+                    {props.plant.fertilization.fertAmount &&
+                        <li>
+                            <span className="bold">Fertilizer amount:</span> {props.plant.fertilization.fertAmount}
+                        </li>}
+
+                    {props.plant.fertilization.lastFertDate &&
+                        <li>
+                            <span className="bold">Last fertilized:</span> {format(fertDate, 'PPP')}
+                        </li>}
+
+                    {props.plant.fertilization.lastFertBy &&
+                        <li>
+                            <span className="bold">Last fertilized by:</span> {props.plant.fertilization.lastFertBy}
+                        </li>}
+
                     {props.plant.fertilization.lastPostponed &&
                         <li>
                             <span className="bold">Fertilization was last postponed:</span> {format(parseISO(props.plant.fertilization.lastPostponed), 'PPP')}
@@ -87,7 +109,7 @@ function PlantStatusCard(props) {
                 <ul>
                     {props.plant.responsible &&
                         <li>
-                            <span className="bold">Responsible:</span> {props.plant.watering.responsible}
+                            <span className="bold">Responsible:</span> {props.plant.responsible}
                         </li>}
                     <li>
                         <span className="bold">Recommended lighting: </span> {props.plant.lighting}
