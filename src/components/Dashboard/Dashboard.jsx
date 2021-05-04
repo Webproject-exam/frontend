@@ -3,7 +3,8 @@ import Button from '../Button/Button';
 import './Dashboard.css';
 import DashboardPlants from './DashboardPlants';
 import DashboardUsers from './DashboardUsers';
-import Header from '../Header/Header'
+import Header from '../Header/Header';
+import { AuthContext } from '../../helpers/Auth';
 
 /**
  * ## How it works
@@ -22,12 +23,17 @@ import Header from '../Header/Header'
  * is done by rendering `<Dashboard />` wrapped by `<AdminRoute></AdminRoute>` )
  */
 class Dashboard extends Component {
+    static contextType  = AuthContext;
     constructor(props) {
         super(props);
         this.state = {
             plants: false,
             users: false
         }
+    }
+
+    componentDidMount(){
+        this.context.refreshToken();
     }
 
     //open the form for adding a user. If the user list is shown, close it.

@@ -1,5 +1,5 @@
 // https://medium.com/swlh/how-to-implement-refresh-token-functionality-front-end-eff58ce52564
-const expiryDuration = 240000;
+const expiryDuration = 600000;
 const LOCAL_STORAGE_PREFIX = 'plants-';
 
 const store = (key, value) => {
@@ -39,9 +39,15 @@ const readExpiry = (key) => {
     return { response: null, expired: true };
 };
 
+const timeToUpdate = () => {
+    const expiry = readExpiry("token");
+    console.log(expiry.expired);
+    return expiry.expired;
+}
+
 const clear = () => {
     window.localStorage.clear();
     return null;
 }
 
-module.exports = { clear, storeExpiry, readExpiry, read, store };
+module.exports = { clear, storeExpiry, readExpiry, read, store, timeToUpdate };
