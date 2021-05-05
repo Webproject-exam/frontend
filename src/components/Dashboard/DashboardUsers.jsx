@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import AddUserForm from '../AddUser/AddUserForm';
 import Button from '../Button/Button'
-import UserList from '../UserList/UserList';
+import UserTable from '../UserTable/UserTable';
 import './Dashboard.css';
 import addUserBackend from '../HOC/AddItemFormHOC';
-import withUsersFetch from '../HOC/UserListHOC';
+import withUsersFetch from '../HOC/UserTableHOC';
 
 /**
  * ## How it works
@@ -27,7 +27,7 @@ class DashboardUsers extends Component {
         super(props);
         this.state = {
             addUser: false,
-            seeUsers: false
+            seeUsers: true
         }
     }
 
@@ -49,17 +49,14 @@ class DashboardUsers extends Component {
 
 
     render() {
-        const UserListWithHOC = withUsersFetch(UserList);
+        const UserTableWithHOC = withUsersFetch(UserTable);
         const AddUserWithHOC = addUserBackend(AddUserForm);
 
         return (
             <>
-                <div className="user-list-item-buttons">
-                    <Button onClick={this.toggleAddUser} variant="secondary-outlined" label="Add a user" size="half" active={this.state.addUser} />
-                    <Button onClick={this.toggleAllUsers} variant="secondary-outlined" label="See all users" size="half" active={this.state.seeUsers} />
-                </div>
+                <Button onClick={this.toggleAddUser} variant="fab" label="+ Add user" size="auto" active={this.state.addUser} />
                 {this.state.addUser && <AddUserWithHOC place="users" />}
-                {this.state.seeUsers && <UserListWithHOC />}
+                <UserTableWithHOC />
             </>
         );
     }

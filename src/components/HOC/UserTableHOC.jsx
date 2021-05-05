@@ -6,7 +6,7 @@ import { fetchAllUsers, deleteUser, forgot } from '../../api/users';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 
 function withUsersFetch(WrappedComponent) {
-    class UserListHOC extends Component {
+    class UserTableHOC extends Component {
         static contextType = AuthContext;
         _isMounted = false;
         constructor(props) {
@@ -144,7 +144,7 @@ function withUsersFetch(WrappedComponent) {
         }
     }
 
-    return UserListHOC
+    return UserTableHOC
 }
 
 export default withUsersFetch;

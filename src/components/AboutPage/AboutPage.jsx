@@ -15,8 +15,8 @@ function AboutPage() {
                         <h1 className="heading">Plantrol</h1>
                         <p className="slogan">Controlling the plants every day helps you work, rest and play.</p>
                         <div className="buttons-side-by-side">
-                            <Link to="/plants"><Button label="see all plants" size="full" variant="secondary" /></Link>
                             <a href="#about-the-project"><Button label="learn more" size="full" variant="secondary-outlined" /></a>
+                            <Link to="/plants"><Button label="see all plants" size="full" variant="secondary" /></Link>
                         </div>
                     </div>
                 </div>
