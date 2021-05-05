@@ -1,5 +1,6 @@
 //https://medium.com/@pitipatdop/little-neat-trick-to-capture-click-outside-with-react-hook-ba77c37c7e82 
 //Updated version 17 April 2019 (by Олег Чулановский)
+/* https://stackoverflow.com/a/46586315 */
 
 import React, { useState, useRef, useEffect } from 'react';
 import './NavBar.css';
@@ -26,7 +27,12 @@ import { notifySuccess } from '../../helpers/notification';
 
 function Nav(props) {
     const [open, setOpen] = useState(false);
+    const [isDesktop, setDesktop] = useState(window.innerWidth > 500);
     const node = useRef();
+
+    const updateMedia = () => {
+        setDesktop(window.innerWidth > 500);
+    };
 
     const handleMenu = () => {
         setOpen(!open);
@@ -59,47 +65,104 @@ function Nav(props) {
         };
     }, [open]);
 
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
+
     return (
-        <nav className="navbar">
-            <h1>
-                <Link to="/plants">Plantrol</Link>
-            </h1>
+        <nav className="navbar" aria-label="Main Navigation">
 
-            <div className="nav-links">
-                <NavLink exact to="/plants">Overview</NavLink>
-                <NavLink exact to="/">About</NavLink>
-            </div>
-
-            {!props.auth && (
-                <Link to="/login">
-                    <Button label="log in" />
-                </Link>
-            )}
-            {props.auth && (
+            {isDesktop ? (
                 <>
-                    <span>{props.role}</span>
-                    <div onClick={handleMenu} className="navbar-icon" ref={node}>
+                    <Link to="/plants">Plantrol</Link>
 
-                        <img src={accountCircle} alt="Account Circle icon" onClick={handleMenu} />
+                    <div className="nav-links">
+                        <NavLink exact to="/plants">Overview</NavLink>
+                        <NavLink exact to="/">About</NavLink>
+                    </div>
 
-                        {open &&
-                            <div className="navbar dropdown">
-                                <ul className="navbar dropdown-content">
-                                    <li onClick={handleMenu} className="dropdown-li">
-                                        <Link to="/profile">Profile</Link>
-                                    </li>
+                    <div className="navbar-account">
+                        {!props.auth && (
+                            
+                            /* Siden dette er link og button så får den to TAB-s */
+                            <Link to="/login">
+                                <Button label="log in" />
+                            </Link>
+                        )}
 
-                                    {props.role === "manager" &&
-                                        <li onClick={handleMenu}>
-                                            <Link to="/dashboard">Dashboard</Link>
-                                        </li>}
+                        {props.auth && (
+                            <>
+                                <span>{props.role}</span>
+                                <div onClick={handleMenu} className="navbar-icon" ref={node}>
 
-                                    <li onClick={function () { handleLogOut(); handleMenu(); }}>
-                                        <Link to="/login">Log out</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        }
+                                    <button class="hidden" aria-haspopup="true" aria-expanded="false"><img src={accountCircle} alt="Account Circle icon" onClick={handleMenu} /></button>
+
+                                    {open &&
+                                        <div className="navbar dropdown">
+                                            <ul className="navbar dropdown-content">
+                                                <li onClick={handleMenu} className="dropdown-li">
+                                                    <Link to="/profile">Profile</Link>
+                                                </li>
+
+                                                {props.role === "manager" &&
+                                                    <li onClick={handleMenu}>
+                                                        <Link to="/manage">Manage Page</Link>
+                                                    </li>}
+
+                                                <li onClick={function () { handleLogOut(); handleMenu(); }}>
+                                                    <Link to="/login">Log out</Link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </>
+            ) : (
+                /* mobil */
+                <>
+                    <div className="nav-links">
+                        <NavLink exact to="/plants">Overview</NavLink>
+                        <NavLink exact to="/">About</NavLink>
+                    </div>
+
+                    <div className="navbar-account">
+                        {!props.auth && (
+                            <Link to="/login">
+                                <Button label="log in" />
+                            </Link>
+                        )}
+
+                        {props.auth && (
+                            <>
+                                <div onClick={handleMenu} className="navbar-icon" ref={node}>
+
+                                    <img src={accountCircle} alt="Account Circle icon" onClick={handleMenu} />
+
+                                    {open &&
+                                        <div className="navbar dropdown">
+                                            <ul className="navbar dropdown-content">
+                                                <li onClick={handleMenu} className="dropdown-li">
+                                                    <Link to="/profile">Profile</Link>
+                                                </li>
+
+                                                {props.role === "manager" &&
+                                                    <li onClick={handleMenu}>
+                                                        <Link to="/manage">Manage Page</Link>
+                                                    </li>}
+
+                                                <li onClick={function () { handleLogOut(); handleMenu(); }}>
+                                                    <Link to="/login">Log out</Link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+                            </>
+                        )}
                     </div>
                 </>
             )}
