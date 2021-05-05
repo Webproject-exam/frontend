@@ -10,7 +10,6 @@
 }
 
 .navbar .nav-links {
-    margin: 0 0 0 auto;
     font-size: 1.25em;
 }
 
@@ -22,21 +21,20 @@
 .navbar span {
     color: var(--background);
     margin-left: auto;
+    display: inline;
     text-transform: capitalize;
     user-select: none;
-}
-
-.navbar h1 {
-    color: var(--background);
-    font-size: large;
-    padding: 0 0.9em;
 }
 
 .navbar a {
     color: var(--background);
     padding: 0 0.9em;
     text-decoration: none;
-    margin-left: auto;
+}
+
+.navbar-account {
+    display: flex;
+    align-items: center;
 }
 
 .navbar a button {
@@ -51,9 +49,7 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: auto 0;
-    padding: auto;
+    /* justify-content: flex-start; */
 }
 
 .navbar ul li {
@@ -82,7 +78,7 @@
     background: var(--gray6);
     border-radius: 10px;
     box-shadow: 0px 1em 2em 0px rgba(0, 0, 0, 0.3);
-    /* min-width: 160px; */
+    min-width: 10rem;
     position: absolute;
     right: 0;
     z-index: 1;
@@ -94,7 +90,6 @@
 }
 
 .navbar.dropdown-content a {
-    border-radius: 10px;
     color: black;
     display: block;
     font-size: 1.5em;
@@ -111,4 +106,14 @@
 .navbar-icon img {
     height: 100%;
     padding: 0 0.9em;
+}
+
+.hidden {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    min-height: 44px;
 }

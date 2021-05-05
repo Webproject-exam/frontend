@@ -64,7 +64,7 @@ class App extends Component {
                   <PrivateRoute exact path="/profile">
                     <MyProfileWithHOC />
                   </PrivateRoute>
-                  <PrivateRoute exact path="/dashboard">
+                  <PrivateRoute exact path="/manage">
                     <AdminRoute >
                       <Dashboard />
                     </AdminRoute>
