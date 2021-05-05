@@ -27,7 +27,7 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            plants: false,
+            plants: true,
             users: false
         }
     }
@@ -37,21 +37,12 @@ class Dashboard extends Component {
     }
 
     //open the form for adding a user. If the user list is shown, close it.
-    togglePlants = () => {
+    toggleTab = () => {
         this.setState({
             plants: !this.state.plants,
-            users: false
+            users: !this.state.users
         });
     }
-
-    //show a list of all users stored in the database. If the form for adding a user is open, close it.
-    toggleUsers = () => {
-        this.setState({
-            users: !this.state.users,
-            plants: false
-        });
-    }
-
 
     render() {
 
@@ -59,8 +50,8 @@ class Dashboard extends Component {
             <>
             <Header heading="Manager Page"/>
                 <div className="user-list-item-buttons">
-                    <Button onClick={this.togglePlants} variant="secondary-outlined" label="Plants" size="half" active={this.state.plants} />
-                    <Button onClick={this.toggleUsers} variant="secondary-outlined" label="Users" size="half" active={this.state.users} />
+                    <Button onClick={this.toggleTab} variant="text-only-tab" label="Plants" size="auto" active={this.state.plants} />
+                    <Button onClick={this.toggleTab} variant="text-only-tab" label="Users" size="auto" active={this.state.users} />
                 </div>
                 {this.state.plants && <DashboardPlants />}
                 {this.state.users && <DashboardUsers />}

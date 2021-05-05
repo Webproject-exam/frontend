@@ -5,16 +5,16 @@
 .button,
 .LinkTest {
   font: bold 1em 'Roboto';
-  
+
   /* Typography*/
   color: white;
   text-transform: uppercase;
-  
+
   /* Box model */
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   margin: .5rem 0;
   padding: .9em 0.4em;
-  
+
   /* Visual */
   border-radius: 10px;
   border: none;
@@ -70,13 +70,12 @@
 
 .secondary-outlined:enabled {
   background: var(--background);
-  border: 2px solid var(--secondary);
+  box-shadow: 0 0 0 2pt var(--secondary) inset;
   color: var(--secondary);
 }
 
 .secondary-outlined:enabled:hover {
-  background: var(--background);
-  border: 2px solid var(--sDark);
+  box-shadow: 0 0 0 2pt var(--sDark) inset;
   color: var(--sDark);
 }
 
@@ -90,6 +89,7 @@
   background: var(--secondary);
   text-decoration: underline;
   color: var(--background);
+  box-shadow: unset;
 }
 
 /*
@@ -110,13 +110,13 @@
 
 .danger-outlined {
   background: var(--background);
-  border: 2px solid var(--red);
+  outline: 2px solid var(--red);
   color: var(--red);
 }
 
 .danger-outlined:enabled:hover {
   background: var(--background);
-  border: 2px solid var(--rDark);
+  outline: 2px solid var(--rDark);
   color: var(--rDark);
 }
 
@@ -146,6 +146,34 @@
 }
 
 /*
+* BUTTONS TEXT-ONLY-TAB
+*/
+
+.text-only-tab {
+  background: transparent;
+  color: var(--gray1);
+  padding: 0;
+  min-height: 44px;
+  transition: .05s;
+  font-weight: normal;
+  font-size: 2rem;
+  opacity: 75%;
+}
+
+.text-only-tab.active {
+  opacity: 100%;
+}
+
+.text-only-tab:enabled:hover {
+  text-decoration: underline;
+  box-shadow: unset;
+}
+
+.text-only-tab:active {
+  transform: translateY(1px);
+}
+
+/*
 * BUTTONS FERTILIZATION
 */
 
@@ -155,6 +183,28 @@
 
 .tertiary:enabled:hover {
   background: var(--tDark);
+}
+
+/*
+* FAB
+*/
+
+.fab {
+  background: var(--secondary);
+  position: fixed;
+  right: 2.5vw;
+  bottom: 60px;
+  z-index: 1;
+}
+
+.fab:enabled:hover {
+  background: var(--sDark);
+  box-shadow: unset;
+}
+
+.fab:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
 }
 
 /*
