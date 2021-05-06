@@ -13,7 +13,7 @@
   /* Box model */
   box-sizing: border-box;
   margin: .5rem 0;
-  padding: .9em 0.4em;
+  padding: .9em 1rem;
 
   /* Visual */
   border-radius: 10px;

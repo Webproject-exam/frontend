@@ -27,7 +27,7 @@ function IndividualPlantPage(props) {
                 </div>
 
                 <div className="buttons-and-status-card">
-                    <PlantStatusCard plant={plant} />
+                    <div className="status-card"><PlantStatusCard plant={plant} /></div>
 
                     <div className="buttons-group">
                         <div className="buttons-side-by-side">

@@ -7,7 +7,7 @@ import { startOfDay, isToday, isTomorrow, isYesterday, formatDistanceToNow, subD
  */
 function myTimeConverter(date) {
 
-    let dateAsDay = startOfDay(date);
+    let dateAsDay = startOfDay(new Date(date));
 
     if (isToday(dateAsDay))
         return "today";
