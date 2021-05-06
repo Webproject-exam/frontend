@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { notifySuccess, notifyError } from '../../helpers/notification';
+import { notifySuccess } from '../../helpers/notification';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
 import { addDays, startOfDay } from 'date-fns'
@@ -45,12 +45,17 @@ function withPlantsFetch(WrappedComponent) {
         }
 
         //TO DO: koble sammen denne med back-end (PATCH plante med ID)
-        //TO DO 2: be om bekreftelse fra bruker 
+        //TO DO 2: be om bekreftelse fra bruker før planten patches
         handleWateringClick = (plant) => {
             let nextWateringDate = startOfDay(addDays(Date.now(), plant.watering.waterFrequency))
 
-            //denne datoen skal bli waterNext til planten med tilhørende ID (plant._id her)
-            console.log(`Plante med id ${plant._id} sin waterNext skal bli: ${nextWateringDate}`)
+            if (window.confirm(`Do you want to water the plant "${plant.name}"?`)) {
+                
+                //denne datoen skal bli waterNext til planten med tilhørende ID (plant._id her)
+                console.log(`Plante med id "${plant._id}" sin waterNext skal bli: "${nextWateringDate}"`)
+
+                notifySuccess(`The plant "${plant.name}" has been watered. 💧`)
+              }
         }
 
         render() {

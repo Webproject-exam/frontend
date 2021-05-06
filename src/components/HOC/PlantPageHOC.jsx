@@ -3,6 +3,9 @@ import { fetchPlant } from '../../api/plants';
 import { AuthContext } from '../../helpers/Auth';
 import Loading from '../Loading/Loading';
 import { withRouter, Redirect } from 'react-router-dom';
+import { addDays, startOfDay } from 'date-fns';
+import { notifySuccess } from '../../helpers/notification';
+import Postpone from '../Postpone/Postpone';
 
 function fetchPlantBackend(WrappedComponent) {
     class IndividualPlantHOC extends Component {
@@ -15,7 +18,9 @@ function fetchPlantBackend(WrappedComponent) {
                 plant: [],
                 isLoading: true,
                 error: null,
-                redirect: ''
+                redirect: '',
+                isPostponing: false,
+                postponingType: ''
             }
         }
 
@@ -52,6 +57,37 @@ function fetchPlantBackend(WrappedComponent) {
             this._isMounted = false;
         }
 
+        handleWateringClick = () => {
+            let nextWateringDate = startOfDay(addDays(Date.now(), this.state.plant.watering.waterFrequency))
+
+            if (window.confirm(`Do you want to water the plant "${this.state.plant.name}"?`)) {
+
+                //denne datoen skal bli waterNext til planten med tilhørende ID (plant._id her)
+                console.log(`Plante med id "${this.state.plantId}" sin waterNext skal bli: "${nextWateringDate}"`)
+
+                notifySuccess(`The plant "${this.state.plant.name}" has been watered. 💧`)
+            }
+        }
+
+        handlefertilizationClick = () => {
+            let nextFertilizationDate = startOfDay(addDays(Date.now(), this.state.plant.fertilization.fertFrequency))
+
+            if (window.confirm(`Do you want to fertilize the plant "${this.state.plant.name}"?`)) {
+
+                //denne datoen skal bli fertNext til planten med tilhørende ID (plant._id her)
+                console.log(`Plante med id "${this.state.plantId}" sin fertNext skal bli: "${nextFertilizationDate}"`)
+
+                notifySuccess(`The plant "${this.state.plant.name}" has been fertilized. 🌱`)
+            }
+        }
+
+        handlePostponeClick = (type) => {
+            this.setState({
+                isPostponing: true,
+                postponingType: type
+            });
+        }
+
         render() {
             const auth = this.context.isAuth;
             if (this.state.redirect) {
@@ -63,7 +99,19 @@ function fetchPlantBackend(WrappedComponent) {
             }
 
             return (
-                <WrappedComponent plant={this.state.plant} isAuth={auth} {...this.props} />
+                <>
+                    <WrappedComponent
+                        plant={this.state.plant}
+                        isAuth={auth}
+                        handleWateringClick={this.handleWateringClick}
+                        handlefertilizationClick={this.handlefertilizationClick}
+                        handlePostponeClick={this.handlePostponeClick}
+                        {...this.props} />
+
+                    {this.state.isPostponing &&
+
+                        <Postpone type={this.state.postponingType} name={this.state.plant.name}/>}
+                </>
             );
         }
     }

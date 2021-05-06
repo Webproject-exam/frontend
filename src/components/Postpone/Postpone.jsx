@@ -67,7 +67,7 @@ class Postpone extends Component {
                             maxLength="200"
                             name="reason_postponement"
                             onChange={this.handleInputChange}
-                            placeholder="Enter a description of the reasoning behind the postponement. The reasoning can help others wanting to water the plant"
+                            placeholder="Enter a description of the reasoning behind the postponement. The reasoning can help others wanting to take care of the plant"
                             value={this.state.reason_postponement}
                         />
 

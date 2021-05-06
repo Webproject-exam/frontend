@@ -5,7 +5,8 @@ import Button from '../Button/Button';
 import Header from '../Header/Header';
 
 function IndividualPlantPage(props) {
-    const { plant, isAuth } = props;
+    //Må bestemme oss om vi gjør dette i her eller linjen over
+    const { plant, isAuth, handleWateringClick, handlefertilizationClick, handlePostponeClick } = props;
 
     return (
         <>
@@ -32,19 +33,19 @@ function IndividualPlantPage(props) {
                     <div className="buttons-group">
                         <div className="buttons-side-by-side">
                             <Button label="request watering" variant="secondary" size="half" />
-                            <Button label="request fetilizer" variant="tertiary" size="half" />
+                            <Button label="request fertilizer" variant="tertiary" size="half" />
                         </div>
 
                         {isAuth &&
                             <>
                                 <div className="buttons-side-by-side">
-                                    <Button label="water this plant" variant="secondary" size="half" />
-                                    <Button label="fertilize this plant" variant="tertiary" size="half" />
+                                    <Button label="water this plant" variant="secondary" size="half" onClick={handleWateringClick}/>
+                                    <Button label="fertilize this plant" variant="tertiary" size="half" onClick={handlefertilizationClick}/>
                                 </div>
 
                                 <div className="buttons-side-by-side">
-                                    <Button label="postpone watering" variant="secondary" size="half" />
-                                    <Button label="postpone fetilizer" variant="tertiary" size="half" />
+                                    <Button label="postpone watering" variant="secondary" size="half" onClick={()=>handlePostponeClick('watering')}/>
+                                    <Button label="postpone fertilizer" variant="tertiary" size="half" onClick={()=>handlePostponeClick('fertilization')}/>
                                 </div>
                             </>}
                     </div>
