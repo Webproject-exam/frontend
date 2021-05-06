@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AddPlantForm from '../AddPlant/AddPlantForm';
 import Button from '../Button/Button';
 import addUserBackend from '../HOC/AddItemFormHOC';
+import plantListBackend from '../HOC/PlantListHOC';
+import PlantList from '../PlantTable/PlantTable';
 
 class DashboardPlants extends Component {
     constructor(props) {
@@ -28,14 +30,15 @@ class DashboardPlants extends Component {
 
     render() {
         const AddPlantWithHOC = addUserBackend(AddPlantForm);
+        const PlantTableHOC = plantListBackend(PlantList);
 
         return (
             <>
                 <div className="user-list-item-buttons">
                     <Button onClick={this.toggleAddPlant} variant="secondary-outlined" label="Add a plant" size="half" active={this.state.addPlant} />
-                    <Button onClick={this.toggleAllPlants} variant="secondary-outlined" label="See all plants" size="half" active={this.state.seePlants} />
                 </div>
                 {this.state.addPlant && <AddPlantWithHOC place="plants" />}
+                <PlantTableHOC />
             </>
         );
     }
