@@ -34,9 +34,7 @@ class DashboardPlants extends Component {
 
         return (
             <>
-                <div className="user-list-item-buttons">
-                    <Button onClick={this.toggleAddPlant} variant="secondary-outlined" label="Add a plant" size="half" active={this.state.addPlant} />
-                </div>
+                <Button onClick={this.toggleAddPlant} variant="fab" label=" + Add plant" size="auto" active={this.state.addPlant} />
                 {this.state.addPlant && <AddPlantWithHOC place="plants" />}
                 <PlantTableHOC />
             </>
