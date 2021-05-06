@@ -45,6 +45,8 @@ function withPlantsFetch(WrappedComponent) {
         }
 
         render() {
+            const auth = this.context.isAuth;
+            
             if (this.state.isLoading) {
                 return (<Loading />);
             }
@@ -52,7 +54,7 @@ function withPlantsFetch(WrappedComponent) {
             return (
                 <>
                     <Route exact path="/plants">
-                        <WrappedComponent plants={this.state.plants} {...this.props} />
+                        <WrappedComponent plants={this.state.plants} auth={auth} {...this.props} />
                     </Route>
                 </>
             );

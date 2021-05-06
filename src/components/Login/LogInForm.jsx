@@ -76,7 +76,7 @@ class LogInForm extends Component {
                 this.emailInput.current.focus();
                 notifyError("Wrong email and/or password. Please try again.")
             } else {
-                notifySuccess("You are now logged in.")
+                notifySuccess("You are now logged in. 🔓")
                 this.setState({ redirect: "/profile" });
             }
         } else {
@@ -124,8 +124,9 @@ class LogInForm extends Component {
                                     value={this.state.password}
                                 />
                                 <div className="buttons-side-by-side">
-                                    <Button type="submit" label="log in" size="half" variant="secondary" />
-                                    <Link to="/reset_password"><Button label="forgot password" size="full" variant="secondary-outlined" /></Link>
+                                <Button type="submit" label="log in" size="auto" variant="secondary" />
+                                    <Link to="/reset_password"><Button label="forgot password" size="auto" variant="secondary-outlined" /></Link>
+                                    
                                 </div>
                             </fieldset>
                         </form>

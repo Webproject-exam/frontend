@@ -5,7 +5,7 @@ import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { Link } from "react-router-dom";
 import { myTimeConverter } from '../../helpers/timeConverter'
 
-function PlantListItem({plant}) {
+function PlantListItem({plant, auth}) {
     const location = `${plant.placement.building} – #${plant.placement.floor} – ${plant.placement.room}`;
     return (
     <li>
@@ -26,7 +26,7 @@ function PlantListItem({plant}) {
                 <p>Lighting requirements: <b>{plant.lighting}</b>.</p>
                 <p>Fertilizer: <b>{plant.fertilization.fertAmount}</b></p>
             
-            <Button className="on-top" variant="text-only" label="water this plant" size="auto" />
+            {auth && (<Button className="on-top" variant="text-only" label="water this plant" size="auto" />)}
         </div>
         
     </li>
