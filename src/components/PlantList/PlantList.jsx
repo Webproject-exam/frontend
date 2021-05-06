@@ -8,7 +8,7 @@ class PlantList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sorting: 'watering>',
+            sorting: '',
             plants: []
         }
     }
@@ -32,14 +32,19 @@ class PlantList extends Component {
         const { auth, handleWateringClick } = this.props;
         const plants = this.state.plants;
         const sorting = this.state.sorting;
+
+        //sorting logic
         switch (sorting) {
             case 'fert>':
+                //Imminent Fertilization
                 plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
                 break;
+                //Name A-Z
             case 'name>':
                 plants.sort((a, b) => (a.name > b.name) ? 1 : -1);
                 break;
             case 'name<':
+                //Name Z-A
                 plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
                 break;
             default:
@@ -50,10 +55,11 @@ class PlantList extends Component {
             <>
                 <Header heading="Overview" />
                 <select name="sorting" id="sorting" value={this.state.sorting} onChange={this.handleChange}>
-                    <option defaultValue="watering>">Imminent Watering</option>
+                    <option defaultValue="">SORT BY:</option>
+                    <option value="watering>">Imminent Watering</option>
                     <option value="fert>">Imminent Fertilization</option>
-                    <option value="name>">Name A-Z</option>
-                    <option value="name<">Name Z-A</option>
+                    <option value="name>">Plant name A–Z</option>
+                    <option value="name<">Plant name Z–A</option>
                 </select>
 
                 <ul className="plant-list">
