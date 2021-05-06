@@ -158,6 +158,7 @@
   font-weight: normal;
   font-size: 2rem;
   opacity: 75%;
+  text-transform: capitalize;
 }
 
 .text-only-tab.active {
@@ -193,7 +194,7 @@
   background: var(--secondary);
   position: fixed;
   right: 2.5vw;
-  bottom: 60px;
+  bottom: 2.5rem;
   z-index: 1;
 }
 
@@ -205,6 +206,13 @@
 .fab:active {
   transform: translateY(1px);
   filter: saturate(150%);
+}
+
+@media only screen and (max-width: 40em) {
+  .fab {
+    left: 2.5vw;
+    bottom: 3rem;
+  }
 }
 
 /*
