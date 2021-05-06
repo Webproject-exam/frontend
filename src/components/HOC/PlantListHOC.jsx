@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
 import { Route } from 'react-router-dom';
+import { addDays, startOfDay } from 'date-fns'
 import { fetchAllPlants } from '../../api/plants';
 
 function withPlantsFetch(WrappedComponent) {
@@ -24,6 +25,10 @@ function withPlantsFetch(WrappedComponent) {
             await this.fetchAllData();
         }
 
+        componentWillUnmount() {
+            this._isMounted = false;
+        }
+
         fetchAllData = async () => {
             const res = await fetchAllPlants();
 
@@ -40,13 +45,18 @@ function withPlantsFetch(WrappedComponent) {
             }
         }
 
-        componentWillUnmount() {
-            this._isMounted = false;
+        //TO DO: koble sammen denne med back-end (PATCH plante med ID)
+        //TO DO 2: be om bekreftelse fra bruker 
+        handleWateringClick = (plant) => {
+            let nextWateringDate = startOfDay(addDays(Date.now(), plant.watering.waterFrequency))
+
+            //denne datoen skal bli waterNext til planten med tilhørende ID (plant._id her)
+            console.log(`Plante med id ${plant._id} sin waterNext skal bli: ${nextWateringDate}`)
         }
 
         render() {
             const auth = this.context.isAuth;
-            
+
             if (this.state.isLoading) {
                 return (<Loading />);
             }
@@ -54,7 +64,7 @@ function withPlantsFetch(WrappedComponent) {
             return (
                 <>
                     <Route exact path="/plants">
-                        <WrappedComponent plants={this.state.plants} auth={auth} {...this.props} />
+                        <WrappedComponent plants={this.state.plants} auth={auth} handleWateringClick={this.handleWateringClick} {...this.props} />
                     </Route>
                 </>
             );

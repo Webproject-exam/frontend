@@ -16,7 +16,7 @@ function PlantStatusCircle({ next_watering }) {
         Color = 'red';
         Pulse = '';
 
-    } else if (isPast(next_watering)) {
+    } else if (isPast(new Date(next_watering))) {
         Icon = AlertIcon;
         Color = 'red';
         Pulse = 'pulse';
