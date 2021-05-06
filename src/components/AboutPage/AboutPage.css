@@ -35,6 +35,7 @@
 .about-the-project {
   grid-area: about-the-project;
   justify-self: center;
+  text-align: center;
 }
 
 .about-project-box {
@@ -112,4 +113,23 @@
 
 .biography {
   margin-top: 4%;
+}
+
+@media only screen and (max-width: 40em) {
+  .about-page-grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: calc(100vh - 55.33px - 1em) auto auto auto auto;
+    gap: 1em 3%;
+    grid-template-areas:
+      "home-page"
+      "about-the-project "
+      "box1" 
+      "box2" 
+      "box3"
+      "the-group"
+      "person1" 
+      "person2" 
+      "person3";
+  }
 }

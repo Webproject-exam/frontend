@@ -23,7 +23,7 @@ class AddPlantForm extends Component {
             placement_floor: '',
             placement_room: '',
             plantname: '',
-            water_amount: '',
+            water_amount: 'plentiful',
             watering_frequency: '',
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -316,7 +316,7 @@ class AddPlantForm extends Component {
 
                                     <div className="buttons-side-by-side">
                                         <Button label="previous" size="half" variant="secondary-outlined" onClick={() => this.handlePageChange(2)} />
-                                        <Button label="next" size="half" variant="secondary" type="submit"/>
+                                        <Button label="submit" size="half" variant="secondary" type="submit"/>
                                     </div>
                                 </>
 

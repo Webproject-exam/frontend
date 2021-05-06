@@ -84,11 +84,7 @@ function Nav(props) {
 
                     <div className="navbar-account">
                         {!props.auth && (
-                            
-                            /* Siden dette er link og button så får den to TAB-s */
-                            <Link to="/login">
-                                <Button label="log in" />
-                            </Link>
+                            <Link to="/login">LOG IN</Link>
                         )}
 
                         {props.auth && (
@@ -96,7 +92,7 @@ function Nav(props) {
                                 <span>{props.role}</span>
                                 <div onClick={handleMenu} className="navbar-icon" ref={node}>
 
-                                    <button class="hidden" aria-haspopup="true" aria-expanded="false"><img src={accountCircle} alt="Account Circle icon" onClick={handleMenu} /></button>
+                                    <button className="hidden" aria-haspopup="true" aria-expanded="false"><img src={accountCircle} alt="Account" onClick={handleMenu} /></button>
 
                                     {open &&
                                         <div className="navbar dropdown">
