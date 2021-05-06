@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 //import { notifySuccess, notifyError } from '../../helpers/notification';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
-import { Route } from 'react-router-dom';
 import { fetchAllPlants } from '../../api/plants';
 
 function withPlantsFetch(WrappedComponent) {
@@ -50,11 +49,7 @@ function withPlantsFetch(WrappedComponent) {
             }
 
             return (
-                <>
-                    <Route exact path="/plants">
-                        <WrappedComponent plants={this.state.plants} {...this.props} />
-                    </Route>
-                </>
+                <WrappedComponent plants={this.state.plants} {...this.props} />
             );
         }
     }
