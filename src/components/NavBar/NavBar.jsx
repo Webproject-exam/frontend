@@ -92,7 +92,7 @@ function Nav(props) {
                                 <span>{props.role}</span>
                                 <div onClick={handleMenu} className="navbar-icon" ref={node}>
 
-                                    <button class="hidden" aria-haspopup="true" aria-expanded="false"><img src={accountCircle} alt="Account" onClick={handleMenu} /></button>
+                                    <button className="hidden" aria-haspopup="true" aria-expanded="false"><img src={accountCircle} alt="Account" onClick={handleMenu} /></button>
 
                                     {open &&
                                         <div className="navbar dropdown">
