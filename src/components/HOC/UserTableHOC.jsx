@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Loading from '../Loading/Loading';
-import Popup from '../Popup/Popup'
+import Popup from '../Popup/PopupOld'
 import { AuthContext } from '../../helpers/Auth';
 import { fetchAllUsers, deleteUser, forgot } from '../../api/users';
 import { notifySuccess, notifyError } from '../../helpers/notification';
