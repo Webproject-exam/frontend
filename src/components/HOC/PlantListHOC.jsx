@@ -70,14 +70,13 @@ function withPlantsFetch(WrappedComponent) {
         }
 
         waterPlant = async () => {
-            const id = this.state.selectedPlant._id;
             const watering = {
-                id: id,
+                selectedPlant: this.state.selectedPlant._id,
                 waterNext: this.state.nextWaterDate
             };
             console.log(watering);
 
-            const res = await waterPlant(id, watering);
+            const res = await waterPlant(watering);
 
             if(res.error){
                 console.log("Something went fucking wrong!");
