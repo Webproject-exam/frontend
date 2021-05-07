@@ -49,7 +49,6 @@ class App extends Component {
     const ForgotPassHOC = forgotBackend(ForgotPasswordEmailForm);
     const NavBarHOC = navBarBackend(NavBar);
     const PlantListHOC = withPlantFetch(PlantList);
-    /* const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage); */
 
     return (
       <AuthConsumer>
