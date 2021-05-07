@@ -20,15 +20,15 @@ class AddPlantForm extends Component {
             information_watering: '',
             lighting_requirements: 'sunlight',
             placement_building: '',
-            placement_floor: '',
+            placement_floor: 1,
             placement_room: '',
             plantname: '',
             water_amount: 'plentiful',
             watering_frequency: '',
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handlePageChange = this.handlePageChange.bind(this);
+
         this.plantnameInput = React.createRef();
+        this.form = React.createRef();
     }
 
     handleSubmit = async (event) => {
@@ -88,27 +88,45 @@ class AddPlantForm extends Component {
                 information_watering: '',
                 lighting_requirements: 'sunlight',
                 placement_building: '',
-                placement_floor: '',
+                placement_floor: 1,
                 placement_room: '',
                 plantname: '',
-                water_amount: '',
-                watering_frequency: '',
+                water_amount: 'plentiful',
+                watering_frequency: null,
             })
         }
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;
+
         this.setState({
             [name]: value
         });
     }
 
-    handlePageChange = (page) => {
-        this.setState({ form_page: page });
+    handlePageChangeForward = () => {
+        if (this.state.form_page < 3 && this.form.current.reportValidity()) {
+            console.log("lmao")
+            this.setState(prevState => {
+                return {
+                    form_page: prevState.form_page + 1
+                };
+            });
+        }
+    }
+
+    handlePageChangeBackward = () => {
+        if (this.state.form_page > 1) {
+            this.setState(prevState => {
+                return {
+                    form_page: prevState.form_page - 1
+                };
+            });
+        }
     }
 
     render() {
@@ -146,17 +164,17 @@ class AddPlantForm extends Component {
                                     />
 
                                     <label htmlFor="placement_floor">Floor</label>
-                                    <input
+                                    <select
                                         id="placement_floor"
                                         name="placement_floor"
                                         onChange={this.handleInputChange}
-                                        placeholder="What floor is the plant on?"
-                                        required
-                                        type="number"
-                                        min="0"
-                                        max="10"
                                         value={this.state.placement_floor}
-                                    />
+                                    >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
 
                                     <label htmlFor="placement_room">Room</label>
                                     <input
@@ -174,13 +192,13 @@ class AddPlantForm extends Component {
 
                                     <div className="add-plant-form page-indicators">
                                         <div className={"page-indicator-dot active"}></div>
-                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(2)}></div>
-                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(3)}></div>
+                                        <div className={"page-indicator-dot"}></div>
+                                        <div className={"page-indicator-dot"}></div>
                                     </div>
 
                                     <div className="buttons-side-by-side">
                                         <Button label="cancel" size="half" variant="secondary-outlined" />
-                                        <Button label="next" size="half" variant="secondary" onClick={() => this.handlePageChange(2)} />
+                                        <Button label="next" size="half" variant="secondary" onClick={this.handlePageChangeForward} />
                                     </div>
                                 </>
                             }
@@ -192,7 +210,7 @@ class AddPlantForm extends Component {
                                         id="watering_frequency"
                                         name="watering_frequency"
                                         onChange={this.handleInputChange}
-                                        placeholder="Every 14 days"
+                                        placeholder="Every 14 days..."
                                         ref={this.watering_frequency}
                                         required
                                         type="number"
@@ -219,7 +237,7 @@ class AddPlantForm extends Component {
                                         id="fertilizing_frequency"
                                         name="fertilizing_frequency"
                                         onChange={this.handleInputChange}
-                                        placeholder="Every 60 days"
+                                        placeholder="Every 60 days..."
                                         required
                                         type="number"
                                         min="1"
@@ -254,14 +272,14 @@ class AddPlantForm extends Component {
                                     </select>
 
                                     <div className="add-plant-form page-indicators">
-                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(1)}></div>
+                                        <div className={"page-indicator-dot"}></div>
                                         <div className={"page-indicator-dot active"}></div>
-                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(3)}></div>
+                                        <div className={"page-indicator-dot"}></div>
                                     </div>
 
                                     <div className="buttons-side-by-side">
-                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={() => this.handlePageChange(1)} />
-                                        <Button label="next" size="half" variant="secondary" type="button" onClick={() => this.handlePageChange(3)} />
+                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={this.handlePageChangeBackward} />
+                                        <Button label="next" size="half" variant="secondary" type="button" onClick={this.handlePageChangeForward} />
                                     </div>
                                 </>
                             }
@@ -309,14 +327,14 @@ class AddPlantForm extends Component {
                                     />
 
                                     <div className="add-plant-form page-indicators">
-                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(1)}></div>
-                                        <div className={"page-indicator-dot"} onClick={() => this.handlePageChange(2)}></div>
+                                        <div className={"page-indicator-dot"}></div>
+                                        <div className={"page-indicator-dot"}></div>
                                         <div className={"page-indicator-dot active"}></div>
                                     </div>
 
                                     <div className="buttons-side-by-side">
-                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={() => this.handlePageChange(2)} />
-                                        <Button label="submit" size="half" variant="secondary" type="submit"/>
+                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={this.handlePageChangeBackward} />
+                                        <Button label="submit" size="half" variant="secondary" type="submit" />
                                     </div>
                                 </>
 
