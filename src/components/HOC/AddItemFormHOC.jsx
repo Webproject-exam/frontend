@@ -6,6 +6,7 @@ import { createPlant } from '../../api/plants';
 function addUserBackend(WrappedComponent) {
     class AddUserHOC extends Component {
         static contextType = AuthContext;
+        _isMounted = false;
         constructor(props) {
             super(props);
             this.state = {
@@ -13,10 +14,18 @@ function addUserBackend(WrappedComponent) {
             };
         }
 
+        componentDidMount(){
+            this._isMounted = true;
+        }
+
+        componentWillUnmount(){
+            this._isMounted = false;
+        }
+
         onSubmit = async (itemObject) => {
             console.log(itemObject);
             //Send the information stored in the state to the back-end
-            if (this.props.place === "users") {
+            if (this._isMounted && this.props.place === "users") {
                 try {
                     await createUser(itemObject);
                 } catch (error) {
@@ -24,7 +33,7 @@ function addUserBackend(WrappedComponent) {
                         error: error
                     })
                 }
-            } else if (this.props.place === "plants"){
+            } else if (this._isMounted && this.props.place === "plants"){
                 console.log("In plants");
                 console.log(itemObject);
                 const res = await createPlant(itemObject);
@@ -45,7 +54,7 @@ function addUserBackend(WrappedComponent) {
         render() {
             console.log(this.props);
             return (
-                <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error} removeErrorHandler={this.removeError} />
+                <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error} removeErrorHandler={this.removeError} {...this.props} />
             );
         }
     }

@@ -7,6 +7,9 @@ import Header from '../Header/Header';
 import { AuthContext } from '../../helpers/Auth';
 import PlantList from '../PlantTable/PlantTable';
 import plantListBackend from '../HOC/PlantTableHOC';
+import withUsersFetch from '../HOC/UserTableHOC';
+
+import UserTable from '../UserTable/UserTable';
 
 /**
  * ## How it works
@@ -48,6 +51,7 @@ class Dashboard extends Component {
 
     render() {
         const PlantTableHOC = plantListBackend(PlantList);
+        const UserTableWithHOC = withUsersFetch(UserTable);
 
         return (
             <>
@@ -62,7 +66,12 @@ class Dashboard extends Component {
                         <PlantTableHOC place='plants' />
                     </>
                 }
-                {this.state.users && <DashboardUsers />}
+                {this.state.users && 
+                <>
+                    <DashboardUsers />
+                    <UserTableWithHOC />
+                </>
+                }
             </>
         );
     }
