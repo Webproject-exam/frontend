@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { fetchAllPlants } from '../../api/plants';
 import Loading from '../Loading/Loading';
+import Popup from '../Popup/Popup';
+import Prompt from '../Prompt/Prompt';
 
 function managePlantFetch(WrappedComponent) {
     class PlantTableHOC extends Component {
@@ -11,7 +13,9 @@ function managePlantFetch(WrappedComponent) {
                 plants: [],
                 isLoading: true,
                 selectedPlant: {},
-                error: null
+                error: null,
+                edit: false,
+                delete: false
             }
         }
         componentDidMount(){
@@ -39,13 +43,39 @@ function managePlantFetch(WrappedComponent) {
             }
         }
 
+        editPlant = (plant) => {
+            console.log(plant);
+        }
+
+        deletePlant = (plant) => {
+            console.log(plant);
+			this.setState({
+				selectedPlant: plant,
+				delete: true
+			});
+        }
+
+		cancelDelete = () => {
+			this.setState({
+				delete: false
+			});
+		}
+
         render() { 
             if (this.state.isLoading) {
                 return (<Loading />);
             }
 
             return (
-                <WrappedComponent plants={this.state.plants} />
+                <>
+                    <WrappedComponent plants={this.state.plants} handleEditClick={this.editPlant} handleDeleteClick={this.deletePlant} />
+                    {this.state.edit &&
+                        <Popup  />
+                    }
+					{this.state.delete &&
+						<Popup content={<Prompt plant={this.state.selectedPlant} type='delete' onCancelClick={this.cancelDelete} />} />
+					}
+                </>
             );
         }
     }

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Loading from '../Loading/Loading';
-import Popup from '../Popup/PopupOld'
+import Popup from '../Popup/Popup'
 import { AuthContext } from '../../helpers/Auth';
 import { fetchAllUsers, deleteUser, forgot } from '../../api/users';
 import { notifySuccess, notifyError } from '../../helpers/notification';
+import Prompt from '../Prompt/Prompt';
+import UpdateUserForm from '../UpdateUser/UpdateUser';
+import updateUserBackend from '../HOC/UpdateUserHOC';
 
 function withUsersFetch(WrappedComponent) {
     class UserTableHOC extends Component {
@@ -71,6 +74,7 @@ function withUsersFetch(WrappedComponent) {
         }
 
         selectEdit = (user) => {
+            console.log(user);
             this.setState({ edit: true, selectedUser: user });
         }
 
@@ -112,6 +116,8 @@ function withUsersFetch(WrappedComponent) {
         }
 
         render() {
+            const UpdateUserHOC = updateUserBackend(UpdateUserForm);
+
             if (this.state.isLoading) {
                 return (<Loading />);
             }
@@ -120,25 +126,18 @@ function withUsersFetch(WrappedComponent) {
                 <>
                     <WrappedComponent handleEditClick={this.selectEdit} handleDeleteClick={this.selectDelete} users={this.state.users} {...this.props} />
                     {this.state.edit &&
-
-                        //Update user form
-                        <Popup
-                            onAbortClick={this.cancelAction}
-                            onEditUser={this.editUser}
-                            onUpdateForm={this.fetchData}
-                            onResetClick={this.resetPassword}
-                            place="dashboard"
-                            popupVariant="edit"
-                            user={this.state.selectedUser}
-                        />}
+                    //Update user form
+                        <Popup content={
+                            <UpdateUserHOC
+                            onUpdateForm={this.fetchData} selectedUser={this.state.selectedUser} place='dashboard' onAbortClick={this.cancelAction} onResetClick={this.resetPassword}
+                            />
+                            } 
+                        />
+                    }
 
                     {this.state.delete &&
-                        <Popup
-                            onAbortClick={this.cancelAction}
-                            onDeleteUser={this.deleteUser}
-                            popupVariant="delete"
-                            user={this.state.selectedUser}
-                        />}
+                        <Popup content={<Prompt onCancelClick={this.cancelAction} onConfirmClick={this.deleteUser} user={this.state.selectedUser} type='delete'  />} />
+                    }
                 </>
             );
         }
