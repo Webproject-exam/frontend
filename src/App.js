@@ -21,6 +21,8 @@ import IndividualPlantPage from './components/IndividualPlantPage/IndividualPlan
 import withPlantFetch from './components/HOC/PlantListHOC';
 import fetchPlantBackend from './components/HOC/PlantPageHOC';
 import Postpone from './components/Postpone/Postpone';
+import PopupNew from './components/Popup/PopupNew';
+import Prompt from './components/Prompt/Prompt';
 
 
 class App extends Component {
@@ -84,6 +86,9 @@ class App extends Component {
                   <Route exact path="/plants/:id" render={this.plantPage} />
                   <Route exact path="/">
                     <AboutPage />
+                  </Route>
+                  <Route exact path="/pops">
+                    <PopupNew content={<Postpone type='watering' name='Ligma' />} />
                   </Route>
                   <Route exact path="/403">
                     <StatusCard statusCode={403} statusText="Forbidden" />
