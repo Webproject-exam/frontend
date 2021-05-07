@@ -20,7 +20,7 @@ import PlantList from './components/PlantList/PlantList';
 import IndividualPlantPage from './components/IndividualPlantPage/IndividualPlantPage'
 import withPlantFetch from './components/HOC/PlantListHOC';
 import fetchPlantBackend from './components/HOC/PlantPageHOC';
-import PopupNew from './components/Popup/PopupNew';
+import Popup from './components/Popup/Popup';
 import Prompt from './components/Prompt/Prompt';
 
 
@@ -86,7 +86,7 @@ class App extends Component {
                     <AboutPage />
                   </Route>
                   <Route exact path="/pops">
-                    <PopupNew content={<Prompt type="delete" user={{name:"sfjsdfgsjdhfgjshdgfjshdgfjsdgfhsdgfjsgdfjh"}}/>} />
+                    <Popup content={<Prompt type="delete" user={{name:"sfjsdfgsjdhfgjshdgfjshdgfjsdgfhsdgfjsgdfjh"}}/>} />
                   </Route>
                   <Route exact path="/403">
                     <StatusCard statusCode={403} statusText="Forbidden" />

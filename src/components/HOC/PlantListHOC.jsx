@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { notifySuccess } from '../../helpers/notification';
+import { notifyError, notifySuccess } from '../../helpers/notification';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
 import { addDays, startOfDay, isWeekend } from 'date-fns'
-import { fetchAllPlants } from '../../api/plants';
+import { fetchAllPlants, waterPlant } from '../../api/plants';
+import Popup from '../Popup/Popup';
+import Prompt from '../Prompt/Prompt';
 
 function withPlantsFetch(WrappedComponent) {
     class PlantListHOC extends Component {
@@ -15,7 +17,10 @@ function withPlantsFetch(WrappedComponent) {
                 plants: [],
                 isLoading: true,
                 error: null,
-                selectedPlant: {}
+                selectedPlant: {},
+                nextWaterDate: '',
+                dateWasMoved: false,
+                waterPlant: false
             }
         }
 
@@ -44,28 +49,55 @@ function withPlantsFetch(WrappedComponent) {
             }
         }
 
-        //TO DO: koble sammen denne med back-end (PATCH plante med ID)
-        handleWateringClick = (plant) => {
+        waterNextClick = (plant) => {
+            console.log(plant);
             let nextWateringDate = startOfDay(addDays(Date.now(), plant.watering.waterFrequency))
-            let wasMoved = false;
+            let dateWasMoved = false;
 
             //Hvis WaterNext er i helgen, flytt den til nærmeste mandag
             while (isWeekend(nextWateringDate)) {
-                wasMoved = true
+                dateWasMoved = true
                 nextWateringDate = addDays(nextWateringDate, 1)
             }
 
-            if (window.confirm(`Do you want to water the plant "${plant.name}"?`)) {
+            this.setState({
+                selectedPlant: plant,
+                nextWaterDate: nextWateringDate,
+                dateWasMoved: dateWasMoved,
+                waterPlant: true
+            });
+        }
 
-                //denne datoen skal bli waterNext til planten med tilhørende ID (plant._id her)
-                console.log(`Plante med id "${plant._id}" sin waterNext skal bli: "${nextWateringDate}"`)
+        waterPlant = async () => {
+            const id = this.state.selectedPlant._id;
+            const watering = {
+                waterNext: this.state.nextWaterDate
+            };
+            console.log(watering);
+            
+            const res = await waterPlant(id, watering);
 
-                notifySuccess(`The plant "${plant.name}" has been watered. 💧`)
-            }
+            if(res.error){
+                console.log("Something went fucking wrong!");
+                notifyError("Oops, something went wrong!");
+            } else {
+                notifySuccess("Plant has been watered!");
+                this.setState({
+                    waterPlant: false,
+                    selectedPlant: {},
+                    nextWaterDate: '',
+                    dateWasMoved: false
+                });
+            };
+        }
 
-            if (wasMoved) {
-                alert(`The original watering date was on a weekend, it has therefore been moved to ${nextWateringDate}.`)
-            }
+        cancelWatering = () => {
+            this.setState({
+                waterPlant: false,
+                selectedPlant: {},
+                nextWaterDate: '',
+                dateWasMoved: false
+            });
         }
 
         render() {
@@ -76,7 +108,12 @@ function withPlantsFetch(WrappedComponent) {
             }
 
             return (
-                <WrappedComponent plants={this.state.plants} auth={auth} handleWateringClick={this.handleWateringClick} {...this.props} />
+                <>
+                    <WrappedComponent plants={this.state.plants} auth={auth} handleWateringClick={this.waterNextClick} {...this.props} />
+                    {this.state.waterPlant &&
+                        <Popup content={<Prompt type='confirm' plant={this.state.selectedPlant} onCancelClick={this.cancelWatering} onConfirmClick={this.waterPlant} />} />
+                    }
+                </>
             );
         }
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Button/Button';
 
 function Prompt(props) {
-    const { onCancelClick, onConfirmUser, plant, type, user } = props;
+    const { onCancelClick, onConfirmClick, plant, type, user } = props;
 
     let buttonVariant;
     let buttonLabel;
@@ -30,7 +30,7 @@ return (
 
             <div className="buttons-side-by-side">
                 <Button onClick={onCancelClick} label="Cancel" size="half" variant="secondary-outlined" />
-                <Button onClick={onConfirmUser} label={buttonLabel} size="half" variant={buttonVariant} />
+                <Button onClick={onConfirmClick} label={buttonLabel} size="half" variant={buttonVariant} />
             </div>
         </>
     </div>
