@@ -6,7 +6,7 @@ import DashboardUsers from './DashboardUsers';
 import Header from '../Header/Header';
 import { AuthContext } from '../../helpers/Auth';
 import PlantList from '../PlantTable/PlantTable';
-import plantListBackend from '../HOC/PlantListHOC';
+import plantListBackend from '../HOC/PlantTableHOC';
 
 /**
  * ## How it works
