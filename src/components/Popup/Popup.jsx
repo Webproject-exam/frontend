@@ -31,7 +31,7 @@ import updateUserBackend from '../HOC/UpdateUserHOC';
 */
 
 function Popup(props) {
-    const { popupVariant, onUpdateForm, user, onAbortClick, onDeleteUser, onResetClick, place} = props
+    const { popupVariant, onUpdateForm, user, onAbortClick, onDeleteUser, onResetClick, place } = props
 
     const UpdateUserHOC = updateUserBackend(UpdateUser);
     return (
@@ -42,7 +42,7 @@ function Popup(props) {
                 }
 
                 {popupVariant === 'delete' &&
-                    <div className="container">
+                    <div className="container max-width">
                         <p>Are you sure you want to delete the user <span className="bold">{user.name} {user.surname}</span>?</p>
                         <p className="low-emphasis-text">This action can not be undone!</p>
 
@@ -56,6 +56,8 @@ function Popup(props) {
         </div>
     );
 }
+
+//#region JSDoc for Storybook & default props
 
 Popup.defaultProps = {
     place: 'dashboard'
@@ -85,5 +87,7 @@ Popup.propTypes = {
 
     place: PropTypes.oneOf(['dashboard']).isRequired,
 }
+
+//#endregion
 
 export default Popup;

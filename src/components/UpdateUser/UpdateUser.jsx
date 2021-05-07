@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Button from '../Button/Button'
 import PropTypes from 'prop-types';
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard'
-import editUserFormIcon from '../../assets/edit_black_24dp.svg';
 import { AuthContext } from '../../helpers/Auth';
 import { toast } from 'react-toastify';
 import { notifySuccess, notifyError } from '../../helpers/notification';
@@ -63,6 +62,7 @@ class UpdateUserForm extends Component {
             surname: '',
             role: '',
             email: '',
+            userEmail: '',
             oldPassword: '',
             password: '',
             repeatpassword: '',
@@ -87,7 +87,7 @@ class UpdateUserForm extends Component {
                 firstname: this.props.selectedUser.name,
                 surname: this.props.selectedUser.surname,
                 role: this.props.selectedUser.role,
-                email: this.props.selectedUser.email
+                userEmail: this.props.selectedUser.email
             })
         } else {
             this.pronoun = 'your'
@@ -179,7 +179,7 @@ class UpdateUserForm extends Component {
     }
 
     passwordValidation() {
-        if(this.state.password && this.state.repeatpassword && this.state.oldPassword) {
+        if (this.state.password && this.state.repeatpassword && this.state.oldPassword) {
             if (this.state.password === this.state.repeatpassword) {
                 this.setState({
                     passwordError: false
@@ -192,11 +192,13 @@ class UpdateUserForm extends Component {
                 notifyError('The passwords entered do not match.')
                 return false;
             }
-        } else {
+        } else if (this.state.password || this.state.repeatpassword || this.state.oldPassword) {
             notifyError("You need to enter all password fields");
             return false;
+        } else {
+            return true;
         }
-        
+
     }
 
     //Close the red error message that pops up when the two passwords do not match
@@ -231,8 +233,7 @@ class UpdateUserForm extends Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <img src={editUserFormIcon} alt="" />
+                <div className="container max-width">
                     <form ref={this.form} onSubmit={this.handleSubmit} method="POST">
                         <fieldset>
                             <legend>Update {this.pronoun} user information</legend>
@@ -243,7 +244,7 @@ class UpdateUserForm extends Component {
                                         id="email"
                                         name="email"
                                         onChange={this.handleInputChange}
-                                        placeholder="Enter Your New Email"
+                                        placeholder={this.state.userEmail}
                                         type="email"
                                         value={this.state.email}
                                     />
@@ -340,6 +341,8 @@ class UpdateUserForm extends Component {
     }
 }
 
+//#region JSDoc for Storybook & default props
+
 UpdateUserForm.defaultProps = {
     place: 'none'
 }
@@ -371,5 +374,7 @@ UpdateUserForm.propTypes = {
     /** eventHandler to reset the users password */
     onResetClick: PropTypes.func
 }
+
+//#endregion
 
 export default UpdateUserForm;

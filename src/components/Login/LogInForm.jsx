@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './LogInForm.css';
 import Button from '../Button/Button'
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard'
-import lockClosedIcon from '../../assets/lock_black_24dp.svg';
-import lockOpenIcon from '../../assets/lock_open_black_24dp.svg';
 import { AuthContext } from '../../helpers/Auth';
 import { Link, Redirect } from "react-router-dom";
 import { notifySuccess, notifyError } from '../../helpers/notification';
@@ -73,12 +71,12 @@ class LogInForm extends Component {
             const res = await this.context.login({ email, password });
 
             if (res.error) {
-
                 //The user is most probably not found in the database
                 this.setState({ error: true });
+                this.emailInput.current.focus();
                 notifyError("Wrong email and/or password. Please try again.")
             } else {
-                notifySuccess("You are now logged in.")
+                notifySuccess("You are now logged in. 🔓")
                 this.setState({ redirect: "/profile" });
             }
         } else {
@@ -99,8 +97,7 @@ class LogInForm extends Component {
         return (
             <>
                 {!this.context.isAuth && <>
-                    <div className="container">
-                        <img src={lockClosedIcon} alt="" />
+                    <div className="log-in-form container max-width">
                         <form ref={this.form} onSubmit={this.handleSubmit}>
                             <fieldset>
                                 <legend>Log In</legend>
@@ -126,17 +123,18 @@ class LogInForm extends Component {
                                     type="password"
                                     value={this.state.password}
                                 />
-
-                                <Button type="submit" label="log in" variant="primary" size="full" />
+                                <div className="buttons-side-by-side">
+                                <Button type="submit" label="log in" size="auto" variant="secondary" />
+                                    <Link to="/reset_password"><Button label="forgot password" size="auto" variant="secondary-outlined" /></Link>
+                                    
+                                </div>
                             </fieldset>
                         </form>
 
                         {this.state.error && <UserFeedbackCard onClick={this.handleClose} variant="error" feedbackText="Wrong email and/or password. Please try again." />}
-                        <Link to="/reset_password">Forgot password?</Link>
                     </div>
                 </>}
                 {this.context.isAuth && <div className="container loggedIn">
-                    <img src={lockOpenIcon} alt="" />
                     <p>You're already logged in.</p>
                     <Link to="/profile">Visit your user page here.</Link>
                 </div>}

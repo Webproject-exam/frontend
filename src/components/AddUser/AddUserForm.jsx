@@ -3,8 +3,8 @@ import './AddUserForm.css';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard';
-import addUserIcon from '../../assets/person_add_black_24dp.svg';
 import { notifySuccess, notifyError } from '../../helpers/notification';
+import { emailIsValid } from '../../helpers/validation';
 
 /**
  * ## How it works
@@ -57,7 +57,7 @@ class AddUserForm extends Component {
         });
     }
 
-    //HandleSubmit runs two validators, first checking if the passwords match, thereafter a more general form validator
+    //HandleSubmit runs two validators, first checking if the passwords match, after that, a more general form validator.
     //Then call the onSubmitHandler prop and send the state to the database.
     async handleSubmit(event) {
         event.preventDefault();
@@ -89,12 +89,20 @@ class AddUserForm extends Component {
                 })
             }
         } else {
-            notifyError('There was an error.');
+            notifyError('The form is invalid!');
         }
     }
 
     generalValidation() {
-        return this.form.current.reportValidity();
+
+        if (!emailIsValid(this.state.email)) {
+            notifyError('Invalid email');
+            return false
+        }
+
+        if (emailIsValid(this.state.email) && this.form.current.reportValidity()) {
+            return true;
+        }
     }
 
     passwordValidation() {
@@ -124,8 +132,7 @@ class AddUserForm extends Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <img src={addUserIcon} alt="" />
+                <div className="container max-width">
                     <form ref={this.form} onSubmit={this.handleSubmit} className="add-user-form">
                         <fieldset>
                             <legend>Add a new user</legend>
@@ -214,7 +221,7 @@ class AddUserForm extends Component {
 
                             {this.state.passwordError && <UserFeedbackCard variant="error" onClick={this.handleClose} feedbackText="The passwords entered are not the same." />}
                             {this.state.submitted && <UserFeedbackCard variant="success" onClick={this.handleClose} feedbackText="The user has been added" />}
-                            {this.props.error && <UserFeedbackCard variant="error" onClick={this.handleClose} feedbackText="The email is already in use" />}
+                            {this.props.error && <UserFeedbackCard variant="error" onClick={this.props.removeErrorHandler} feedbackText="The email is already in use" />}
 
                             <Button label="add new user" size="full" variant="primary" type="submit" />
                         </fieldset>

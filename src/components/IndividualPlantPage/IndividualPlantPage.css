@@ -1,0 +1,69 @@
+.individual-plant-grid-container {
+    margin: 0 auto;
+    max-width: 100rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    grid-template-areas: "image-and-description buttons-and-status-card";
+}
+
+.image-and-description {
+    grid-area: image-and-description;
+}
+
+.buttons-and-status-card {
+    grid-area: buttons-and-status-card;
+}
+
+.image-and-description img {
+    width: 100%;
+    max-height: 40rem;
+    object-fit: cover;
+    border-radius: .25rem;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-and-status-card h3 {
+    margin: 0;
+}
+
+.buttons-group .buttons-side-by-side {
+    max-width: unset;
+}
+
+/* Small devices (portrait tablets and large phones, 640px and up) */
+
+@media only screen and (max-width: 40em) {
+    .image-and-description {
+        grid-area: unset;
+    }
+    
+    .buttons-and-status-card {
+        grid-area: unset;
+    }
+    
+    .image {
+        grid-area: image
+    }
+    .description {
+        grid-area: description
+    }
+
+    .status-card{
+        grid-area: status-card;
+    }
+
+    .buttons-group{ 
+        grid-area: buttons-group;
+    }
+
+    .individual-plant-grid-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        grid-template-areas: 
+        "image" 
+        "status-card"
+        "buttons-group"
+        "description";
+    }
+  }

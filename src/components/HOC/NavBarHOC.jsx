@@ -6,14 +6,14 @@ function navBarBackend(WrappedComponent) {
         static contextType = AuthContext;
         constructor(props) {
             super(props);
-            this.state = {  }
+            this.state = {}
         }
 
         handleLogOut = () => {
             this.context.logout();
         }
 
-        render() { 
+        render() {
             const auth = this.context.isAuth;
             const role = this.context.role;
             return (
@@ -21,7 +21,7 @@ function navBarBackend(WrappedComponent) {
             );
         }
     }
-    
+
     return NavBarHOC;
 }
 

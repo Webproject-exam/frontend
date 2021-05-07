@@ -2,47 +2,54 @@
 * BUTTONS GENERAL
 */
 
-.button {
-    /* Typography*/
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
+.button,
+.LinkTest {
+  font: bold 1em 'Roboto';
 
-    /* Box model */
-    box-sizing: border-box;
-    margin: 8px 0;
-    padding: .9em 0;
+  /* Typography*/
+  color: white;
+  text-transform: uppercase;
 
-    /* Visual */
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
+  /* Box model */
+  box-sizing: border-box;
+  margin: .5rem 0;
+  padding: .9em 1rem;
+
+  /* Visual */
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
 }
 
 .button:hover:enabled {
-    box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
+  box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
+}
+
+.button:active:enabled {
+  transform: translateY(2px);
+  box-shadow: unset;
 }
 
 .button:disabled {
-    /* Visual */
-    opacity: 50%;
-    background-color: var(--gray4);
-    cursor: not-allowed;
-    color: #333;
+  background: var(--gray4);
+  /* Visual */
+  opacity: .5;
+  cursor: not-allowed;
+  color: #333;
 }
 
 /*
 * BUTTONS PRIMARY
 */
 
-.primary {
-    background-color: var(--primary)
+.primary,
+.LinkTest {
+  background: var(--primary);
 }
 
 .primary:enabled:hover {
-    background-color: var(--pDark)
+  background: var(--pDark);
 }
 
 /*
@@ -50,11 +57,11 @@
 */
 
 .secondary:enabled {
-    background-color: var(--secondary)
+  background: var(--secondary);
 }
 
 .secondary:enabled:hover {
-    background-color: var(--sDark)
+  background: var(--sDark);
 }
 
 /*
@@ -62,27 +69,27 @@
 */
 
 .secondary-outlined:enabled {
-    background-color: var(--background);
-    border: 2px solid var(--secondary);
-    color: var(--secondary);
+  background: var(--background);
+  box-shadow: 0 0 0 2pt var(--secondary) inset;
+  color: var(--secondary);
 }
 
 .secondary-outlined:enabled:hover {
-    background-color: var(--background);
-    border: 2px solid var(--sDark);
-    color: var(--sDark);
+  box-shadow: 0 0 0 2pt var(--sDark) inset;
+  color: var(--sDark);
 }
 
 .secondary-outlined.active:enabled {
-    text-decoration: underline;
-    background-color: var(--secondary);
-    color: var(--background);
+  background: var(--secondary);
+  text-decoration: underline;
+  color: var(--background);
 }
 
 .secondary-outlined.active:enabled:hover {
-    text-decoration: underline;
-    background-color: var(--secondary);
-    color: var(--background);
+  background: var(--secondary);
+  text-decoration: underline;
+  color: var(--background);
+  box-shadow: unset;
 }
 
 /*
@@ -90,11 +97,11 @@
 */
 
 .danger {
-    background-color: var(--red)
+  background: var(--red);
 }
 
 .danger:enabled:hover {
-    background-color: var(--rDark);
+  background: var(--rDark);
 }
 
 /*
@@ -102,15 +109,110 @@
 */
 
 .danger-outlined {
-    background-color: var(--background);
-    border: 2px solid var(--red);
-    color: var(--red);
+  background: var(--background);
+  outline: 2px solid var(--red);
+  color: var(--red);
 }
 
 .danger-outlined:enabled:hover {
-    background-color: var(--background);
-    border: 2px solid var(--rDark);
-    color: var(--rDark);
+  background: var(--background);
+  outline: 2px solid var(--rDark);
+  color: var(--rDark);
+}
+
+/*
+* BUTTONS TEXT-ONLY
+*/
+
+.text-only {
+  background: transparent;
+  color: var(--sDark);
+  padding: .5rem;
+  margin: 0 0 0 auto;
+  display: block;
+  min-height: 44px;
+  transition: .05s;
+  font-weight: normal;
+}
+
+.text-only:enabled:hover {
+  text-decoration: underline;
+  box-shadow: unset;
+}
+
+.text-only:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+}
+
+/*
+* BUTTONS TEXT-ONLY-TAB
+*/
+
+.text-only-tab {
+  background: transparent;
+  color: var(--gray1);
+  padding: 0;
+  min-height: 44px;
+  transition: .05s;
+  font-weight: normal;
+  font-size: 2rem;
+  opacity: 75%;
+  text-transform: capitalize;
+}
+
+.text-only-tab.active {
+  opacity: 100%;
+}
+
+.text-only-tab:enabled:hover {
+  text-decoration: underline;
+  box-shadow: unset;
+}
+
+.text-only-tab:active {
+  transform: translateY(1px);
+}
+
+/*
+* BUTTONS FERTILIZATION
+*/
+
+.tertiary {
+  background: var(--tertiary);
+}
+
+.tertiary:enabled:hover {
+  background: var(--tDark);
+}
+
+/*
+* FAB
+*/
+
+.fab {
+  background: var(--secondary);
+  position: fixed;
+  right: 2.5vw;
+  bottom: 2.5rem;
+  z-index: 1;
+}
+
+.fab:enabled:hover {
+  background: var(--sDark);
+  box-shadow: unset;
+}
+
+.fab:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+}
+
+@media only screen and (max-width: 40em) {
+  .fab {
+    left: 2.5vw;
+    bottom: 3rem;
+  }
 }
 
 /*
@@ -118,10 +220,14 @@
 */
 
 .full-size {
-    width: 100%;
+  width: 100%;
 }
 
 .half-size {
-    width: 49%;
-    /* better for flex */
+  width: 49%;
+  /* better for flex */
+}
+
+.no-size {
+  width: unset;
 }

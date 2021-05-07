@@ -1,4 +1,4 @@
-/* This seems to break the pupup, no idea why... */
+/* This seems to break the popup, no idea why... */
 .popup-userlist {
     /* positioning */
     display: grid;
@@ -17,8 +17,6 @@
     overflow: auto;
 }
 
-.buttons-side-by-side {
-    display: flex;
-    justify-content: space-between;
-    max-width: 430px;
+.popup-userlist > .buttons-side-by-side {
+    margin: 0 auto;
 }

@@ -1,4 +1,16 @@
 .user-list-item-buttons {
-    margin: 0 auto;
-    max-width: 430px;
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 40em) {
+    .user-list-item-buttons {
+        max-width: unset;
+        min-width: unset;
+        width: 100%;
+        justify-content: space-evenly;
+    }
 }

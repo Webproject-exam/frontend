@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import AddUserForm from '../AddUser/AddUserForm';
-import Button from '../Button/Button'
-import UserList from '../UserList/UserList';
+import Button from '../Button/Button';
 import './Dashboard.css';
-import addUserBackend from '../HOC/AddUserFormHOC';
-import withUsersFetch from '../HOC/UserListHOC';
+import DashboardPlants from './DashboardPlants';
+import DashboardUsers from './DashboardUsers';
+import Header from '../Header/Header';
+import { AuthContext } from '../../helpers/Auth';
 
 /**
  * ## How it works
@@ -23,43 +23,38 @@ import withUsersFetch from '../HOC/UserListHOC';
  * is done by rendering `<Dashboard />` wrapped by `<AdminRoute></AdminRoute>` )
  */
 class Dashboard extends Component {
+    static contextType  = AuthContext;
     constructor(props) {
         super(props);
         this.state = {
-            addUser: false,
-            seeUsers: false
+            plants: true,
+            users: false
         }
     }
 
+    componentDidMount(){
+        this.context.refreshToken();
+    }
+
     //open the form for adding a user. If the user list is shown, close it.
-    toggleAddUser = () => {
+    toggleTab = () => {
         this.setState({
-            addUser: !this.state.addUser,
-            seeUsers: false
+            plants: !this.state.plants,
+            users: !this.state.users
         });
     }
-
-    //show a list of all users stored in the database. If the form for adding a user is open, close it.
-    toggleAllUsers = () => {
-        this.setState({
-            seeUsers: !this.state.seeUsers,
-            addUser: false
-        });
-    }
-
 
     render() {
-        const UserListWithHOC = withUsersFetch(UserList);
-        const AddUserWithHOC = addUserBackend(AddUserForm);
 
         return (
             <>
+            <Header heading="Manager Page"/>
                 <div className="user-list-item-buttons">
-                    <Button onClick={this.toggleAddUser} variant="secondary-outlined" label="Add a user" size="half" active={this.state.addUser} />
-                    <Button onClick={this.toggleAllUsers} variant="secondary-outlined" label="See all users" size="half" active={this.state.seeUsers} />
+                    <Button onClick={this.toggleTab} variant="text-only-tab" label="Plants" size="auto" active={this.state.plants} />
+                    <Button onClick={this.toggleTab} variant="text-only-tab" label="Users" size="auto" active={this.state.users} />
                 </div>
-                {this.state.addUser && <AddUserWithHOC />}
-                {this.state.seeUsers && <UserListWithHOC />}
+                {this.state.plants && <DashboardPlants />}
+                {this.state.users && <DashboardUsers />}
             </>
         );
     }

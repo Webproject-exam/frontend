@@ -1,9 +1,0 @@
-.user-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.user-list li {
-    margin: 1em;
-}

@@ -1,0 +1,31 @@
+.plant-status-card.container{
+    margin: 0 0 1rem 0
+}
+
+.plant-status-card ul{
+    line-height: 1.8rem;
+}
+
+.plant-status-card-header {
+    display: grid;
+    grid-template-columns: auto 2rem;
+    grid-template-areas:
+        "h2 status-circle";
+    margin-bottom: 1rem;
+}
+
+.plant-status-card .h2 {
+    grid-area: h2;
+    font-family: unset;
+    margin: 0
+}
+
+section {
+    margin-bottom: 1rem;
+    line-height: 2rem;
+}
+
+section li{
+    margin-left: 1rem;
+    color: var(--gray1);
+}

@@ -1,0 +1,135 @@
+.about-page-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: calc(100vh - 55.33px - 1em) auto auto auto auto;
+  gap: 1em 3%;
+  grid-template-areas:
+    "home-page home-page home-page"
+    "about-the-project about-the-project about-the-project"
+    "box1 box2 box3"
+    "the-group the-group the-group"
+    "person1 person2 person3";
+}
+
+.home-page {
+  background: url('../../assets/hero_image1.jpg') no-repeat center/cover;
+  grid-area: home-page;
+  margin-top: -1em;
+  margin-left: -2.5vw;
+  margin-right: -2.5vw;
+  display: flex;
+}
+
+.home-page a {
+  max-width: 16rem;
+  width: 100%;
+}
+
+.slogan {
+  font-size: 1.33rem;
+  margin-top: .5rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.about-the-project {
+  grid-area: about-the-project;
+  justify-self: center;
+  text-align: center;
+}
+
+.about-project-box {
+  margin: 0;
+  padding: 2rem;
+}
+
+.box1 {
+  grid-area: box1;
+}
+
+.box2 {
+  grid-area: box2;
+}
+
+.box3 {
+  grid-area: box3;
+}
+
+.the-group {
+  grid-area: the-group;
+  justify-self: center;
+}
+
+.the-group-box {
+  margin: 0;
+  padding: 2rem;
+}
+
+.person1 {
+  grid-area: person1;
+}
+
+.person2 {
+  grid-area: person2;
+}
+
+.person3 {
+  grid-area: person3;
+}
+
+.title {
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  align-self: center;
+  width: 100%;
+
+}
+
+.title h1 {
+  width: 100%;
+  font-size: clamp(3rem, 11.4vw, 6rem);
+  margin: 0;
+}
+
+.grid-container h2 {
+  font-size: 3rem;
+  font-weight: lighter;
+  margin-bottom: 1rem;
+}
+
+.about-page-image {
+  max-width: 100%;
+  max-height: 15rem;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-items: center;
+}
+
+.home-page .buttons-side-by-side {
+  justify-content: unset;
+}
+
+.biography {
+  margin-top: 4%;
+}
+
+@media only screen and (max-width: 40em) {
+  .about-page-grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: calc(100vh - 55.33px - 1em) auto auto auto auto;
+    gap: 1em 3%;
+    grid-template-areas:
+      "home-page"
+      "about-the-project "
+      "box1" 
+      "box2" 
+      "box3"
+      "the-group"
+      "person1" 
+      "person2" 
+      "person3";
+  }
+}
