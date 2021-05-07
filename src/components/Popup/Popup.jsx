@@ -2,11 +2,10 @@ import { useEffect } from 'react';
 import './Popup.css';
 
 function Popup(props) {
-    const { content } = props
-    let scrollPosition;
+    const { content } = props;
 
     useEffect(() => {
-        scrollPosition = window.pageYOffset;
+        let scrollPosition = window.pageYOffset;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.top = `-${scrollPosition}px`;
