@@ -46,7 +46,7 @@ class Postpone extends Component {
 
     render() {
         return (
-            <div className="container postpone-form">
+            <div className="container max-width postpone-form">
                 <form method="POST" onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Postpone {this.props.type}</legend>

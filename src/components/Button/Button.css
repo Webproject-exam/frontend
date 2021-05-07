@@ -110,13 +110,13 @@
 
 .danger-outlined {
   background: var(--background);
-  outline: 2px solid var(--red);
+  box-shadow: 0 0 0 2pt var(--red) inset;
   color: var(--red);
 }
 
 .danger-outlined:enabled:hover {
   background: var(--background);
-  outline: 2px solid var(--rDark);
+  box-shadow: 0 0 0 2pt var(--rDark) inset;
   color: var(--rDark);
 }
 
