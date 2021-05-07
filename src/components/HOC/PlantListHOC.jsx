@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { notifySuccess } from '../../helpers/notification';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
-import { addDays, startOfDay } from 'date-fns'
+import { addDays, startOfDay, isWeekend } from 'date-fns'
 import { fetchAllPlants } from '../../api/plants';
 
 function withPlantsFetch(WrappedComponent) {
@@ -45,17 +45,27 @@ function withPlantsFetch(WrappedComponent) {
         }
 
         //TO DO: koble sammen denne med back-end (PATCH plante med ID)
-        //TO DO 2: be om bekreftelse fra bruker før planten patches
         handleWateringClick = (plant) => {
             let nextWateringDate = startOfDay(addDays(Date.now(), plant.watering.waterFrequency))
+            let wasMoved = false;
+
+            //Hvis WaterNext er i helgen, flytt den til nærmeste mandag
+            while (isWeekend(nextWateringDate)) {
+                wasMoved = true
+                nextWateringDate = addDays(nextWateringDate, 1)
+            }
 
             if (window.confirm(`Do you want to water the plant "${plant.name}"?`)) {
-                
+
                 //denne datoen skal bli waterNext til planten med tilhørende ID (plant._id her)
                 console.log(`Plante med id "${plant._id}" sin waterNext skal bli: "${nextWateringDate}"`)
 
                 notifySuccess(`The plant "${plant.name}" has been watered. 💧`)
-              }
+            }
+
+            if (wasMoved) {
+                alert(`The original watering date was on a weekend, it has therefore been moved to ${nextWateringDate}.`)
+            }
         }
 
         render() {
