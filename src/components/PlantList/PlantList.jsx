@@ -47,8 +47,13 @@ class PlantList extends Component {
                 //Name Z-A
                 plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
                 break;
-            default:
+            case 'watering>':
+                //Imminent Watering
                 plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
+                break;
+            default:
+                //Newest created plant
+                plants.sort((a, b) => (a > b) ? 1 : -1);
         }
 
         return (
