@@ -71,7 +71,9 @@ function withPlantsFetch(WrappedComponent) {
         waterPlant = async () => {
             const id = this.state.selectedPlant._id;
             const watering = {
-                waterNext: this.state.nextWaterDate
+                watering: {
+                    waterNext: this.state.nextWaterDate
+                }
             };
             console.log(watering);
             
