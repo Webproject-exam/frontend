@@ -224,6 +224,7 @@ class AddUserForm extends Component {
                             {this.props.error && <UserFeedbackCard variant="error" onClick={this.props.removeErrorHandler} feedbackText="The email is already in use" />}
 
                             <Button label="add new user" size="full" variant="primary" type="submit" />
+                            <Button label='cancel' size='full' variant='danger-outlined' onClick={this.props.onAbortClick} />
                         </fieldset>
                     </form>
                 </div>

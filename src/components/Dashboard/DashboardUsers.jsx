@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import AddUserForm from '../AddUser/AddUserForm';
-import Button from '../Button/Button'
-import UserTable from '../UserTable/UserTable';
+import Button from '../Button/Button';
 import './Dashboard.css';
 import addUserBackend from '../HOC/AddItemFormHOC';
-import withUsersFetch from '../HOC/UserTableHOC';
+import Popup from '../Popup/Popup';
 
 /**
  * ## How it works
@@ -26,37 +25,27 @@ class DashboardUsers extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            addUser: false,
-            seeUsers: true
+            addUser: false
         }
     }
 
     //open the form for adding a user. If the user list is shown, close it.
     toggleAddUser = () => {
         this.setState({
-            addUser: !this.state.addUser,
-            seeUsers: false
-        });
-    }
-
-    //show a list of all users stored in the database. If the form for adding a user is open, close it.
-    toggleAllUsers = () => {
-        this.setState({
-            seeUsers: !this.state.seeUsers,
-            addUser: false
+            addUser: !this.state.addUser
         });
     }
 
 
     render() {
-        const UserTableWithHOC = withUsersFetch(UserTable);
         const AddUserWithHOC = addUserBackend(AddUserForm);
 
         return (
             <>
                 <Button onClick={this.toggleAddUser} variant="fab" label="+ Add user" size="auto" active={this.state.addUser} />
-                {this.state.addUser && <AddUserWithHOC place="users" />}
-                <UserTableWithHOC />
+                {this.state.addUser &&
+                    <Popup content={<AddUserWithHOC place="users" onAbortClick={this.toggleAddUser} />} />
+                }
             </>
         );
     }
