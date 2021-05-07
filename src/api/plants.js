@@ -9,7 +9,7 @@ const fetchPlant = (id) => {
 }
 
 const waterPlant = (watering) => {
-    return axios.patch(`/plants/`, watering);
+    return axios.patch(`/plants`, watering);
 }
 
 
