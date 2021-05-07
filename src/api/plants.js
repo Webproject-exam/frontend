@@ -8,8 +8,8 @@ const fetchPlant = (id) => {
     return axios.get(`/plants/${id}`);
 }
 
-const waterPlant = (id, watering) => {
-    return axios.patch(`/plants/${id}`, watering);
+const waterPlant = (watering) => {
+    return axios.patch(`/plants/`, watering);
 }
 
 
