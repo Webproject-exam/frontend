@@ -5,6 +5,8 @@ import DashboardPlants from './DashboardPlants';
 import DashboardUsers from './DashboardUsers';
 import Header from '../Header/Header';
 import { AuthContext } from '../../helpers/Auth';
+import PlantList from '../PlantTable/PlantTable';
+import plantListBackend from '../HOC/PlantListHOC';
 
 /**
  * ## How it works
@@ -23,7 +25,7 @@ import { AuthContext } from '../../helpers/Auth';
  * is done by rendering `<Dashboard />` wrapped by `<AdminRoute></AdminRoute>` )
  */
 class Dashboard extends Component {
-    static contextType  = AuthContext;
+    static contextType = AuthContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +34,7 @@ class Dashboard extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.context.refreshToken();
     }
 
@@ -45,15 +47,21 @@ class Dashboard extends Component {
     }
 
     render() {
+        const PlantTableHOC = plantListBackend(PlantList);
 
         return (
             <>
-            <Header heading="Manager Page"/>
+                <Header heading="Manager Page" />
                 <div className="user-list-item-buttons">
                     <Button onClick={this.toggleTab} variant="text-only-tab" label="Plants" size="auto" active={this.state.plants} />
                     <Button onClick={this.toggleTab} variant="text-only-tab" label="Users" size="auto" active={this.state.users} />
                 </div>
-                {this.state.plants && <DashboardPlants />}
+                {this.state.plants &&
+                    <>
+                        <DashboardPlants />
+                        <PlantTableHOC place='plants' />
+                    </>
+                }
                 {this.state.users && <DashboardUsers />}
             </>
         );
