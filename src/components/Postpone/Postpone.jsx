@@ -10,28 +10,32 @@ class Postpone extends Component {
             reason_postponement: ''
         };
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.daysPostponementInput = React.createRef();
     }
 
-    handleSubmit(event) {
+    componentDidMount() {
+        this.daysPostponementInput.current.focus();
+    }
+
+    handleSubmit = (event) => {
         event.preventDefault();
 
-            const postponeObject = {
-                days_postponement: this.state.days_postponement,
-                reason_postponement: this.state.reason_postponement,
-            }
+        const postponeObject = {
+            days_postponement: parseInt(this.state.days_postponement),
+            reason_postponement: this.state.reason_postponement,
+        }
 
-            this.setState({
-                days_postponement: '',
-                reason_postponement: ''
-            });
+        this.setState({
+            days_postponement: '',
+            reason_postponement: ''
+        });
 
-            console.log(postponeObject.days_postponement)
+
+        alert(`submitting: ${postponeObject.days_postponement} and ${postponeObject.reason_postponement}`)
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;
@@ -51,11 +55,12 @@ class Postpone extends Component {
                         <label htmlFor="days_postponement">Number of days postponement</label>
                         <input
                             id="days_postponement"
+                            min="1"
                             max="365"
                             name="days_postponement"
-                            onChange={this.handleInputChange}
+                            onChange={this.handleNumberInputChange}
                             placeholder="Enter the number of days postponement"
-                            ref={this.firstnameInput}
+                            ref={this.daysPostponementInput}
                             required
                             type="number"
                             value={this.state.days_postponement}
@@ -72,8 +77,8 @@ class Postpone extends Component {
                         />
 
                         <div className="buttons-side-by-side">
-                            <Button type="submit" label="postpone" variant="secondary"/>
-                            <Button type="reset" label="cancel" variant="danger-outlined"/>
+                            <Button type="submit" label="postpone" variant="secondary" />
+                            <Button type="reset" label="cancel" variant="danger-outlined" />
                         </div>
                     </fieldset>
                 </form>

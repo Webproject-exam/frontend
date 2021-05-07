@@ -15,7 +15,6 @@ function emailIsValid(emailToValidate) {
  */
 function isEmpty(valueToCheck) {
     if (valueToCheck === '') {
-        console.log('can not be empty')
         return false
     } else {
         return true
