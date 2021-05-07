@@ -53,6 +53,7 @@ function withPlantsFetch(WrappedComponent) {
             console.log(plant);
             let nextWateringDate = startOfDay(addDays(Date.now(), plant.watering.waterFrequency))
             let dateWasMoved = false;
+            console.log(nextWateringDate);
 
             //Hvis WaterNext er i helgen, flytt den til nærmeste mandag
             while (isWeekend(nextWateringDate)) {
@@ -76,13 +77,17 @@ function withPlantsFetch(WrappedComponent) {
                 }
             };
             console.log(watering);
-            
+
             const res = await waterPlant(id, watering);
 
             if(res.error){
                 console.log("Something went fucking wrong!");
                 notifyError("Oops, something went wrong!");
+                this.setState({
+                    error: res.error
+                })
             } else {
+                this.fetchAllData();
                 notifySuccess("Plant has been watered!");
                 this.setState({
                     waterPlant: false,
