@@ -80,7 +80,7 @@ function PlantStatusCard(props) {
 
                     {props.plant.fertilization.lastFertDate &&
                         <li>
-                            <span className="bold">Last fertilized:</span> {format(props.plant.fertilization.lastFertDate, 'PPP')}
+                            <span className="bold">Last fertilized:</span> {format(parseISO(props.plant.fertilization.lastFertDate), 'PPP')}
                         </li>}
 
                     {props.plant.fertilization.lastFertBy &&

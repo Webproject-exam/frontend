@@ -3,18 +3,15 @@ import Button from '../Button/Button';
 import './Prompt.css'
 
 function Prompt(props) {
-    const { onCancelClick, onConfirmClick, plant, type, user } = props;
+    const { onCancelClick, onConfirmClick, plant, user, action } = props;
 
     let buttonVariant;
     let buttonLabel;
-    let action;
 
-    if (type === 'delete') {
-        action = 'Delete';
+    if (action === 'delete') {
         buttonVariant = 'danger';
         buttonLabel = 'delete';
     } else {
-        action = 'Water';
         buttonVariant = 'secondary';
         buttonLabel = 'confirm';
     }

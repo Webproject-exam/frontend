@@ -3,7 +3,7 @@ import { notifyError, notifySuccess, notifyInfo } from '../../helpers/notificati
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
 import { addDays, startOfDay, isWeekend, format } from 'date-fns'
-import { fetchAllPlants, waterPlant } from '../../api/plants';
+import { fetchAllPlants, careForPlant } from '../../api/plants';
 import Popup from '../Popup/Popup';
 import Prompt from '../Prompt/Prompt';
 
@@ -73,7 +73,7 @@ function withPlantsFetch(WrappedComponent) {
                 waterNext: this.state.nextWaterDate
             };
 
-            const res = await waterPlant(watering);
+            const res = await careForPlant(watering);
 
             if(res.error){
                 notifyError("Oops, something went wrong!");
@@ -117,7 +117,7 @@ function withPlantsFetch(WrappedComponent) {
                 <>
                     <WrappedComponent plants={this.state.plants} auth={auth} handleWateringClick={this.waterNextClick} {...this.props} />
                     {this.state.waterPlant &&
-                        <Popup content={<Prompt type='confirm' plant={this.state.selectedPlant} onCancelClick={this.cancelWatering} onConfirmClick={this.waterPlant} />} />
+                        <Popup content={<Prompt action='water' plant={this.state.selectedPlant} onCancelClick={this.cancelWatering} onConfirmClick={this.waterPlant} />} />
                     }
                 </>
             );

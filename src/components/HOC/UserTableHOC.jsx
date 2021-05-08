@@ -136,7 +136,7 @@ function withUsersFetch(WrappedComponent) {
                     }
 
                     {this.state.delete &&
-                        <Popup content={<Prompt onCancelClick={this.cancelAction} onConfirmClick={this.deleteUser} user={this.state.selectedUser} type='delete'  />} />
+                        <Popup content={<Prompt action='delete' onCancelClick={this.cancelAction} onConfirmClick={this.deleteUser} user={this.state.selectedUser}  />} />
                     }
                 </>
             );
