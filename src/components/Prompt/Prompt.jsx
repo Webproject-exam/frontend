@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../Button/Button';
+import './Prompt.css'
 
 function Prompt(props) {
     const { onCancelClick, onConfirmClick, plant, type, user } = props;
@@ -9,17 +10,17 @@ function Prompt(props) {
     let action;
 
     if (type === 'delete') {
-        action = 'delete';
+        action = 'Delete';
         buttonVariant = 'danger';
         buttonLabel = 'delete';
     } else {
-        action = 'water';
+        action = 'Water';
         buttonVariant = 'secondary';
         buttonLabel = 'confirm';
     }
 
     return (
-        <div className="container">
+        <div className="container prompt">
             <>
                 {user &&
                 <>
@@ -30,7 +31,7 @@ function Prompt(props) {
 
                 {plant &&
                 <>
-                    <h1>{action === 'delete' ? 'Delete' : 'Water'} a plant</h1>
+                    <h1>{action} a plant</h1>
                     <p>Are you sure you want to {action} the plant <span className="bold">{plant.name}</span>?</p>
                 </>
                 }
@@ -38,7 +39,7 @@ function Prompt(props) {
                 <p className="low-emphasis-text">This action can not be undone!</p>
 
                 <div className="buttons-side-by-side">
-                    <Button onClick={onCancelClick} label="Cancel" size="half" variant="secondary-outlined" />
+                    <Button onClick={onCancelClick} label="cancel" size="half" variant="secondary-outlined" />
                     <Button onClick={onConfirmClick} label={buttonLabel} size="half" variant={buttonVariant} />
                 </div>
             </>
