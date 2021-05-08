@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { notifyError, notifySuccess } from '../../helpers/notification';
+import { notifyError, notifySuccess, notifyInfo } from '../../helpers/notification';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
-import { addDays, startOfDay, isWeekend } from 'date-fns'
+import { addDays, startOfDay, isWeekend, format } from 'date-fns'
 import { fetchAllPlants, waterPlant } from '../../api/plants';
 import Popup from '../Popup/Popup';
 import Prompt from '../Prompt/Prompt';
@@ -74,19 +74,22 @@ function withPlantsFetch(WrappedComponent) {
                 selectedPlant: this.state.selectedPlant._id,
                 waterNext: this.state.nextWaterDate
             };
-            console.log(watering);
 
             const res = await waterPlant(watering);
 
             if(res.error){
-                console.log("Something went fucking wrong!");
                 notifyError("Oops, something went wrong!");
                 this.setState({
                     error: res.error
                 })
             } else {
                 this.fetchAllData();
-                notifySuccess("Plant has been watered!");
+                
+                if(this.state.dateWasMoved){
+                    notifyInfo(`The next watering date for the plant "${this.state.selectedPlant.name}" fell on the weekend. The system, therefore, moved the date to ${this.state.nextWaterDate}`)
+                }
+                
+                notifySuccess(`The plant "${this.state.selectedPlant.name}" has been watered. 💧`);
                 this.setState({
                     waterPlant: false,
                     selectedPlant: {},
