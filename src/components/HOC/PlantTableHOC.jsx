@@ -73,7 +73,7 @@ function managePlantFetch(WrappedComponent) {
                         <Popup  />
                     }
 					{this.state.delete &&
-						<Popup content={<Prompt plant={this.state.selectedPlant} type='delete' onCancelClick={this.cancelDelete} />} />
+						<Popup content={<Prompt action='delete' plant={this.state.selectedPlant} onCancelClick={this.cancelDelete} />} />
 					}
                 </>
             );

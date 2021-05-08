@@ -8,10 +8,13 @@ const fetchPlant = (id) => {
     return axios.get(`/plants/${id}`);
 }
 
-const waterPlant = (watering) => {
+const careForPlant = (watering) => {
     return axios.patch(`/plants`, watering);
 }
 
+const postponePlant = (id, postponeObject) => {
+    return axios.patch(`/plants/${id}`, postponeObject);
+}
 
 const createPlant = (plantObject) => {
     return axios.post('/manage/plants', plantObject);
@@ -19,6 +22,7 @@ const createPlant = (plantObject) => {
 export {
     fetchAllPlants,
     fetchPlant,
-    waterPlant,
+    careForPlant,
+    postponePlant,
     createPlant
 };
