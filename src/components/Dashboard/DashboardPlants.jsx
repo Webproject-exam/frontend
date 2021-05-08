@@ -23,9 +23,9 @@ class DashboardPlants extends Component {
 
         return (
             <>
-                <Button onClick={this.toggleAddPlant} variant="fab" label=" + Add plant" size="auto" active={this.state.addPlant} />
+                <Button onClick={this.toggleAddPlant} variant="fab" label=" + Add plant" size="auto" />
                 {this.state.addPlant &&
-                    <Popup content={<AddPlantWithHOC place='plants' />} />
+                    <Popup content={<AddPlantWithHOC place='plants' onAbortClick={this.toggleAddPlant} onSubmit={this.props.onSubmit} />} />
                 }
             </>
         );

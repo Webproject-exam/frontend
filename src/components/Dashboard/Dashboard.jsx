@@ -8,25 +8,7 @@ import { AuthContext } from '../../helpers/Auth';
 import PlantList from '../PlantTable/PlantTable';
 import plantListBackend from '../HOC/PlantTableHOC';
 import withUsersFetch from '../HOC/UserTableHOC';
-
 import UserTable from '../UserTable/UserTable';
-
-/**
- * ## How it works
- * The Dashboard component initially renders two `<Button />` components. 
- * When the user presses one of the buttons the dashboard's state changes and either a 
- * form for adding a new user (`<AddUserWithHOC />`) or a list of users (`<UserListWithHOC />`) renders.
- * 
- * - The dashboard is designed to show one component at a time.
- * 
- * - The dashboard is protected and can only be accessed by logged-in managers.
- * 
- * ## Usage
- * 1. Import the Dashboard component from `src/components/Dashboard/Dashboard`.
- * 2. Place the `<Dashboard />` component where you want the dashboard to render. 
- * (Note: ensure to protect `<Dashboard />` with authentication. Protecting with authentication 
- * is done by rendering `<Dashboard />` wrapped by `<AdminRoute></AdminRoute>` )
- */
 class Dashboard extends Component {
     static contextType = AuthContext;
     constructor(props) {
@@ -35,10 +17,8 @@ class Dashboard extends Component {
             plants: true,
             users: false
         }
-    }
-
-    componentDidMount() {
-        this.context.refreshToken();
+        this.plant = React.createRef();
+        this.user = React.createRef();
     }
 
     //open the form for adding a user. If the user list is shown, close it.
@@ -47,6 +27,14 @@ class Dashboard extends Component {
             plants: !this.state.plants,
             users: !this.state.users
         });
+    }
+
+    onSubmit = (place) => {
+        if (place === 'users'){
+            this.user.current.fetchData();
+        } else if (place === 'plants') {
+            this.plant.current.fetchAllData();
+        }
     }
 
     render() {
@@ -62,14 +50,14 @@ class Dashboard extends Component {
                 </div>
                 {this.state.plants &&
                     <>
-                        <DashboardPlants />
-                        <PlantTableHOC place='plants' />
+                        <DashboardPlants onSubmit={this.onSubmit} />
+                        <PlantTableHOC place='plants' ref={this.plant} />
                     </>
                 }
                 {this.state.users && 
                 <>
-                    <DashboardUsers />
-                    <UserTableWithHOC />
+                    <DashboardUsers onSubmit={this.onSubmit} />
+                    <UserTableWithHOC ref={this.user} />
                 </>
                 }
             </>

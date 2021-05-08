@@ -5,31 +5,33 @@ import UploadFile from './UploadFile';
 import { addDays, startOfDay } from 'date-fns';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 
+const INITIAL_STATE = {
+    form_page: 1,
+
+    fertilizer_amount: 'plentiful',
+    fertilizing_frequency: '',
+
+    information_description: '',
+    information_nutrition: '',
+    information_placement: '',
+    information_watering: '',
+
+    lighting_requirements: 'sunlight',
+
+    placement_building: '',
+    placement_floor: 1,
+    placement_room: '',
+
+    plantname: '',
+
+    water_amount: 'plentiful',
+    watering_frequency: '',
+}
+
 class AddPlantForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            form_page: 1,
-
-            fertilizer_amount: 'plentiful',
-            fertilizing_frequency: '',
-
-            information_description: '',
-            information_nutrition: '',
-            information_placement: '',
-            information_watering: '',
-
-            lighting_requirements: 'sunlight',
-
-            placement_building: '',
-            placement_floor: 1,
-            placement_room: '',
-
-            plantname: '',
-            
-            water_amount: 'plentiful',
-            watering_frequency: '',
-        }
+        this.state = INITIAL_STATE;
 
         this.plantnameInput = React.createRef();
         this.form = React.createRef();
@@ -77,27 +79,9 @@ class AddPlantForm extends Component {
             return
         } else {
             notifySuccess(`The plant ${this.state.plantname} has been added.`);
-            this.setState({
-
-                /* endre dette til sånn initual sate ? (som carlos)*/
-
-                form_page: 1,
-
-                fertilizer_amount: 'plentiful',
-                fertilizing_frequency: '',
-                information_description: '',
-                information_nutrition: '',
-                information_placement: '',
-                information_watering: '',
-                lighting_requirements: 'sunlight',
-                placement_building: '',
-                placement_floor: 1,
-                placement_room: '',
-                plantname: '',
-                water_amount: 'plentiful',
-                watering_frequency: null,
-            })
+            this.setState(INITIAL_STATE);
         }
+        this.props.onAbortClick();
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
@@ -199,7 +183,7 @@ class AddPlantForm extends Component {
                                     </div>
 
                                     <div className="buttons-side-by-side">
-                                        <Button label="cancel" size="half" variant="secondary-outlined" />
+                                        <Button label="cancel" size="half" variant="danger-outlined" onClick={this.props.onAbortClick} />
                                         <Button label="next" size="half" variant="secondary" onClick={this.handlePageChangeForward} />
                                     </div>
                                 </>

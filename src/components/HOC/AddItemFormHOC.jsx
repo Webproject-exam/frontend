@@ -28,27 +28,24 @@ function addUserBackend(WrappedComponent) {
             if (this._isMounted && this.props.place === "users") {
                 try {
                     await createUser(itemObject);
+                    this.props.onSubmit("users");
                 } catch (error) {
                     this.setState({
                         error: error
                     })
                 }
             } else if (this._isMounted && this.props.place === "plants"){
-                console.log("In plants");
-                console.log(itemObject);
-                const res = await createPlant(itemObject);
-                if (res.error) {
-                    console.log(res.error);
+                try {
+                    await createPlant(itemObject);
+                    this.props.onSubmit("plants");
+                } catch (error) {
+                    this.setState({
+                        error: error
+                    })
                 }
             } else {
                 console.log("Anything else");
             }
-        }
-
-        removeError = () => {
-            this.setState({
-                error: null
-            });
         }
 
         render() {

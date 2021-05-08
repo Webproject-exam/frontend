@@ -87,6 +87,7 @@ class AddUserForm extends Component {
                     repeatpassword: '',
                     submitted: true
                 })
+                this.props.onAbortClick();
             }
         } else {
             notifyError('The form is invalid!');

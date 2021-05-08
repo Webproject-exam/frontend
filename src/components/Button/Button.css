@@ -203,11 +203,6 @@
   box-shadow: unset;
 }
 
-.fab:active {
-  transform: translateY(1px);
-  filter: saturate(150%);
-}
-
 @media only screen and (max-width: 40em) {
   .fab {
     left: 2.5vw;
