@@ -50,10 +50,8 @@ function withPlantsFetch(WrappedComponent) {
         }
 
         waterNextClick = (plant) => {
-            console.log(plant);
             let nextWateringDate = startOfDay(addDays(Date.now(), plant.watering.waterFrequency))
             let dateWasMoved = false;
-            console.log(nextWateringDate);
 
             //Hvis WaterNext er i helgen, flytt den til nærmeste mandag
             while (isWeekend(nextWateringDate)) {
