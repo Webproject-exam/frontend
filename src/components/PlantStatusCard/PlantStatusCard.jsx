@@ -5,15 +5,12 @@ import { format } from 'date-fns'
 import { parseISO } from 'date-fns/esm';
 
 function PlantStatusCard(props) {
-    console.log(props.plant);
-    const fertDate = new Date(props.plant.fertilization.lastFertDate);
-    const waterDate = new Date(props.plant.watering.lastWateredDate);
 
     return (
         <div className="plant-status-card container">
             <div className="plant-status-card-header">
                 <h2 className="h2">Status</h2>
-                <PlantStatusCircle next_watering={props.plant.watering.waterNext} />
+                <PlantStatusCircle waterNext={props.plant.watering.waterNext} />
             </div>
             <section>
                 <h3>Placement</h3>
@@ -47,7 +44,7 @@ function PlantStatusCard(props) {
                         
                         {props.plant.watering.lastWateredDate &&
                         <li>
-                            <span className="bold">Last watered:</span> {format(waterDate, 'PPP')}
+                            <span className="bold">Last watered:</span> {format(props.plant.watering.lastWateredDate, 'PPP')}
                         </li>}
 
                     {props.plant.watering.lastWateredBy &&
@@ -84,7 +81,7 @@ function PlantStatusCard(props) {
 
                     {props.plant.fertilization.lastFertDate &&
                         <li>
-                            <span className="bold">Last fertilized:</span> {format(fertDate, 'PPP')}
+                            <span className="bold">Last fertilized:</span> {format(props.plant.fertilization.lastFertDate, 'PPP')}
                         </li>}
 
                     {props.plant.fertilization.lastFertBy &&

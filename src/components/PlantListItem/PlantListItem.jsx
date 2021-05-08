@@ -13,7 +13,7 @@ function PlantListItem({plant, auth, handleWateringClick}) {
         <Link to={'/plants/' + plant._id}>
                 <div className="clickable">
                     <div className="plant-header">
-                        <PlantStatusCircle next_watering={plant.watering.waterNext}/>
+                        <PlantStatusCircle waterNext={plant.watering.waterNext}/>
                         <h2 className="h2">{plant.name}</h2>
                         <h3 className="h3">{location}</h3>
                     </div>

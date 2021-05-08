@@ -5,23 +5,22 @@ import { myTimeConverter } from '../../helpers/timeConverter'
 import { isPast } from 'date-fns'
 
 
-function PlantStatusCircle({ next_watering }) {
-
+function PlantStatusCircle({ waterNext }) {
     let Icon;
     let Color;
     let Pulse;
 
-    if (myTimeConverter(next_watering) === 'today') {
+    if (myTimeConverter(waterNext) === 'today') {
         Icon = AlertIcon;
         Color = 'red';
         Pulse = '';
 
-    } else if (isPast(new Date(next_watering))) {
+    } else if (isPast(new Date(waterNext))) {
         Icon = AlertIcon;
         Color = 'red';
         Pulse = 'pulse';
 
-    } else if (myTimeConverter(next_watering) === 'tomorrow' || myTimeConverter(next_watering) === 'the day after tomorrow') {
+    } else if (myTimeConverter(waterNext) === 'tomorrow' || myTimeConverter(waterNext) === 'the day after tomorrow') {
         Icon = WarningIcon;
         Color = 'orange';
         Pulse = '';
