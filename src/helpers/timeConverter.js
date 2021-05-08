@@ -1,4 +1,4 @@
-import { startOfDay, isToday, isTomorrow, isYesterday, formatDistanceToNow, subDays } from 'date-fns'
+import { isToday, isTomorrow, isYesterday, formatDistanceToNow, subDays } from 'date-fns'
 
 /**
  * Converts a date into natural langage.
@@ -7,21 +7,19 @@ import { startOfDay, isToday, isTomorrow, isYesterday, formatDistanceToNow, subD
  */
 function myTimeConverter(date) {
 
-    let dateAsDay = startOfDay(new Date(date));
-
-    if (isToday(dateAsDay))
+    if (isToday(date))
         return "today";
 
-    if (isTomorrow(dateAsDay))
+    if (isTomorrow(date))
         return "tomorrow";
 
-    if (isYesterday(dateAsDay))
+    if (isYesterday(date))
         return "yesterday";
 
-    if (isToday(subDays(dateAsDay, 2)))
+    if (isToday(subDays(date, 2)))
         return "the day after tomorrow";
 
-    return formatDistanceToNow(dateAsDay, { addSuffix: true })
+    return formatDistanceToNow(date, { addSuffix: true })
 }
 
 export { myTimeConverter };

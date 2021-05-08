@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './AddPlantForm.css';
 import Button from '../Button/Button';
 import UploadFile from './UploadFile';
-import { addDays } from 'date-fns';
-/* import { isEmpty } from '../../helpers/validation'; */
+import { addDays, startOfDay } from 'date-fns';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 
 class AddPlantForm extends Component {
@@ -14,15 +13,20 @@ class AddPlantForm extends Component {
 
             fertilizer_amount: 'plentiful',
             fertilizing_frequency: '',
+
             information_description: '',
             information_nutrition: '',
             information_placement: '',
             information_watering: '',
+
             lighting_requirements: 'sunlight',
+
             placement_building: '',
             placement_floor: 1,
             placement_room: '',
+
             plantname: '',
+            
             water_amount: 'plentiful',
             watering_frequency: '',
         }
@@ -36,10 +40,9 @@ class AddPlantForm extends Component {
 
         const waterFreq = parseInt(this.state.watering_frequency);
         const fertFreq = parseInt(this.state.fertilizing_frequency);
-        const waterNextDate = new Date(addDays(Date.now(), waterFreq));
-        const fertNextDate = new Date(addDays(Date.now(), fertFreq));
-        const waterNext = waterNextDate.getTime();
-        const fertNext = fertNextDate.getTime();
+
+        const waterNext = startOfDay(addDays(Date.now(), waterFreq));
+        const fertNext = startOfDay(addDays(Date.now(), fertFreq));
 
         const plantObject = {
             name: this.state.plantname,
@@ -110,7 +113,6 @@ class AddPlantForm extends Component {
 
     handlePageChangeForward = () => {
         if (this.state.form_page < 3 && this.form.current.reportValidity()) {
-            console.log("lmao")
             this.setState(prevState => {
                 return {
                     form_page: prevState.form_page + 1
