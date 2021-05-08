@@ -5,7 +5,6 @@ import { format } from 'date-fns'
 import { parseISO } from 'date-fns/esm';
 
 function PlantStatusCard(props) {
-
     return (
         <div className="plant-status-card container">
             <div className="plant-status-card-header">
@@ -44,7 +43,7 @@ function PlantStatusCard(props) {
                         
                         {props.plant.watering.lastWateredDate &&
                         <li>
-                            <span className="bold">Last watered:</span> {format(props.plant.watering.lastWateredDate, 'PPP')}
+                            <span className="bold">Last watered:</span> {format(parseISO(props.plant.watering.lastWateredDate), 'PPP')}
                         </li>}
 
                     {props.plant.watering.lastWateredBy &&
