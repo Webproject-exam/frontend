@@ -30,7 +30,6 @@ class Postpone extends Component {
             reason_postponement: ''
         });
 
-
         alert(`submitting: ${postponeObject.days_postponement} and ${postponeObject.reason_postponement}`)
     }
 
