@@ -13,10 +13,41 @@ class PlantList extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount(){
+        this.sorting();
+    }
+    
+    sorting = () => {
         const plants = this.props.plants;
+        const sorting = this.state.sorting;
+        let sorted;
+
+        //sorting logic
+        switch (sorting) {
+            case 'fert>':
+                //Imminent Fertilization
+                sorted = plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
+                break;
+            //Name A-Z
+            case 'name>':
+                sorted = plants.sort((a, b) => (a.name > b.name) ? 1 : -1);
+                break;
+            case 'name<':
+                //Name Z-A
+                sorted = plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
+                break;
+            case 'watering>':
+                //Imminent Watering
+                sorted = plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
+                break;
+            default:
+                //Newest created plant
+                sorted = plants.sort((a, b) => (a > b) ? 1 : -1);
+        }
+        console.log(sorted);
+        
         this.setState({
-            plants: plants
+            plants: sorted
         })
     }
 
@@ -26,35 +57,12 @@ class PlantList extends Component {
         this.setState({
             sorting: value
         });
+        this.sorting();
     }
 
     render() {
         const { auth, handleWateringClick } = this.props;
         const plants = this.state.plants;
-        const sorting = this.state.sorting;
-
-        //sorting logic
-        switch (sorting) {
-            case 'fert>':
-                //Imminent Fertilization
-                plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
-                break;
-                //Name A-Z
-            case 'name>':
-                plants.sort((a, b) => (a.name > b.name) ? 1 : -1);
-                break;
-            case 'name<':
-                //Name Z-A
-                plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
-                break;
-            case 'watering>':
-                //Imminent Watering
-                plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
-                break;
-            default:
-                //Newest created plant
-                plants.sort((a, b) => (a > b) ? 1 : -1);
-        }
 
         return (
             <>
