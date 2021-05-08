@@ -20,4 +20,15 @@ function notifyError(message) {
     });
 };
 
-export { notifySuccess, notifyError };
+/**
+ * Informative toast message
+ * @param {string} message 
+ */
+function notifyInfo(message) {
+    toast.info(message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 12000,
+    });
+};
+
+export { notifySuccess, notifyError, notifyInfo };
