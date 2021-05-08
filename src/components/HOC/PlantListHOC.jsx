@@ -86,7 +86,7 @@ function withPlantsFetch(WrappedComponent) {
                 this.fetchAllData();
                 
                 if(this.state.dateWasMoved){
-                    notifyInfo(`The next watering date for the plant "${this.state.selectedPlant.name}" fell on the weekend. The system, therefore, moved the date to ${this.state.nextWaterDate}`)
+                    notifyInfo(`The next watering date for the plant "${this.state.selectedPlant.name}" fell on the weekend. The system, therefore, moved the date to  ${format(this.state.nextWaterDate, 'EEEE, MMMM do')}`)
                 }
                 
                 notifySuccess(`The plant "${this.state.selectedPlant.name}" has been watered. 💧`);
