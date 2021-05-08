@@ -7,6 +7,8 @@ import { isToday, isTomorrow, isYesterday, formatDistanceToNow, subDays } from '
  */
 function myTimeConverter(date) {
 
+    date = new Date(date)
+
     if (isToday(date))
         return "today";
 
