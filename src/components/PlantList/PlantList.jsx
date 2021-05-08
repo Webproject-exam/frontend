@@ -13,42 +13,19 @@ class PlantList extends Component {
         }
     }
 
-    componentDidMount(){
-        this.sorting();
+    componentDidMount() {
+        this.handleUpdateProp();
     }
-    
-    sorting = () => {
-        const plants = this.props.plants;
-        const sorting = this.state.sorting;
-        let sorted;
 
-        //sorting logic
-        switch (sorting) {
-            case 'fert>':
-                //Imminent Fertilization
-                sorted = plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
-                break;
-            //Name A-Z
-            case 'name>':
-                sorted = plants.sort((a, b) => (a.name > b.name) ? 1 : -1);
-                break;
-            case 'name<':
-                //Name Z-A
-                sorted = plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
-                break;
-            case 'watering>':
-                //Imminent Watering
-                sorted = plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
-                break;
-            default:
-                //Newest created plant
-                sorted = plants.sort((a, b) => (a > b) ? 1 : -1);
+    componentDidUpdate(prevProps){
+        if(prevProps.plants !== this.props.plants) {
+            this.handleUpdateProp();
         }
-        console.log(sorted);
-        
-        this.setState({
-            plants: sorted
-        })
+    }
+
+    handleUpdateProp = () => {
+        const sortedPlants = this.sorting(this.state.sorting, this.props.plants);
+        this.setState({plants: sortedPlants});
     }
 
     handleChange = (event) => {
@@ -57,12 +34,34 @@ class PlantList extends Component {
         this.setState({
             sorting: value
         });
-        this.sorting();
+    }
+
+    sorting = (sorting, plants) => {
+        //sorting logic
+        switch (sorting) {
+            case 'fert>':
+                //Imminent Fertilization
+                return plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
+            //Name A-Z
+            case 'name>':
+                return plants.sort((a, b) => (a.name > b.name) ? 1 : -1);
+            case 'name<':
+                //Name Z-A
+                return plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
+            case 'watering>':
+                //Imminent Watering
+                return plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
+            default:
+                //Newest created plant
+                return plants.sort((a, b) => (a > b) ? 1 : -1);
+        }
     }
 
     render() {
         const { auth, handleWateringClick } = this.props;
         const plants = this.state.plants;
+        const sorting = this.state.sorting;
+        this.sorting(sorting, plants);
 
         return (
             <>
