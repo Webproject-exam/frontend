@@ -24,7 +24,7 @@ const INITIAL_STATE = {
 
     plantname: '',
 
-    water_amount: 'plentiful',
+    watering_amount: 'plentiful',
     watering_frequency: '',
 }
 
@@ -62,7 +62,7 @@ class AddPlantForm extends Component {
             watering: {
                 waterFrequency: waterFreq,
                 waterNext: waterNext,
-                waterAmount: this.state.water_amount
+                waterAmount: this.state.watering_amount
             },
             fertilization: {
                 fertFrequency: fertFreq,
