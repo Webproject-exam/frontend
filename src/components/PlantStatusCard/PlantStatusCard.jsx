@@ -40,8 +40,8 @@ function PlantStatusCard(props) {
                         <li>
                             <span className="bold">Watering amount:</span> {props.plant.watering.waterAmount}
                         </li>}
-                        
-                        {props.plant.watering.lastWateredDate &&
+
+                    {props.plant.watering.lastWateredDate &&
                         <li>
                             <span className="bold">Last watered:</span> {format(parseISO(props.plant.watering.lastWateredDate), 'PPP')}
                         </li>}
@@ -103,10 +103,6 @@ function PlantStatusCard(props) {
             <section>
                 <h3>Other</h3>
                 <ul>
-                    {props.plant.responsible &&
-                        <li>
-                            <span className="bold">Responsible:</span> {props.plant.responsible}
-                        </li>}
                     <li>
                         <span className="bold">Recommended lighting: </span> {props.plant.lighting}
                     </li>
