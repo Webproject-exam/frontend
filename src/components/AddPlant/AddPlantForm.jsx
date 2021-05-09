@@ -133,6 +133,8 @@ class AddPlantForm extends Component {
                                         placeholder="Enter the plant's name"
                                         ref={this.plantnameInput}
                                         required
+                                        pattern="\s*\S+.*" 
+                                        title="space only is not allowed"
                                         autoFocus
                                         type="text"
                                         value={this.state.plantname}
@@ -169,6 +171,8 @@ class AddPlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         placeholder="What room is the plant in?"
                                         required
+                                        pattern="\s*\S+.*" 
+                                        title="space only is not allowed"
                                         type="text"
                                         value={this.state.placement_room}
                                     />
