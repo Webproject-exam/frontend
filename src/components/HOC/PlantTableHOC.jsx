@@ -4,6 +4,8 @@ import Loading from '../Loading/Loading';
 import Popup from '../Popup/Popup';
 import Prompt from '../Prompt/Prompt';
 import { notifySuccess, notifyError } from '../../helpers/notification';
+import updatePlantBackend from './UpdatePlantHOC';
+import UpdatePlantForm from '../UpdatePlant/UpdatePlant';
 
 function managePlantFetch(WrappedComponent) {
     class PlantTableHOC extends Component {
@@ -46,6 +48,17 @@ function managePlantFetch(WrappedComponent) {
 
         editPlant = (plant) => {
             console.log(plant);
+            this.setState({
+                selectedPlant: plant,
+                edit: true
+            });
+        }
+
+        cancelEdit = () => {
+            this.setState({
+                selectedPlant: {},
+                edit: false
+            });
         }
 
         selectDelete = (plant) => {
@@ -76,11 +89,13 @@ function managePlantFetch(WrappedComponent) {
 
 		cancelDelete = () => {
 			this.setState({
+                selectedPlant: {},
 				delete: false
 			});
 		}
 
         render() { 
+            const UpdatePlantHOC = updatePlantBackend(UpdatePlantForm);
             if (this.state.isLoading) {
                 return (<Loading />);
             }
@@ -89,7 +104,7 @@ function managePlantFetch(WrappedComponent) {
                 <>
                     <WrappedComponent plants={this.state.plants} handleEditClick={this.editPlant} handleDeleteClick={this.selectDelete} />
                     {this.state.edit &&
-                        <Popup  />
+                        <Popup content={<UpdatePlantHOC selectedPlant={this.state.selectedPlant} onCancelClick={this.cancelEdit} />}  />
                     }
 					{this.state.delete &&
 						<Popup content={<Prompt action='delete' plant={this.state.selectedPlant} onCancelClick={this.cancelDelete} onConfirmClick={this.deletePlant} />} />
