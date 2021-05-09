@@ -1,24 +1,9 @@
 import React, { Component } from 'react';
 import './AddUserForm.css';
 import Button from '../Button/Button';
-import PropTypes from 'prop-types';
-import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 import { emailIsValid } from '../../helpers/validation';
 
-/**
- * ## How it works
- * The AddUserForm component returns a form where the user can add a new user to the database/system. 
- * Because it communicates with the backend, it gets its `onSubmitHandler()` from `AddUserFormHOC`.
- * 
- * ## Usage
- * 1. Import AddUserFormHOC from `src/components/HOC/AddUserFormHOC`
- * 2. Import AddUserForm from `src/components/AddUser/AddUserForm`
- * 3. Define a constant that is equal to `addUserBackend(AddUserForm)`. 
- *    Because `addUserBackend(AddUserForm)` returns a component, we can return the constant (that now is equal to a component) in the render method. 
- *    The result is a form that can communicate with the backend.
- * 4. Place the returned component where you want the `AddUserForm` to render on the page.
- */
 class AddUserForm extends Component {
 
     constructor(props) {
@@ -34,9 +19,6 @@ class AddUserForm extends Component {
             submitted: false
         }
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.form = React.createRef();
         this.firstnameInput = React.createRef();
         this.passwordInput = React.createRef();
@@ -48,7 +30,7 @@ class AddUserForm extends Component {
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;
@@ -59,7 +41,7 @@ class AddUserForm extends Component {
 
     //HandleSubmit runs two validators, first checking if the passwords match, after that, a more general form validator.
     //Then call the onSubmitHandler prop and send the state to the database.
-    async handleSubmit(event) {
+    handleSubmit = async (event) => {
         event.preventDefault();
 
         if (this.generalValidation() && this.passwordValidation()) {
@@ -84,8 +66,7 @@ class AddUserForm extends Component {
                     email: '',
                     role: 'gardener',
                     password: '',
-                    repeatpassword: '',
-                    submitted: true
+                    repeatpassword: ''
                 })
                 this.props.onAbortClick();
             }
@@ -94,7 +75,7 @@ class AddUserForm extends Component {
         }
     }
 
-    generalValidation() {
+    generalValidation = () => {
 
         if (!emailIsValid(this.state.email)) {
             notifyError('Invalid email');
@@ -106,28 +87,14 @@ class AddUserForm extends Component {
         }
     }
 
-    passwordValidation() {
+    passwordValidation = () => {
         if (this.state.password === this.state.repeatpassword) {
-            this.setState({
-                passwordError: false
-            });
             return true;
         } else {
-            this.setState({
-                passwordError: true
-            });
-            notifyError('The passwords entered do not match.')
+            notifyError('The passwords entered do not match.');
+            this.passwordInput.current.focus()
             return false;
         }
-    }
-
-    //Close the red error message that pops up when the two passwords do not match
-    handleClose() {
-        this.setState({
-            passwordError: false,
-            submitted: false
-        });
-        this.passwordInput.current.focus();
     }
 
     render() {
@@ -220,10 +187,6 @@ class AddUserForm extends Component {
                                 </div>
                             </div>
 
-                            {this.state.passwordError && <UserFeedbackCard variant="error" onClick={this.handleClose} feedbackText="The passwords entered are not the same." />}
-                            {this.state.submitted && <UserFeedbackCard variant="success" onClick={this.handleClose} feedbackText="The user has been added" />}
-                            {this.props.error && <UserFeedbackCard variant="error" onClick={this.props.removeErrorHandler} feedbackText="The email is already in use" />}
-
                             <Button label="add new user" size="full" variant="primary" type="submit" />
                             <Button label='cancel' size='full' variant='danger-outlined' onClick={this.props.onAbortClick} />
                         </fieldset>
@@ -232,10 +195,6 @@ class AddUserForm extends Component {
             </>
         );
     }
-}
-
-AddUserForm.propTypes = {
-    onSubmitHandler: PropTypes.func,
 }
 
 export default AddUserForm;
