@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './PlantStatusCard.css';
 import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { myTimeConverter } from '../../helpers/timeConverter'
@@ -5,6 +6,10 @@ import { format } from 'date-fns'
 import { parseISO } from 'date-fns/esm';
 
 function PlantStatusCard(props) {
+
+    const [showRelativeDate, setshowRelativeDate] = useState(true);
+
+
     return (
         <div className="plant-status-card container">
             <div className="plant-status-card-header">
@@ -25,15 +30,15 @@ function PlantStatusCard(props) {
                     </li>
                 </ul>
             </section>
-            <section>
+            <section className="clickable" onClick={() => setshowRelativeDate(!showRelativeDate)}>
                 <h3>Watering</h3>
                 <ul>
                     <li>
                         <span className="bold">Watering frequency:</span> every {props.plant.watering.waterFrequency} days
                     </li>
 
-                    <li>
-                        <span className="bold">Next watering:</span> {myTimeConverter(props.plant.watering.waterNext)}
+                    <li className="clickable" onClick={() => setshowRelativeDate(!showRelativeDate)}>
+                        <span className="bold">Next watering:</span> {(showRelativeDate ? myTimeConverter(props.plant.watering.waterNext) : format(parseISO(props.plant.watering.waterNext), 'PPP'))}
                     </li>
 
                     {props.plant.watering.waterAmount &&
@@ -42,8 +47,8 @@ function PlantStatusCard(props) {
                         </li>}
 
                     {props.plant.watering.lastWateredDate &&
-                        <li>
-                            <span className="bold">Last watered:</span> {format(parseISO(props.plant.watering.lastWateredDate), 'PPP')}
+                        <li className="clickable" onClick={() => setshowRelativeDate(!showRelativeDate)}>
+                            <span className="bold">Last watered:</span> {(showRelativeDate ? myTimeConverter(props.plant.watering.lastWateredDate) : format(parseISO(props.plant.watering.lastWateredDate), 'PPP'))}
                         </li>}
 
                     {props.plant.watering.lastWateredBy &&
@@ -69,7 +74,7 @@ function PlantStatusCard(props) {
                         <span className="bold">Fertilized frequency:</span> every {props.plant.fertilization.fertFrequency} days
                     </li>
 
-                    <li>
+                    <li title={format(parseISO(props.plant.fertilization.fertNext), 'PPP')}>
                         <span className="bold">Next fertilization: </span> {myTimeConverter(props.plant.fertilization.fertNext)}
                     </li>
 

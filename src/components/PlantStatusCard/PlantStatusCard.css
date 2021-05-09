@@ -29,3 +29,7 @@ section li{
     margin-left: 1rem;
     color: var(--gray1);
 }
+
+.clickable{
+    cursor: pointer;
+}
