@@ -73,15 +73,15 @@ class AddPlantForm extends Component {
         };
 
         await this.props.onSubmitHandler(plantObject);
-
+        
         if (this.props.error) {
             notifyError(this.props.error);
             return
         } else {
             notifySuccess(`The plant ${this.state.plantname} has been added.`);
             this.setState(INITIAL_STATE);
+            this.props.onAbortClick();
         }
-        this.props.onAbortClick();
     }
 
     //General InputChangeHandler that saves the value of the input field to the state

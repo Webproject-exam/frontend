@@ -51,7 +51,7 @@ function addUserBackend(WrappedComponent) {
         render() {
             console.log(this.props);
             return (
-                <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error} removeErrorHandler={this.removeError} {...this.props} />
+                <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error} onAbortClick={this.props.onAbortClick} {...this.props} />
             );
         }
     }
