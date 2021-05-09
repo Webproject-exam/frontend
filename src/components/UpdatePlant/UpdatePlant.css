@@ -1,0 +1,23 @@
+.page-indicator-dot {
+    background: var(--gray4);
+    border-radius: 50%;
+    width: .75rem;
+    height: .75rem;
+}
+
+.page-indicator-dot.active {
+    background: var(--sDark);
+    cursor: unset;
+}
+
+.update-plant-form.page-indicators{
+    height: 3rem;
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.update-plant-form .buttons-side-by-side{
+    max-width: unset;
+}

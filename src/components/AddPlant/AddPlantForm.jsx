@@ -24,7 +24,7 @@ const INITIAL_STATE = {
 
     plantname: '',
 
-    water_amount: 'plentiful',
+    watering_amount: 'plentiful',
     watering_frequency: '',
 }
 
@@ -62,7 +62,7 @@ class AddPlantForm extends Component {
             watering: {
                 waterFrequency: waterFreq,
                 waterNext: waterNext,
-                waterAmount: this.state.water_amount
+                waterAmount: this.state.watering_amount
             },
             fertilization: {
                 fertFrequency: fertFreq,
@@ -73,15 +73,15 @@ class AddPlantForm extends Component {
         };
 
         await this.props.onSubmitHandler(plantObject);
-
+        
         if (this.props.error) {
             notifyError(this.props.error);
             return
         } else {
             notifySuccess(`The plant ${this.state.plantname} has been added.`);
             this.setState(INITIAL_STATE);
+            this.props.onAbortClick();
         }
-        this.props.onAbortClick();
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
@@ -133,6 +133,8 @@ class AddPlantForm extends Component {
                                         placeholder="Enter the plant's name"
                                         ref={this.plantnameInput}
                                         required
+                                        pattern="\s*\S+.*" 
+                                        title="space only is not allowed"
                                         autoFocus
                                         type="text"
                                         value={this.state.plantname}
@@ -169,6 +171,8 @@ class AddPlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         placeholder="What room is the plant in?"
                                         required
+                                        pattern="\s*\S+.*" 
+                                        title="space only is not allowed"
                                         type="text"
                                         value={this.state.placement_room}
                                     />

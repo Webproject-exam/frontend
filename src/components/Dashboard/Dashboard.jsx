@@ -33,7 +33,7 @@ class Dashboard extends Component {
         if (place === 'users'){
             this.user.current.fetchData();
         } else if (place === 'plants') {
-            this.plant.current.fetchAllData();
+            this.plant.current.fetchData();
         }
     }
 
