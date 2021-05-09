@@ -148,7 +148,7 @@ function fetchPlantBackend(WrappedComponent) {
                 }
             }
             console.log(payload);
-            /* const id = this.state.plant._id;
+            const id = this.state.plant._id;
             const res = await postponePlant(id, payload);
 
             if (res.error) {
@@ -157,7 +157,7 @@ function fetchPlantBackend(WrappedComponent) {
                 this.setState({
                     isPostponing: false,
                 })
-            } */
+            }
         }
 
         toggleWatering = () => {

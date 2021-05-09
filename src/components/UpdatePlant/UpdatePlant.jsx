@@ -27,7 +27,7 @@ class UpdatePlantForm extends Component {
 
             name: this.props.selectedPlant.name,
 
-            water_amount: this.props.selectedPlant.watering.waterAmount,
+            watering_amount: this.props.selectedPlant.watering.waterAmount,
             watering_frequency: this.props.selectedPlant.watering.waterFrequency
         };
 
@@ -218,7 +218,7 @@ class UpdatePlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         value={this.state.watering_amount}
                                     >
-                                        <option defaultValue="plentiful">Plentiful</option>
+                                        <option value="plentiful">Plentiful</option>
                                         <option value="average">Average</option>
                                         <option value="sparse">Sparse</option>
                                     </select>
@@ -243,7 +243,7 @@ class UpdatePlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         value={this.state.fertilizer_amount}
                                     >
-                                        <option defaultValue="plentiful">Plentiful</option>
+                                        <option value="plentiful">Plentiful</option>
                                         <option value="average">Average</option>
                                         <option value="sparse">Sparse</option>
                                     </select>
