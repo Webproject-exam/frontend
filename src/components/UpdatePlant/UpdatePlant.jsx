@@ -62,7 +62,7 @@ class UpdatePlantForm extends Component {
             watering: {
                 waterFrequency: waterFreq,
                 waterNext: waterNext,
-                waterAmount: this.state.water_amount
+                waterAmount: this.state.watering_amount
             },
             fertilization: {
                 fertFrequency: fertFreq,

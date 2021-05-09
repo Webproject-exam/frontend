@@ -36,6 +36,7 @@ function updatePlantBackend(WrappedComponent) {
                 waterFrequency,
                 waterNext
             }
+            console.log(payload);
 
             const res = await updatePlant(payload);
             console.log(res);
