@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './UpdatePlantForm.css';
+import './UpdatePlant.css';
 import Button from '../Button/Button';
-import UploadFile from './UploadFile';
+import UploadFile from '../AddPlant/UploadFile';
 import { addDays, startOfDay } from 'date-fns';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 
@@ -182,7 +182,7 @@ class UpdatePlantForm extends Component {
                                     </div>
 
                                     <div className="buttons-side-by-side">
-                                        <Button label="cancel" size="half" variant="danger-outlined" onClick={this.props.onAbortClick} />
+                                        <Button label="cancel" size="half" variant="danger-outlined" onClick={this.props.onCancelClick} />
                                         <Button label="next" size="half" variant="secondary" onClick={this.handlePageChangeForward} />
                                     </div>
                                 </>
