@@ -5,7 +5,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './NavBar.css';
 import Button from '../Button/Button'
-import PropTypes from 'prop-types';
 import accountCircle from '../../assets/account_circle.svg';
 import { Link, NavLink } from "react-router-dom";
 import { notifySuccess } from '../../helpers/notification';
@@ -149,28 +148,6 @@ function Nav(props) {
             )}
         </nav>
     );
-}
-
-Nav.defaultProps = {
-    auth: false,
-    role: 'gardener',
-}
-
-Nav.propTypes = {
-    /** 
-     * The auth prop indicate if a user is logged in or not
-    */
-    auth: PropTypes.bool,
-
-    /** 
-     * The handleLogOut method is ran when a logged in user presses 'Log out'
-    */
-    handleLogOut: PropTypes.func,
-
-    /**
-     * The role is the current role of the logged in user. It decides if the user can accsess the dashboard or not.
-     */
-    role: PropTypes.oneOf(['gardener', 'manager']),
 }
 
 export default Nav;

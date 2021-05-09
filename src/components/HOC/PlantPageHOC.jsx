@@ -3,8 +3,8 @@ import { fetchPlant, postponePlant, careForPlant } from '../../api/plants';
 import { AuthContext } from '../../helpers/Auth';
 import Loading from '../Loading/Loading';
 import { withRouter, Redirect } from 'react-router-dom';
-import { addDays, startOfDay, parseISO } from 'date-fns';
-import { notifyError, notifySuccess } from '../../helpers/notification';
+import { addDays, startOfDay, parseISO, isWeekend, format } from 'date-fns';
+import { notifyError, notifyInfo, notifySuccess } from '../../helpers/notification';
 import Postpone from '../Postpone/Postpone';
 import Popup from '../Popup/Popup';
 import Prompt from '../Prompt/Prompt';
@@ -61,11 +61,18 @@ function fetchPlantBackend(WrappedComponent) {
 
         handleWateringClick = async () => {
             let nextWateringDate = startOfDay(addDays(Date.now(), this.state.plant.watering.waterFrequency))
-            let payload = {
+            let dateWasMoved = false;
+
+            //If the waterNextDate is on a weekend, move it to the closest monday
+            while (isWeekend(nextWateringDate)) {
+                dateWasMoved = true
+                nextWateringDate = addDays(nextWateringDate, 1)
+            }
+
+            const payload = {
                 selectedPlant: this.state.plant._id,
                 waterNext: nextWateringDate
             }
-            console.log(payload);
 
             const res = await careForPlant(payload);
 
@@ -75,12 +82,13 @@ function fetchPlantBackend(WrappedComponent) {
                     error: res.error
                 })
             } else {
-                /* 
-                if(this.state.dateWasMoved){
-                    notifyInfo(`The next watering date for the plant "${this.state.selectedPlant.name}" fell on the weekend. The system, therefore, moved the date to  ${format(this.state.nextWaterDate, 'EEEE, MMMM do')}`)
-                } */
+                
+                if(dateWasMoved){
+                    notifyInfo(`The next watering date for the plant "${this.state.plant.name}" fell on the weekend. The system, therefore, moved the date to  ${format(nextWateringDate, 'EEEE, MMMM do')}`)
+                }
 
                 notifySuccess(`The plant "${this.state.plant.name}" has been watered. 💧`);
+
                 this.setState({
                     plant: [],
                     isLoading: true,
@@ -93,10 +101,19 @@ function fetchPlantBackend(WrappedComponent) {
 
         handleFertilizationClick = async () => {
             let nextFertilizationDate = startOfDay(addDays(Date.now(), this.state.plant.fertilization.fertFrequency))
-            let payload = {
+            let dateWasMoved = false;
+
+            //If the waterNextDate is on a weekend, move it to the closest monday
+            while (isWeekend(nextFertilizationDate)) {
+                dateWasMoved = true
+                nextFertilizationDate = addDays(nextFertilizationDate, 1)
+            }
+            
+            const payload = {
                 selectedPlant: this.state.plant._id,
                 fertNext: nextFertilizationDate
             }
+
             console.log(payload);
 
             const res = await careForPlant(payload);
@@ -107,12 +124,12 @@ function fetchPlantBackend(WrappedComponent) {
                     error: res.error
                 })
             } else {
-                /* 
-                if(this.state.dateWasMoved){
-                    notifyInfo(`The next watering date for the plant "${this.state.selectedPlant.name}" fell on the weekend. The system, therefore, moved the date to  ${format(this.state.nextWaterDate, 'EEEE, MMMM do')}`)
-                } */
+                
+                if(dateWasMoved){
+                    notifyInfo(`The next fertilize date for the plant "${this.state.plant.name}" fell on the weekend. The system, therefore, moved the date to  ${format(nextFertilizationDate, 'EEEE, MMMM do')}`)
+                }
 
-                notifySuccess(`The plant "${this.state.plant.name}" has been watered. 💧`);
+                notifySuccess(`The plant "${this.state.plant.name}" has been fertilized. 🌱`);
                 this.setState({
                     plant: [],
                     isLoading: true,
@@ -134,21 +151,26 @@ function fetchPlantBackend(WrappedComponent) {
             let { days_postponement, reason_postponement } = postponeObject;
 
             let payload;
+            let postponeResultDate;
+
             if (this.state.postponingType === 'watering') {
-                let nextWateringDate = startOfDay(addDays(parseISO(this.state.plant.watering.waterNext), days_postponement));
+                postponeResultDate = startOfDay(addDays(parseISO(this.state.plant.watering.waterNext), days_postponement));
                 payload = {
-                    waterNext: nextWateringDate,
+                    waterNext: postponeResultDate,
                     lastPostponedReason: reason_postponement
                 };
             } else if (this.state.postponingType === 'fertilization') {
-                let nextFertilizerDate = startOfDay(addDays(parseISO(this.state.plant.fertilization.fertNext), days_postponement));
+                postponeResultDate = startOfDay(addDays(parseISO(this.state.plant.fertilization.fertNext), days_postponement));
                 payload = {
-                    fertNext: nextFertilizerDate,
+                    fertNext: postponeResultDate,
                     lastPostponedReason: reason_postponement
                 }
             }
+
             console.log(payload);
+
             const id = this.state.plant._id;
+
             const res = await postponePlant(id, payload);
 
             if (res.error) {
@@ -157,6 +179,8 @@ function fetchPlantBackend(WrappedComponent) {
                 this.setState({
                     isPostponing: false,
                 })
+                notifySuccess(`The next ${this.state.postponingType} date for "${this.state.plant.name}" has been postponed to ${format(postponeResultDate, 'EEEE, MMMM do')}`);
+                this.fetchData(id);
             }
         }
 
