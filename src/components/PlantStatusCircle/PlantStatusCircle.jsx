@@ -4,7 +4,6 @@ import WarningIcon from '../../assets/invert_colors_white_24dp.svg';
 import { myTimeConverter } from '../../helpers/timeConverter'
 import { isPast } from 'date-fns'
 
-
 function PlantStatusCircle({ waterNext }) {
     let Icon;
     let Color;

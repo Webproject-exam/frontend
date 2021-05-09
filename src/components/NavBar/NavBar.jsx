@@ -10,21 +10,6 @@ import accountCircle from '../../assets/account_circle.svg';
 import { Link, NavLink } from "react-router-dom";
 import { notifySuccess } from '../../helpers/notification';
 
-/**
- * ## How it works
- * The navigation bar is – as its name suggests – used for navigation. 
- * It includes a title and a button for logging in if the user is logged out, 
- * and an account icon if the user is logged in. The account icon is clickable 
- * and displays a dropdown menu with links to other destinations. It gets its functionality 
- * from its HOC component `NavBarHOC` found in `src/components/HOC/NavBar`
- * 
- * ## Usage
- * 1. Import `NavBarHOC` from `src/components/HOC/NavBar` 
- * 2. Import `NavBar` from `src/components/NavBar/NavBar` 
- * 3. Create a constant that is equal to `NavBar` wrapped by its HOC (`NavBarHOC`) For example: `const NavBarHOC = navBarBackend(NavBar);`
- * 4. Lastly, write the constant where you want the navigation bar to show up. In our case, we would write `'<NavBarHOC />'`
- */
-
 function Nav(props) {
     const [open, setOpen] = useState(false);
     const [isDesktop, setDesktop] = useState(window.innerWidth > 500);
