@@ -19,10 +19,21 @@ const postponePlant = (id, postponeObject) => {
 const createPlant = (plantObject) => {
     return axios.post('/manage/plants', plantObject);
 }
+
+const deletePlant = (id) => {
+    return axios.delete('/manage/plants', {data: id});
+}
+
+const updatePlant = (plantObject) => {
+    return axios.patch('/manage/plants', plantObject);
+}
+
 export {
     fetchAllPlants,
     fetchPlant,
     careForPlant,
     postponePlant,
-    createPlant
+    createPlant,
+    deletePlant,
+    updatePlant
 };

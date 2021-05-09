@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { fetchAllPlants } from '../../api/plants';
+import { deletePlant, fetchAllPlants } from '../../api/plants';
 import Loading from '../Loading/Loading';
 import Popup from '../Popup/Popup';
 import Prompt from '../Prompt/Prompt';
+import { notifySuccess, notifyError } from '../../helpers/notification';
+import updatePlantBackend from './UpdatePlantHOC';
+import UpdatePlantForm from '../UpdatePlant/UpdatePlant';
 
 function managePlantFetch(WrappedComponent) {
     class PlantTableHOC extends Component {
@@ -20,14 +23,14 @@ function managePlantFetch(WrappedComponent) {
         }
         componentDidMount(){
             this._isMounted = true;
-            this.fetchAllData();
+            this.fetchData();
         }
 
         componentWillUnmount(){
             this._isMounted = false;
         }
 
-        fetchAllData = async () => {
+        fetchData = async () => {
             const res = await fetchAllPlants();
 
             if (res.error) {
@@ -45,35 +48,66 @@ function managePlantFetch(WrappedComponent) {
 
         editPlant = (plant) => {
             console.log(plant);
+            this.setState({
+                selectedPlant: plant,
+                edit: true
+            });
         }
 
-        deletePlant = (plant) => {
-            console.log(plant);
+        cancelEdit = () => {
+            this.setState({
+                selectedPlant: {},
+                edit: false
+            });
+        }
+
+        selectDelete = (plant) => {
 			this.setState({
 				selectedPlant: plant,
 				delete: true
 			});
         }
 
+        deletePlant = async () => {
+            const id = this.state.selectedPlant._id;
+            const res = await deletePlant({id});
+            
+            if (res.error) {
+                this.setState({
+                    error: res.error
+                });
+                notifyError("Something went wrong during deletion, please try again!");
+            } else {
+                notifySuccess(`Plant ${this.state.selectedPlant.name} was successfully deleted!`);
+                this.setState({
+                    selectedPlant: {},
+                    delete: false
+                });
+                this.fetchData();
+            }
+        }
+
 		cancelDelete = () => {
 			this.setState({
+                selectedPlant: {},
 				delete: false
 			});
 		}
 
         render() { 
+            const UpdatePlantHOC = updatePlantBackend(UpdatePlantForm);
             if (this.state.isLoading) {
                 return (<Loading />);
             }
 
             return (
                 <>
-                    <WrappedComponent plants={this.state.plants} handleEditClick={this.editPlant} handleDeleteClick={this.deletePlant} />
+                    <WrappedComponent plants={this.state.plants} handleEditClick={this.editPlant} handleDeleteClick={this.selectDelete} />
                     {this.state.edit &&
-                        <Popup  />
+                        <Popup content={<UpdatePlantHOC selectedPlant={this.state.selectedPlant} onCancelClick={this.cancelEdit} />}  />
                     }
 					{this.state.delete &&
-						<Popup content={<Prompt action='delete' plant={this.state.selectedPlant} onCancelClick={this.cancelDelete} />} />
+						<Popup content={<Prompt action='delete' plant={this.state.selectedPlant} onCancelClick={this.cancelDelete} onConfirmClick={this.deletePlant} />} />
 					}
                 </>
             );

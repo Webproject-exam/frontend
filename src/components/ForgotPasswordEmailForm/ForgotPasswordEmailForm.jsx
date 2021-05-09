@@ -9,12 +9,9 @@ class ForgotPasswordEmailForm extends Component {
         super(props);
         this.state = {
             email: '',
-            error: null,
-            formSubmitted: false
+            error: null
         }
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleClose = this.handleClose.bind(this);
         this.form = React.createRef();
         this.emailInput = React.createRef();
     }
@@ -24,7 +21,6 @@ class ForgotPasswordEmailForm extends Component {
         event.preventDefault();
 
         if (emailIsValid(email)) {
-            this.setState({ formSubmitted: true });
 
             notifySuccess(`An email with further instructions is sent to '${email}'.`)
 
@@ -38,7 +34,7 @@ class ForgotPasswordEmailForm extends Component {
     }
 
     //The handleInputChange method saves the form values in the state.
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;

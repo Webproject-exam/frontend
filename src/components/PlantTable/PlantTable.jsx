@@ -3,7 +3,6 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import Button from '../Button/Button'
 
 function PlantList({ plants, handleDeleteClick, handleEditClick }) {
-    console.log(plants);
     return (
         <Table>
             <Thead>
