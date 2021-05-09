@@ -24,11 +24,16 @@ const deletePlant = (id) => {
     return axios.delete('/manage/plants', {data: id});
 }
 
+const updatePlant = (plantObject) => {
+    return axios.patch('/manage/plants', plantObject);
+}
+
 export {
     fetchAllPlants,
     fetchPlant,
     careForPlant,
     postponePlant,
     createPlant,
-    deletePlant
+    deletePlant,
+    updatePlant
 };
