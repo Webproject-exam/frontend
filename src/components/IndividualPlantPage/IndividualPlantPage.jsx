@@ -17,13 +17,28 @@ function IndividualPlantPage(props) {
                     <img className="image" src={Bilde} alt={plant.name} />
                     <div className="description">
                         <h3>Description</h3>
-                        <p>{plant.information.description}</p>
-                        <h3>Placement</h3>
-                        <p>{plant.information.placement}</p>
-                        <h3>Water</h3>
-                        <p>{plant.information.watering}</p>
-                        <h3>Nutrition</h3>
-                        <p>{plant.information.nutrition}</p>
+                        <p>{plant.information.description ? plant.information.description : '–'}</p>
+
+                        {plant.information.placement &&
+                            <>
+                                <h3>Placement</h3>
+                                <p>{plant.information.placement}</p>
+                            </>
+                        }
+
+                        {plant.information.watering &&
+                            <>
+                                <h3>Water</h3>
+                                <p>{plant.information.watering}</p>
+                            </>
+                        }
+
+                        {plant.information.nutrition &&
+                            <>
+                                <h3>Nutrition</h3>
+                                <p>{plant.information.nutrition}</p>
+                            </>
+                        }
                     </div>
                 </div>
 
@@ -39,13 +54,13 @@ function IndividualPlantPage(props) {
                         {isAuth &&
                             <>
                                 <div className="buttons-side-by-side">
-                                    <Button label="water this plant" variant="secondary" size="half" onClick={handleWateringClick}/>
-                                    <Button label="fertilize this plant" variant="tertiary" size="half" onClick={handlefertilizationClick}/>
+                                    <Button label="water this plant" variant="secondary" size="half" onClick={handleWateringClick} />
+                                    <Button label="fertilize this plant" variant="tertiary" size="half" onClick={handlefertilizationClick} />
                                 </div>
 
                                 <div className="buttons-side-by-side">
-                                    <Button label="postpone watering" variant="secondary" size="half" onClick={()=>handlePostponeClick('watering')}/>
-                                    <Button label="postpone fertilizer" variant="tertiary" size="half" onClick={()=>handlePostponeClick('fertilization')}/>
+                                    <Button label="postpone watering" variant="secondary" size="half" onClick={() => handlePostponeClick('watering')} />
+                                    <Button label="postpone fertilizer" variant="tertiary" size="half" onClick={() => handlePostponeClick('fertilization')} />
                                 </div>
                             </>}
                     </div>
