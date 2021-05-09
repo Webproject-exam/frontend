@@ -132,6 +132,8 @@ class UpdatePlantForm extends Component {
                                         placeholder="Enter the plant's name"
                                         ref={this.nameInput}
                                         required
+                                        pattern="\s*\S+.*" 
+                                        title="space only is not allowed"
                                         autoFocus
                                         type="text"
                                         value={this.state.name}
@@ -144,6 +146,8 @@ class UpdatePlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         placeholder="The builing where the plant is"
                                         required
+                                        pattern="\s*\S+.*" 
+                                        title="space only is not allowed"
                                         type="text"
                                         value={this.state.placement_building}
                                     />
@@ -168,6 +172,8 @@ class UpdatePlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         placeholder="What room is the plant in?"
                                         required
+                                        pattern="\s*\S+.*" 
+                                        title="space only is not allowed"
                                         type="text"
                                         value={this.state.placement_room}
                                     />
