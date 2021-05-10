@@ -184,6 +184,10 @@ function fetchPlantBackend(WrappedComponent) {
             }
         }
 
+        handleRequestClick = (plantID) => {
+            console.log(`Someone has requested care for the plant with ID ${plantID}`)
+        }
+
         toggleWatering = () => {
             this.setState({
                 waterPlant: !this.state.waterPlant
@@ -214,6 +218,7 @@ function fetchPlantBackend(WrappedComponent) {
                         handleWateringClick={this.toggleWatering}
                         handlefertilizationClick={this.toggleFertilizer}
                         handlePostponeClick={this.handlePostponeClick}
+                        handleRequestClick={this.handleRequestClick}
                         {...this.props} />
 
                     {this.state.waterPlant &&

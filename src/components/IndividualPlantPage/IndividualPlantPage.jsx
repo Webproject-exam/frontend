@@ -6,8 +6,10 @@ import Header from '../Header/Header';
 
 function IndividualPlantPage(props) {
     //Må bestemme oss om vi gjør dette i her eller linjen over
-    const { plant, isAuth, handleWateringClick, handlefertilizationClick, handlePostponeClick } = props;
+    const { plant, isAuth, handleWateringClick, handlefertilizationClick, handlePostponeClick, handleRequestClick } = props;
 
+
+    let canRequest = true;
     return (
         <>
             <Header heading={plant.name} />
@@ -43,13 +45,13 @@ function IndividualPlantPage(props) {
                 </div>
 
                 <div className="buttons-and-status-card">
-                    <div className="status-card"><PlantStatusCard plant={plant} /></div>
+                    <div className="status-card">
+                        <PlantStatusCard plant={plant} />
+                    </div>
 
                     <div className="buttons-group">
-                        <div className="buttons-side-by-side">
-                            <Button label="request watering" variant="secondary" size="half" />
-                            <Button label="request fertilizer" variant="tertiary" size="half" />
-                        </div>
+                       
+                    <Button label="request care" variant="primary" size="full" disabled={!canRequest} onClick={() => handleRequestClick(plant._id)}/>
 
                         {isAuth &&
                             <>
