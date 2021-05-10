@@ -14,7 +14,7 @@ const careForPlant = (watering) => {
 
 const requestCare = (id) => {
     console.log(id);
-    //return axios.patch('/plants/request', id);
+    return axios.patch('/plants/request', id);
 }
 
 const postponePlant = (id, postponeObject) => {
