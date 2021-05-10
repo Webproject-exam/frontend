@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchPlant, postponePlant, careForPlant } from '../../api/plants';
+import { fetchPlant, postponePlant, careForPlant, requestCare } from '../../api/plants';
 import { AuthContext } from '../../helpers/Auth';
 import Loading from '../Loading/Loading';
 import { withRouter, Redirect } from 'react-router-dom';
@@ -184,8 +184,9 @@ function fetchPlantBackend(WrappedComponent) {
             }
         }
 
-        handleRequestClick = (plantID) => {
-            console.log(`Someone has requested care for the plant with ID ${plantID}`)
+        handleRequestClick = async (plantID) => {
+            console.log(`Someone has requested care for the plant with ID ${plantID}`);
+            await requestCare({id: plantID});
         }
 
         toggleWatering = () => {

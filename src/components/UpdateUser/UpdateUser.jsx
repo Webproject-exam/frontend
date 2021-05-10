@@ -239,11 +239,9 @@ class UpdateUserForm extends Component {
                                 </>}
                             <Button type="submit" label="update" />
                             {this.props.place === 'dashboard' &&
-                                <>
-                                    <Button type="button" label="reset password" variant="danger" onClick={this.props.onResetClick} />
-                                    <Button type="button" label="cancel" variant="danger-outlined" onClick={this.props.onAbortClick} />
-                                </>
+                                <Button type="button" label="reset password" variant="danger" onClick={this.props.onResetClick} />
                             }
+                            <Button type="button" label="cancel" variant="danger-outlined" onClick={this.props.onAbortClick} />
 
                         </fieldset>
                     </form>

@@ -43,15 +43,19 @@ function updateUserBackend(WrappedComponent) {
         }
 
         render() {
-            return (<WrappedComponent
-                selectedUser={this.props.selectedUser}
-                place={this.props.place}
-                onResetClick={this.props.onResetClick}
-                onUpdateDashboard={this.updateDashboard}
-                onUpdateProfile={this.updateProfile}
-                onAbortClick={this.props.onAbortClick}
-                error={this.state.error}
-            />);
+            return (
+                <>
+                    <WrappedComponent
+                        selectedUser={this.props.selectedUser}
+                        place={this.props.place}
+                        onResetClick={this.props.onResetClick}
+                        onUpdateDashboard={this.updateDashboard}
+                        onUpdateProfile={this.updateProfile}
+                        onAbortClick={this.props.onAbortClick}
+                        error={this.state.error}
+                    />
+                </>
+            );
         }
     }
 
