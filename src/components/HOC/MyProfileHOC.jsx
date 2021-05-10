@@ -4,6 +4,7 @@ import UpdateUser from '../UpdateUser/UpdateUser';
 import updateUserBackend from './UpdateUserHOC';
 import { AuthContext } from '../../helpers/Auth';
 import { fetchUser } from '../../api/users';
+import Popup from '../Popup/Popup';
 
 function withUserBackEnd(WrappedComponent) {
     class MyProfileHOC extends Component {
@@ -65,7 +66,9 @@ function withUserBackEnd(WrappedComponent) {
             return (
                 <>
                     <WrappedComponent selectedUser={this.state.myUser} {...this.props} handleEditClick={this.toggleWillEdit} />
-                    {this.state.willEdit && <UpdateUserHOC selectedUser={this.state.myUser} place="profile" onUpdateForm={this.fetchData()} />}
+                    {this.state.willEdit && 
+                    <Popup content={<UpdateUserHOC onAbortClick={this.toggleWillEdit} selectedUser={this.state.myUser} place="profile" onUpdateForm={this.fetchData} />} />
+                    }
                 </>
             );
         }

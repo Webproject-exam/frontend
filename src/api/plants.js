@@ -12,6 +12,11 @@ const careForPlant = (watering) => {
     return axios.patch(`/plants`, watering);
 }
 
+const requestCare = (id) => {
+    console.log(id);
+    //return axios.patch('/plants/request', id);
+}
+
 const postponePlant = (id, postponeObject) => {
     return axios.patch(`/plants/${id}`, postponeObject);
 }
@@ -32,6 +37,7 @@ export {
     fetchAllPlants,
     fetchPlant,
     careForPlant,
+    requestCare,
     postponePlant,
     createPlant,
     deletePlant,
