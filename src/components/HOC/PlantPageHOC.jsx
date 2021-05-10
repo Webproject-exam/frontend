@@ -187,7 +187,17 @@ function fetchPlantBackend(WrappedComponent) {
         handleRequestClick = async (plantID) => {
             console.log(`Someone has requested care for the plant with ID ${plantID}`);
             const date = startOfDay(Date.now());
-            await requestCare({id: plantID, date});
+            const res = await requestCare({id: plantID, date});
+
+            if(res.error) {
+                notifyError("Someone has already requested watering for that plant!");
+                this.setState({
+                    error: res.error
+                });
+            } else {
+                notifySuccess("An email to the gardeners has been sent!")
+                this.fetchData();
+            }
         }
 
         toggleWatering = () => {
