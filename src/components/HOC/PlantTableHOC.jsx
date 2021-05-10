@@ -6,6 +6,8 @@ import Prompt from '../Prompt/Prompt';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 import updatePlantBackend from './UpdatePlantHOC';
 import UpdatePlantForm from '../UpdatePlant/UpdatePlant';
+import { isPast, isToday, parseISO } from 'date-fns';
+import Favicon from 'react-favicon';
 
 function managePlantFetch(WrappedComponent) {
     class PlantTableHOC extends Component {
@@ -94,6 +96,13 @@ function managePlantFetch(WrappedComponent) {
 			});
 		}
 
+        countPlantsToBeWatered = () => {
+            let plantsToBeWatered = 0;
+            Object.values(this.state.plants).forEach(plant =>
+                (isToday(parseISO(plant.watering.waterNext)) || isPast(parseISO(plant.watering.waterNext))) ? plantsToBeWatered++ : null);
+            return plantsToBeWatered;
+        }
+
         render() { 
             const UpdatePlantHOC = updatePlantBackend(UpdatePlantForm);
             if (this.state.isLoading) {
@@ -102,6 +111,7 @@ function managePlantFetch(WrappedComponent) {
 
             return (
                 <>
+                    <Favicon url={`${process.env.REACT_APP_FRONTEND}/favicon.ico`} alertCount={this.countPlantsToBeWatered()} />
                     <WrappedComponent plants={this.state.plants} handleEditClick={this.editPlant} handleDeleteClick={this.selectDelete} />
                     {this.state.edit &&
                         <Popup content={<UpdatePlantHOC selectedPlant={this.state.selectedPlant} onCancelClick={this.cancelEdit} />}  />
