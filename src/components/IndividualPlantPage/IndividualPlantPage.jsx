@@ -51,7 +51,7 @@ function IndividualPlantPage(props) {
 
                     <div className="buttons-group">
                        
-                    <Button label="request care" variant="primary" size="full" disabled={!canRequest} onClick={() => handleRequestClick(plant._id)}/>
+                    <Button label="request care" variant="primary" size="full" disabled={!plant.canRequest} onClick={() => handleRequestClick(plant._id)}/>
 
                         {isAuth &&
                             <>

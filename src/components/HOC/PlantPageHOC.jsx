@@ -186,7 +186,7 @@ function fetchPlantBackend(WrappedComponent) {
 
         handleRequestClick = async (plantID) => {
             console.log(`Someone has requested care for the plant with ID ${plantID}`);
-            await requestCare({id: plantID});
+            await requestCare({id: plantID, date: new Date(Date.now)});
         }
 
         toggleWatering = () => {

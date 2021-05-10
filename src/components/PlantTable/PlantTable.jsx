@@ -18,7 +18,7 @@ function PlantList({ plants, handleDeleteClick, handleEditClick }) {
                 {plants.map((plant) => (
                     <Tr key={plant._id}>
                         <Td>{plant.name}</Td>
-                        <Td><span>{plant.placement.building} - #{plant.placement.floor} - {plant.placement.room}</span></Td>
+                        <Td><span>{plant.placement.building} — #{plant.placement.floor} — {plant.placement.room}</span></Td>
                         <Td>Every {plant.watering.waterFrequency} days</Td>
                         <Td>Every {plant.fertilization.fertFrequency} days</Td>
                         <Td>

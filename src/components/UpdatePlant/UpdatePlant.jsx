@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './UpdatePlant.css';
 import Button from '../Button/Button';
 import UploadFile from '../AddPlant/UploadFile';
-import { addDays, startOfDay } from 'date-fns';
+import { addDays, parseISO, startOfDay } from 'date-fns';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 
 class UpdatePlantForm extends Component {
@@ -13,6 +13,7 @@ class UpdatePlantForm extends Component {
 
             fertilizer_amount: this.props.selectedPlant.fertilization.fertAmount,
             fertilizing_frequency: this.props.selectedPlant.fertilization.fertFrequency,
+            last_fert_date: parseISO(this.props.selectedPlant.fertilization.lastFertDate),
 
             information_description: this.props.selectedPlant.information.description,
             information_nutrition: this.props.selectedPlant.information.nutrition,
@@ -28,7 +29,10 @@ class UpdatePlantForm extends Component {
             name: this.props.selectedPlant.name,
 
             watering_amount: this.props.selectedPlant.watering.waterAmount,
-            watering_frequency: this.props.selectedPlant.watering.waterFrequency
+            watering_frequency: this.props.selectedPlant.watering.waterFrequency,
+            last_watered_date: parseISO(this.props.selectedPlant.watering.lastWateredDate),
+            created_at: parseISO(this.props.selectedPlant.createdAt) 
+
         };
 
         this.nameInput = React.createRef();
@@ -38,13 +42,23 @@ class UpdatePlantForm extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
 
+        let waterNext;
+        let fertNext;
+
         const waterFreq = parseInt(this.state.watering_frequency);
         const fertFreq = parseInt(this.state.fertilizing_frequency);
 
+        if (this.props.selectedPlant.watering.lastWateredDate) {
+            waterNext = startOfDay(addDays(this.state.last_watered_date, waterFreq));
+        } else {
+            waterNext = startOfDay(addDays(this.state.created_at, waterFreq));
+        }
 
-        /* Endre på logikken her */
-        const waterNext = startOfDay(addDays(Date.now(), waterFreq));
-        const fertNext = startOfDay(addDays(Date.now(), fertFreq));
+        if (this.props.selectedPlant.fertilization.lastFertDate) {
+            fertNext = startOfDay(addDays(this.state.last_fert_date, fertFreq));
+        } else {
+            fertNext = startOfDay(addDays(this.state.created_at, fertFreq));
+        }
 
         const plantObject = {
             id: this.props.selectedPlant._id,
