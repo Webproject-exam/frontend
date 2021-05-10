@@ -124,7 +124,8 @@ function withPlantsFetch(WrappedComponent) {
             return (
                 <>
                     {/* NÅR MAN DEPLOYER MÅ DENNE URLEN ENDRES (tror jeg tihi) */}
-                    {auth && <Favicon url='http://localhost:3000/favicon.ico' alertCount={this.countPlantsToBeWatered()} />}
+                    
+                    {auth && <Favicon url={`${process.env.REACT_APP_FRONTEND}/favicon.ico`} alertCount={this.countPlantsToBeWatered()} />}
                     
                     <WrappedComponent plants={this.state.plants} auth={auth} handleWateringClick={this.waterNextClick} {...this.props} />
                     
