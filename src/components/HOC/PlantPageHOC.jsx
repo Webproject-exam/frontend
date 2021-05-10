@@ -196,7 +196,7 @@ function fetchPlantBackend(WrappedComponent) {
                 });
             } else {
                 notifySuccess("An email to the gardeners has been sent!")
-                this.fetchData();
+                this.fetchData(this.state.plant._id);
             }
         }
 
