@@ -22,9 +22,9 @@ function PlantListItem({plant, auth, handleWateringClick}) {
                 </div>
                 </Link>
                 
-                <p>Next watering: <b>{myTimeConverter(plant.watering.waterNext)}</b>.</p>
-                <p>Lighting requirements: <b>{plant.lighting}</b>.</p>
-                <p>Fertilizer: <b>{plant.fertilization.fertAmount}</b></p>
+                <p>Next watering: <span className="bold">{myTimeConverter(plant.watering.waterNext)}</span>.</p>
+                <p>Lighting: <span className="bold">{plant.lighting}</span>.</p>
+                <p>Fertilizer: <span className="bold">{plant.fertilization.fertAmount}</span></p>
             
             {auth && (<Button className="on-top" variant="text-only" label="water this plant" size="auto" onClick={() => handleWateringClick(plant)}/>)}
         </div>

@@ -8,6 +8,7 @@ function PlantStatusCircle({ waterNext }) {
     let Icon;
     let Color;
     let Pulse;
+    let alt;
 
     if (myTimeConverter(waterNext) === 'today') {
         Icon = AlertIcon;
@@ -18,21 +19,24 @@ function PlantStatusCircle({ waterNext }) {
         Icon = AlertIcon;
         Color = 'red';
         Pulse = 'pulse';
+        alt = 'droplet with explanation mark'
 
     } else if (myTimeConverter(waterNext) === 'tomorrow' || myTimeConverter(waterNext) === 'the day after tomorrow') {
         Icon = WarningIcon;
         Color = 'orange';
         Pulse = '';
+        alt = 'half filled droplet';
 
     } else {
         Color = '';
         Icon = '';
         Pulse = '';
+        alt = '';
     }
 
     return (
         <div className={`status-circle ${Color} ${Pulse}`}>
-            {Color && <img src={Icon} alt='' />}
+            {Color && <img src={Icon} alt={alt} />}
         </div>
     )
 }

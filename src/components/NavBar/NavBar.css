@@ -37,10 +37,6 @@
     align-items: center;
 }
 
-/* .navbar a button {
-    width: 5em;
-} */
-
 .navbar * {
     font-size: 0.9em;
 }
@@ -49,7 +45,6 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: flex-start; */
 }
 
 .navbar ul li {

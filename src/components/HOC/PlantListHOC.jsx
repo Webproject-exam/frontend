@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { notifyError, notifySuccess, notifyInfo } from '../../helpers/notification';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
-import { addDays, startOfDay, isWeekend, format, isToday, parseISO, isPast } from 'date-fns'
+import { addDays, startOfDay, isWeekend, format, isToday, parseISO, isPast, nextMonday } from 'date-fns'
 import { fetchAllPlants, careForPlant } from '../../api/plants';
 import Popup from '../Popup/Popup';
 import Prompt from '../Prompt/Prompt';
@@ -54,10 +54,10 @@ function withPlantsFetch(WrappedComponent) {
             let nextWateringDate = startOfDay(addDays(Date.now(), plant.watering.waterFrequency))
             let dateWasMoved = false;
 
-            //Hvis WaterNext er i helgen, flytt den til nærmeste mandag
-            while (isWeekend(nextWateringDate)) {
+            //If the nextWateringDate land on a weekend, move it to the closest monday
+            if (isWeekend(nextWateringDate)) {
+                nextWateringDate = nextMonday(nextWateringDate)
                 dateWasMoved = true
-                nextWateringDate = addDays(nextWateringDate, 1)
             }
 
             this.setState({

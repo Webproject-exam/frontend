@@ -66,7 +66,7 @@ class PlantList extends Component {
         return (
             <>
                 <Header heading="Overview" />
-                <select name="sorting" id="sorting" value={this.state.sorting} onChange={this.handleChange}>
+                <select name="sorting" id="sorting" value={this.state.sorting} onChange={this.handleChange} aria-label="Sort by">
                     <option defaultValue="">SORT BY:</option>
                     <option value="watering>">Imminent Watering</option>
                     <option value="fert>">Imminent Fertilization</option>
