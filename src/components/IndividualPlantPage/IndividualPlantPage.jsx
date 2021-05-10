@@ -3,13 +3,10 @@ import PlantStatusCard from '../PlantStatusCard/PlantStatusCard';
 import Bilde from '../../assets/plant.jpg';
 import Button from '../Button/Button';
 import Header from '../Header/Header';
+import { isToday, parseISO } from 'date-fns';
 
-function IndividualPlantPage(props) {
-    //Må bestemme oss om vi gjør dette i her eller linjen over
-    const { plant, isAuth, handleWateringClick, handlefertilizationClick, handlePostponeClick, handleRequestClick } = props;
+function IndividualPlantPage({ plant, isAuth, handleWateringClick, handlefertilizationClick, handlePostponeClick, handleRequestClick }) {
 
-
-    let canRequest = true;
     return (
         <>
             <Header heading={plant.name} />
@@ -50,7 +47,7 @@ function IndividualPlantPage(props) {
                     </div>
 
                     <div className="buttons-group">
-                    <Button label="request care" variant="primary" size="full" disabled={plant.canRequest} onClick={() => handleRequestClick(plant._id)}/>
+                    <Button label="request care" variant="primary" size="full" disabled={isToday(parseISO(plant.lastRequestedDate))} onClick={() => handleRequestClick(plant._id)}/>
 
                         {isAuth &&
                             <>
