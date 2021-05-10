@@ -3,7 +3,7 @@ import { fetchPlant, postponePlant, careForPlant, requestCare } from '../../api/
 import { AuthContext } from '../../helpers/Auth';
 import Loading from '../Loading/Loading';
 import { withRouter, Redirect } from 'react-router-dom';
-import { addDays, startOfDay, parseISO, isWeekend, format } from 'date-fns';
+import { addDays, startOfDay, parseISO, isWeekend, format, nextMonday } from 'date-fns';
 import { notifyError, notifyInfo, notifySuccess } from '../../helpers/notification';
 import Postpone from '../Postpone/Postpone';
 import Popup from '../Popup/Popup';
@@ -64,9 +64,9 @@ function fetchPlantBackend(WrappedComponent) {
             let dateWasMoved = false;
 
             //If the waterNextDate is on a weekend, move it to the closest monday
-            while (isWeekend(nextWateringDate)) {
+            if (isWeekend(nextWateringDate)) {
+                nextWateringDate = nextMonday(nextWateringDate)
                 dateWasMoved = true
-                nextWateringDate = addDays(nextWateringDate, 1)
             }
 
             const payload = {

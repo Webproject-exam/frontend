@@ -118,213 +118,215 @@ class AddPlantForm extends Component {
     render() {
         return (
             <>
-                <div className="container max-width add-plant-form">
+                <div className='container max-width add-plant-form'>
                     <form ref={this.form} onSubmit={this.handleSubmit}>
                         <fieldset>
                             <legend>Add a new plant</legend>
 
                             {this.state.form_page === 1 &&
                                 <>
-                                    <label htmlFor="plantname">plant name</label>
+                                    <label htmlFor='plantname'>plant name</label>
                                     <input
-                                        id="plantname"
-                                        name="plantname"
+                                        id='plantname'
+                                        name='plantname'
                                         onChange={this.handleInputChange}
                                         placeholder="Enter the plant's name"
                                         ref={this.plantnameInput}
                                         required
-                                        pattern="\s*\S+.*" 
-                                        title="space only is not allowed"
+                                        pattern='\s*\S+.*' 
+                                        title='space only is not allowed'
                                         autoFocus
-                                        type="text"
+                                        type='text'
                                         value={this.state.plantname}
                                     />
 
-                                    <label htmlFor="placement_building">Building</label>
+                                    <label htmlFor='placement_building'>Building</label>
                                     <input
-                                        id="placement_building"
-                                        name="placement_building"
+                                        id='placement_building'
+                                        name='placement_building'
                                         onChange={this.handleInputChange}
-                                        placeholder="The builing where the plant is"
+                                        placeholder='The builing where the plant is'
                                         required
-                                        type="text"
+                                        type='text'
                                         value={this.state.placement_building}
                                     />
 
-                                    <label htmlFor="placement_floor">Floor</label>
+                                    <label htmlFor='placement_floor'>Floor</label>
                                     <select
-                                        id="placement_floor"
-                                        name="placement_floor"
+                                        id='placement_floor'
+                                        name='placement_floor'
                                         onChange={this.handleInputChange}
                                         value={this.state.placement_floor}
                                     >
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
                                     </select>
 
-                                    <label htmlFor="placement_room">Room</label>
+                                    <label htmlFor='placement_room'>Room</label>
                                     <input
-                                        id="placement_room"
-                                        name="placement_room"
+                                        id='placement_room'
+                                        name='placement_room'
                                         onChange={this.handleInputChange}
-                                        placeholder="What room is the plant in?"
+                                        placeholder='What room is the plant in?'
                                         required
-                                        pattern="\s*\S+.*" 
-                                        title="space only is not allowed"
-                                        type="text"
+                                        pattern='\s*\S+.*' 
+                                        title='space only is not allowed'
+                                        type='text'
                                         value={this.state.placement_room}
                                     />
 
-                                    <label htmlFor="plant_image">Upload a photo:</label>
+                                    <label htmlFor='plant_image'>Upload a photo:</label>
                                     <UploadFile />
 
-                                    <div className="add-plant-form page-indicators">
-                                        <div className={"page-indicator-dot active"}></div>
-                                        <div className={"page-indicator-dot"}></div>
-                                        <div className={"page-indicator-dot"}></div>
+                                    <div className='add-plant-form page-indicators'>
+                                        <div className={'page-indicator-dot active'}></div>
+                                        <div className={'page-indicator-dot'}></div>
+                                        <div className={'page-indicator-dot'}></div>
                                     </div>
 
-                                    <div className="buttons-side-by-side">
-                                        <Button label="cancel" size="half" variant="danger-outlined" onClick={this.props.onAbortClick} />
-                                        <Button label="next" size="half" variant="secondary" onClick={this.handlePageChangeForward} />
+                                    <div className='buttons-side-by-side'>
+                                        <Button label='cancel' size='half' variant='danger-outlined' onClick={this.props.onAbortClick} />
+                                        <Button label='next' size='half' variant='secondary' onClick={this.handlePageChangeForward} />
                                     </div>
                                 </>
                             }
 
                             {this.state.form_page === 2 &&
                                 <>
-                                    <label htmlFor="watering_frequency">watering frequency</label>
+                                    <label htmlFor='watering_frequency'>watering frequency</label>
+                                    <p className='low-emphasis-text'>Enter the plants watering interval in days.</p>
                                     <input
-                                        id="watering_frequency"
-                                        name="watering_frequency"
+                                        id='watering_frequency'
+                                        name='watering_frequency'
                                         onChange={this.handleInputChange}
-                                        placeholder="Every 14 days..."
+                                        placeholder='14'
                                         ref={this.watering_frequency}
                                         required
-                                        type="number"
-                                        min="1"
-                                        max="365"
+                                        type='number'
+                                        min='1'
+                                        max='365'
                                         autoFocus
                                         value={this.state.watering_frequency}
                                     />
 
-                                    <label htmlFor="watering_amount">watering amount</label>
+                                    <label htmlFor='watering_amount'>watering amount</label>
                                     <select
-                                        id="watering_amount"
-                                        name="watering_amount"
+                                        id='watering_amount'
+                                        name='watering_amount'
                                         onChange={this.handleInputChange}
                                         value={this.state.watering_amount}
                                     >
-                                        <option defaultValue="plentiful">Plentiful</option>
-                                        <option value="average">Average</option>
-                                        <option value="sparse">Sparse</option>
+                                        <option defaultValue='plentiful'>Plentiful</option>
+                                        <option value='average'>Average</option>
+                                        <option value='sparse'>Sparse</option>
                                     </select>
 
-                                    <label htmlFor="fertilizing_frequency">fertilizing frequency</label>
+                                    <label htmlFor='fertilizing_frequency'>fertilizing frequency</label>
+                                    <p className='low-emphasis-text'>Enter the plants fertilizing interval in days.</p>
                                     <input
-                                        id="fertilizing_frequency"
-                                        name="fertilizing_frequency"
+                                        id='fertilizing_frequency'
+                                        name='fertilizing_frequency'
                                         onChange={this.handleInputChange}
-                                        placeholder="Every 60 days..."
+                                        placeholder='60'
                                         required
-                                        type="number"
-                                        min="1"
-                                        max="365"
+                                        type='number'
+                                        min='1'
+                                        max='365'
                                         value={this.state.fertilizing_frequency}
                                     />
 
-                                    <label htmlFor="fertilizer_amount">Fertilizer amount</label>
+                                    <label htmlFor='fertilizer_amount'>Fertilizer amount</label>
                                     <select
-                                        id="fertilizer_amount"
-                                        name="fertilizer_amount"
+                                        id='fertilizer_amount'
+                                        name='fertilizer_amount'
                                         onChange={this.handleInputChange}
                                         value={this.state.fertilizer_amount}
                                     >
-                                        <option defaultValue="plentiful">Plentiful</option>
-                                        <option value="average">Average</option>
-                                        <option value="sparse">Sparse</option>
+                                        <option defaultValue='plentiful'>Plentiful</option>
+                                        <option value='average'>Average</option>
+                                        <option value='sparse'>Sparse</option>
                                     </select>
 
-                                    <label htmlFor="lighting_requirements">Lighting requirements</label>
+                                    <label htmlFor='lighting_requirements'>Lighting requirements</label>
                                     <select
-                                        id="lighting_requirements"
-                                        name="lighting_requirements"
+                                        id='lighting_requirements'
+                                        name='lighting_requirements'
                                         onChange={this.handleInputChange}
                                         value={this.state.lighting_requirements}
                                     >
-                                        <option defaultValue="sunlight">Sunlight</option>
-                                        <option value="sunlight / half shade">Sunlight / Half shade</option>
-                                        <option value="half shade">Half shade</option>
-                                        <option value="half shade / shade">Half shade / Shade</option>
-                                        <option value="shade">Shade</option>
+                                        <option defaultValue='sunlight'>Sunlight</option>
+                                        <option value='sunlight / half shade'>Sunlight / Half shade</option>
+                                        <option value='half shade'>Half shade</option>
+                                        <option value='half shade / shade'>Half shade / Shade</option>
+                                        <option value='shade'>Shade</option>
                                     </select>
 
-                                    <div className="add-plant-form page-indicators">
-                                        <div className={"page-indicator-dot"}></div>
-                                        <div className={"page-indicator-dot active"}></div>
-                                        <div className={"page-indicator-dot"}></div>
+                                    <div className='add-plant-form page-indicators'>
+                                        <div className={'page-indicator-dot'}></div>
+                                        <div className={'page-indicator-dot active'}></div>
+                                        <div className={'page-indicator-dot'}></div>
                                     </div>
 
-                                    <div className="buttons-side-by-side">
-                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={this.handlePageChangeBackward} />
-                                        <Button label="next" size="half" variant="secondary" type="button" onClick={this.handlePageChangeForward} />
+                                    <div className='buttons-side-by-side'>
+                                        <Button label='previous' size='half' variant='secondary-outlined' onClick={this.handlePageChangeBackward} />
+                                        <Button label='next' size='half' variant='secondary' type='button' onClick={this.handlePageChangeForward} />
                                     </div>
                                 </>
                             }
 
                             {this.state.form_page === 3 &&
                                 <>
-                                    <label htmlFor="information_description">General Description</label>
+                                    <label htmlFor='information_description'>General Description</label>
                                     <textarea
-                                        id="information_description"
-                                        maxLength="200"
-                                        name="information_description"
+                                        id='information_description'
+                                        maxLength='200'
+                                        name='information_description'
                                         onChange={this.handleInputChange}
-                                        placeholder="Enter a general description of the plant"
+                                        placeholder='Enter a general description of the plant'
                                         value={this.state.information_description}
                                     />
 
-                                    <label htmlFor="information_placement">Placement Description</label>
+                                    <label htmlFor='information_placement'>Placement Description</label>
                                     <textarea
-                                        id="information_placement"
-                                        maxLength="200"
-                                        name="information_placement"
+                                        id='information_placement'
+                                        maxLength='200'
+                                        name='information_placement'
                                         onChange={this.handleInputChange}
-                                        placeholder="Enter a placement description of the plant"
+                                        placeholder='Enter a placement description of the plant'
                                         value={this.state.information_placement}
                                     />
 
-                                    <label htmlFor="information_watering">Watering Description</label>
+                                    <label htmlFor='information_watering'>Watering Description</label>
                                     <textarea
-                                        id="information_watering"
-                                        maxLength="200"
-                                        name="information_watering"
+                                        id='information_watering'
+                                        maxLength='200'
+                                        name='information_watering'
                                         onChange={this.handleInputChange}
-                                        placeholder="Enter a watering description of the plant"
+                                        placeholder='Enter a watering description of the plant'
                                         value={this.state.information_watering}
                                     />
 
-                                    <label htmlFor="information_nutrition">Nutrition Description</label>
+                                    <label htmlFor='information_nutrition'>Nutrition Description</label>
                                     <textarea
-                                        id="information_nutrition"
-                                        maxLength="200"
-                                        name="information_nutrition"
+                                        id='information_nutrition'
+                                        maxLength='200'
+                                        name='information_nutrition'
                                         onChange={this.handleInputChange}
-                                        placeholder="Enter a nutrition description of the plant"
+                                        placeholder='Enter a nutrition description of the plant'
                                         value={this.state.information_nutrition}
                                     />
 
-                                    <div className="add-plant-form page-indicators">
-                                        <div className={"page-indicator-dot"}></div>
-                                        <div className={"page-indicator-dot"}></div>
-                                        <div className={"page-indicator-dot active"}></div>
+                                    <div className='add-plant-form page-indicators'>
+                                        <div className={'page-indicator-dot'}></div>
+                                        <div className={'page-indicator-dot'}></div>
+                                        <div className={'page-indicator-dot active'}></div>
                                     </div>
 
-                                    <div className="buttons-side-by-side">
-                                        <Button label="previous" size="half" variant="secondary-outlined" onClick={this.handlePageChangeBackward} />
-                                        <Button label="submit" size="half" variant="secondary" type="submit" />
+                                    <div className='buttons-side-by-side'>
+                                        <Button label='previous' size='half' variant='secondary-outlined' onClick={this.handlePageChangeBackward} />
+                                        <Button label='submit' size='half' variant='secondary' type='submit' />
                                     </div>
                                 </>
 

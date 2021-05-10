@@ -9,7 +9,7 @@ function MyProfile({ selectedUser, handleEditClick }) {
             <div className="container your-profile">
                 <h2> {selectedUser.name} {selectedUser.surname}</h2>
                 <h3>Role: {selectedUser.role}</h3>
-                <p><b>Email:</b> {selectedUser.email}</p>
+                <p><span className="bold">Email:</span> {selectedUser.email}</p>
                 <Button onClick={handleEditClick} label="edit profile" variant="secondary" />
             </div>
         </>

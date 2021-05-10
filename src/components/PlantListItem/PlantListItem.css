@@ -2,7 +2,6 @@
     background-color: #fff;
     border-radius: .25rem;
     box-shadow: 0 .2rem .5rem rgba(0, 0, 0, 0.2);
-    max-width: 19rem;
     padding: 1rem;
     border: 1px solid var(--gray5);
 }

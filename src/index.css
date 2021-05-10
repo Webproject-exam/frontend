@@ -116,7 +116,6 @@ select {
 }
 
 /* Chrome, Safari, Edge, Opera */
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -124,7 +123,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-
 input[type=number] {
   -moz-appearance: textfield;
 }
@@ -162,7 +160,6 @@ li {
 
 /* responsive table */
 table {
-  width: calc(100% - 8rem) !important;
   background: #fff;
   border-radius: .25rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
