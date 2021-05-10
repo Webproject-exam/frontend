@@ -1,35 +1,34 @@
 import React, { Component } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import AboutPage from './components/AboutPage/AboutPage';
 import AdminRoute from './routes/AdminRoute';
 import Dashboard from './components/Dashboard/Dashboard';
+import Footer from './components/Footer/Footer';
 import ForgotPasswordEmailForm from './components/ForgotPasswordEmailForm/ForgotPasswordEmailForm';
+import IndividualPlantPage from './components/IndividualPlantPage/IndividualPlantPage'
 import LogInForm from './components/Login/LogInForm';
 import MyProfile from './components/MyProfile/MyProfile';
 import NavBar from './components/NavBar/NavBar';
+import PlantList from './components/PlantList/PlantList';
 import PrivateRoute from './routes/PrivateRoute';
 import StatusCard from './components/StatusCard/StatusCard';
+import fetchPlantBackend from './components/HOC/PlantPageHOC';
 import forgotBackend from './components/HOC/ForgotPassHOC';
 import navBarBackend from './components/HOC/NavBarHOC';
+import withPlantFetch from './components/HOC/PlantListHOC';
 import withUserBackEnd from './components/HOC/MyProfileHOC';
 import { AuthConsumer, AuthContext } from './helpers/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
-import AboutPage from './components/AboutPage/AboutPage';
-import Footer from './components/Footer/Footer';
-import PlantList from './components/PlantList/PlantList';
-import IndividualPlantPage from './components/IndividualPlantPage/IndividualPlantPage'
-import withPlantFetch from './components/HOC/PlantListHOC';
-import fetchPlantBackend from './components/HOC/PlantPageHOC';
-
 
 class App extends Component {
   static contextType = AuthContext;
-  componentDidMount(){
+  componentDidMount() {
     this.refreshToken();
     this.tokenRefresh = setInterval(() => this.refreshToken(), 300000);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.tokenRefresh);
   }
 
@@ -40,7 +39,7 @@ class App extends Component {
   plantPage = () => {
     const IndividualPlantHOC = fetchPlantBackend(IndividualPlantPage);
     return (<IndividualPlantHOC />);
-}
+  }
 
   render() {
     const MyProfileWithHOC = withUserBackEnd(MyProfile);

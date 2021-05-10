@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { notifyError, notifySuccess, notifyInfo } from '../../helpers/notification';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../helpers/Auth';
-import { addDays, startOfDay, isWeekend, format } from 'date-fns'
+import { addDays, startOfDay, isWeekend, format, isToday, parseISO, isPast } from 'date-fns'
 import { fetchAllPlants, careForPlant } from '../../api/plants';
 import Popup from '../Popup/Popup';
 import Prompt from '../Prompt/Prompt';
+import Favicon from 'react-favicon';
 
 function withPlantsFetch(WrappedComponent) {
     class PlantListHOC extends Component {
@@ -75,18 +76,18 @@ function withPlantsFetch(WrappedComponent) {
 
             const res = await careForPlant(watering);
 
-            if(res.error){
+            if (res.error) {
                 notifyError("Oops, something went wrong!");
                 this.setState({
                     error: res.error
                 })
             } else {
                 this.fetchAllData();
-                
-                if(this.state.dateWasMoved){
+
+                if (this.state.dateWasMoved) {
                     notifyInfo(`The next watering date for the plant "${this.state.selectedPlant.name}" fell on the weekend. The system, therefore, moved the date to  ${format(this.state.nextWaterDate, 'EEEE, MMMM do')}`)
                 }
-                
+
                 notifySuccess(`The plant "${this.state.selectedPlant.name}" has been watered. 💧`);
                 this.setState({
                     waterPlant: false,
@@ -106,6 +107,13 @@ function withPlantsFetch(WrappedComponent) {
             });
         }
 
+        countPlantsToBeWatered = () => {
+            let plantsToBeWatered = 0;
+            Object.values(this.state.plants).forEach(plant =>
+                (isToday(parseISO(plant.watering.waterNext)) || isPast(parseISO(plant.watering.waterNext))) ? plantsToBeWatered++ : null);
+            return plantsToBeWatered;
+        }
+
         render() {
             const auth = this.context.isAuth;
 
@@ -115,7 +123,11 @@ function withPlantsFetch(WrappedComponent) {
 
             return (
                 <>
+                    {/* NÅR MAN DEPLOYER MÅ DENNE URLEN ENDRES (tror jeg tihi) */}
+                    {auth && <Favicon url='http://localhost:3000/favicon.ico' alertCount={this.countPlantsToBeWatered()} />}
+                    
                     <WrappedComponent plants={this.state.plants} auth={auth} handleWateringClick={this.waterNextClick} {...this.props} />
+                    
                     {this.state.waterPlant &&
                         <Popup content={<Prompt action='water' plant={this.state.selectedPlant} onCancelClick={this.cancelWatering} onConfirmClick={this.waterPlant} />} />
                     }
