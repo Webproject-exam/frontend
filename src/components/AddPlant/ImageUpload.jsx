@@ -16,6 +16,7 @@ class ImageUpload extends Component {
     }
 
     onChange = async (e) => {
+        console.log("In on change");
         const files = Array.from(e.target.files);
         this.setState({ uploading: true });
 
