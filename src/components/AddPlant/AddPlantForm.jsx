@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './AddPlantForm.css';
 import Button from '../Button/Button';
-import UploadFile from './UploadFile';
 import { addDays, startOfDay } from 'date-fns';
 import { notifySuccess, notifyError } from '../../helpers/notification';
 
