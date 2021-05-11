@@ -6,6 +6,12 @@ import Header from '../Header/Header';
 import { isToday, parseISO } from 'date-fns';
 
 function IndividualPlantPage({ plant, isAuth, handleWateringClick, handlefertilizationClick, handlePostponeClick, handleRequestClick }) {
+    let plantImage;
+    if(!plant.image) {
+        plantImage = Bilde;
+    } else {
+        plantImage = process.env.REACT_APP_IMAGE + plant.image;
+    }
 
     return (
         <>
@@ -13,7 +19,7 @@ function IndividualPlantPage({ plant, isAuth, handleWateringClick, handlefertili
             <div className="individual-plant-grid-container">
 
                 <div className="image-and-description">
-                    <img className="image" src={Bilde} alt={plant.name} />
+                    <img className="image" src={plantImage} alt={plant.name} />
                     <div className="description">
                         <h3>Description</h3>
                         <p>{plant.information.description ? plant.information.description : '–'}</p>
