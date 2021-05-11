@@ -21,7 +21,7 @@ function PlantStatusCircle({ waterNext }) {
         Pulse = 'pulse';
         alt = 'droplet with explanation mark'
 
-    } else if (myTimeConverter(waterNext) === 'tomorrow' || myTimeConverter(waterNext) === 'the day after tomorrow') {
+    } else if (myTimeConverter(waterNext) === 'tomorrow' || myTimeConverter(waterNext) === 'in 2 days') {
         Icon = WarningIcon;
         Color = 'orange';
         Pulse = '';
