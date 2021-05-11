@@ -19,7 +19,7 @@ function myTimeConverter(date) {
         return "yesterday";
 
     if (isToday(subDays(date, 2)))
-        return "the day after tomorrow";
+        return "in 2 days";
 
     return formatDistanceToNow(date, { addSuffix: true })
 }
