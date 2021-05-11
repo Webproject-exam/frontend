@@ -83,7 +83,7 @@ class AddPlantForm extends Component {
         await this.props.onSubmitHandler(plantObject);
         
         if (this.props.error) {
-            notifyError(this.props.error);
+            notifyError("Something went wrong! Little jew");
             return
         } else {
             notifySuccess(`The plant ${this.state.plantname} has been added.`);
