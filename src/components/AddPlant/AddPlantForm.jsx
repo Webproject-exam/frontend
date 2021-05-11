@@ -37,7 +37,6 @@ class AddPlantForm extends Component {
 
         this.plantnameInput = React.createRef();
         this.form = React.createRef();
-        this.image = React.createRef();
     }
 
     handleSubmit = async (event) => {
