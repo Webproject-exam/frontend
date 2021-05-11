@@ -44,10 +44,10 @@ class PlantList extends Component {
                 return plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
             //Name A-Z
             case 'name>':
-                return plants.sort((a, b) => (a.name > b.name) ? 1 : -1);
+                return plants.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1);
             case 'name<':
                 //Name Z-A
-                return plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
+                return plants.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : -1);
             case 'watering>':
                 //Imminent Watering
                 return plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
