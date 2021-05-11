@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+import { imageUpload } from '../../api/plants';
 import Loading from '../Loading/Loading';
 import DeleteFile from './DeleteFile';
 import UploadFile from './UploadFile';
+import { notifyError, notifySuccess } from '../../helpers/notification';
 
 class ImageUpload extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            error: null,
             uploading: false,
             images: []
         };
     }
 
-    onChange = e => {
+    onChange = async (e) => {
         const files = Array.from(e.target.files);
         this.setState({ uploading: true });
 
@@ -22,19 +25,20 @@ class ImageUpload extends Component {
             formData.append(i, file)
         });
 
-        // FLYTT DENNE INN I API SENERE!!
-        /* fetch(`${API_URL}/image-upload`, {
-            method: 'POST',
-            body: formData
-        })
-        .then(res = res.json())
-        .then(images => {
+        const res = await imageUpload(formData);
+        if(res.error){
+            notifyError("Oops, something went wrong... Please try again!");
             this.setState({
-                uploading: false,
-                images
+                error: res.error,
+                uploading: false
             })
-        }) */
-        // NED HIT
+        } else {
+            notifySuccess("Image uploaded!");
+            this.setState({
+                images: res.images,
+                uploading: false
+            });
+        }
     };
 
     removeImage = id => {
