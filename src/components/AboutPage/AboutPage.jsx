@@ -26,15 +26,15 @@ function AboutPage() {
 
                 <div className="container about-project-box box1">
                     <h3>The Task</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
+                    <p>Plantrol is a tool to help employees at Mustad to track the well-being of the plants located throughout the campus. Gardeners can use the tool to keep track of when a plant has been watered and be notified when a specific plant needs watering. General users can also contribute by requesting watering and fertilization.</p>
                 </div>
                 <div className="container about-project-box box2">
                     <h3>The Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
+                    <p>The tool was designed during easter of 2021 and is strongly inspired by the Google Material UI look. With the help of Balsamiq, early designs were created and later refined in a more high-fidelity prototype using Figma. Each UI element displayed throughout the tool is each own independent React component resulting in a modular design.</p>
                 </div>
                 <div className="container about-project-box box3">
                     <h3>The Development</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
+                    <p>The development of the project started in late April 2021. Plantrol is built with the help of React and our NodeJS API. All the plants and their information is stored in MongoDB.</p>
                 </div>
 
                 <h2 className="the-group">The Group</h2>
