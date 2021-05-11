@@ -13,7 +13,6 @@ const careForPlant = (watering) => {
 }
 
 const requestCare = (id) => {
-    console.log(id);
     return axios.patch('/plants/request', id);
 }
 
@@ -34,6 +33,7 @@ const updatePlant = (plantObject) => {
 }
 
 const imageUpload = (formData) => {
+    console.log(formData);
     return axios.patch('/manage/image-upload', formData);
 }
 
