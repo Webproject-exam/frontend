@@ -26,6 +26,9 @@ const INITIAL_STATE = {
 
     watering_amount: 'plentiful',
     watering_frequency: '',
+
+    image: [],
+    previewSource: ''
 }
 
 class AddPlantForm extends Component {
@@ -35,6 +38,7 @@ class AddPlantForm extends Component {
 
         this.plantnameInput = React.createRef();
         this.form = React.createRef();
+        this.image = React.createRef();
     }
 
     handleSubmit = async (event) => {
@@ -69,8 +73,14 @@ class AddPlantForm extends Component {
                 fertNext: fertNext,
                 fertAmount: this.state.fertilizer_amount,
             },
-            lighting: this.state.lighting_requirements
+            lighting: this.state.lighting_requirements,
+            
         };
+
+        if (this.state.previewSource) {
+            plantObject.image = this.state.previewSource;
+        }
+        console.log(plantObject);
 
         await this.props.onSubmitHandler(plantObject);
         
@@ -93,6 +103,21 @@ class AddPlantForm extends Component {
         this.setState({
             [name]: value
         });
+    }
+
+    handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        this.previewFile(file);
+    }
+
+    previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            this.setState({
+                previewSource: reader.result
+            })
+        }
     }
 
     handlePageChangeForward = () => {
@@ -178,7 +203,10 @@ class AddPlantForm extends Component {
                                     />
 
                                     <label htmlFor='plant_image'>Upload a photo:</label>
-                                    <UploadFile />
+                                    <input type="file" name="image" onChange={this.handleFileInputChange} value={this.state.image} />
+                                    {this.state.previewSource && 
+                                    <img src={this.state.previewSource} alt="chosen" style={{height: '300px'}} />
+                                    }
 
                                     <div className='add-plant-form page-indicators'>
                                         <div className={'page-indicator-dot active'}></div>
