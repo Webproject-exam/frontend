@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PlantStatusCard.css';
 import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { myTimeConverter } from '../../helpers/timeConverter'
@@ -6,9 +6,6 @@ import { format } from 'date-fns'
 import { parseISO } from 'date-fns/esm';
 
 function PlantStatusCard(props) {
-
-    const [showRelativeDate, setshowRelativeDate] = useState(true);
-
 
     return (
         <div className="plant-status-card container">
@@ -30,15 +27,15 @@ function PlantStatusCard(props) {
                     </li>
                 </ul>
             </section>
-            <section className="clickable" onClick={() => setshowRelativeDate(!showRelativeDate)}>
+            <section>
                 <h3>Watering</h3>
                 <ul>
                     <li>
                         <span className="bold">Watering frequency:</span> every {props.plant.watering.waterFrequency} days
                     </li>
 
-                    <li className="clickable" onClick={() => setshowRelativeDate(!showRelativeDate)}>
-                        <span className="bold">Next watering:</span> {(showRelativeDate ? myTimeConverter(props.plant.watering.waterNext) : format(parseISO(props.plant.watering.waterNext), 'PPP'))}
+                    <li>
+                        <span className="bold">Next watering:</span> {myTimeConverter(props.plant.watering.waterNext)}
                     </li>
 
                     {props.plant.watering.waterAmount &&
@@ -47,8 +44,8 @@ function PlantStatusCard(props) {
                         </li>}
 
                     {props.plant.watering.lastWateredDate &&
-                        <li className="clickable" onClick={() => setshowRelativeDate(!showRelativeDate)}>
-                            <span className="bold">Last watered:</span> {(showRelativeDate ? myTimeConverter(props.plant.watering.lastWateredDate) : format(parseISO(props.plant.watering.lastWateredDate), 'PPP'))}
+                        <li>
+                            <span className="bold">Last watered:</span> {format(parseISO(props.plant.watering.lastWateredDate), 'PPP')}
                         </li>}
 
                     {props.plant.watering.lastWateredBy &&
@@ -60,6 +57,13 @@ function PlantStatusCard(props) {
                         <li>
                             <span className="bold">Watering was last postponed:</span> {format(parseISO(props.plant.watering.last_postponed), 'PPP')}
                         </li>}
+
+                    {props.plant.watering.lastPostponedBy &&
+                        <li>
+                            <span className="bold">Watering was last postponed by:</span> {props.plant.watering.lastPostponedBy}
+                        </li>}
+
+
                     {props.plant.watering.lastPostponedReason &&
                         <li>
                             <span className="bold">Reasoning for the last postponement:</span> "{props.plant.watering.lastPostponedReason}"
@@ -96,6 +100,11 @@ function PlantStatusCard(props) {
                     {props.plant.fertilization.lastPostponed &&
                         <li>
                             <span className="bold">Fertilization was last postponed:</span> {format(parseISO(props.plant.fertilization.lastPostponed), 'PPP')}
+                        </li>}
+
+                    {props.plant.fertilization.lastPostponedBy &&
+                        <li>
+                            <span className="bold">Fertilization was last postponed by:</span> {props.plant.fertilization.lastPostponedBy}
                         </li>}
 
                     {props.plant.fertilization.lastPostponedReason &&
