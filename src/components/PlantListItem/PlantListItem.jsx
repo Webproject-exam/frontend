@@ -25,7 +25,7 @@ function PlantListItem({ plant, auth, handleWateringClick }) {
                             <h3 className="h3">{location}</h3>
                         </div>
 
-                        <img className="plant-image" src={plantImage} alt={plant.name} />
+                        <img className="plant-image" src={plantImage} alt={plant.name} loading="lazy"/>
                     </div>
                 </Link>
 
