@@ -26,6 +26,7 @@ class ImageUpload extends Component {
         });
 
         const res = await imageUpload(formData);
+        
         if(res.error){
             notifyError("Oops, something went wrong... Please try again!");
             this.setState({
