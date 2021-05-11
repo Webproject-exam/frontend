@@ -32,11 +32,6 @@ const updatePlant = (plantObject) => {
     return axios.patch('/manage/plants', plantObject);
 }
 
-const imageUpload = (formData) => {
-    console.log(formData);
-    return axios.patch('/manage/image-upload', formData);
-}
-
 export {
     fetchAllPlants,
     fetchPlant,
@@ -45,6 +40,5 @@ export {
     postponePlant,
     createPlant,
     deletePlant,
-    updatePlant,
-    imageUpload
+    updatePlant
 };
