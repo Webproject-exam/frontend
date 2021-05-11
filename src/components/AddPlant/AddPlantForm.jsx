@@ -3,8 +3,10 @@ import './AddPlantForm.css';
 import Button from '../Button/Button';
 import { addDays, startOfDay } from 'date-fns';
 import { notifySuccess, notifyError } from '../../helpers/notification';
+import Loading from '../Loading/Loading';
 
 const INITIAL_STATE = {
+    isLoading: false,
     form_page: 1,
 
     fertilizer_amount: 'plentiful',
@@ -41,6 +43,9 @@ class AddPlantForm extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
+        this.setState({
+            isLoading: true
+        });
 
         const waterFreq = parseInt(this.state.watering_frequency);
         const fertFreq = parseInt(this.state.fertilizing_frequency);
@@ -139,6 +144,10 @@ class AddPlantForm extends Component {
     }
 
     render() {
+        if (this.state.isLoading) {
+            return ( <Loading /> );
+        }
+
         return (
             <>
                 <div className='container max-width add-plant-form'>
