@@ -4,6 +4,8 @@
     box-shadow: 0 .2rem .5rem rgba(0, 0, 0, 0.2);
     padding: 1rem;
     border: 1px solid var(--gray5);
+    max-width: 17rem;
+    height: calc(100% - 2em);
 }
 
 .plant-header {
@@ -44,4 +46,8 @@
 
 .plant-container a {
     text-decoration: none;
+}
+
+.plant-container .text-only {
+    padding: 0;
 }
