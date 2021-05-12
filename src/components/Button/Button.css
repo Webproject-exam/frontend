@@ -185,12 +185,12 @@
   transition: .05s;
   font-weight: normal;
   font-size: 2rem;
-  opacity: 75%;
+  opacity: .75;
   text-transform: capitalize;
 }
 
 .text-only-tab.active {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .text-only-tab:enabled:hover {

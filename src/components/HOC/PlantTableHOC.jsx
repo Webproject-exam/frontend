@@ -114,7 +114,7 @@ function managePlantFetch(WrappedComponent) {
                     <Favicon url={`${process.env.REACT_APP_FRONTEND}/favicon.ico`} alertCount={this.countPlantsToBeWatered()} />
                     <WrappedComponent plants={this.state.plants} handleEditClick={this.editPlant} handleDeleteClick={this.selectDelete} />
                     {this.state.edit &&
-                        <Popup content={<UpdatePlantHOC selectedPlant={this.state.selectedPlant} onCancelClick={this.cancelEdit} />}  />
+                        <Popup content={<UpdatePlantHOC selectedPlant={this.state.selectedPlant} onCancelClick={this.cancelEdit} onSubmit={this.fetchData} />}  />
                     }
 					{this.state.delete &&
 						<Popup content={<Prompt action='delete' plant={this.state.selectedPlant} onCancelClick={this.cancelDelete} onConfirmClick={this.deletePlant} />} />
