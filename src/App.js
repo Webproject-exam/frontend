@@ -20,6 +20,7 @@ import withUserBackEnd from './components/HOC/MyProfileHOC';
 import { AuthConsumer, AuthContext } from './helpers/Auth';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 class App extends Component {
   static contextType = AuthContext;
@@ -52,39 +53,41 @@ class App extends Component {
         {({ isAuth }) => (
           <>
             <Router>
-              <NavBarHOC />
-              <main>
-                <Switch>
-                  <Route exact path="/reset_password">
-                    <ForgotPassHOC />
-                  </Route>
-                  <PrivateRoute exact path="/profile">
-                    <MyProfileWithHOC />
-                  </PrivateRoute>
-                  <PrivateRoute exact path="/manage">
-                    <AdminRoute >
-                      <Dashboard />
-                    </AdminRoute>
-                  </PrivateRoute>
-                  <Route exact path="/login">
-                    <LogInForm />
-                  </Route>
-                  <Route exact path="/plants">
-                    <PlantListHOC />
-                  </Route>
-                  <Route exact path="/plants/:id" render={this.plantPage} />
-                  <Route exact path="/">
-                    <AboutPage />
-                  </Route>
-                  <Route exact path="/403">
-                    <StatusCard statusCode={403} statusText="Forbidden" />
-                  </Route>
-                  <Route>
-                    <StatusCard statusCode={404} statusText="Page Not Found" />
-                  </Route>
-                </Switch>
-              </main>
-              <Footer />
+              <ScrollToTop>
+                <NavBarHOC />
+                <main>
+                  <Switch>
+                    <Route exact path="/reset_password">
+                      <ForgotPassHOC />
+                    </Route>
+                    <PrivateRoute exact path="/profile">
+                      <MyProfileWithHOC />
+                    </PrivateRoute>
+                    <PrivateRoute exact path="/manage">
+                      <AdminRoute >
+                        <Dashboard />
+                      </AdminRoute>
+                    </PrivateRoute>
+                    <Route exact path="/login">
+                      <LogInForm />
+                    </Route>
+                    <Route exact path="/plants">
+                      <PlantListHOC />
+                    </Route>
+                    <Route exact path="/plants/:id" render={this.plantPage} />
+                    <Route exact path="/">
+                      <AboutPage />
+                    </Route>
+                    <Route exact path="/403">
+                      <StatusCard statusCode={403} statusText="Forbidden" />
+                    </Route>
+                    <Route>
+                      <StatusCard statusCode={404} statusText="Page Not Found" />
+                    </Route>
+                  </Switch>
+                </main>
+                <Footer />
+              </ScrollToTop>
             </Router>
             <ToastContainer transition={Slide} />
           </>
