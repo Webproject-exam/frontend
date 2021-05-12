@@ -3,11 +3,13 @@ import './UpdatePlant.css';
 import Button from '../Button/Button';
 import { addDays, parseISO, startOfDay } from 'date-fns';
 import { notifySuccess, notifyError } from '../../helpers/notification';
+import Loading from '../Loading/Loading';
 
 class UpdatePlantForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoading: false,
             form_page: 1,
 
             fertilizer_amount: this.props.selectedPlant.fertilization.fertAmount,
@@ -42,6 +44,9 @@ class UpdatePlantForm extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
+        this.setState({
+            isLoading: true
+        });
 
         let waterNext;
         let fertNext;
@@ -146,6 +151,10 @@ class UpdatePlantForm extends Component {
     }
 
     render() {
+        if (this.state.isLoading) {
+            return (<Loading />);
+        }
+
         return (
             <>
                 <div className="container max-width update-plant-form">
