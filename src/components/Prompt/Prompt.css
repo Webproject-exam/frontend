@@ -1,0 +1,9 @@
+.container.prompt h1 {
+    font-family: unset;
+    font-weight: lighter;
+    margin: 1rem 0 1.5rem;
+}
+
+.container.prompt h1::first-letter {
+    text-transform: uppercase;
+}

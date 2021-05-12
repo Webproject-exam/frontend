@@ -1,3 +1,4 @@
+import React from 'react';
 import './PlantStatusCard.css';
 import PlantStatusCircle from '../PlantStatusCircle/PlantStatusCircle';
 import { myTimeConverter } from '../../helpers/timeConverter'
@@ -5,15 +6,12 @@ import { format } from 'date-fns'
 import { parseISO } from 'date-fns/esm';
 
 function PlantStatusCard(props) {
-    console.log(props.plant);
-    const fertDate = new Date(props.plant.fertilization.lastFertDate);
-    const waterDate = new Date(props.plant.watering.lastWateredDate);
 
     return (
         <div className="plant-status-card container">
             <div className="plant-status-card-header">
                 <h2 className="h2">Status</h2>
-                <PlantStatusCircle next_watering={props.plant.watering.waterNext} />
+                <PlantStatusCircle waterNext={props.plant.watering.waterNext} />
             </div>
             <section>
                 <h3>Placement</h3>
@@ -44,10 +42,10 @@ function PlantStatusCard(props) {
                         <li>
                             <span className="bold">Watering amount:</span> {props.plant.watering.waterAmount}
                         </li>}
-                        
-                        {props.plant.watering.lastWateredDate &&
+
+                    {props.plant.watering.lastWateredDate &&
                         <li>
-                            <span className="bold">Last watered:</span> {format(waterDate, 'PPP')}
+                            <span className="bold">Last watered:</span> {format(parseISO(props.plant.watering.lastWateredDate), 'PPP')}
                         </li>}
 
                     {props.plant.watering.lastWateredBy &&
@@ -59,6 +57,13 @@ function PlantStatusCard(props) {
                         <li>
                             <span className="bold">Watering was last postponed:</span> {format(parseISO(props.plant.watering.last_postponed), 'PPP')}
                         </li>}
+
+                    {props.plant.watering.lastPostponedBy &&
+                        <li>
+                            <span className="bold">Watering was last postponed by:</span> {props.plant.watering.lastPostponedBy}
+                        </li>}
+
+
                     {props.plant.watering.lastPostponedReason &&
                         <li>
                             <span className="bold">Reasoning for the last postponement:</span> "{props.plant.watering.lastPostponedReason}"
@@ -73,7 +78,7 @@ function PlantStatusCard(props) {
                         <span className="bold">Fertilized frequency:</span> every {props.plant.fertilization.fertFrequency} days
                     </li>
 
-                    <li>
+                    <li title={format(parseISO(props.plant.fertilization.fertNext), 'PPP')}>
                         <span className="bold">Next fertilization: </span> {myTimeConverter(props.plant.fertilization.fertNext)}
                     </li>
 
@@ -84,7 +89,7 @@ function PlantStatusCard(props) {
 
                     {props.plant.fertilization.lastFertDate &&
                         <li>
-                            <span className="bold">Last fertilized:</span> {format(fertDate, 'PPP')}
+                            <span className="bold">Last fertilized:</span> {format(parseISO(props.plant.fertilization.lastFertDate), 'PPP')}
                         </li>}
 
                     {props.plant.fertilization.lastFertBy &&
@@ -97,6 +102,11 @@ function PlantStatusCard(props) {
                             <span className="bold">Fertilization was last postponed:</span> {format(parseISO(props.plant.fertilization.lastPostponed), 'PPP')}
                         </li>}
 
+                    {props.plant.fertilization.lastPostponedBy &&
+                        <li>
+                            <span className="bold">Fertilization was last postponed by:</span> {props.plant.fertilization.lastPostponedBy}
+                        </li>}
+
                     {props.plant.fertilization.lastPostponedReason &&
                         <li>
                             <span className="bold">Reasoning for the last postponement:</span> "{props.plant.fertilization.lastPostponedReason}"
@@ -107,10 +117,6 @@ function PlantStatusCard(props) {
             <section>
                 <h3>Other</h3>
                 <ul>
-                    {props.plant.responsible &&
-                        <li>
-                            <span className="bold">Responsible:</span> {props.plant.responsible}
-                        </li>}
                     <li>
                         <span className="bold">Recommended lighting: </span> {props.plant.lighting}
                     </li>

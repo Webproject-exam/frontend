@@ -17,7 +17,7 @@
     cursor: unset;
 }
 
-.add-plant-form.page-indicators{
+.update-plant-form.page-indicators{
     height: 3rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -31,11 +31,6 @@
             align-items: center;
 }
 
-.add-plant-form .buttons-side-by-side{
+.update-plant-form .buttons-side-by-side{
     max-width: unset;
-}
-
-.image-preview {
-    height: 12rem;
-    border: 1px solid var(--gray2);
 }

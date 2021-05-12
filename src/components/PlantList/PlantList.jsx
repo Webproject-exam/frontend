@@ -14,10 +14,18 @@ class PlantList extends Component {
     }
 
     componentDidMount() {
-        const plants = this.props.plants;
-        this.setState({
-            plants: plants
-        })
+        this.handleUpdateProp();
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.plants !== this.props.plants) {
+            this.handleUpdateProp();
+        }
+    }
+
+    handleUpdateProp = () => {
+        const sortedPlants = this.sorting(this.state.sorting, this.props.plants);
+        this.setState({plants: sortedPlants});
     }
 
     handleChange = (event) => {
@@ -28,38 +36,37 @@ class PlantList extends Component {
         });
     }
 
-    render() {
-        const { auth, handleWateringClick } = this.props;
-        const plants = this.state.plants;
-        const sorting = this.state.sorting;
-
+    sorting = (sorting, plants) => {
         //sorting logic
         switch (sorting) {
             case 'fert>':
                 //Imminent Fertilization
-                plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
-                break;
-                //Name A-Z
+                return plants.sort((a, b) => (a.fertilization.fertNext > b.fertilization.fertNext) ? 1 : -1);
+            //Name A-Z
             case 'name>':
-                plants.sort((a, b) => (a.name > b.name) ? 1 : -1);
-                break;
+                return plants.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1);
             case 'name<':
                 //Name Z-A
-                plants.sort((a, b) => (a.name < b.name) ? 1 : -1);
-                break;
+                return plants.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : -1);
             case 'watering>':
                 //Imminent Watering
-                plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
-                break;
+                return plants.sort((a, b) => (a.watering.waterNext > b.watering.waterNext) ? 1 : -1);
             default:
                 //Newest created plant
-                plants.sort((a, b) => (a > b) ? 1 : -1);
+                return plants.sort((a, b) => (a > b) ? 1 : -1);
         }
+    }
+
+    render() {
+        const { auth, handleWateringClick } = this.props;
+        const plants = this.state.plants;
+        const sorting = this.state.sorting;
+        this.sorting(sorting, plants);
 
         return (
             <>
                 <Header heading="Overview" />
-                <select name="sorting" id="sorting" value={this.state.sorting} onChange={this.handleChange}>
+                <select name="sorting" id="sorting" value={this.state.sorting} onChange={this.handleChange} aria-label="Sort by">
                     <option defaultValue="">SORT BY:</option>
                     <option value="watering>">Imminent Watering</option>
                     <option value="fert>">Imminent Fertilization</option>

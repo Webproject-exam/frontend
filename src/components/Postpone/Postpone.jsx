@@ -22,16 +22,15 @@ class Postpone extends Component {
 
         const postponeObject = {
             days_postponement: parseInt(this.state.days_postponement),
-            reason_postponement: this.state.reason_postponement,
+            reason_postponement: this.state.reason_postponement
         }
+
+        this.props.onSubmit(postponeObject);
 
         this.setState({
             days_postponement: '',
             reason_postponement: ''
         });
-
-
-        alert(`submitting: ${postponeObject.days_postponement} and ${postponeObject.reason_postponement}`)
     }
 
     //General InputChangeHandler that saves the value of the input field to the state
@@ -46,7 +45,7 @@ class Postpone extends Component {
 
     render() {
         return (
-            <div className="container postpone-form">
+            <div className="container max-width postpone-form">
                 <form method="POST" onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Postpone {this.props.type}</legend>
@@ -58,7 +57,7 @@ class Postpone extends Component {
                             min="1"
                             max="365"
                             name="days_postponement"
-                            onChange={this.handleNumberInputChange}
+                            onChange={this.handleInputChange}
                             placeholder="Enter the number of days postponement"
                             ref={this.daysPostponementInput}
                             required
@@ -78,7 +77,7 @@ class Postpone extends Component {
 
                         <div className="buttons-side-by-side">
                             <Button type="submit" label="postpone" variant="secondary" />
-                            <Button type="reset" label="cancel" variant="danger-outlined" />
+                            <Button type="reset" label="cancel" variant="danger-outlined" onClick={() => this.props.onCancelClick('')} />
                         </div>
                     </fieldset>
                 </form>

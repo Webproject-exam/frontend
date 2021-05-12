@@ -6,3 +6,7 @@
 .container.your-profile h2{
     font-family: unset;
 }
+
+.container.your-profile h3{
+    text-transform: capitalize;
+}

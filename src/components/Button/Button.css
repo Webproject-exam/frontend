@@ -1,4 +1,11 @@
 /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+/*
 * BUTTONS GENERAL
 */
 
@@ -11,7 +18,8 @@
   text-transform: uppercase;
 
   /* Box model */
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: .5rem 0;
   padding: .9em 1rem;
 
@@ -19,16 +27,22 @@
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
   transition: .3s;
 }
 
 .button:hover:enabled {
-  box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
+  -webkit-box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
+          box-shadow: 0 0 .5em rgba(33, 33, 33, .3);
 }
 
 .button:active:enabled {
-  transform: translateY(2px);
-  box-shadow: unset;
+  -webkit-transform: translateY(2px);
+      -ms-transform: translateY(2px);
+          transform: translateY(2px);
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .button:disabled {
@@ -70,12 +84,14 @@
 
 .secondary-outlined:enabled {
   background: var(--background);
-  box-shadow: 0 0 0 2pt var(--secondary) inset;
+  -webkit-box-shadow: 0 0 0 2pt var(--secondary) inset;
+          box-shadow: 0 0 0 2pt var(--secondary) inset;
   color: var(--secondary);
 }
 
 .secondary-outlined:enabled:hover {
-  box-shadow: 0 0 0 2pt var(--sDark) inset;
+  -webkit-box-shadow: 0 0 0 2pt var(--sDark) inset;
+          box-shadow: 0 0 0 2pt var(--sDark) inset;
   color: var(--sDark);
 }
 
@@ -89,7 +105,8 @@
   background: var(--secondary);
   text-decoration: underline;
   color: var(--background);
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 /*
@@ -110,13 +127,15 @@
 
 .danger-outlined {
   background: var(--background);
-  outline: 2px solid var(--red);
+  -webkit-box-shadow: 0 0 0 2pt var(--red) inset;
+          box-shadow: 0 0 0 2pt var(--red) inset;
   color: var(--red);
 }
 
 .danger-outlined:enabled:hover {
   background: var(--background);
-  outline: 2px solid var(--rDark);
+  -webkit-box-shadow: 0 0 0 2pt var(--rDark) inset;
+          box-shadow: 0 0 0 2pt var(--rDark) inset;
   color: var(--rDark);
 }
 
@@ -131,18 +150,24 @@
   margin: 0 0 0 auto;
   display: block;
   min-height: 44px;
+  -webkit-transition: .05s;
+  -o-transition: .05s;
   transition: .05s;
   font-weight: normal;
 }
 
 .text-only:enabled:hover {
   text-decoration: underline;
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .text-only:active {
-  transform: translateY(1px);
-  filter: saturate(150%);
+  -webkit-transform: translateY(1px);
+      -ms-transform: translateY(1px);
+          transform: translateY(1px);
+  -webkit-filter: saturate(150%);
+          filter: saturate(150%);
 }
 
 /*
@@ -154,6 +179,8 @@
   color: var(--gray1);
   padding: 0;
   min-height: 44px;
+  -webkit-transition: .05s;
+  -o-transition: .05s;
   transition: .05s;
   font-weight: normal;
   font-size: 2rem;
@@ -167,11 +194,14 @@
 
 .text-only-tab:enabled:hover {
   text-decoration: underline;
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .text-only-tab:active {
-  transform: translateY(1px);
+  -webkit-transform: translateY(1px);
+      -ms-transform: translateY(1px);
+          transform: translateY(1px);
 }
 
 /*
@@ -192,26 +222,25 @@
 
 .fab {
   background: var(--secondary);
-  position: fixed;
-  right: 2.5vw;
-  bottom: 2.5rem;
+  float: right;
   z-index: 1;
+  -webkit-box-shadow: 0px .5em 1em 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px .5em 1em 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
 }
 
 .fab:enabled:hover {
   background: var(--sDark);
-  box-shadow: unset;
-}
-
-.fab:active {
-  transform: translateY(1px);
-  filter: saturate(150%);
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 @media only screen and (max-width: 40em) {
   .fab {
+    position: fixed;
     left: 2.5vw;
     bottom: 3rem;
+    margin-bottom: unset;
   }
 }
 

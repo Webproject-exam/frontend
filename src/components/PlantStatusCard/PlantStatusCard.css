@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .plant-status-card.container{
     margin: 0 0 1rem 0
 }
@@ -7,9 +14,11 @@
 }
 
 .plant-status-card-header {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: auto 2rem;
     grid-template-columns: auto 2rem;
-    grid-template-areas:
+        grid-template-areas:
         "h2 status-circle";
     margin-bottom: 1rem;
 }
@@ -28,4 +37,8 @@ section {
 section li{
     margin-left: 1rem;
     color: var(--gray1);
+}
+
+.clickable{
+    cursor: pointer;
 }

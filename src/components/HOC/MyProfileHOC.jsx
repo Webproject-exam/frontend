@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Loading from '../Loading/Loading';
 import UpdateUser from '../UpdateUser/UpdateUser';
-import UserFeedbackCard from '../UserFeedbackCard/UserFeedbackCard'
 import updateUserBackend from './UpdateUserHOC';
 import { AuthContext } from '../../helpers/Auth';
 import { fetchUser } from '../../api/users';
+import Popup from '../Popup/Popup';
 
 function withUserBackEnd(WrappedComponent) {
     class MyProfileHOC extends Component {
@@ -16,8 +16,7 @@ function withUserBackEnd(WrappedComponent) {
                 myUser: [],
                 isLoading: true,
                 error: null,
-                willEdit: false,
-                successfullyUpdated: false
+                willEdit: false
             };
         }
 
@@ -55,19 +54,6 @@ function withUserBackEnd(WrappedComponent) {
             })
         }
 
-        //The handleCloseMessage method closes the UserFeedbackcard component after the for has been submitted
-        handleCloseMessage = () => {
-            this.setState({ successfullyUpdated: false })
-        }
-
-        //The handleSuccess method opens the UserFeedbackcard component and closes the edit form
-        handleSuccess = () => {
-            this.setState({
-                successfullyUpdated: true,
-                willEdit: false
-            })
-        }
-
         render() {
             const UpdateUserHOC = updateUserBackend(UpdateUser);
 
@@ -80,8 +66,9 @@ function withUserBackEnd(WrappedComponent) {
             return (
                 <>
                     <WrappedComponent selectedUser={this.state.myUser} {...this.props} handleEditClick={this.toggleWillEdit} />
-                    {this.state.successfullyUpdated && <UserFeedbackCard onClick={this.handleCloseMessage} variant="success" feedbackText="The user has been updated." />}
-                    {this.state.willEdit && <UpdateUserHOC selectedUser={this.state.myUser} place="profile" onUpdateForm={() => { this.fetchData(); this.handleSuccess(); }} />}
+                    {this.state.willEdit && 
+                    <Popup content={<UpdateUserHOC onAbortClick={this.toggleWillEdit} selectedUser={this.state.myUser} place="profile" onUpdateForm={this.fetchData} />} />
+                    }
                 </>
             );
         }

@@ -15,9 +15,9 @@
     grid-area: buttons-and-status-card;
 }
 
-.image-and-description img {
+.image {
     width: 100%;
-    max-height: 40rem;
+    max-height: 30rem;
     object-fit: cover;
     border-radius: .25rem;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
@@ -31,21 +31,29 @@
     max-width: unset;
 }
 
-/* Small devices (portrait tablets and large phones, 640px and up) */
+.description{
+    margin-top: 2rem;
+}
 
+/* Small devices (portrait tablets and large phones, 640px and up) */
 @media only screen and (max-width: 40em) {
+    
+    /* https://stackoverflow.com/a/47019023/14447555 */
     .image-and-description {
-        grid-area: unset;
+        display: contents;
     }
     
     .buttons-and-status-card {
-        grid-area: unset;
+        display: contents;
     }
     
     .image {
-        grid-area: image
+        grid-area: image;
+        max-height: 12rem;
     }
+
     .description {
+        margin-top: 1rem;
         grid-area: description
     }
 
