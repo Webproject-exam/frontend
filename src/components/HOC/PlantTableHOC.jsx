@@ -80,7 +80,7 @@ function managePlantFetch(WrappedComponent) {
                 });
                 notifyError("Something went wrong during deletion, please try again!");
             } else {
-                notifySuccess(`Plant ${this.state.selectedPlant.name} was successfully deleted!`);
+                notifySuccess(`The plant ${this.state.selectedPlant.name} has been deleted. 🗑️`);
                 this.setState({
                     selectedPlant: {},
                     delete: false

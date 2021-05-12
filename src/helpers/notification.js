@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
  * @returns { Number } estimated reading time in miliseconds
  */
 function calculateReadingTime(message){
-    let wordCount = message.trim().split(/\s+/).length;
+    let wordCount = String(message).trim().split(/\s+/).length;
     let readTimeInMilliseconds = Math.ceil((wordCount/2)*1000)
     return readTimeInMilliseconds;
 }
@@ -17,7 +17,7 @@ function calculateReadingTime(message){
  */
 function notifySuccess(message) {
     toast.success(message, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: "bottom-left",
         autoClose: calculateReadingTime(message),
     });
 };
@@ -28,7 +28,7 @@ function notifySuccess(message) {
  */
 function notifyError(message) {
     toast.error(message, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: "bottom-left",
         autoClose: calculateReadingTime(message),
     });
 };
@@ -39,7 +39,7 @@ function notifyError(message) {
  */
 function notifyInfo(message) {
     toast.info(message, {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: "bottom-left",
         autoClose: calculateReadingTime(message),
     });
 };
