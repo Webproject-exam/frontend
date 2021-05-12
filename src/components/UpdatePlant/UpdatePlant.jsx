@@ -210,9 +210,14 @@ class UpdatePlantForm extends Component {
                                     />
 
                                     <label htmlFor='plant_image'>Upload a photo:</label>
-                                    <input type="file" name="image" onChange={this.handleFileInputChange} value={this.state.image} />
+                                    <input
+                                        type="file"
+                                        name="image"
+                                        onChange={this.handleFileInputChange}
+                                        value={this.state.image}
+                                        accept="image/*" />
                                     {this.state.previewSource &&
-                                        <img src={this.state.previewSource} alt="chosen" style={{ height: '300px' }} />
+                                        <img className="image-preview" src={this.state.previewSource} alt="chosen file"/>
                                     }
 
                                     <div className="update-plant-form page-indicators">

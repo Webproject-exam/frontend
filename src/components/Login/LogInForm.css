@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .loggedIn {
     text-align: center;
 }
@@ -14,6 +21,11 @@
 .log-in-form .buttons-side-by-side {
     margin-right: 0;
     margin-left: auto;
-    justify-content: unset;
-    flex-direction: row-reverse;
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
 }

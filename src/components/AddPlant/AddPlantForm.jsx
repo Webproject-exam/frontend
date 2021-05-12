@@ -77,7 +77,7 @@ class AddPlantForm extends Component {
                 fertAmount: this.state.fertilizer_amount,
             },
             lighting: this.state.lighting_requirements,
-            
+
         };
 
         if (this.state.previewSource) {
@@ -86,7 +86,7 @@ class AddPlantForm extends Component {
         console.log(plantObject);
 
         await this.props.onSubmitHandler(plantObject);
-        
+
         if (this.props.error) {
             notifyError("Something went wrong! Little jew");
             return
@@ -145,7 +145,7 @@ class AddPlantForm extends Component {
 
     render() {
         if (this.state.isLoading) {
-            return ( <Loading /> );
+            return (<Loading />);
         }
 
         return (
@@ -165,7 +165,7 @@ class AddPlantForm extends Component {
                                         placeholder="Enter the plant's name"
                                         ref={this.plantnameInput}
                                         required
-                                        pattern='\s*\S+.*' 
+                                        pattern='\s*\S+.*'
                                         title='space only is not allowed'
                                         autoFocus
                                         type='text'
@@ -203,16 +203,22 @@ class AddPlantForm extends Component {
                                         onChange={this.handleInputChange}
                                         placeholder='What room is the plant in?'
                                         required
-                                        pattern='\s*\S+.*' 
+                                        pattern='\s*\S+.*'
                                         title='space only is not allowed'
                                         type='text'
                                         value={this.state.placement_room}
                                     />
 
                                     <label htmlFor='plant_image'>Upload a photo:</label>
-                                    <input type="file" name="image" onChange={this.handleFileInputChange} value={this.state.image} />
-                                    {this.state.previewSource && 
-                                    <img src={this.state.previewSource} alt="chosen" style={{height: '300px'}} />
+                                    <input
+                                        type="file"
+                                        name="image"
+                                        onChange={this.handleFileInputChange}
+                                        value={this.state.image}
+                                        accept="image/*" />
+
+                                    {this.state.previewSource &&
+                                        <img className="image-preview" src={this.state.previewSource} alt="chosen file"/>
                                     }
 
                                     <div className='add-plant-form page-indicators'>
