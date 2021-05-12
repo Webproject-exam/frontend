@@ -46,7 +46,7 @@ header {
 }
 
 hr {
-  opacity: 33%;
+  opacity: .33;
   color: var(--gray6);
   border-radius: 1px;
   margin: 0;

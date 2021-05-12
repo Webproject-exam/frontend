@@ -116,16 +116,21 @@ function withPlantsFetch(WrappedComponent) {
 
         render() {
             const auth = this.context.isAuth;
+            const url = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_FRONTEND : process.env.REACT_APP_FRONTEND_LOCAL
 
             if (this.state.isLoading) {
                 return (<Loading />);
             }
 
+            if (this.state.plants && this.state.plants.length === 0) {
+                return (
+                    <p>Looks like there are no plants...</p>
+                );
+            }
+
             return (
                 <>
-                    {/* NÅR MAN DEPLOYER MÅ DENNE URLEN ENDRES (tror jeg tihi) */}
-                    
-                    {auth && <Favicon url={`${process.env.REACT_APP_FRONTEND}/favicon.ico`} alertCount={this.countPlantsToBeWatered()} />}
+                    {auth && <Favicon url={`${url}/favicon.ico`} alertCount={this.countPlantsToBeWatered()} />}
                     
                     <WrappedComponent plants={this.state.plants} auth={auth} handleWateringClick={this.waterNextClick} {...this.props} />
                     
