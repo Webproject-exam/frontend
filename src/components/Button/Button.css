@@ -16,6 +16,7 @@
   /* Typography*/
   color: white;
   text-transform: uppercase;
+  text-align: center;
 
   /* Box model */
   -webkit-box-sizing: border-box;
