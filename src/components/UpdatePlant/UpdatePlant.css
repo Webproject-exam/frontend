@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .page-indicator-dot {
     background: var(--gray4);
     border-radius: 50%;
@@ -12,10 +19,16 @@
 
 .update-plant-form.page-indicators{
     height: 3rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: .5rem;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .update-plant-form .buttons-side-by-side{
