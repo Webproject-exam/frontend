@@ -15,6 +15,14 @@ function updatePlantBackend(WrappedComponent) {
             console.log(plantObject);
 
             const res = await updatePlant(plantObject);
+
+            if (res.error) {
+                this.setState({
+                    error: res.error
+                });
+            } else {
+                this.props.onSubmit();
+            }
             console.log(res);
         }
 
