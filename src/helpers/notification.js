@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 
 /**
- * 
+ * calculate the esitmated reading time of a message
  * @param { String } message 
  * @returns { Number } estimated reading time in miliseconds
  */
