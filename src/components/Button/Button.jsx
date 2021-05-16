@@ -15,4 +15,13 @@ function Button(props) {
     )
 }
 
+Button.defaultProps = {
+    active: false,
+    disabled: false,
+    size: 'full',
+    type: 'button',
+    label: 'default button',
+    variant: 'primary'
+}
+
 export default Button;

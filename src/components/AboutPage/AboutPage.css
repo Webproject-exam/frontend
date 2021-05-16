@@ -26,6 +26,10 @@
   width: 100%;
 }
 
+.home-page a button{
+  height: calc(100% - 1rem)
+}
+
 .slogan {
   font-size: 1.33rem;
   margin-top: .5rem;
@@ -88,7 +92,7 @@
 
 .title h1 {
   width: 100%;
-  font-size: clamp(3rem, 11.4vw, 6rem);
+  font-size: clamp(4rem, 11.4vw, 6rem);
   margin: 0;
 }
 
