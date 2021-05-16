@@ -55,7 +55,7 @@ hr {
 
 main {
   margin: 1em 2.5vw;
-  min-height: calc(100vh - 5.5rem - 55.33px);
+  min-height: calc(100vh - 55.333px - 51px - 2em);
 }
 
 /* "cards" used on the application */
@@ -103,7 +103,7 @@ legend {
 
 a {
   color: var(--sDark);
-  /* text-decoration: none; */
+  text-decoration: none;
   -webkit-transition: .3s;
   -o-transition: .3s;
   transition: .3s;
