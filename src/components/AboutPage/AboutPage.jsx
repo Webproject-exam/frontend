@@ -51,7 +51,7 @@ function AboutPage() {
                     <div className="biography">
                         <h3>Glenn</h3>
                         <h4 className="low-emphasis-header">Full-stack development</h4>
-                        <p className="low-emphasis-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
+                        <p className="low-emphasis-text">As responsible for the "Full-stack" of this application, my main tasks have been to connect the front-end to the back-end and write the logic behind most of the components. To accomplish this, I have used my JavaScript skillset to come up with solutions that would accomplish these tasks.</p>
                     </div>
                 </div>
                 <div className="container the-group-box person3">
