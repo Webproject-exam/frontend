@@ -15,6 +15,9 @@ class PlantList extends Component {
 
     componentDidMount() {
         this.handleUpdateProp();
+        this.setState({
+            sorting: sessionStorage.getItem("overview-sorting") ? sessionStorage.getItem("overview-sorting") : ''
+        });
     }
 
     componentDidUpdate(prevProps){
@@ -34,6 +37,8 @@ class PlantList extends Component {
         this.setState({
             sorting: value
         });
+
+        sessionStorage.setItem("overview-sorting", value);
     }
 
     sorting = (sorting, plants) => {
