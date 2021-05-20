@@ -4,11 +4,7 @@ import { AuthContext } from '../../helpers/Auth';
 function navBarBackend(WrappedComponent) {
     class NavBarHOC extends Component {
         static contextType = AuthContext;
-        constructor(props) {
-            super(props);
-            this.state = {}
-        }
-
+        
         handleLogOut = () => {
             this.context.logout();
         }
