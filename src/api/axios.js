@@ -43,8 +43,8 @@ function createAxiosResponseInterceptor(axiosInstance) {
 
     axiosInstance.interceptors.response.use(
         function (response) {
-            const { status, data, config } = response;
-            /* console.log(`Response from ${config.url}:`, {
+            /* const { status, data, config } = response;
+            console.log(`Response from ${config.url}:`, {
                 code: status,
                 ...data
             }); */
