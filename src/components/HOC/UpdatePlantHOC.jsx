@@ -12,8 +12,6 @@ function updatePlantBackend(WrappedComponent) {
         }
 
         handleSubmit = async (plantObject) => {
-            console.log(plantObject);
-
             const res = await updatePlant(plantObject);
 
             if (res.error) {
@@ -23,7 +21,6 @@ function updatePlantBackend(WrappedComponent) {
             } else {
                 this.props.onSubmit();
             }
-            console.log(res);
         }
 
         render() { 

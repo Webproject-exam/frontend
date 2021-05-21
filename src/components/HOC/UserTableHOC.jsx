@@ -74,7 +74,6 @@ function withUsersFetch(WrappedComponent) {
         }
 
         selectEdit = (user) => {
-            console.log(user);
             this.setState({ edit: true, selectedUser: user });
         }
 

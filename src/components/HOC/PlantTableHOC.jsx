@@ -49,7 +49,6 @@ function managePlantFetch(WrappedComponent) {
         }
 
         editPlant = (plant) => {
-            console.log(plant);
             this.setState({
                 selectedPlant: plant,
                 edit: true
