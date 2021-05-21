@@ -23,7 +23,6 @@ function addUserBackend(WrappedComponent) {
         }
 
         onSubmit = async (itemObject) => {
-            console.log(itemObject);
             //Send the information stored in the state to the back-end
             if (this._isMounted && this.props.place === "users") {
                 try {
@@ -43,13 +42,10 @@ function addUserBackend(WrappedComponent) {
                         error: error
                     })
                 }
-            } else {
-                console.log("Anything else");
             }
         }
 
         render() {
-            console.log(this.props);
             return (
                 <WrappedComponent onSubmitHandler={this.onSubmit} error={this.state.error} onAbortClick={this.props.onAbortClick} {...this.props} />
             );

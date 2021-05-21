@@ -35,7 +35,6 @@ function fetchPlantBackend(WrappedComponent) {
         fetchData = async (id) => {
             try {
                 const res = await fetchPlant(id);
-                console.log(res);
                 if (res.data.plant === null) {
                     this._isMounted && this.setState({
                         error: res.error,
@@ -114,8 +113,6 @@ function fetchPlantBackend(WrappedComponent) {
                 fertNext: nextFertilizationDate
             }
 
-            console.log(payload);
-
             const res = await careForPlant(payload);
 
             if (res.error) {
@@ -167,8 +164,6 @@ function fetchPlantBackend(WrappedComponent) {
                 }
             }
 
-            console.log(payload);
-
             const id = this.state.plant._id;
 
             const res = await postponePlant(id, payload);
@@ -185,7 +180,7 @@ function fetchPlantBackend(WrappedComponent) {
         }
 
         handleRequestClick = async (plantID) => {
-            console.log(`Someone has requested care for the plant with ID ${plantID}`);
+            //console.log(`Someone has requested care for the plant with ID ${plantID}`);
             const date = startOfDay(Date.now());
             const res = await requestCare({id: plantID, date});
 

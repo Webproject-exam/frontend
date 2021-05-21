@@ -41,7 +41,6 @@ const readExpiry = (key) => {
 
 const timeToUpdate = () => {
     const expiry = readExpiry("token");
-    console.log(expiry.expired);
     return expiry.expired;
 }
 
