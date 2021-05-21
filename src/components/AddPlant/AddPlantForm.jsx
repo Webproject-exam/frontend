@@ -83,7 +83,6 @@ class AddPlantForm extends Component {
         if (this.state.previewSource) {
             plantObject.image = this.state.previewSource;
         }
-        console.log(plantObject);
 
         await this.props.onSubmitHandler(plantObject);
 
