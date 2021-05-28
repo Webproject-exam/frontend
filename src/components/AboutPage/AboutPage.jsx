@@ -39,7 +39,7 @@ function AboutPage() {
 
                 <h2 className="the-group">The Group</h2>
                 <div className="container the-group-box person1">
-                    <img className="about-page-image" src={PhotoCornelius} alt="" />
+                    <img className="about-page-image" src={PhotoCornelius} alt="cornelius" />
                     <div className="biography">
                         <h3>Cornelius</h3>
                         <h4 className="low-emphasis-header">Back-end Development</h4>
@@ -47,7 +47,7 @@ function AboutPage() {
                     </div>
                 </div>
                 <div className="container the-group-box person2">
-                    <img className="about-page-image" src={PhotoGlenn} alt="" />
+                    <img className="about-page-image" src={PhotoGlenn} alt="glenn" />
                     <div className="biography">
                         <h3>Glenn</h3>
                         <h4 className="low-emphasis-header">Full-stack development</h4>
@@ -55,7 +55,7 @@ function AboutPage() {
                     </div>
                 </div>
                 <div className="container the-group-box person3">
-                    <img className="about-page-image" src={PhotoTom} alt="" />
+                    <img className="about-page-image" src={PhotoTom} alt="tom" />
                     <div className="biography">
                         <h3>Tom</h3>
                         <h4 className="low-emphasis-header">Front-end development &amp; Design</h4>
