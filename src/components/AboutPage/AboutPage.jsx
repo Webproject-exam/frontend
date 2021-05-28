@@ -43,7 +43,7 @@ function AboutPage() {
                     <div className="biography">
                         <h3>Cornelius</h3>
                         <h4 className="low-emphasis-header">Back-end Development</h4>
-                        <p className="low-emphasis-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus nibh, luctus finibus facilisis nec, commodo id nibh. Etiam enim tortor, pretium in porta quis, pulvinar eget dui. Phasellus sodales est quis maximus volutpat. Praesent nec vestibulum elit. In id velit posuere, consequat ante non, facilisis risus. Fusce vestibulum ante vel lacus bibendum scelerisque. Curabitur pellentesque magna mi, non molestie. </p>
+                        <p className="low-emphasis-text">I became the main responsible for developing the back-end of Plantrol. I created the following: database with MongoDB Atlas, the schema for users, plants and refresh token, routes, controllers, helpers, authentication, and authorization with JWT.</p>
                     </div>
                 </div>
                 <div className="container the-group-box person2">
